@@ -7,8 +7,8 @@
 	"settings": {
 		"Project.Target" : "templateF4", // 你的项目名称, 默认为当前工作区名称
 		"Project.Build_dir" : "build", // 构建项目使用的目录
-		"Project.SVD_dir" : "STM32F103xx", // 芯片描述文件路径(不包含文件拓展名, 可选)
+		"Project.SVD_dir" : "STM32F407xx", // 芯片描述文件路径(不包含文件拓展名, 可选)
 		"Project.OpenOCD.interface" : "cmsis-dap", // 调试接口类型, 可选类型: cmsis-dap, stlink, jlink...(取决于安装的OpenOCD)
-		"Project.OpenOCD.target": "stm32f1x", // 调试目标芯片, 可选类型: stm32f1x, stm32f4x, stm32h7x...(取决于安装的OpenOCD)
+		"Project.OpenOCD.target": "stm32f4x", // 调试目标芯片, 可选类型: stm32f1x, stm32f4x, stm32h7x...(取决于安装的OpenOCD)
 	}
 }
