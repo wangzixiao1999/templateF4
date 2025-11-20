@@ -99,7 +99,7 @@ int main(void)
   uint8_t cmd[32] = {0}; uint16_t vel = 0; uint32_t pos = 0;
 
   // 将速度和位置放大10倍发送过去
-  vel = (uint16_t)ABS(1000.0f * 10.0f); pos = (uint32_t)ABS(7200.0f * 10.0f);
+  vel = (uint16_t)ABS(1000.0f * 10.0f); pos = (uint32_t)ABS(72000.0f * 10.0f);
 
   // 装载命令
   cmd[0]  =  0x01;                      // 地址
