@@ -799,5 +799,37 @@
    "build/can.o"
   ],
   "file": "Core/Src/can.c"
+ },
+ {
+  "directory": "C:\\Users\\81506\\Desktop\\test\\templateF4",
+  "arguments": [
+   "arm-none-eabi-gcc",
+   "-c",
+   "-mcpu=cortex-m4",
+   "-mthumb",
+   "-mfpu=fpv4-sp-d16",
+   "-mfloat-abi=hard",
+   "-DUSE_HAL_DRIVER",
+   "-DSTM32F407xx",
+   "-ICore/Inc",
+   "-IDrivers/STM32F4xx_HAL_Driver/Inc",
+   "-IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+   "-IDrivers/CMSIS/Device/ST/STM32F4xx/Include",
+   "-IDrivers/CMSIS/Include",
+   "-Og",
+   "-Wall",
+   "-fdata-sections",
+   "-ffunction-sections",
+   "-g",
+   "-gdwarf-2",
+   "-MMD",
+   "-MP",
+   "-MFbuild/ZDT_X42_V2.d",
+   "-Wa,-a,-ad,-alms=build/ZDT_X42_V2.lst",
+   "Core/Src/ZDT_X42_V2.c",
+   "-o",
+   "build/ZDT_X42_V2.o"
+  ],
+  "file": "Core/Src/ZDT_X42_V2.c"
  }
 ]
