@@ -100,6 +100,36 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   ZDT_X42_V2_Traj_Position_Control(1, 0, 1000, 1000, 1000.0f, 7200.0f, 0, 0);
+	HAL_Delay(10);
+
+  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  {
+    can.rxFrameFlag = false;
+  }
+  //memset(can.rxData, 0, sizeof(can.rxData));
+  can.rxData[0] = 0;
+  can.rxData[1] = 0;
+
+  ZDT_X42_V2_Traj_Position_Control(2, 0, 1000, 1000, 1000.0f, 7200.0f, 0, 0);
+	HAL_Delay(10);
+
+  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  {
+    can.rxFrameFlag = false;
+  }
+  //memset(can.rxData, 0, sizeof(can.rxData));
+  can.rxData[0] = 0;
+  can.rxData[1] = 0;
+
+  ZDT_X42_V2_Traj_Position_Control(0, 0, 1000, 1000, 1000.0f, 7200.0f, 0, 0);
+	HAL_Delay(10);
+  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  {
+    can.rxFrameFlag = false;
+  }
+//memset(can.rxData, 0, sizeof(can.rxData));
+  can.rxData[0] = 0;
+  can.rxData[1] = 0;
 
   while (1)
   {

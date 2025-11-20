@@ -1,0 +1,23 @@
+{
+	"configurations": [
+	{
+		"name": "在线调试",
+		"cwd": "${workspaceRoot}",
+		"executable": "${config:Project.Build_dir}/${config:Project.Target}.elf", // 填写要用于调试的二进制(ELF)文件
+		"request": "launch",
+		"type": "cortex-debug",
+		"servertype": "openocd",
+		"configFiles": [ // 填写OpenOCD使用的配置文件
+			"interface/${config:Project.OpenOCD.interface}.cfg",
+			"target/${config:Project.OpenOCD.target}.cfg"
+		],
+		"svdFile": "${config:Project.SVD_dir}.svd", // 填写调试中要使用的芯片描述文件(可选)
+		"liveWatch": {
+			"enabled": true,
+			"samplesPerSecond": 1
+		},
+		// "preLaunchTask": "Arm Cortex.OpenOCD: openocd.exe 下载生成的解决方案到目标芯片", // 启用本行以启用调试前的自动下载
+		"runToEntryPoint": "main",
+	},
+	]
+}
