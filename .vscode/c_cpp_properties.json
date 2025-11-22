@@ -8,9 +8,15 @@
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE"
+                "_UNICODE",
+                "USE_HAL_DRIVER",
+                "STM32F407xx"
             ],
-            "windowsSdkVersion": "10.0.26100.0"
+            "windowsSdkVersion": "10.0.26100.0",
+            "compilerPath": "C:/DevToolBox_Slot/GNU_CompilerCollection/bin/gcc.exe",
+            "intelliSenseMode": "windows-gcc-x64",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17"
         }
     ],
     "version": 4
