@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include "ZDT_X42_V2.h"
 
+extern PulseChannel_t channels[4]; // 4???
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -92,60 +93,67 @@ int main(void)
   MX_CAN1_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-	USER_CAN1_Filter_Init();	     // 初始化CAN滤波�?
-	if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN控制�?
-	if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN控制器接收中�?
+	// USER_CAN1_Filter_Init();	     // 初始化CAN滤波�?
+	// if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN控制�?
+	// if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN控制器接收中�?
 
-  HAL_Delay(2000);
+  // HAL_Delay(2000);
+  for(int i = 0; i < 4; i++)
+  {
+    channels[i].active = 0;
+  }
 
-  //Generate_Pulse(2000, 1000);
 
+  HAL_TIM_Base_Start(&htim1);
+  schedule_channel(0, 10.0, 10.0, 8.0, 5);
+  run_once_blocking();
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-    for (size_t i = 0; i < 9; i++)
-  {
-    for (size_t j = 0; j < 9; j++)
-    {
-      ZDT_X42_V2_Traj_Position_Control(2, i%2, 1000, 1000, 1000.0f, 36.0f, 0, 0);
-	    HAL_Delay(10);
+  //   for (size_t i = 0; i < 9; i++)
+  // {
+  //   for (size_t j = 0; j < 9; j++)
+  //   {
+  //     ZDT_X42_V2_Traj_Position_Control(2, i%2, 1000, 1000, 1000.0f, 36.0f, 0, 0);
+	//     HAL_Delay(10);
 
-      while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-      {
-        can.rxFrameFlag = false;
-      }
-      can.rxData[0] = 0;
-      can.rxData[1] = 0;
-      HAL_Delay(200);
-    }
+  //     while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  //     {
+  //       can.rxFrameFlag = false;
+  //     }
+  //     can.rxData[0] = 0;
+  //     can.rxData[1] = 0;
+  //     HAL_Delay(200);
+  //   }
 
-    ZDT_X42_V2_Traj_Position_Control(1, 0, 1000, 1000, 1000.0f, 36.0f, 0, 0);
-	  HAL_Delay(10);
-    while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-    {
-      can.rxFrameFlag = false;
-    }
+  //   ZDT_X42_V2_Traj_Position_Control(1, 0, 1000, 1000, 1000.0f, 36.0f, 0, 0);
+	//   HAL_Delay(10);
+  //   while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  //   {
+  //     can.rxFrameFlag = false;
+  //   }
 
-    can.rxData[0] = 0;
-    can.rxData[1] = 0;
-    HAL_Delay(200);
-  }
+  //   can.rxData[0] = 0;
+  //   can.rxData[1] = 0;
+  //   HAL_Delay(200);
+  // }
 
-  ZDT_X42_V2_Traj_Position_Control(1, 1, 1000, 1000, 1000.0f, 360.0f, 0, 0);
-	HAL_Delay(10);
-  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  {
-    can.rxFrameFlag = false;
-  }
-  can.rxData[0] = 0;
-  can.rxData[1] = 0;
+  // ZDT_X42_V2_Traj_Position_Control(1, 1, 1000, 1000, 1000.0f, 360.0f, 0, 0);
+	// HAL_Delay(10);
+  // while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  // {
+  //   can.rxFrameFlag = false;
+  // }
+  // can.rxData[0] = 0;
+  // can.rxData[1] = 0;
 
   while (1)
   {
     /* USER CODE END WHILE */
+
 
     /* USER CODE BEGIN 3 */
   }
