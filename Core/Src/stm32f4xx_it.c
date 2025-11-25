@@ -23,6 +23,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "can.h"
+
+extern volatile uint32_t tstart_ticks[4];
+extern volatile uint32_t twidth_ticks[4];
+extern volatile uint8_t pulse_state[4];
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,6 +61,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern CAN_HandleTypeDef hcan1;
+extern TIM_HandleTypeDef htim1;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -206,10 +211,10 @@ void CAN1_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
   uint8_t i = 0;
-	// 接收一包数据
+	// 接收�?包数�?
 	if(HAL_CAN_GetRxMessage((&hcan1), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can.CAN_RxMsg), (uint8_t *)(&can.rxData)) == HAL_OK)
 	{
-		// 一帧数据接收完成，置位帧标志位
+		// �?帧数据接收完成，置位帧标志位
 		for(i=can.CAN_RxMsg.DLC; i < 8; i++) { can.rxData[i] = 0; } can.rxFrameFlag = true;
 	}
   /* USER CODE END CAN1_RX0_IRQn 0 */
@@ -217,6 +222,91 @@ void CAN1_RX0_IRQHandler(void)
   /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
 
   /* USER CODE END CAN1_RX0_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM1 capture compare interrupt.
+  */
+void TIM1_CC_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM1_CC_IRQn 0 */
+    /* ???? 1 */
+    if (TIM1->SR & TIM_SR_CC1IF) {
+        /* ??? */
+        TIM1->SR &= ~TIM_SR_CC1IF;
+        if (pulse_state[0] == 1) {
+            /* ??????????? */
+            TIM1->CCR1 = tstart_ticks[0] + twidth_ticks[0];
+            pulse_state[0] = 2;
+        } else if (pulse_state[0] == 2) {
+            /* ???????????????? */
+            TIM1->CCER &= ~TIM_CCER_CC1E;    /* ????/????? */
+            TIM1->DIER &= ~TIM_DIER_CC1IE;   /* ?? CC1 ?? */
+            pulse_state[0] = 0;
+        } else {
+            /* ??????????????? */
+            TIM1->CCER &= ~TIM_CCER_CC1E;
+            TIM1->DIER &= ~TIM_DIER_CC1IE;
+            pulse_state[0] = 0;
+        }
+    }
+
+    /* ???? 2 */
+    if (TIM1->SR & TIM_SR_CC2IF) {
+        TIM1->SR &= ~TIM_SR_CC2IF;
+        if (pulse_state[1] == 1) {
+            TIM1->CCR2 = tstart_ticks[1] + twidth_ticks[1];
+            pulse_state[1] = 2;
+        } else if (pulse_state[1] == 2) {
+            TIM1->CCER &= ~TIM_CCER_CC2E;
+            TIM1->DIER &= ~TIM_DIER_CC2IE;
+            pulse_state[1] = 0;
+        } else {
+            TIM1->CCER &= ~TIM_CCER_CC2E;
+            TIM1->DIER &= ~TIM_DIER_CC2IE;
+            pulse_state[1] = 0;
+        }
+    }
+
+    /* ???? 3 */
+    if (TIM1->SR & TIM_SR_CC3IF) {
+        TIM1->SR &= ~TIM_SR_CC3IF;
+        if (pulse_state[2] == 1) {
+            TIM1->CCR3 = tstart_ticks[2] + twidth_ticks[2];
+            pulse_state[2] = 2;
+        } else if (pulse_state[2] == 2) {
+            TIM1->CCER &= ~TIM_CCER_CC3E;
+            TIM1->DIER &= ~TIM_DIER_CC3IE;
+            pulse_state[2] = 0;
+        } else {
+            TIM1->CCER &= ~TIM_CCER_CC3E;
+            TIM1->DIER &= ~TIM_DIER_CC3IE;
+            pulse_state[2] = 0;
+        }
+    }
+
+    /* ???? 4 */
+    if (TIM1->SR & TIM_SR_CC4IF) {
+        TIM1->SR &= ~TIM_SR_CC4IF;
+        if (pulse_state[3] == 1) {
+            TIM1->CCR4 = tstart_ticks[3] + twidth_ticks[3];
+            pulse_state[3] = 2;
+        } else if (pulse_state[3] == 2) {
+            TIM1->CCER &= ~TIM_CCER_CC4E;
+            TIM1->DIER &= ~TIM_DIER_CC4IE;
+            pulse_state[3] = 0;
+        } else {
+            TIM1->CCER &= ~TIM_CCER_CC4E;
+            TIM1->DIER &= ~TIM_DIER_CC4IE;
+            pulse_state[3] = 0;
+        }
+    }
+
+  /* USER CODE END TIM1_CC_IRQn 0 */
+  //HAL_TIM_IRQHandler(&htim1);
+  /* USER CODE BEGIN TIM1_CC_IRQn 1 */
+
+  /* USER CODE END TIM1_CC_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

@@ -831,5 +831,37 @@
    "build/ZDT_X42_V2.o"
   ],
   "file": "Core/Src/ZDT_X42_V2.c"
+ },
+ {
+  "directory": "C:\\Users\\81506\\Desktop\\test\\templateF4",
+  "arguments": [
+   "arm-none-eabi-gcc",
+   "-c",
+   "-mcpu=cortex-m4",
+   "-mthumb",
+   "-mfpu=fpv4-sp-d16",
+   "-mfloat-abi=hard",
+   "-DUSE_HAL_DRIVER",
+   "-DSTM32F407xx",
+   "-ICore/Inc",
+   "-IDrivers/STM32F4xx_HAL_Driver/Inc",
+   "-IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+   "-IDrivers/CMSIS/Device/ST/STM32F4xx/Include",
+   "-IDrivers/CMSIS/Include",
+   "-Og",
+   "-Wall",
+   "-fdata-sections",
+   "-ffunction-sections",
+   "-g",
+   "-gdwarf-2",
+   "-MMD",
+   "-MP",
+   "-MFbuild/tim.d",
+   "-Wa,-a,-ad,-alms=build/tim.lst",
+   "Core/Src/tim.c",
+   "-o",
+   "build/tim.o"
+  ],
+  "file": "Core/Src/tim.c"
  }
 ]

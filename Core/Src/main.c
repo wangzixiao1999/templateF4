@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "can.h"
+#include "tim.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -89,48 +90,24 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_CAN1_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-	USER_CAN1_Filter_Init();	     // 初始化CAN滤波器
-	if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN控制器
-	if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN控制器接收中断
 
-    HAL_Delay(2000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  ZDT_X42_V2_Traj_Position_Control(1, 0, 1000, 1000, 1000.0f, 360.0f, 0, 0);
-	HAL_Delay(10);
-
-  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  {
-    can.rxFrameFlag = false;
-  }
-  //memset(can.rxData, 0, sizeof(can.rxData));
-  can.rxData[0] = 0;
-  can.rxData[1] = 0;
-
-  ZDT_X42_V2_Traj_Position_Control(2, 0, 1000, 1000, 1000.0f, 360.0f, 0, 0);
-	HAL_Delay(10);
-
-  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  {
-    can.rxFrameFlag = false;
-  }
-  //memset(can.rxData, 0, sizeof(can.rxData));
-  can.rxData[0] = 0;
-  can.rxData[1] = 0;
-
-  ZDT_X42_V2_Traj_Position_Control(0, 1, 1000, 1000, 1000.0f, 360.0f, 0, 0);
-	HAL_Delay(10);
-  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  {
-    can.rxFrameFlag = false;
-  }
-//memset(can.rxData, 0, sizeof(can.rxData));
-  can.rxData[0] = 0;
-  can.rxData[1] = 0;
-
+  double delays_us[4] = {2.0, 2.0, 2.0, 2.0}; /* ????? 2us */
+  double widths_us[4] = {10.0, 25.0, 30.0, 35.0};
+  start_4_one_shot(delays_us, widths_us);
+  HAL_Delay(1000);
+  start_4_one_shot(delays_us, widths_us);
+  // HAL_Delay(40);
+  // start_4_one_shot(delays_us, widths_us);
+  // HAL_Delay(40);
+  // start_4_one_shot(delays_us, widths_us);
+  // HAL_Delay(40);
+  // start_4_one_shot(delays_us, widths_us);
   while (1)
   {
     /* USER CODE END WHILE */
