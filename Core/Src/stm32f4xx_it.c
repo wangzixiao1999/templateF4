@@ -231,68 +231,111 @@ void TIM1_CC_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_CC_IRQn 0 */
      /* Channel 1 */
-    if (TIM1->SR & TIM_SR_CC1IF) {
+    if (TIM1->SR & TIM_SR_CC1IF)
+    {
         TIM1->SR &= ~TIM_SR_CC1IF; /* ??? */
-        if (pulse_state[0] == 1) {
-            /* ??????????? */
-            TIM1->CCR1 = tstart_ticks[0] + twidth_ticks[0];
-            pulse_state[0] = 2;
-        } else if (pulse_state[0] == 2) {
-            /* ?????? HAL ???????? HAL ????/???? */
-            HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
-            pulse_state[0] = 0;
-        } else {
-            /* ?????????? */
-            HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
-            pulse_state[0] = 0;
+        switch (pulse_state[0])
+        {
+          case 1:
+          {
+              TIM1->CCR1 = tstart_ticks[0] + twidth_ticks[0];
+              pulse_state[0] = 2;
+              break;
+          }
+          case 2:
+          {
+              HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+              pulse_state[0] = 0;
+              break;
+          }
+          default:
+          {
+              HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+              pulse_state[0] = 0;
+              break;
+          }
         }
     }
 
     /* Channel 2 */
-    if (TIM1->SR & TIM_SR_CC2IF) {
+    if (TIM1->SR & TIM_SR_CC2IF)
+    {
         TIM1->SR &= ~TIM_SR_CC2IF;
-        if (pulse_state[1] == 1) {
+        switch (pulse_state[1])
+        {
+          case 1:
+          {
             TIM1->CCR2 = tstart_ticks[1] + twidth_ticks[1];
             pulse_state[1] = 2;
-        } else if (pulse_state[1] == 2) {
+            break;
+          }
+          case 2:
+          {
             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
             pulse_state[1] = 0;
-        } else {
+            break;
+          }
+          default:
+          {
             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
             pulse_state[1] = 0;
+            break;
+          }
         }
     }
 
     /* Channel 3 */
-    if (TIM1->SR & TIM_SR_CC3IF) {
+    if (TIM1->SR & TIM_SR_CC3IF)
+    {
         TIM1->SR &= ~TIM_SR_CC3IF;
-        if (pulse_state[2] == 1) {
+        switch (pulse_state[2])
+        {
+          case 1:
+          {
             TIM1->CCR3 = tstart_ticks[2] + twidth_ticks[2];
             pulse_state[2] = 2;
-        } else if (pulse_state[2] == 2) {
+            break;
+          }
+          case 2:
+          {
             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
             pulse_state[2] = 0;
-        } else {
+            break;
+          }
+          default:
+          {
             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
             pulse_state[2] = 0;
+            break;
+          }
         }
     }
-
     /* Channel 4 */
-    if (TIM1->SR & TIM_SR_CC4IF) {
+    if (TIM1->SR & TIM_SR_CC4IF)
+    {
         TIM1->SR &= ~TIM_SR_CC4IF;
-        if (pulse_state[3] == 1) {
+        switch (pulse_state[3])
+        {
+          case 1:
+          {
             TIM1->CCR4 = tstart_ticks[3] + twidth_ticks[3];
             pulse_state[3] = 2;
-        } else if (pulse_state[3] == 2) {
+            break;
+          }
+          case 2:
+          {
             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
             pulse_state[3] = 0;
-        } else {
+            break;
+          }
+          default:
+          {
             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
             pulse_state[3] = 0;
+            break;
+          }
         }
     }
-
   /* USER CODE END TIM1_CC_IRQn 0 */
   //HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_CC_IRQn 1 */
