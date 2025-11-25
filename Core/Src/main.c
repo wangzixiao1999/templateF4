@@ -98,16 +98,16 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   double delays_us[4] = {2.0, 2.0, 2.0, 2.0}; /* ????? 2us */
-  double widths_us[4] = {10.0, 25.0, 30.0, 35.0};
+  double widths_us[4] = {100.0, 25.0, 30.0, 35.0};
   start_4_one_shot(delays_us, widths_us);
-  HAL_Delay(1000);
+  HAL_Delay(40);
   start_4_one_shot(delays_us, widths_us);
-  // HAL_Delay(40);
-  // start_4_one_shot(delays_us, widths_us);
-  // HAL_Delay(40);
-  // start_4_one_shot(delays_us, widths_us);
-  // HAL_Delay(40);
-  // start_4_one_shot(delays_us, widths_us);
+  HAL_Delay(40);
+  start_4_one_shot(delays_us, widths_us);
+  HAL_Delay(40);
+  start_4_one_shot(delays_us, widths_us);
+  HAL_Delay(40);
+  start_4_one_shot(delays_us, widths_us);
   while (1)
   {
     /* USER CODE END WHILE */

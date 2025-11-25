@@ -200,13 +200,22 @@ void start_4_one_shot(double delays_us[4], double widths_us[4]) {
     __HAL_TIM_DISABLE(&htim1);
     __HAL_TIM_SET_COUNTER(&htim1, 0);
 
+    /* 清除遗留中断标志，确保干净状态 */
+    TIM1->SR &= ~(TIM_SR_CC1IF | TIM_SR_CC2IF | TIM_SR_CC3IF | TIM_SR_CC4IF);
+
+    /* 为保险，先用 HAL 停止各通道（如果之前有残留），保持 HAL/硬件一致性 */
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
+
     /* 预写 CCR 为上升时间（确保立即有效，OC Preload disabled） */
     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, tstart_ticks[0]);
     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, tstart_ticks[1]);
     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, tstart_ticks[2]);
     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, tstart_ticks[3]);
 
-    /* 启动 OC 并启用 CC 中断（使能输出和中断） */
+    /* 启动 OC 并启用 CC 中断（使用 HAL 接口以维护状态一致） */
     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_2);
     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_3);

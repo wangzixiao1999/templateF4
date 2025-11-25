@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
   27:Core/Src/tim.c **** volatile uint8_t pulse_state[4] = {0,0,0,0};
   28:Core/Src/tim.c **** 
   29:Core/Src/tim.c **** static inline uint32_t us_to_ticks(double us) {
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 2
 
 
   30:Core/Src/tim.c ****     return (uint32_t)((us * 1e-6) * 168e6 + 0.5);
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
   84:Core/Src/tim.c ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
   85:Core/Src/tim.c ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
   86:Core/Src/tim.c ****   if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 3
 
 
   87:Core/Src/tim.c ****   {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
   46              		.cfi_def_cfa_offset 4
   47              		.cfi_offset 14, -4
   48 000c 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 4
 
 
   49              	.LCFI1:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
   88              	.L8:
   89 003c 00000140 		.word	1073807360
   90              		.cfi_endproc
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 5
 
 
   91              	.LFE136:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  154:Core/Src/tim.c ****     PE14     ------> TIM1_CH4
  155:Core/Src/tim.c ****     */
  156:Core/Src/tim.c ****     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_11|GPIO_PIN_13|GPIO_PIN_14;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 6
 
 
  157:Core/Src/tim.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  165              		.loc 1 157 5 is_stmt 1 view .LVU31
  157:Core/Src/tim.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
  166              		.loc 1 157 26 is_stmt 0 view .LVU32
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 7
 
 
  167 003c 0223     		movs	r3, #2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  215              	.LCFI8:
  216              		.cfi_def_cfa_offset 96
   45:Core/Src/tim.c ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 8
 
 
  217              		.loc 1 45 3 view .LVU42
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  256              		.loc 1 56 21 is_stmt 0 view .LVU57
  257 0034 4FF6FF73 		movw	r3, #65535
  258 0038 C360     		str	r3, [r0, #12]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 9
 
 
   57:Core/Src/tim.c ****   htim1.Init.RepetitionCounter = 0;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  296 0060 0028     		cmp	r0, #0
  297 0062 43D1     		bne	.L29
  298              	.L19:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 10
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 10
 
 
   73:Core/Src/tim.c ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  334              		.loc 1 84 25 is_stmt 0 view .LVU93
  335 0084 0E92     		str	r2, [sp, #56]
   85:Core/Src/tim.c ****   if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 11
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 11
 
 
  336              		.loc 1 85 3 is_stmt 1 view .LVU94
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  377 00b6 40BB     		cbnz	r0, .L34
  378              	.L24:
  102:Core/Src/tim.c ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 12
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 12
 
 
  379              		.loc 1 102 3 is_stmt 1 view .LVU108
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  415              		.loc 1 118 1 is_stmt 0 view .LVU126
  416 00dc 16B0     		add	sp, sp, #88
  417              	.LCFI9:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 13
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 13
 
 
  418              		.cfi_remember_state
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  464              	.L35:
  111:Core/Src/tim.c ****   }
  465              		.loc 1 111 5 view .LVU135
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 14
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 14
 
 
  466 0110 FFF7FEFF 		bl	Error_Handler
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  185:Core/Src/tim.c ****   /* USER CODE END TIM1_MspDeInit 1 */
  186:Core/Src/tim.c ****   }
  187:Core/Src/tim.c **** }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 15
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 15
 
 
  506              		.loc 1 187 1 view .LVU141
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  555              		.cfi_offset 6, -12
  556              		.cfi_offset 7, -8
  557              		.cfi_offset 14, -4
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 16
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 16
 
 
  558 0002 0746     		mov	r7, r0
@@ -930,21 +930,21 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  579              		.loc 1 30 5 view .LVU155
   30:Core/Src/tim.c **** }
  580              		.loc 1 30 27 is_stmt 0 view .LVU156
- 581 0010 33A3     		adr	r3, .L49
+ 581 0010 3FA3     		adr	r3, .L49
  582 0012 D3E90023 		ldrd	r2, [r3]
  583 0016 D1E90001 		ldrd	r0, [r1]
  584 001a FFF7FEFF 		bl	__aeabi_dmul
  585              	.LVL38:
   30:Core/Src/tim.c **** }
  586              		.loc 1 30 35 view .LVU157
- 587 001e 32A3     		adr	r3, .L49+8
+ 587 001e 3EA3     		adr	r3, .L49+8
  588 0020 D3E90023 		ldrd	r2, [r3]
  589 0024 FFF7FEFF 		bl	__aeabi_dmul
  590              	.LVL39:
   30:Core/Src/tim.c **** }
  591              		.loc 1 30 43 view .LVU158
  592 0028 0022     		movs	r2, #0
- 593 002a 314B     		ldr	r3, .L49+16
+ 593 002a 3D4B     		ldr	r3, .L49+16
  594 002c FFF7FEFF 		bl	__aeabi_dadd
  595              	.LVL40:
   30:Core/Src/tim.c **** }
@@ -956,9 +956,9 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  600              	.LBE11:
  601              	.LBE10:
  602              		.loc 1 194 25 discriminator 1 view .LVU161
- 603 0034 2F4B     		ldr	r3, .L49+20
+ 603 0034 3B4B     		ldr	r3, .L49+20
  604 0036 43F82400 		str	r0, [r3, r4, lsl #2]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 17
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 17
 
 
  195:Core/Src/tim.c ****         twidth_ticks[i] = us_to_ticks(widths_us[i]);
@@ -975,21 +975,21 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  613              		.loc 1 30 5 view .LVU165
   30:Core/Src/tim.c **** }
  614              		.loc 1 30 27 is_stmt 0 view .LVU166
- 615 003c 28A3     		adr	r3, .L49
+ 615 003c 34A3     		adr	r3, .L49
  616 003e D3E90023 		ldrd	r2, [r3]
  617 0042 D5E90001 		ldrd	r0, [r5]
  618 0046 FFF7FEFF 		bl	__aeabi_dmul
  619              	.LVL43:
   30:Core/Src/tim.c **** }
  620              		.loc 1 30 35 view .LVU167
- 621 004a 27A3     		adr	r3, .L49+8
+ 621 004a 33A3     		adr	r3, .L49+8
  622 004c D3E90023 		ldrd	r2, [r3]
  623 0050 FFF7FEFF 		bl	__aeabi_dmul
  624              	.LVL44:
   30:Core/Src/tim.c **** }
  625              		.loc 1 30 43 view .LVU168
  626 0054 0022     		movs	r2, #0
- 627 0056 264B     		ldr	r3, .L49+16
+ 627 0056 324B     		ldr	r3, .L49+16
  628 0058 FFF7FEFF 		bl	__aeabi_dadd
  629              	.LVL45:
   30:Core/Src/tim.c **** }
@@ -1001,12 +1001,12 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  634              	.LBE13:
  635              	.LBE12:
  636              		.loc 1 195 25 discriminator 1 view .LVU171
- 637 0060 254B     		ldr	r3, .L49+24
+ 637 0060 314B     		ldr	r3, .L49+24
  638 0062 43F82400 		str	r0, [r3, r4, lsl #2]
  196:Core/Src/tim.c ****         pulse_state[i] = 1; /* 1 = waiting for rising */
  639              		.loc 1 196 9 is_stmt 1 view .LVU172
  640              		.loc 1 196 24 is_stmt 0 view .LVU173
- 641 0066 254B     		ldr	r3, .L49+28
+ 641 0066 314B     		ldr	r3, .L49+28
  642 0068 0122     		movs	r2, #1
  643 006a 1A55     		strb	r2, [r3, r4]
  193:Core/Src/tim.c ****         tstart_ticks[i] = us_to_ticks(delays_us[i]);
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  648              		.loc 1 193 19 discriminator 1 view .LVU175
  649 006e 032C     		cmp	r4, #3
  650 0070 CBDD     		ble	.L46
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 18
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 18
 
 
  651              	.LBE9:
@@ -1028,7 +1028,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  200:Core/Src/tim.c ****     __HAL_TIM_DISABLE(&htim1);
  652              		.loc 1 200 5 view .LVU176
  653              		.loc 1 200 5 view .LVU177
- 654 0072 234B     		ldr	r3, .L49+32
+ 654 0072 2F4B     		ldr	r3, .L49+32
  655 0074 1B68     		ldr	r3, [r3]
  656 0076 196A     		ldr	r1, [r3, #32]
  657 0078 41F21112 		movw	r2, #4369
@@ -1047,165 +1047,208 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 1
  670              		.loc 1 200 5 discriminator 5 view .LVU180
  201:Core/Src/tim.c ****     __HAL_TIM_SET_COUNTER(&htim1, 0);
  671              		.loc 1 201 5 view .LVU181
- 672 0092 1B4C     		ldr	r4, .L49+32
+ 672 0092 274C     		ldr	r4, .L49+32
  673              	.LVL48:
  674              		.loc 1 201 5 is_stmt 0 view .LVU182
  675 0094 2368     		ldr	r3, [r4]
- 676 0096 0021     		movs	r1, #0
- 677 0098 5962     		str	r1, [r3, #36]
+ 676 0096 0025     		movs	r5, #0
+ 677 0098 5D62     		str	r5, [r3, #36]
  202:Core/Src/tim.c **** 
- 203:Core/Src/tim.c ****     /* 预写 CCR 为上升时间（确保立即有效，OC Preload disabled） */
- 204:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, tstart_ticks[0]);
+ 203:Core/Src/tim.c ****     /* 清除遗留中断标志，确保干净状态 */
+ 204:Core/Src/tim.c ****     TIM1->SR &= ~(TIM_SR_CC1IF | TIM_SR_CC2IF | TIM_SR_CC3IF | TIM_SR_CC4IF);
  678              		.loc 1 204 5 is_stmt 1 view .LVU183
- 679 009a 164A     		ldr	r2, .L49+20
- 680 009c 1068     		ldr	r0, [r2]
- 681 009e 5863     		str	r0, [r3, #52]
- 205:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, tstart_ticks[1]);
- 682              		.loc 1 205 5 view .LVU184
- 683 00a0 5068     		ldr	r0, [r2, #4]
- 684 00a2 9863     		str	r0, [r3, #56]
- 206:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, tstart_ticks[2]);
- 685              		.loc 1 206 5 view .LVU185
- 686 00a4 9068     		ldr	r0, [r2, #8]
- 687 00a6 D863     		str	r0, [r3, #60]
- 207:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, tstart_ticks[3]);
- 688              		.loc 1 207 5 view .LVU186
- 689 00a8 D268     		ldr	r2, [r2, #12]
- 690 00aa 1A64     		str	r2, [r3, #64]
- 208:Core/Src/tim.c **** 
- 209:Core/Src/tim.c ****     /* 启动 OC 并启用 CC 中断（使能输出和中断） */
- 210:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
- 691              		.loc 1 210 5 view .LVU187
- 692 00ac 2046     		mov	r0, r4
- 693 00ae FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 19
+ 679              		.loc 1 204 9 is_stmt 0 view .LVU184
+ 680 009a 264A     		ldr	r2, .L49+36
+ 681 009c 1369     		ldr	r3, [r2, #16]
+ 682              		.loc 1 204 14 view .LVU185
+ 683 009e 23F01E03 		bic	r3, r3, #30
+ 684 00a2 1361     		str	r3, [r2, #16]
+ 205:Core/Src/tim.c **** 
+ 206:Core/Src/tim.c ****     /* 为保险，先用 HAL 停止各通道（如果之前有残留），保持 HAL/硬件一致�
+ 207:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+ 685              		.loc 1 207 5 is_stmt 1 view .LVU186
+ 686 00a4 2946     		mov	r1, r5
+ 687 00a6 2046     		mov	r0, r4
+ 688 00a8 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 689              	.LVL49:
+ 208:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
+ 690              		.loc 1 208 5 view .LVU187
+ 691 00ac 0421     		movs	r1, #4
+ 692 00ae 2046     		mov	r0, r4
+ 693 00b0 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 694              	.LVL50:
+ 209:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 19
 
 
- 694              	.LVL49:
- 211:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_2);
- 695              		.loc 1 211 5 view .LVU188
- 696 00b2 0421     		movs	r1, #4
- 697 00b4 2046     		mov	r0, r4
- 698 00b6 FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
- 699              	.LVL50:
- 212:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_3);
- 700              		.loc 1 212 5 view .LVU189
- 701 00ba 0821     		movs	r1, #8
- 702 00bc 2046     		mov	r0, r4
- 703 00be FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
- 704              	.LVL51:
- 213:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_4);
+ 695              		.loc 1 209 5 view .LVU188
+ 696 00b4 0821     		movs	r1, #8
+ 697 00b6 2046     		mov	r0, r4
+ 698 00b8 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 699              	.LVL51:
+ 210:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
+ 700              		.loc 1 210 5 view .LVU189
+ 701 00bc 0C21     		movs	r1, #12
+ 702 00be 2046     		mov	r0, r4
+ 703 00c0 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 704              	.LVL52:
+ 211:Core/Src/tim.c **** 
+ 212:Core/Src/tim.c ****     /* 预写 CCR 为上升时间（确保立即有效，OC Preload disabled） */
+ 213:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, tstart_ticks[0]);
  705              		.loc 1 213 5 view .LVU190
- 706 00c2 0C21     		movs	r1, #12
- 707 00c4 2046     		mov	r0, r4
- 708 00c6 FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
- 709              	.LVL52:
- 214:Core/Src/tim.c **** 
- 215:Core/Src/tim.c ****     /* 清标志并启动计时器（从 0 开始） */
- 216:Core/Src/tim.c ****     __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
- 710              		.loc 1 216 5 view .LVU191
- 711 00ca 2368     		ldr	r3, [r4]
- 712 00cc 6FF00102 		mvn	r2, #1
- 713 00d0 1A61     		str	r2, [r3, #16]
- 217:Core/Src/tim.c ****     __HAL_TIM_ENABLE(&htim1);
- 714              		.loc 1 217 5 view .LVU192
- 715 00d2 1A68     		ldr	r2, [r3]
- 716 00d4 42F00102 		orr	r2, r2, #1
- 717 00d8 1A60     		str	r2, [r3]
- 218:Core/Src/tim.c **** }
- 718              		.loc 1 218 1 is_stmt 0 view .LVU193
- 719 00da F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 720              	.LVL53:
- 721              	.L50:
- 722              		.loc 1 218 1 view .LVU194
- 723 00dc AFF30080 		.align	3
- 724              	.L49:
- 725 00e0 8DEDB5A0 		.word	-1598689907
- 726 00e4 F7C6B03E 		.word	1051772663
- 727 00e8 00000000 		.word	0
- 728 00ec F406A441 		.word	1101268724
- 729 00f0 0000E03F 		.word	1071644672
- 730 00f4 00000000 		.word	tstart_ticks
- 731 00f8 00000000 		.word	twidth_ticks
- 732 00fc 00000000 		.word	pulse_state
- 733 0100 00000000 		.word	htim1
- 734              		.cfi_endproc
- 735              	.LFE139:
- 737              		.global	htim1
- 738              		.section	.bss.htim1,"aw",%nobits
- 739              		.align	2
- 742              	htim1:
- 743 0000 00000000 		.space	72
- 743      00000000 
- 743      00000000 
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 20
+ 706 00c4 2368     		ldr	r3, [r4]
+ 707 00c6 174A     		ldr	r2, .L49+20
+ 708 00c8 1168     		ldr	r1, [r2]
+ 709 00ca 5963     		str	r1, [r3, #52]
+ 214:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, tstart_ticks[1]);
+ 710              		.loc 1 214 5 view .LVU191
+ 711 00cc 5168     		ldr	r1, [r2, #4]
+ 712 00ce 9963     		str	r1, [r3, #56]
+ 215:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, tstart_ticks[2]);
+ 713              		.loc 1 215 5 view .LVU192
+ 714 00d0 9168     		ldr	r1, [r2, #8]
+ 715 00d2 D963     		str	r1, [r3, #60]
+ 216:Core/Src/tim.c ****     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, tstart_ticks[3]);
+ 716              		.loc 1 216 5 view .LVU193
+ 717 00d4 D268     		ldr	r2, [r2, #12]
+ 718 00d6 1A64     		str	r2, [r3, #64]
+ 217:Core/Src/tim.c **** 
+ 218:Core/Src/tim.c ****     /* 启动 OC 并启用 CC 中断（使用 HAL 接口以维护状态一致） */
+ 219:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
+ 719              		.loc 1 219 5 view .LVU194
+ 720 00d8 2946     		mov	r1, r5
+ 721 00da 2046     		mov	r0, r4
+ 722 00dc FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 723              	.LVL53:
+ 220:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_2);
+ 724              		.loc 1 220 5 view .LVU195
+ 725 00e0 0421     		movs	r1, #4
+ 726 00e2 2046     		mov	r0, r4
+ 727 00e4 FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 728              	.LVL54:
+ 221:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_3);
+ 729              		.loc 1 221 5 view .LVU196
+ 730 00e8 0821     		movs	r1, #8
+ 731 00ea 2046     		mov	r0, r4
+ 732 00ec FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 733              	.LVL55:
+ 222:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_4);
+ 734              		.loc 1 222 5 view .LVU197
+ 735 00f0 0C21     		movs	r1, #12
+ 736 00f2 2046     		mov	r0, r4
+ 737 00f4 FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 738              	.LVL56:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 20
 
 
- 743      00000000 
- 743      00000000 
- 744              		.global	pulse_state
- 745              		.section	.bss.pulse_state,"aw",%nobits
- 746              		.align	2
- 749              	pulse_state:
- 750 0000 00000000 		.space	4
- 751              		.global	twidth_ticks
- 752              		.section	.bss.twidth_ticks,"aw",%nobits
- 753              		.align	2
- 756              	twidth_ticks:
- 757 0000 00000000 		.space	16
- 757      00000000 
- 757      00000000 
- 757      00000000 
- 758              		.global	tstart_ticks
- 759              		.section	.bss.tstart_ticks,"aw",%nobits
- 760              		.align	2
- 763              	tstart_ticks:
- 764 0000 00000000 		.space	16
- 764      00000000 
- 764      00000000 
- 764      00000000 
- 765              		.text
- 766              	.Letext0:
- 767              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 768              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 769              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 770              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 771              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 772              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 773              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 774              		.file 9 "Core/Inc/tim.h"
- 775              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 776              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
- 777              		.file 12 "Core/Inc/main.h"
- 778              		.file 13 "<built-in>"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccauLZG6.s 			page 21
+ 223:Core/Src/tim.c **** 
+ 224:Core/Src/tim.c ****     /* 清标志并启动计时器（从 0 开始） */
+ 225:Core/Src/tim.c ****     __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
+ 739              		.loc 1 225 5 view .LVU198
+ 740 00f8 2368     		ldr	r3, [r4]
+ 741 00fa 6FF00102 		mvn	r2, #1
+ 742 00fe 1A61     		str	r2, [r3, #16]
+ 226:Core/Src/tim.c ****     __HAL_TIM_ENABLE(&htim1);
+ 743              		.loc 1 226 5 view .LVU199
+ 744 0100 1A68     		ldr	r2, [r3]
+ 745 0102 42F00102 		orr	r2, r2, #1
+ 746 0106 1A60     		str	r2, [r3]
+ 227:Core/Src/tim.c **** }
+ 747              		.loc 1 227 1 is_stmt 0 view .LVU200
+ 748 0108 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 749              	.LVL57:
+ 750              	.L50:
+ 751              		.loc 1 227 1 view .LVU201
+ 752 010a 00BFAFF3 		.align	3
+ 752      0080
+ 753              	.L49:
+ 754 0110 8DEDB5A0 		.word	-1598689907
+ 755 0114 F7C6B03E 		.word	1051772663
+ 756 0118 00000000 		.word	0
+ 757 011c F406A441 		.word	1101268724
+ 758 0120 0000E03F 		.word	1071644672
+ 759 0124 00000000 		.word	tstart_ticks
+ 760 0128 00000000 		.word	twidth_ticks
+ 761 012c 00000000 		.word	pulse_state
+ 762 0130 00000000 		.word	htim1
+ 763 0134 00000140 		.word	1073807360
+ 764              		.cfi_endproc
+ 765              	.LFE139:
+ 767              		.global	htim1
+ 768              		.section	.bss.htim1,"aw",%nobits
+ 769              		.align	2
+ 772              	htim1:
+ 773 0000 00000000 		.space	72
+ 773      00000000 
+ 773      00000000 
+ 773      00000000 
+ 773      00000000 
+ 774              		.global	pulse_state
+ 775              		.section	.bss.pulse_state,"aw",%nobits
+ 776              		.align	2
+ 779              	pulse_state:
+ 780 0000 00000000 		.space	4
+ 781              		.global	twidth_ticks
+ 782              		.section	.bss.twidth_ticks,"aw",%nobits
+ 783              		.align	2
+ 786              	twidth_ticks:
+ 787 0000 00000000 		.space	16
+ 787      00000000 
+ 787      00000000 
+ 787      00000000 
+ 788              		.global	tstart_ticks
+ 789              		.section	.bss.tstart_ticks,"aw",%nobits
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 21
+
+
+ 790              		.align	2
+ 793              	tstart_ticks:
+ 794 0000 00000000 		.space	16
+ 794      00000000 
+ 794      00000000 
+ 794      00000000 
+ 795              		.text
+ 796              	.Letext0:
+ 797              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 798              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 799              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 800              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 801              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 802              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 803              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 804              		.file 9 "Core/Inc/tim.h"
+ 805              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 806              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
+ 807              		.file 12 "Core/Inc/main.h"
+ 808              		.file 13 "<built-in>"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqLBeta.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 tim.c
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:21     .text.HAL_TIM_Base_MspInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:27     .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:89     .text.HAL_TIM_Base_MspInit:0000003c $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:94     .text.HAL_TIM_MspPostInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:100    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:190    .text.HAL_TIM_MspPostInit:00000054 $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:197    .text.MX_TIM1_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:203    .text.MX_TIM1_Init:00000000 MX_TIM1_Init
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:472    .text.MX_TIM1_Init:00000118 $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:742    .bss.htim1:00000000 htim1
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:478    .text.HAL_TIM_Base_MspDeInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:484    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:526    .text.HAL_TIM_Base_MspDeInit:00000020 $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:535    .text.start_4_one_shot:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:541    .text.start_4_one_shot:00000000 start_4_one_shot
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:725    .text.start_4_one_shot:000000e0 $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:763    .bss.tstart_ticks:00000000 tstart_ticks
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:756    .bss.twidth_ticks:00000000 twidth_ticks
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:749    .bss.pulse_state:00000000 pulse_state
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:739    .bss.htim1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:746    .bss.pulse_state:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:753    .bss.twidth_ticks:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccauLZG6.s:760    .bss.tstart_ticks:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:21     .text.HAL_TIM_Base_MspInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:27     .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:89     .text.HAL_TIM_Base_MspInit:0000003c $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:94     .text.HAL_TIM_MspPostInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:100    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:190    .text.HAL_TIM_MspPostInit:00000054 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:197    .text.MX_TIM1_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:203    .text.MX_TIM1_Init:00000000 MX_TIM1_Init
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:472    .text.MX_TIM1_Init:00000118 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:772    .bss.htim1:00000000 htim1
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:478    .text.HAL_TIM_Base_MspDeInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:484    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:526    .text.HAL_TIM_Base_MspDeInit:00000020 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:535    .text.start_4_one_shot:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:541    .text.start_4_one_shot:00000000 start_4_one_shot
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:754    .text.start_4_one_shot:00000110 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:793    .bss.tstart_ticks:00000000 tstart_ticks
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:786    .bss.twidth_ticks:00000000 twidth_ticks
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:779    .bss.pulse_state:00000000 pulse_state
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:769    .bss.htim1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:776    .bss.pulse_state:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:783    .bss.twidth_ticks:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccqLBeta.s:790    .bss.tstart_ticks:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority
@@ -1223,4 +1266,5 @@ HAL_NVIC_DisableIRQ
 __aeabi_dmul
 __aeabi_dadd
 __aeabi_d2uiz
+HAL_TIM_OC_Stop_IT
 HAL_TIM_OC_Start_IT

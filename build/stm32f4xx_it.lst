@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
   28:Core/Src/stm32f4xx_it.c **** extern volatile uint32_t twidth_ticks[4];
   29:Core/Src/stm32f4xx_it.c **** extern volatile uint8_t pulse_state[4];
   30:Core/Src/stm32f4xx_it.c **** /* USER CODE END Includes */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 2
 
 
   31:Core/Src/stm32f4xx_it.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
   78:Core/Src/stm32f4xx_it.c **** 
   79:Core/Src/stm32f4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 0 */
   80:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 3
 
 
   81:Core/Src/stm32f4xx_it.c ****   while (1)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
   73              	MemManage_Handler:
   74              	.LFB136:
  100:Core/Src/stm32f4xx_it.c **** }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 4
 
 
  101:Core/Src/stm32f4xx_it.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
  105              		.loc 1 125 3 view .LVU13
  126:Core/Src/stm32f4xx_it.c ****   {
  127:Core/Src/stm32f4xx_it.c ****     /* USER CODE BEGIN W1_BusFault_IRQn 0 */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 5
 
 
  128:Core/Src/stm32f4xx_it.c ****     /* USER CODE END W1_BusFault_IRQn 0 */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
  146:Core/Src/stm32f4xx_it.c **** 
  147:Core/Src/stm32f4xx_it.c **** /**
  148:Core/Src/stm32f4xx_it.c ****   * @brief This function handles System service call via SWI instruction.
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 6
 
 
  149:Core/Src/stm32f4xx_it.c ****   */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
  178              		.thumb_func
  180              	PendSV_Handler:
  181              	.LFB141:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 7
 
 
  172:Core/Src/stm32f4xx_it.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
  197:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
  198:Core/Src/stm32f4xx_it.c **** }
  213              		.loc 1 198 1 is_stmt 0 view .LVU28
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 8
 
 
  214 0006 08BD     		pop	{r3, pc}
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
  250 0012 0C4B     		ldr	r3, .L21+8
  251 0014 1B69     		ldr	r3, [r3, #16]
  252              		.loc 1 218 8 view .LVU36
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 9
 
 
  253 0016 DBB2     		uxtb	r3, r3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
  301              		.syntax unified
  302              		.thumb
  303              		.thumb_func
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 10
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 10
 
 
  305              	TIM1_CC_IRQHandler:
@@ -553,575 +553,483 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 1
  308              		.cfi_startproc
  309              		@ args = 0, pretend = 0, frame = 0
  310              		@ frame_needed = 0, uses_anonymous_args = 0
- 311              		@ link register save eliminated.
+ 311 0000 08B5     		push	{r3, lr}
+ 312              	.LCFI2:
+ 313              		.cfi_def_cfa_offset 8
+ 314              		.cfi_offset 3, -8
+ 315              		.cfi_offset 14, -4
  232:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_CC_IRQn 0 */
- 233:Core/Src/stm32f4xx_it.c ****     /* ???? 1 */
+ 233:Core/Src/stm32f4xx_it.c ****      /* Channel 1 */
  234:Core/Src/stm32f4xx_it.c ****     if (TIM1->SR & TIM_SR_CC1IF) {
- 312              		.loc 1 234 5 view .LVU49
- 313              		.loc 1 234 13 is_stmt 0 view .LVU50
- 314 0000 704B     		ldr	r3, .L44
- 315 0002 1B69     		ldr	r3, [r3, #16]
- 316              		.loc 1 234 8 view .LVU51
- 317 0004 13F0020F 		tst	r3, #2
- 318 0008 1AD0     		beq	.L24
- 235:Core/Src/stm32f4xx_it.c ****         /* ??? */
- 236:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC1IF;
- 319              		.loc 1 236 9 is_stmt 1 view .LVU52
- 320              		.loc 1 236 13 is_stmt 0 view .LVU53
- 321 000a 6E4A     		ldr	r2, .L44
- 322 000c 1369     		ldr	r3, [r2, #16]
- 323              		.loc 1 236 18 view .LVU54
- 324 000e 23F00203 		bic	r3, r3, #2
- 325 0012 1361     		str	r3, [r2, #16]
- 237:Core/Src/stm32f4xx_it.c ****         if (pulse_state[0] == 1) {
- 326              		.loc 1 237 9 is_stmt 1 view .LVU55
- 327              		.loc 1 237 24 is_stmt 0 view .LVU56
- 328 0014 6C4B     		ldr	r3, .L44+4
- 329 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 330 0018 DBB2     		uxtb	r3, r3
- 331              		.loc 1 237 12 view .LVU57
- 332 001a 012B     		cmp	r3, #1
- 333 001c 71D0     		beq	.L36
- 238:Core/Src/stm32f4xx_it.c ****             /* ??????????? */
- 239:Core/Src/stm32f4xx_it.c ****             TIM1->CCR1 = tstart_ticks[0] + twidth_ticks[0];
- 240:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
- 241:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[0] == 2) {
- 334              		.loc 1 241 16 is_stmt 1 view .LVU58
- 335              		.loc 1 241 31 is_stmt 0 view .LVU59
- 336 001e 6A4B     		ldr	r3, .L44+4
- 337 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 338 0022 DBB2     		uxtb	r3, r3
- 339              		.loc 1 241 19 view .LVU60
- 340 0024 022B     		cmp	r3, #2
- 341 0026 77D0     		beq	.L37
- 242:Core/Src/stm32f4xx_it.c ****             /* ???????????????? */
- 243:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC1E;    /* ????/????? */
- 244:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC1IE;   /* ?? CC1 ?? */
- 245:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 11
-
-
- 246:Core/Src/stm32f4xx_it.c ****         } else {
- 247:Core/Src/stm32f4xx_it.c ****             /* ??????????????? */
- 248:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC1E;
- 342              		.loc 1 248 13 is_stmt 1 view .LVU61
- 343              		.loc 1 248 17 is_stmt 0 view .LVU62
- 344 0028 664B     		ldr	r3, .L44
- 345 002a 1A6A     		ldr	r2, [r3, #32]
- 346              		.loc 1 248 24 view .LVU63
- 347 002c 22F00102 		bic	r2, r2, #1
- 348 0030 1A62     		str	r2, [r3, #32]
- 249:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC1IE;
- 349              		.loc 1 249 13 is_stmt 1 view .LVU64
- 350              		.loc 1 249 17 is_stmt 0 view .LVU65
- 351 0032 DA68     		ldr	r2, [r3, #12]
- 352              		.loc 1 249 24 view .LVU66
- 353 0034 22F00202 		bic	r2, r2, #2
- 354 0038 DA60     		str	r2, [r3, #12]
- 250:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
- 355              		.loc 1 250 13 is_stmt 1 view .LVU67
- 356              		.loc 1 250 28 is_stmt 0 view .LVU68
- 357 003a 634B     		ldr	r3, .L44+4
- 358 003c 0022     		movs	r2, #0
- 359 003e 1A70     		strb	r2, [r3]
- 360              	.L24:
- 251:Core/Src/stm32f4xx_it.c ****         }
- 252:Core/Src/stm32f4xx_it.c ****     }
- 253:Core/Src/stm32f4xx_it.c **** 
- 254:Core/Src/stm32f4xx_it.c ****     /* ???? 2 */
- 255:Core/Src/stm32f4xx_it.c ****     if (TIM1->SR & TIM_SR_CC2IF) {
- 361              		.loc 1 255 5 is_stmt 1 view .LVU69
- 362              		.loc 1 255 13 is_stmt 0 view .LVU70
- 363 0040 604B     		ldr	r3, .L44
- 364 0042 1B69     		ldr	r3, [r3, #16]
- 365              		.loc 1 255 8 view .LVU71
- 366 0044 13F0040F 		tst	r3, #4
- 367 0048 1AD0     		beq	.L27
- 256:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC2IF;
- 368              		.loc 1 256 9 is_stmt 1 view .LVU72
- 369              		.loc 1 256 13 is_stmt 0 view .LVU73
- 370 004a 5E4A     		ldr	r2, .L44
- 371 004c 1369     		ldr	r3, [r2, #16]
- 372              		.loc 1 256 18 view .LVU74
- 373 004e 23F00403 		bic	r3, r3, #4
- 374 0052 1361     		str	r3, [r2, #16]
- 257:Core/Src/stm32f4xx_it.c ****         if (pulse_state[1] == 1) {
- 375              		.loc 1 257 9 is_stmt 1 view .LVU75
- 376              		.loc 1 257 24 is_stmt 0 view .LVU76
- 377 0054 5C4B     		ldr	r3, .L44+4
- 378 0056 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 379 0058 DBB2     		uxtb	r3, r3
- 380              		.loc 1 257 12 view .LVU77
- 381 005a 012B     		cmp	r3, #1
- 382 005c 69D0     		beq	.L38
- 258:Core/Src/stm32f4xx_it.c ****             TIM1->CCR2 = tstart_ticks[1] + twidth_ticks[1];
- 259:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
- 260:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[1] == 2) {
- 383              		.loc 1 260 16 is_stmt 1 view .LVU78
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 12
-
-
- 384              		.loc 1 260 31 is_stmt 0 view .LVU79
- 385 005e 5A4B     		ldr	r3, .L44+4
- 386 0060 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 387 0062 DBB2     		uxtb	r3, r3
- 388              		.loc 1 260 19 view .LVU80
- 389 0064 022B     		cmp	r3, #2
- 390 0066 6FD0     		beq	.L39
- 261:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC2E;
- 262:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC2IE;
- 263:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 0;
- 264:Core/Src/stm32f4xx_it.c ****         } else {
- 265:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC2E;
- 391              		.loc 1 265 13 is_stmt 1 view .LVU81
- 392              		.loc 1 265 17 is_stmt 0 view .LVU82
- 393 0068 564B     		ldr	r3, .L44
- 394 006a 1A6A     		ldr	r2, [r3, #32]
- 395              		.loc 1 265 24 view .LVU83
- 396 006c 22F01002 		bic	r2, r2, #16
- 397 0070 1A62     		str	r2, [r3, #32]
- 266:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC2IE;
- 398              		.loc 1 266 13 is_stmt 1 view .LVU84
- 399              		.loc 1 266 17 is_stmt 0 view .LVU85
- 400 0072 DA68     		ldr	r2, [r3, #12]
- 401              		.loc 1 266 24 view .LVU86
- 402 0074 22F00402 		bic	r2, r2, #4
- 403 0078 DA60     		str	r2, [r3, #12]
- 267:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 0;
- 404              		.loc 1 267 13 is_stmt 1 view .LVU87
- 405              		.loc 1 267 28 is_stmt 0 view .LVU88
- 406 007a 534B     		ldr	r3, .L44+4
- 407 007c 0022     		movs	r2, #0
- 408 007e 5A70     		strb	r2, [r3, #1]
- 409              	.L27:
- 268:Core/Src/stm32f4xx_it.c ****         }
- 269:Core/Src/stm32f4xx_it.c ****     }
- 270:Core/Src/stm32f4xx_it.c **** 
- 271:Core/Src/stm32f4xx_it.c ****     /* ???? 3 */
- 272:Core/Src/stm32f4xx_it.c ****     if (TIM1->SR & TIM_SR_CC3IF) {
- 410              		.loc 1 272 5 is_stmt 1 view .LVU89
- 411              		.loc 1 272 13 is_stmt 0 view .LVU90
- 412 0080 504B     		ldr	r3, .L44
- 413 0082 1B69     		ldr	r3, [r3, #16]
- 414              		.loc 1 272 8 view .LVU91
- 415 0084 13F0080F 		tst	r3, #8
- 416 0088 1AD0     		beq	.L30
- 273:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC3IF;
- 417              		.loc 1 273 9 is_stmt 1 view .LVU92
- 418              		.loc 1 273 13 is_stmt 0 view .LVU93
- 419 008a 4E4A     		ldr	r2, .L44
- 420 008c 1369     		ldr	r3, [r2, #16]
- 421              		.loc 1 273 18 view .LVU94
- 422 008e 23F00803 		bic	r3, r3, #8
- 423 0092 1361     		str	r3, [r2, #16]
- 274:Core/Src/stm32f4xx_it.c ****         if (pulse_state[2] == 1) {
- 424              		.loc 1 274 9 is_stmt 1 view .LVU95
- 425              		.loc 1 274 24 is_stmt 0 view .LVU96
- 426 0094 4C4B     		ldr	r3, .L44+4
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 13
-
-
- 427 0096 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 428 0098 DBB2     		uxtb	r3, r3
- 429              		.loc 1 274 12 view .LVU97
- 430 009a 012B     		cmp	r3, #1
- 431 009c 61D0     		beq	.L40
- 275:Core/Src/stm32f4xx_it.c ****             TIM1->CCR3 = tstart_ticks[2] + twidth_ticks[2];
- 276:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
- 277:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[2] == 2) {
- 432              		.loc 1 277 16 is_stmt 1 view .LVU98
- 433              		.loc 1 277 31 is_stmt 0 view .LVU99
- 434 009e 4A4B     		ldr	r3, .L44+4
- 435 00a0 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 436 00a2 DBB2     		uxtb	r3, r3
- 437              		.loc 1 277 19 view .LVU100
- 438 00a4 022B     		cmp	r3, #2
- 439 00a6 67D0     		beq	.L41
- 278:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC3E;
- 279:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC3IE;
- 280:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
- 281:Core/Src/stm32f4xx_it.c ****         } else {
- 282:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC3E;
- 440              		.loc 1 282 13 is_stmt 1 view .LVU101
- 441              		.loc 1 282 17 is_stmt 0 view .LVU102
- 442 00a8 464B     		ldr	r3, .L44
- 443 00aa 1A6A     		ldr	r2, [r3, #32]
- 444              		.loc 1 282 24 view .LVU103
- 445 00ac 22F48072 		bic	r2, r2, #256
- 446 00b0 1A62     		str	r2, [r3, #32]
- 283:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC3IE;
- 447              		.loc 1 283 13 is_stmt 1 view .LVU104
- 448              		.loc 1 283 17 is_stmt 0 view .LVU105
- 449 00b2 DA68     		ldr	r2, [r3, #12]
- 450              		.loc 1 283 24 view .LVU106
- 451 00b4 22F00802 		bic	r2, r2, #8
- 452 00b8 DA60     		str	r2, [r3, #12]
- 284:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
- 453              		.loc 1 284 13 is_stmt 1 view .LVU107
- 454              		.loc 1 284 28 is_stmt 0 view .LVU108
- 455 00ba 434B     		ldr	r3, .L44+4
- 456 00bc 0022     		movs	r2, #0
- 457 00be 9A70     		strb	r2, [r3, #2]
- 458              	.L30:
- 285:Core/Src/stm32f4xx_it.c ****         }
- 286:Core/Src/stm32f4xx_it.c ****     }
- 287:Core/Src/stm32f4xx_it.c **** 
- 288:Core/Src/stm32f4xx_it.c ****     /* ???? 4 */
- 289:Core/Src/stm32f4xx_it.c ****     if (TIM1->SR & TIM_SR_CC4IF) {
- 459              		.loc 1 289 5 is_stmt 1 view .LVU109
- 460              		.loc 1 289 13 is_stmt 0 view .LVU110
- 461 00c0 404B     		ldr	r3, .L44
- 462 00c2 1B69     		ldr	r3, [r3, #16]
- 463              		.loc 1 289 8 view .LVU111
- 464 00c4 13F0100F 		tst	r3, #16
- 465 00c8 1AD0     		beq	.L23
- 290:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC4IF;
- 466              		.loc 1 290 9 is_stmt 1 view .LVU112
- 467              		.loc 1 290 13 is_stmt 0 view .LVU113
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 14
-
-
- 468 00ca 3E4A     		ldr	r2, .L44
- 469 00cc 1369     		ldr	r3, [r2, #16]
- 470              		.loc 1 290 18 view .LVU114
- 471 00ce 23F01003 		bic	r3, r3, #16
- 472 00d2 1361     		str	r3, [r2, #16]
- 291:Core/Src/stm32f4xx_it.c ****         if (pulse_state[3] == 1) {
- 473              		.loc 1 291 9 is_stmt 1 view .LVU115
- 474              		.loc 1 291 24 is_stmt 0 view .LVU116
- 475 00d4 3C4B     		ldr	r3, .L44+4
- 476 00d6 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
- 477 00d8 DBB2     		uxtb	r3, r3
- 478              		.loc 1 291 12 view .LVU117
- 479 00da 012B     		cmp	r3, #1
- 480 00dc 59D0     		beq	.L42
- 292:Core/Src/stm32f4xx_it.c ****             TIM1->CCR4 = tstart_ticks[3] + twidth_ticks[3];
- 293:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
- 294:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[3] == 2) {
- 481              		.loc 1 294 16 is_stmt 1 view .LVU118
- 482              		.loc 1 294 31 is_stmt 0 view .LVU119
- 483 00de 3A4B     		ldr	r3, .L44+4
- 484 00e0 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
- 485 00e2 DBB2     		uxtb	r3, r3
- 486              		.loc 1 294 19 view .LVU120
- 487 00e4 022B     		cmp	r3, #2
- 488 00e6 5FD0     		beq	.L43
- 295:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC4E;
- 296:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC4IE;
- 297:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
- 298:Core/Src/stm32f4xx_it.c ****         } else {
- 299:Core/Src/stm32f4xx_it.c ****             TIM1->CCER &= ~TIM_CCER_CC4E;
- 489              		.loc 1 299 13 is_stmt 1 view .LVU121
- 490              		.loc 1 299 17 is_stmt 0 view .LVU122
- 491 00e8 364B     		ldr	r3, .L44
- 492 00ea 1A6A     		ldr	r2, [r3, #32]
- 493              		.loc 1 299 24 view .LVU123
- 494 00ec 22F48052 		bic	r2, r2, #4096
- 495 00f0 1A62     		str	r2, [r3, #32]
- 300:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC4IE;
- 496              		.loc 1 300 13 is_stmt 1 view .LVU124
- 497              		.loc 1 300 17 is_stmt 0 view .LVU125
- 498 00f2 DA68     		ldr	r2, [r3, #12]
- 499              		.loc 1 300 24 view .LVU126
- 500 00f4 22F01002 		bic	r2, r2, #16
- 501 00f8 DA60     		str	r2, [r3, #12]
- 301:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
- 502              		.loc 1 301 13 is_stmt 1 view .LVU127
- 503              		.loc 1 301 28 is_stmt 0 view .LVU128
- 504 00fa 334B     		ldr	r3, .L44+4
- 505 00fc 0022     		movs	r2, #0
- 506 00fe DA70     		strb	r2, [r3, #3]
- 507              	.L23:
- 302:Core/Src/stm32f4xx_it.c ****         }
- 303:Core/Src/stm32f4xx_it.c ****     }
- 304:Core/Src/stm32f4xx_it.c **** 
- 305:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 0 */
- 306:Core/Src/stm32f4xx_it.c ****   //HAL_TIM_IRQHandler(&htim1);
- 307:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_CC_IRQn 1 */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 15
-
-
- 308:Core/Src/stm32f4xx_it.c **** 
- 309:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 1 */
- 310:Core/Src/stm32f4xx_it.c **** }
- 508              		.loc 1 310 1 view .LVU129
- 509 0100 7047     		bx	lr
- 510              	.L36:
+ 316              		.loc 1 234 5 view .LVU49
+ 317              		.loc 1 234 13 is_stmt 0 view .LVU50
+ 318 0002 5C4B     		ldr	r3, .L45
+ 319 0004 1B69     		ldr	r3, [r3, #16]
+ 320              		.loc 1 234 8 view .LVU51
+ 321 0006 13F0020F 		tst	r3, #2
+ 322 000a 15D0     		beq	.L24
+ 235:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC1IF; /* ??? */
+ 323              		.loc 1 235 9 is_stmt 1 view .LVU52
+ 324              		.loc 1 235 13 is_stmt 0 view .LVU53
+ 325 000c 594A     		ldr	r2, .L45
+ 326 000e 1369     		ldr	r3, [r2, #16]
+ 327              		.loc 1 235 18 view .LVU54
+ 328 0010 23F00203 		bic	r3, r3, #2
+ 329 0014 1361     		str	r3, [r2, #16]
+ 236:Core/Src/stm32f4xx_it.c ****         if (pulse_state[0] == 1) {
+ 330              		.loc 1 236 9 is_stmt 1 view .LVU55
+ 331              		.loc 1 236 24 is_stmt 0 view .LVU56
+ 332 0016 584B     		ldr	r3, .L45+4
+ 333 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 334 001a DBB2     		uxtb	r3, r3
+ 335              		.loc 1 236 12 view .LVU57
+ 336 001c 012B     		cmp	r3, #1
+ 337 001e 5DD0     		beq	.L37
+ 237:Core/Src/stm32f4xx_it.c ****             /* ??????????? */
+ 238:Core/Src/stm32f4xx_it.c ****             TIM1->CCR1 = tstart_ticks[0] + twidth_ticks[0];
  239:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
- 511              		.loc 1 239 13 is_stmt 1 view .LVU130
- 239:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
- 512              		.loc 1 239 38 is_stmt 0 view .LVU131
- 513 0102 324B     		ldr	r3, .L44+8
- 514 0104 1B68     		ldr	r3, [r3]
- 239:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
- 515              		.loc 1 239 56 view .LVU132
- 516 0106 324A     		ldr	r2, .L44+12
- 517 0108 1268     		ldr	r2, [r2]
- 239:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
- 518              		.loc 1 239 42 view .LVU133
- 519 010a 1344     		add	r3, r3, r2
- 239:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
- 520              		.loc 1 239 24 view .LVU134
- 521 010c 2D4A     		ldr	r2, .L44
- 522 010e 5363     		str	r3, [r2, #52]
  240:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[0] == 2) {
- 523              		.loc 1 240 13 is_stmt 1 view .LVU135
- 240:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[0] == 2) {
- 524              		.loc 1 240 28 is_stmt 0 view .LVU136
- 525 0110 2D4B     		ldr	r3, .L44+4
- 526 0112 0222     		movs	r2, #2
- 527 0114 1A70     		strb	r2, [r3]
- 528 0116 93E7     		b	.L24
- 529              	.L37:
- 243:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC1IE;   /* ?? CC1 ?? */
- 530              		.loc 1 243 13 is_stmt 1 view .LVU137
- 243:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC1IE;   /* ?? CC1 ?? */
- 531              		.loc 1 243 17 is_stmt 0 view .LVU138
- 532 0118 2A4B     		ldr	r3, .L44
- 533 011a 1A6A     		ldr	r2, [r3, #32]
- 243:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC1IE;   /* ?? CC1 ?? */
- 534              		.loc 1 243 24 view .LVU139
- 535 011c 22F00102 		bic	r2, r2, #1
- 536 0120 1A62     		str	r2, [r3, #32]
- 244:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
- 537              		.loc 1 244 13 is_stmt 1 view .LVU140
- 244:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
- 538              		.loc 1 244 17 is_stmt 0 view .LVU141
- 539 0122 DA68     		ldr	r2, [r3, #12]
- 244:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
- 540              		.loc 1 244 24 view .LVU142
- 541 0124 22F00202 		bic	r2, r2, #2
- 542 0128 DA60     		str	r2, [r3, #12]
- 245:Core/Src/stm32f4xx_it.c ****         } else {
- 543              		.loc 1 245 13 is_stmt 1 view .LVU143
- 245:Core/Src/stm32f4xx_it.c ****         } else {
- 544              		.loc 1 245 28 is_stmt 0 view .LVU144
- 545 012a 274B     		ldr	r3, .L44+4
- 546 012c 0022     		movs	r2, #0
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 16
+ 338              		.loc 1 240 16 is_stmt 1 view .LVU58
+ 339              		.loc 1 240 31 is_stmt 0 view .LVU59
+ 340 0020 554B     		ldr	r3, .L45+4
+ 341 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 342 0024 DBB2     		uxtb	r3, r3
+ 343              		.loc 1 240 19 view .LVU60
+ 344 0026 022B     		cmp	r3, #2
+ 345 0028 63D0     		beq	.L38
+ 241:Core/Src/stm32f4xx_it.c ****             /* ?????? HAL ???????? HAL ????/???? */
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 11
 
 
- 547 012e 1A70     		strb	r2, [r3]
- 548 0130 86E7     		b	.L24
- 549              	.L38:
- 258:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
- 550              		.loc 1 258 13 is_stmt 1 view .LVU145
- 258:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
- 551              		.loc 1 258 38 is_stmt 0 view .LVU146
- 552 0132 264B     		ldr	r3, .L44+8
- 553 0134 5B68     		ldr	r3, [r3, #4]
- 258:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
- 554              		.loc 1 258 56 view .LVU147
- 555 0136 264A     		ldr	r2, .L44+12
- 556 0138 5268     		ldr	r2, [r2, #4]
- 258:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
- 557              		.loc 1 258 42 view .LVU148
- 558 013a 1344     		add	r3, r3, r2
- 258:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
- 559              		.loc 1 258 24 view .LVU149
- 560 013c 214A     		ldr	r2, .L44
- 561 013e 9363     		str	r3, [r2, #56]
- 259:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[1] == 2) {
- 562              		.loc 1 259 13 is_stmt 1 view .LVU150
- 259:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[1] == 2) {
- 563              		.loc 1 259 28 is_stmt 0 view .LVU151
- 564 0140 214B     		ldr	r3, .L44+4
- 565 0142 0222     		movs	r2, #2
- 566 0144 5A70     		strb	r2, [r3, #1]
- 567 0146 9BE7     		b	.L27
- 568              	.L39:
- 261:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC2IE;
- 569              		.loc 1 261 13 is_stmt 1 view .LVU152
- 261:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC2IE;
- 570              		.loc 1 261 17 is_stmt 0 view .LVU153
- 571 0148 1E4B     		ldr	r3, .L44
- 572 014a 1A6A     		ldr	r2, [r3, #32]
- 261:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC2IE;
- 573              		.loc 1 261 24 view .LVU154
- 574 014c 22F01002 		bic	r2, r2, #16
- 575 0150 1A62     		str	r2, [r3, #32]
+ 242:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+ 243:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
+ 244:Core/Src/stm32f4xx_it.c ****         } else {
+ 245:Core/Src/stm32f4xx_it.c ****             /* ?????????? */
+ 246:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+ 346              		.loc 1 246 13 is_stmt 1 view .LVU61
+ 347 002a 0021     		movs	r1, #0
+ 348 002c 5348     		ldr	r0, .L45+8
+ 349 002e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 350              	.LVL9:
+ 247:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
+ 351              		.loc 1 247 13 view .LVU62
+ 352              		.loc 1 247 28 is_stmt 0 view .LVU63
+ 353 0032 514B     		ldr	r3, .L45+4
+ 354 0034 0022     		movs	r2, #0
+ 355 0036 1A70     		strb	r2, [r3]
+ 356              	.L24:
+ 248:Core/Src/stm32f4xx_it.c ****         }
+ 249:Core/Src/stm32f4xx_it.c ****     }
+ 250:Core/Src/stm32f4xx_it.c **** 
+ 251:Core/Src/stm32f4xx_it.c ****     /* Channel 2 */
+ 252:Core/Src/stm32f4xx_it.c ****     if (TIM1->SR & TIM_SR_CC2IF) {
+ 357              		.loc 1 252 5 is_stmt 1 view .LVU64
+ 358              		.loc 1 252 13 is_stmt 0 view .LVU65
+ 359 0038 4E4B     		ldr	r3, .L45
+ 360 003a 1B69     		ldr	r3, [r3, #16]
+ 361              		.loc 1 252 8 view .LVU66
+ 362 003c 13F0040F 		tst	r3, #4
+ 363 0040 15D0     		beq	.L27
+ 253:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC2IF;
+ 364              		.loc 1 253 9 is_stmt 1 view .LVU67
+ 365              		.loc 1 253 13 is_stmt 0 view .LVU68
+ 366 0042 4C4A     		ldr	r2, .L45
+ 367 0044 1369     		ldr	r3, [r2, #16]
+ 368              		.loc 1 253 18 view .LVU69
+ 369 0046 23F00403 		bic	r3, r3, #4
+ 370 004a 1361     		str	r3, [r2, #16]
+ 254:Core/Src/stm32f4xx_it.c ****         if (pulse_state[1] == 1) {
+ 371              		.loc 1 254 9 is_stmt 1 view .LVU70
+ 372              		.loc 1 254 24 is_stmt 0 view .LVU71
+ 373 004c 4A4B     		ldr	r3, .L45+4
+ 374 004e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 375 0050 DBB2     		uxtb	r3, r3
+ 376              		.loc 1 254 12 view .LVU72
+ 377 0052 012B     		cmp	r3, #1
+ 378 0054 55D0     		beq	.L39
+ 255:Core/Src/stm32f4xx_it.c ****             TIM1->CCR2 = tstart_ticks[1] + twidth_ticks[1];
+ 256:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
+ 257:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[1] == 2) {
+ 379              		.loc 1 257 16 is_stmt 1 view .LVU73
+ 380              		.loc 1 257 31 is_stmt 0 view .LVU74
+ 381 0056 484B     		ldr	r3, .L45+4
+ 382 0058 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 383 005a DBB2     		uxtb	r3, r3
+ 384              		.loc 1 257 19 view .LVU75
+ 385 005c 022B     		cmp	r3, #2
+ 386 005e 5BD0     		beq	.L40
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 12
+
+
+ 258:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
+ 259:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 0;
+ 260:Core/Src/stm32f4xx_it.c ****         } else {
+ 261:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
+ 387              		.loc 1 261 13 is_stmt 1 view .LVU76
+ 388 0060 0421     		movs	r1, #4
+ 389 0062 4648     		ldr	r0, .L45+8
+ 390 0064 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 391              	.LVL10:
  262:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 0;
- 576              		.loc 1 262 13 is_stmt 1 view .LVU155
- 262:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 0;
- 577              		.loc 1 262 17 is_stmt 0 view .LVU156
- 578 0152 DA68     		ldr	r2, [r3, #12]
- 262:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 0;
- 579              		.loc 1 262 24 view .LVU157
- 580 0154 22F00402 		bic	r2, r2, #4
- 581 0158 DA60     		str	r2, [r3, #12]
- 263:Core/Src/stm32f4xx_it.c ****         } else {
- 582              		.loc 1 263 13 is_stmt 1 view .LVU158
- 263:Core/Src/stm32f4xx_it.c ****         } else {
- 583              		.loc 1 263 28 is_stmt 0 view .LVU159
- 584 015a 1B4B     		ldr	r3, .L44+4
- 585 015c 0022     		movs	r2, #0
- 586 015e 5A70     		strb	r2, [r3, #1]
- 587 0160 8EE7     		b	.L27
- 588              	.L40:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 17
+ 392              		.loc 1 262 13 view .LVU77
+ 393              		.loc 1 262 28 is_stmt 0 view .LVU78
+ 394 0068 434B     		ldr	r3, .L45+4
+ 395 006a 0022     		movs	r2, #0
+ 396 006c 5A70     		strb	r2, [r3, #1]
+ 397              	.L27:
+ 263:Core/Src/stm32f4xx_it.c ****         }
+ 264:Core/Src/stm32f4xx_it.c ****     }
+ 265:Core/Src/stm32f4xx_it.c **** 
+ 266:Core/Src/stm32f4xx_it.c ****     /* Channel 3 */
+ 267:Core/Src/stm32f4xx_it.c ****     if (TIM1->SR & TIM_SR_CC3IF) {
+ 398              		.loc 1 267 5 is_stmt 1 view .LVU79
+ 399              		.loc 1 267 13 is_stmt 0 view .LVU80
+ 400 006e 414B     		ldr	r3, .L45
+ 401 0070 1B69     		ldr	r3, [r3, #16]
+ 402              		.loc 1 267 8 view .LVU81
+ 403 0072 13F0080F 		tst	r3, #8
+ 404 0076 15D0     		beq	.L30
+ 268:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC3IF;
+ 405              		.loc 1 268 9 is_stmt 1 view .LVU82
+ 406              		.loc 1 268 13 is_stmt 0 view .LVU83
+ 407 0078 3E4A     		ldr	r2, .L45
+ 408 007a 1369     		ldr	r3, [r2, #16]
+ 409              		.loc 1 268 18 view .LVU84
+ 410 007c 23F00803 		bic	r3, r3, #8
+ 411 0080 1361     		str	r3, [r2, #16]
+ 269:Core/Src/stm32f4xx_it.c ****         if (pulse_state[2] == 1) {
+ 412              		.loc 1 269 9 is_stmt 1 view .LVU85
+ 413              		.loc 1 269 24 is_stmt 0 view .LVU86
+ 414 0082 3D4B     		ldr	r3, .L45+4
+ 415 0084 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 416 0086 DBB2     		uxtb	r3, r3
+ 417              		.loc 1 269 12 view .LVU87
+ 418 0088 012B     		cmp	r3, #1
+ 419 008a 4DD0     		beq	.L41
+ 270:Core/Src/stm32f4xx_it.c ****             TIM1->CCR3 = tstart_ticks[2] + twidth_ticks[2];
+ 271:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
+ 272:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[2] == 2) {
+ 420              		.loc 1 272 16 is_stmt 1 view .LVU88
+ 421              		.loc 1 272 31 is_stmt 0 view .LVU89
+ 422 008c 3A4B     		ldr	r3, .L45+4
+ 423 008e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 424 0090 DBB2     		uxtb	r3, r3
+ 425              		.loc 1 272 19 view .LVU90
+ 426 0092 022B     		cmp	r3, #2
+ 427 0094 53D0     		beq	.L42
+ 273:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 13
 
 
- 275:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
- 589              		.loc 1 275 13 is_stmt 1 view .LVU160
- 275:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
- 590              		.loc 1 275 38 is_stmt 0 view .LVU161
- 591 0162 1A4B     		ldr	r3, .L44+8
- 592 0164 9B68     		ldr	r3, [r3, #8]
- 275:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
- 593              		.loc 1 275 56 view .LVU162
- 594 0166 1A4A     		ldr	r2, .L44+12
- 595 0168 9268     		ldr	r2, [r2, #8]
- 275:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
- 596              		.loc 1 275 42 view .LVU163
- 597 016a 1344     		add	r3, r3, r2
- 275:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
- 598              		.loc 1 275 24 view .LVU164
- 599 016c 154A     		ldr	r2, .L44
- 600 016e D363     		str	r3, [r2, #60]
- 276:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[2] == 2) {
- 601              		.loc 1 276 13 is_stmt 1 view .LVU165
- 276:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[2] == 2) {
- 602              		.loc 1 276 28 is_stmt 0 view .LVU166
- 603 0170 154B     		ldr	r3, .L44+4
- 604 0172 0222     		movs	r2, #2
- 605 0174 9A70     		strb	r2, [r3, #2]
- 606 0176 A3E7     		b	.L30
- 607              	.L41:
- 278:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC3IE;
- 608              		.loc 1 278 13 is_stmt 1 view .LVU167
- 278:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC3IE;
- 609              		.loc 1 278 17 is_stmt 0 view .LVU168
- 610 0178 124B     		ldr	r3, .L44
- 611 017a 1A6A     		ldr	r2, [r3, #32]
- 278:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC3IE;
- 612              		.loc 1 278 24 view .LVU169
- 613 017c 22F48072 		bic	r2, r2, #256
- 614 0180 1A62     		str	r2, [r3, #32]
- 279:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
- 615              		.loc 1 279 13 is_stmt 1 view .LVU170
- 279:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
- 616              		.loc 1 279 17 is_stmt 0 view .LVU171
- 617 0182 DA68     		ldr	r2, [r3, #12]
- 279:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
- 618              		.loc 1 279 24 view .LVU172
- 619 0184 22F00802 		bic	r2, r2, #8
- 620 0188 DA60     		str	r2, [r3, #12]
- 280:Core/Src/stm32f4xx_it.c ****         } else {
- 621              		.loc 1 280 13 is_stmt 1 view .LVU173
- 280:Core/Src/stm32f4xx_it.c ****         } else {
- 622              		.loc 1 280 28 is_stmt 0 view .LVU174
- 623 018a 0F4B     		ldr	r3, .L44+4
- 624 018c 0022     		movs	r2, #0
- 625 018e 9A70     		strb	r2, [r3, #2]
- 626 0190 96E7     		b	.L30
- 627              	.L42:
- 292:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
- 628              		.loc 1 292 13 is_stmt 1 view .LVU175
- 292:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 18
+ 274:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
+ 275:Core/Src/stm32f4xx_it.c ****         } else {
+ 276:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
+ 428              		.loc 1 276 13 is_stmt 1 view .LVU91
+ 429 0096 0821     		movs	r1, #8
+ 430 0098 3848     		ldr	r0, .L45+8
+ 431 009a FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 432              	.LVL11:
+ 277:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
+ 433              		.loc 1 277 13 view .LVU92
+ 434              		.loc 1 277 28 is_stmt 0 view .LVU93
+ 435 009e 364B     		ldr	r3, .L45+4
+ 436 00a0 0022     		movs	r2, #0
+ 437 00a2 9A70     		strb	r2, [r3, #2]
+ 438              	.L30:
+ 278:Core/Src/stm32f4xx_it.c ****         }
+ 279:Core/Src/stm32f4xx_it.c ****     }
+ 280:Core/Src/stm32f4xx_it.c **** 
+ 281:Core/Src/stm32f4xx_it.c ****     /* Channel 4 */
+ 282:Core/Src/stm32f4xx_it.c ****     if (TIM1->SR & TIM_SR_CC4IF) {
+ 439              		.loc 1 282 5 is_stmt 1 view .LVU94
+ 440              		.loc 1 282 13 is_stmt 0 view .LVU95
+ 441 00a4 334B     		ldr	r3, .L45
+ 442 00a6 1B69     		ldr	r3, [r3, #16]
+ 443              		.loc 1 282 8 view .LVU96
+ 444 00a8 13F0100F 		tst	r3, #16
+ 445 00ac 15D0     		beq	.L23
+ 283:Core/Src/stm32f4xx_it.c ****         TIM1->SR &= ~TIM_SR_CC4IF;
+ 446              		.loc 1 283 9 is_stmt 1 view .LVU97
+ 447              		.loc 1 283 13 is_stmt 0 view .LVU98
+ 448 00ae 314A     		ldr	r2, .L45
+ 449 00b0 1369     		ldr	r3, [r2, #16]
+ 450              		.loc 1 283 18 view .LVU99
+ 451 00b2 23F01003 		bic	r3, r3, #16
+ 452 00b6 1361     		str	r3, [r2, #16]
+ 284:Core/Src/stm32f4xx_it.c ****         if (pulse_state[3] == 1) {
+ 453              		.loc 1 284 9 is_stmt 1 view .LVU100
+ 454              		.loc 1 284 24 is_stmt 0 view .LVU101
+ 455 00b8 2F4B     		ldr	r3, .L45+4
+ 456 00ba DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 457 00bc DBB2     		uxtb	r3, r3
+ 458              		.loc 1 284 12 view .LVU102
+ 459 00be 012B     		cmp	r3, #1
+ 460 00c0 45D0     		beq	.L43
+ 285:Core/Src/stm32f4xx_it.c ****             TIM1->CCR4 = tstart_ticks[3] + twidth_ticks[3];
+ 286:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
+ 287:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[3] == 2) {
+ 461              		.loc 1 287 16 is_stmt 1 view .LVU103
+ 462              		.loc 1 287 31 is_stmt 0 view .LVU104
+ 463 00c2 2D4B     		ldr	r3, .L45+4
+ 464 00c4 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 465 00c6 DBB2     		uxtb	r3, r3
+ 466              		.loc 1 287 19 view .LVU105
+ 467 00c8 022B     		cmp	r3, #2
+ 468 00ca 4BD0     		beq	.L44
+ 288:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
+ 289:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 14
 
 
- 629              		.loc 1 292 38 is_stmt 0 view .LVU176
- 630 0192 0E4B     		ldr	r3, .L44+8
- 631 0194 DB68     		ldr	r3, [r3, #12]
- 292:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
- 632              		.loc 1 292 56 view .LVU177
- 633 0196 0E4A     		ldr	r2, .L44+12
- 634 0198 D268     		ldr	r2, [r2, #12]
- 292:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
- 635              		.loc 1 292 42 view .LVU178
- 636 019a 1344     		add	r3, r3, r2
- 292:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
- 637              		.loc 1 292 24 view .LVU179
- 638 019c 094A     		ldr	r2, .L44
- 639 019e 1364     		str	r3, [r2, #64]
- 293:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[3] == 2) {
- 640              		.loc 1 293 13 is_stmt 1 view .LVU180
- 293:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[3] == 2) {
- 641              		.loc 1 293 28 is_stmt 0 view .LVU181
- 642 01a0 094B     		ldr	r3, .L44+4
- 643 01a2 0222     		movs	r2, #2
- 644 01a4 DA70     		strb	r2, [r3, #3]
- 645 01a6 7047     		bx	lr
- 646              	.L43:
- 295:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC4IE;
- 647              		.loc 1 295 13 is_stmt 1 view .LVU182
- 295:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC4IE;
- 648              		.loc 1 295 17 is_stmt 0 view .LVU183
- 649 01a8 064B     		ldr	r3, .L44
- 650 01aa 1A6A     		ldr	r2, [r3, #32]
- 295:Core/Src/stm32f4xx_it.c ****             TIM1->DIER &= ~TIM_DIER_CC4IE;
- 651              		.loc 1 295 24 view .LVU184
- 652 01ac 22F48052 		bic	r2, r2, #4096
- 653 01b0 1A62     		str	r2, [r3, #32]
- 296:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
- 654              		.loc 1 296 13 is_stmt 1 view .LVU185
- 296:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
- 655              		.loc 1 296 17 is_stmt 0 view .LVU186
- 656 01b2 DA68     		ldr	r2, [r3, #12]
- 296:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
- 657              		.loc 1 296 24 view .LVU187
- 658 01b4 22F01002 		bic	r2, r2, #16
- 659 01b8 DA60     		str	r2, [r3, #12]
- 297:Core/Src/stm32f4xx_it.c ****         } else {
- 660              		.loc 1 297 13 is_stmt 1 view .LVU188
- 297:Core/Src/stm32f4xx_it.c ****         } else {
- 661              		.loc 1 297 28 is_stmt 0 view .LVU189
- 662 01ba 034B     		ldr	r3, .L44+4
- 663 01bc 0022     		movs	r2, #0
- 664 01be DA70     		strb	r2, [r3, #3]
- 665 01c0 7047     		bx	lr
- 666              	.L45:
- 667 01c2 00BF     		.align	2
- 668              	.L44:
- 669 01c4 00000140 		.word	1073807360
- 670 01c8 00000000 		.word	pulse_state
- 671 01cc 00000000 		.word	tstart_ticks
- 672 01d0 00000000 		.word	twidth_ticks
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 19
+ 290:Core/Src/stm32f4xx_it.c ****         } else {
+ 291:Core/Src/stm32f4xx_it.c ****             HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
+ 469              		.loc 1 291 13 is_stmt 1 view .LVU106
+ 470 00cc 0C21     		movs	r1, #12
+ 471 00ce 2B48     		ldr	r0, .L45+8
+ 472 00d0 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 473              	.LVL12:
+ 292:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
+ 474              		.loc 1 292 13 view .LVU107
+ 475              		.loc 1 292 28 is_stmt 0 view .LVU108
+ 476 00d4 284B     		ldr	r3, .L45+4
+ 477 00d6 0022     		movs	r2, #0
+ 478 00d8 DA70     		strb	r2, [r3, #3]
+ 479              	.L23:
+ 293:Core/Src/stm32f4xx_it.c ****         }
+ 294:Core/Src/stm32f4xx_it.c ****     }
+ 295:Core/Src/stm32f4xx_it.c **** 
+ 296:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 0 */
+ 297:Core/Src/stm32f4xx_it.c ****   //HAL_TIM_IRQHandler(&htim1);
+ 298:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_CC_IRQn 1 */
+ 299:Core/Src/stm32f4xx_it.c **** 
+ 300:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 1 */
+ 301:Core/Src/stm32f4xx_it.c **** }
+ 480              		.loc 1 301 1 view .LVU109
+ 481 00da 08BD     		pop	{r3, pc}
+ 482              	.L37:
+ 238:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
+ 483              		.loc 1 238 13 is_stmt 1 view .LVU110
+ 238:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
+ 484              		.loc 1 238 38 is_stmt 0 view .LVU111
+ 485 00dc 284B     		ldr	r3, .L45+12
+ 486 00de 1B68     		ldr	r3, [r3]
+ 238:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
+ 487              		.loc 1 238 56 view .LVU112
+ 488 00e0 284A     		ldr	r2, .L45+16
+ 489 00e2 1268     		ldr	r2, [r2]
+ 238:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
+ 490              		.loc 1 238 42 view .LVU113
+ 491 00e4 1344     		add	r3, r3, r2
+ 238:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 2;
+ 492              		.loc 1 238 24 view .LVU114
+ 493 00e6 234A     		ldr	r2, .L45
+ 494 00e8 5363     		str	r3, [r2, #52]
+ 239:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[0] == 2) {
+ 495              		.loc 1 239 13 is_stmt 1 view .LVU115
+ 239:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[0] == 2) {
+ 496              		.loc 1 239 28 is_stmt 0 view .LVU116
+ 497 00ea 234B     		ldr	r3, .L45+4
+ 498 00ec 0222     		movs	r2, #2
+ 499 00ee 1A70     		strb	r2, [r3]
+ 500 00f0 A2E7     		b	.L24
+ 501              	.L38:
+ 242:Core/Src/stm32f4xx_it.c ****             pulse_state[0] = 0;
+ 502              		.loc 1 242 13 is_stmt 1 view .LVU117
+ 503 00f2 0021     		movs	r1, #0
+ 504 00f4 2148     		ldr	r0, .L45+8
+ 505 00f6 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 15
 
 
- 673              		.cfi_endproc
- 674              	.LFE144:
- 676              		.text
- 677              	.Letext0:
- 678              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 679              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 680              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 681              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 682              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 683              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 684              		.file 8 "Core/Inc/can.h"
- 685              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s 			page 20
+ 506              	.LVL13:
+ 243:Core/Src/stm32f4xx_it.c ****         } else {
+ 507              		.loc 1 243 13 view .LVU118
+ 243:Core/Src/stm32f4xx_it.c ****         } else {
+ 508              		.loc 1 243 28 is_stmt 0 view .LVU119
+ 509 00fa 1F4B     		ldr	r3, .L45+4
+ 510 00fc 0022     		movs	r2, #0
+ 511 00fe 1A70     		strb	r2, [r3]
+ 512 0100 9AE7     		b	.L24
+ 513              	.L39:
+ 255:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
+ 514              		.loc 1 255 13 is_stmt 1 view .LVU120
+ 255:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
+ 515              		.loc 1 255 38 is_stmt 0 view .LVU121
+ 516 0102 1F4B     		ldr	r3, .L45+12
+ 517 0104 5B68     		ldr	r3, [r3, #4]
+ 255:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
+ 518              		.loc 1 255 56 view .LVU122
+ 519 0106 1F4A     		ldr	r2, .L45+16
+ 520 0108 5268     		ldr	r2, [r2, #4]
+ 255:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
+ 521              		.loc 1 255 42 view .LVU123
+ 522 010a 1344     		add	r3, r3, r2
+ 255:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 2;
+ 523              		.loc 1 255 24 view .LVU124
+ 524 010c 194A     		ldr	r2, .L45
+ 525 010e 9363     		str	r3, [r2, #56]
+ 256:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[1] == 2) {
+ 526              		.loc 1 256 13 is_stmt 1 view .LVU125
+ 256:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[1] == 2) {
+ 527              		.loc 1 256 28 is_stmt 0 view .LVU126
+ 528 0110 194B     		ldr	r3, .L45+4
+ 529 0112 0222     		movs	r2, #2
+ 530 0114 5A70     		strb	r2, [r3, #1]
+ 531 0116 AAE7     		b	.L27
+ 532              	.L40:
+ 258:Core/Src/stm32f4xx_it.c ****             pulse_state[1] = 0;
+ 533              		.loc 1 258 13 is_stmt 1 view .LVU127
+ 534 0118 0421     		movs	r1, #4
+ 535 011a 1848     		ldr	r0, .L45+8
+ 536 011c FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 537              	.LVL14:
+ 259:Core/Src/stm32f4xx_it.c ****         } else {
+ 538              		.loc 1 259 13 view .LVU128
+ 259:Core/Src/stm32f4xx_it.c ****         } else {
+ 539              		.loc 1 259 28 is_stmt 0 view .LVU129
+ 540 0120 154B     		ldr	r3, .L45+4
+ 541 0122 0022     		movs	r2, #0
+ 542 0124 5A70     		strb	r2, [r3, #1]
+ 543 0126 A2E7     		b	.L27
+ 544              	.L41:
+ 270:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
+ 545              		.loc 1 270 13 is_stmt 1 view .LVU130
+ 270:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
+ 546              		.loc 1 270 38 is_stmt 0 view .LVU131
+ 547 0128 154B     		ldr	r3, .L45+12
+ 548 012a 9B68     		ldr	r3, [r3, #8]
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 16
+
+
+ 270:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
+ 549              		.loc 1 270 56 view .LVU132
+ 550 012c 154A     		ldr	r2, .L45+16
+ 551 012e 9268     		ldr	r2, [r2, #8]
+ 270:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
+ 552              		.loc 1 270 42 view .LVU133
+ 553 0130 1344     		add	r3, r3, r2
+ 270:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 2;
+ 554              		.loc 1 270 24 view .LVU134
+ 555 0132 104A     		ldr	r2, .L45
+ 556 0134 D363     		str	r3, [r2, #60]
+ 271:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[2] == 2) {
+ 557              		.loc 1 271 13 is_stmt 1 view .LVU135
+ 271:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[2] == 2) {
+ 558              		.loc 1 271 28 is_stmt 0 view .LVU136
+ 559 0136 104B     		ldr	r3, .L45+4
+ 560 0138 0222     		movs	r2, #2
+ 561 013a 9A70     		strb	r2, [r3, #2]
+ 562 013c B2E7     		b	.L30
+ 563              	.L42:
+ 273:Core/Src/stm32f4xx_it.c ****             pulse_state[2] = 0;
+ 564              		.loc 1 273 13 is_stmt 1 view .LVU137
+ 565 013e 0821     		movs	r1, #8
+ 566 0140 0E48     		ldr	r0, .L45+8
+ 567 0142 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 568              	.LVL15:
+ 274:Core/Src/stm32f4xx_it.c ****         } else {
+ 569              		.loc 1 274 13 view .LVU138
+ 274:Core/Src/stm32f4xx_it.c ****         } else {
+ 570              		.loc 1 274 28 is_stmt 0 view .LVU139
+ 571 0146 0C4B     		ldr	r3, .L45+4
+ 572 0148 0022     		movs	r2, #0
+ 573 014a 9A70     		strb	r2, [r3, #2]
+ 574 014c AAE7     		b	.L30
+ 575              	.L43:
+ 285:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
+ 576              		.loc 1 285 13 is_stmt 1 view .LVU140
+ 285:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
+ 577              		.loc 1 285 38 is_stmt 0 view .LVU141
+ 578 014e 0C4B     		ldr	r3, .L45+12
+ 579 0150 DB68     		ldr	r3, [r3, #12]
+ 285:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
+ 580              		.loc 1 285 56 view .LVU142
+ 581 0152 0C4A     		ldr	r2, .L45+16
+ 582 0154 D268     		ldr	r2, [r2, #12]
+ 285:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
+ 583              		.loc 1 285 42 view .LVU143
+ 584 0156 1344     		add	r3, r3, r2
+ 285:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 2;
+ 585              		.loc 1 285 24 view .LVU144
+ 586 0158 064A     		ldr	r2, .L45
+ 587 015a 1364     		str	r3, [r2, #64]
+ 286:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[3] == 2) {
+ 588              		.loc 1 286 13 is_stmt 1 view .LVU145
+ 286:Core/Src/stm32f4xx_it.c ****         } else if (pulse_state[3] == 2) {
+ 589              		.loc 1 286 28 is_stmt 0 view .LVU146
+ 590 015c 064B     		ldr	r3, .L45+4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 17
+
+
+ 591 015e 0222     		movs	r2, #2
+ 592 0160 DA70     		strb	r2, [r3, #3]
+ 593 0162 BAE7     		b	.L23
+ 594              	.L44:
+ 288:Core/Src/stm32f4xx_it.c ****             pulse_state[3] = 0;
+ 595              		.loc 1 288 13 is_stmt 1 view .LVU147
+ 596 0164 0C21     		movs	r1, #12
+ 597 0166 0548     		ldr	r0, .L45+8
+ 598 0168 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 599              	.LVL16:
+ 289:Core/Src/stm32f4xx_it.c ****         } else {
+ 600              		.loc 1 289 13 view .LVU148
+ 289:Core/Src/stm32f4xx_it.c ****         } else {
+ 601              		.loc 1 289 28 is_stmt 0 view .LVU149
+ 602 016c 024B     		ldr	r3, .L45+4
+ 603 016e 0022     		movs	r2, #0
+ 604 0170 DA70     		strb	r2, [r3, #3]
+ 605 0172 B2E7     		b	.L23
+ 606              	.L46:
+ 607              		.align	2
+ 608              	.L45:
+ 609 0174 00000140 		.word	1073807360
+ 610 0178 00000000 		.word	pulse_state
+ 611 017c 00000000 		.word	htim1
+ 612 0180 00000000 		.word	tstart_ticks
+ 613 0184 00000000 		.word	twidth_ticks
+ 614              		.cfi_endproc
+ 615              	.LFE144:
+ 617              		.text
+ 618              	.Letext0:
+ 619              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 620              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 621              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 622              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 623              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 624              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 625              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 626              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 627              		.file 10 "Core/Inc/can.h"
+ 628              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc0543Z7.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:21     .text.NMI_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:44     .text.HardFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:90     .text.BusFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:113    .text.UsageFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:136    .text.SVC_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:142    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:155    .text.DebugMon_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:174    .text.PendSV_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:193    .text.SysTick_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:219    .text.CAN1_RX0_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:225    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:292    .text.CAN1_RX0_IRQHandler:0000003c $d
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:299    .text.TIM1_CC_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:305    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccqgfp3n.s:669    .text.TIM1_CC_IRQHandler:000001c4 $d
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:21     .text.NMI_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:44     .text.HardFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:90     .text.BusFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:113    .text.UsageFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:136    .text.SVC_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:142    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:155    .text.DebugMon_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:174    .text.PendSV_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:193    .text.SysTick_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:219    .text.CAN1_RX0_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:225    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:292    .text.CAN1_RX0_IRQHandler:0000003c $d
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:299    .text.TIM1_CC_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:305    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc0543Z7.s:609    .text.TIM1_CC_IRQHandler:00000174 $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
@@ -1129,6 +1037,8 @@ HAL_CAN_GetRxMessage
 HAL_CAN_IRQHandler
 can
 hcan1
+HAL_TIM_OC_Stop_IT
 pulse_state
+htim1
 tstart_ticks
 twidth_ticks
