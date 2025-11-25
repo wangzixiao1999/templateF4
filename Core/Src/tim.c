@@ -26,9 +26,30 @@ volatile uint32_t tstart_ticks[4];
 volatile uint32_t twidth_ticks[4];
 volatile uint8_t pulse_state[4] = {0,0,0,0};
 
-static inline uint32_t us_to_ticks(double us) {
-    return (uint32_t)((us * 1e-6) * 168e6 + 0.5);
+static uint32_t tim1_clk_hz = 0; /* 缓存 TIM1 时钟（Hz） */
+
+static inline uint32_t us_to_ticks(double us)
+{
+    if (tim1_clk_hz == 0) {
+        /* 保险：如果未初始化，就调用 HAL 接口尝试一次（但推荐在 main 中先调用 TIM1_ClockInit_Cache） */
+        uint32_t pclk2 = HAL_RCC_GetPCLK2Freq();
+        if (pclk2 != 0) {
+            /* 如果 HAL 返回非零，决策是否乘2 取决于 ppre2 */
+            uint32_t tmp = (RCC->CFGR & RCC_CFGR_PPRE2) >> RCC_CFGR_PPRE2_Pos;
+            if (tmp >= 4) tim1_clk_hz = pclk2 * 2;
+            else tim1_clk_hz = pclk2;
+        } else {
+            /* 最后备方案：用 SystemCoreClock 假设 APB2=1（保守策略） */
+            tim1_clk_hz = SystemCoreClock;
+        }
+    }
+    /* 计算 ticks，避免浮点精度问题，使用 64-bit 中间 */
+    uint64_t ticks = (uint64_t)(us * (double)tim1_clk_hz / 1e6 + 0.5);
+    if (ticks > 0xFFFFFFFF) ticks = 0xFFFFFFFF;
+    return (uint32_t)ticks;
 }
+
+
 
 /* USER CODE END 0 */
 
@@ -224,6 +245,30 @@ void start_4_one_shot(double delays_us[4], double widths_us[4]) {
     /* 清标志并启动计时器（从 0 开始） */
     __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
     __HAL_TIM_ENABLE(&htim1);
+}
+
+/* 调用位置：在 SystemClock_Config() 完成后调用一次 */
+void TIM1_ClockInit_Cache(void)
+{
+    /* 确保 SystemCoreClock 已被更新 */
+    SystemCoreClockUpdate();
+    uint32_t hclk = SystemCoreClock;
+
+    /* 读取 APB2 prescaler 字段（bits 13:11）*/
+    uint32_t tmp = (RCC->CFGR & RCC_CFGR_PPRE2) >> RCC_CFGR_PPRE2_Pos;
+    uint32_t apb2_div;
+    switch (tmp) {
+        case 0: case 1: case 2: case 3: apb2_div = 1; break; /* 0xx = /1 */
+        case 4: apb2_div = 2; break;  /* 100 -> /2 */
+        case 5: apb2_div = 4; break;  /* 101 -> /4 */
+        case 6: apb2_div = 8; break;  /* 110 -> /8 */
+        case 7: apb2_div = 16; break; /* 111 -> /16 */
+        default: apb2_div = 1; break;
+    }
+
+    uint32_t pclk2 = hclk / apb2_div;
+    if (apb2_div == 1) tim1_clk_hz = pclk2;
+    else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
 }
 
 /* USER CODE END 1 */

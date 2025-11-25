@@ -46,6 +46,8 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 void start_4_one_shot(double delays_us[4], double widths_us[4]);
 
+void TIM1_ClockInit_Cache(void);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
