@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
   23:Core/Src/tim.c **** /* USER CODE BEGIN 0 */
   24:Core/Src/tim.c **** 
   25:Core/Src/tim.c **** volatile uint32_t tstart_ticks[4];
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 2
 
 
   26:Core/Src/tim.c **** volatile uint32_t twidth_ticks[4];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
   66              		.loc 1 47 58 view .LVU8
   67 001c 14A3     		adr	r3, .L9
   68 001e D3E90023 		ldrd	r2, [r3]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 3
 
 
   69 0022 FFF7FEFF 		bl	__aeabi_ddiv
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  112 0052 03D0     		beq	.L4
   39:Core/Src/tim.c ****             else tim1_clk_hz = pclk2;
  113              		.loc 1 39 27 is_stmt 1 discriminator 1 view .LVU24
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 4
 
 
   39:Core/Src/tim.c ****             else tim1_clk_hz = pclk2;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  160              		.thumb_func
  162              	HAL_TIM_Base_MspInit:
  163              	.LVL15:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 5
 
 
  164              	.LFB136:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  104:Core/Src/tim.c ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
  105:Core/Src/tim.c ****   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
  106:Core/Src/tim.c ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 6
 
 
  107:Core/Src/tim.c ****   if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  180              	.LCFI1:
  181              		.cfi_def_cfa_offset 4
  182              		.cfi_offset 14, -4
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 7
 
 
  183 000c 83B0     		sub	sp, sp, #12
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  222              		.align	2
  223              	.L18:
  224 003c 00000140 		.word	1073807360
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 8
 
 
  225              		.cfi_endproc
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  174:Core/Src/tim.c ****     PE13     ------> TIM1_CH3
  175:Core/Src/tim.c ****     PE14     ------> TIM1_CH4
  176:Core/Src/tim.c ****     */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 9
 
 
  177:Core/Src/tim.c ****     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_11|GPIO_PIN_13|GPIO_PIN_14;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  178:Core/Src/tim.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
  300              		.loc 1 178 5 is_stmt 1 view .LVU65
  178:Core/Src/tim.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 10
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 10
 
 
  301              		.loc 1 178 26 is_stmt 0 view .LVU66
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  349 0002 96B0     		sub	sp, sp, #88
  350              	.LCFI9:
  351              		.cfi_def_cfa_offset 96
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 11
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 11
 
 
   66:Core/Src/tim.c ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
   77:Core/Src/tim.c ****   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
  391              		.loc 1 77 21 is_stmt 0 view .LVU91
  392 0034 4FF6FF73 		movw	r3, #65535
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 12
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 12
 
 
  393 0038 C360     		str	r3, [r0, #12]
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  430              		.loc 1 90 6 discriminator 1 view .LVU108
  431 0060 0028     		cmp	r0, #0
  432 0062 43D1     		bne	.L39
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 13
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 13
 
 
  433              	.L29:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  105:Core/Src/tim.c ****   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
  469              		.loc 1 105 25 is_stmt 0 view .LVU127
  470 0084 0E92     		str	r2, [sp, #56]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 14
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 14
 
 
  106:Core/Src/tim.c ****   if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  511              		.loc 1 119 6 discriminator 1 view .LVU141
  512 00b6 40BB     		cbnz	r0, .L44
  513              	.L34:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 15
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 15
 
 
  123:Core/Src/tim.c ****   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  139:Core/Src/tim.c **** 
  550              		.loc 1 139 1 is_stmt 0 view .LVU160
  551 00dc 16B0     		add	sp, sp, #88
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 16
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 16
 
 
  552              	.LCFI10:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  598 010e D3E7     		b	.L34
  599              	.L45:
  132:Core/Src/tim.c ****   }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 17
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 17
 
 
  600              		.loc 1 132 5 view .LVU169
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  205:Core/Src/tim.c **** 
  206:Core/Src/tim.c ****   /* USER CODE END TIM1_MspDeInit 1 */
  207:Core/Src/tim.c ****   }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 18
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 18
 
 
  208:Core/Src/tim.c **** }
@@ -1061,12 +1061,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  209:Core/Src/tim.c **** 
  210:Core/Src/tim.c **** /* USER CODE BEGIN 1 */
  211:Core/Src/tim.c **** 
- 212:Core/Src/tim.c **** void start_4_one_shot(double delays_us[4], double widths_us[4]) {
- 676              		.loc 1 212 65 is_stmt 1 view -0
+ 212:Core/Src/tim.c **** /* 最小改动版：临界区内写 CCR 并在临界区内用 HAL 启动 */
+ 213:Core/Src/tim.c **** void start_4_one_shot(double delays_us[4], double widths_us[4]) {
+ 676              		.loc 1 213 65 is_stmt 1 view -0
  677              		.cfi_startproc
  678              		@ args = 0, pretend = 0, frame = 0
  679              		@ frame_needed = 0, uses_anonymous_args = 0
- 680              		.loc 1 212 65 is_stmt 0 view .LVU181
+ 680              		.loc 1 213 65 is_stmt 0 view .LVU181
  681 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
  682              	.LCFI13:
  683              		.cfi_def_cfa_offset 24
@@ -1077,137 +1078,140 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  688              		.cfi_offset 7, -8
  689              		.cfi_offset 14, -4
  690 0002 0746     		mov	r7, r0
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 19
+
+
  691 0004 0E46     		mov	r6, r1
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 19
-
-
- 213:Core/Src/tim.c ****     for (int i=0;i<4;i++){
- 692              		.loc 1 213 5 is_stmt 1 view .LVU182
+ 214:Core/Src/tim.c ****     for (int i = 0; i < 4; i++) {
+ 692              		.loc 1 214 5 is_stmt 1 view .LVU182
  693              	.LBB11:
- 694              		.loc 1 213 10 view .LVU183
+ 694              		.loc 1 214 10 view .LVU183
  695              	.LVL50:
- 696              		.loc 1 213 14 is_stmt 0 view .LVU184
+ 696              		.loc 1 214 14 is_stmt 0 view .LVU184
  697 0006 0024     		movs	r4, #0
- 698              		.loc 1 213 5 view .LVU185
+ 698              		.loc 1 214 5 view .LVU185
  699 0008 15E0     		b	.L55
  700              	.LVL51:
  701              	.L56:
- 214:Core/Src/tim.c ****         tstart_ticks[i] = us_to_ticks(delays_us[i]);
- 702              		.loc 1 214 9 is_stmt 1 view .LVU186
- 703              		.loc 1 214 48 is_stmt 0 view .LVU187
+ 215:Core/Src/tim.c ****         tstart_ticks[i] = us_to_ticks(delays_us[i]);
+ 702              		.loc 1 215 9 is_stmt 1 view .LVU186
+ 703              		.loc 1 215 48 is_stmt 0 view .LVU187
  704 000a E500     		lsls	r5, r4, #3
  705 000c 07EBC403 		add	r3, r7, r4, lsl #3
- 706              		.loc 1 214 27 view .LVU188
+ 706              		.loc 1 215 27 view .LVU188
  707 0010 93ED000B 		vldr.64	d0, [r3]
  708 0014 FFF7FEFF 		bl	us_to_ticks
  709              	.LVL52:
- 710              		.loc 1 214 25 discriminator 1 view .LVU189
- 711 0018 2B4B     		ldr	r3, .L59
+ 710              		.loc 1 215 25 discriminator 1 view .LVU189
+ 711 0018 2E4B     		ldr	r3, .L59
  712 001a 43F82400 		str	r0, [r3, r4, lsl #2]
- 215:Core/Src/tim.c ****         twidth_ticks[i] = us_to_ticks(widths_us[i]);
- 713              		.loc 1 215 9 is_stmt 1 view .LVU190
- 714              		.loc 1 215 48 is_stmt 0 view .LVU191
+ 216:Core/Src/tim.c ****         twidth_ticks[i] = us_to_ticks(widths_us[i]);
+ 713              		.loc 1 216 9 is_stmt 1 view .LVU190
+ 714              		.loc 1 216 48 is_stmt 0 view .LVU191
  715 001e 3544     		add	r5, r5, r6
- 716              		.loc 1 215 27 view .LVU192
+ 716              		.loc 1 216 27 view .LVU192
  717 0020 95ED000B 		vldr.64	d0, [r5]
  718 0024 FFF7FEFF 		bl	us_to_ticks
  719              	.LVL53:
- 720              		.loc 1 215 25 discriminator 1 view .LVU193
- 721 0028 284B     		ldr	r3, .L59+4
+ 720              		.loc 1 216 25 discriminator 1 view .LVU193
+ 721 0028 2B4B     		ldr	r3, .L59+4
  722 002a 43F82400 		str	r0, [r3, r4, lsl #2]
- 216:Core/Src/tim.c ****         pulse_state[i] = 1;
- 723              		.loc 1 216 9 is_stmt 1 view .LVU194
- 724              		.loc 1 216 24 is_stmt 0 view .LVU195
- 725 002e 284B     		ldr	r3, .L59+8
+ 217:Core/Src/tim.c ****         pulse_state[i] = 1; /* waiting for rising */
+ 723              		.loc 1 217 9 is_stmt 1 view .LVU194
+ 724              		.loc 1 217 24 is_stmt 0 view .LVU195
+ 725 002e 2B4B     		ldr	r3, .L59+8
  726 0030 0122     		movs	r2, #1
  727 0032 1A55     		strb	r2, [r3, r4]
- 213:Core/Src/tim.c ****         tstart_ticks[i] = us_to_ticks(delays_us[i]);
- 728              		.loc 1 213 23 is_stmt 1 discriminator 3 view .LVU196
+ 214:Core/Src/tim.c ****         tstart_ticks[i] = us_to_ticks(delays_us[i]);
+ 728              		.loc 1 214 29 is_stmt 1 discriminator 3 view .LVU196
  729 0034 1444     		add	r4, r4, r2
  730              	.LVL54:
  731              	.L55:
- 213:Core/Src/tim.c ****         tstart_ticks[i] = us_to_ticks(delays_us[i]);
- 732              		.loc 1 213 19 discriminator 1 view .LVU197
+ 214:Core/Src/tim.c ****         tstart_ticks[i] = us_to_ticks(delays_us[i]);
+ 732              		.loc 1 214 23 discriminator 1 view .LVU197
  733 0036 032C     		cmp	r4, #3
  734 0038 E7DD     		ble	.L56
  735              	.LBE11:
- 217:Core/Src/tim.c ****     }
- 218:Core/Src/tim.c **** 
- 219:Core/Src/tim.c ****     /* 停计数并清 CNT */
- 220:Core/Src/tim.c ****     __HAL_TIM_DISABLE(&htim1);
- 736              		.loc 1 220 5 view .LVU198
- 737              		.loc 1 220 5 view .LVU199
- 738 003a 264B     		ldr	r3, .L59+12
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 20
+ 218:Core/Src/tim.c ****     }
+ 219:Core/Src/tim.c **** 
+ 220:Core/Src/tim.c ****     /* 停计数并清 CNT */
+ 221:Core/Src/tim.c ****     __HAL_TIM_DISABLE(&htim1);
+ 736              		.loc 1 221 5 view .LVU198
+ 737              		.loc 1 221 5 view .LVU199
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 20
 
 
+ 738 003a 294B     		ldr	r3, .L59+12
  739 003c 1B68     		ldr	r3, [r3]
  740 003e 196A     		ldr	r1, [r3, #32]
  741 0040 41F21112 		movw	r2, #4369
  742 0044 1142     		tst	r1, r2
  743 0046 08D1     		bne	.L57
- 744              		.loc 1 220 5 discriminator 1 view .LVU200
+ 744              		.loc 1 221 5 discriminator 1 view .LVU200
  745 0048 196A     		ldr	r1, [r3, #32]
  746 004a 40F24442 		movw	r2, #1092
  747 004e 1142     		tst	r1, r2
  748 0050 03D1     		bne	.L57
- 749              		.loc 1 220 5 discriminator 3 view .LVU201
+ 749              		.loc 1 221 5 discriminator 3 view .LVU201
  750 0052 1A68     		ldr	r2, [r3]
  751 0054 22F00102 		bic	r2, r2, #1
  752 0058 1A60     		str	r2, [r3]
  753              	.L57:
- 754              		.loc 1 220 5 discriminator 5 view .LVU202
- 221:Core/Src/tim.c ****     __HAL_TIM_SET_COUNTER(&htim1, 0);
- 755              		.loc 1 221 5 view .LVU203
- 756 005a 1E4D     		ldr	r5, .L59+12
- 757 005c 2B68     		ldr	r3, [r5]
- 758 005e 0021     		movs	r1, #0
- 759 0060 5962     		str	r1, [r3, #36]
- 222:Core/Src/tim.c **** 
- 223:Core/Src/tim.c ****     /* 清SR并停止通道（防残留） */
- 224:Core/Src/tim.c ****     TIM1->SR &= ~(TIM_SR_CC1IF | TIM_SR_CC2IF | TIM_SR_CC3IF | TIM_SR_CC4IF);
- 760              		.loc 1 224 5 view .LVU204
- 761              		.loc 1 224 9 is_stmt 0 view .LVU205
- 762 0062 1D4C     		ldr	r4, .L59+16
- 763              	.LVL55:
- 764              		.loc 1 224 9 view .LVU206
- 765 0064 2369     		ldr	r3, [r4, #16]
- 766              		.loc 1 224 14 view .LVU207
- 767 0066 23F01E03 		bic	r3, r3, #30
- 768 006a 2361     		str	r3, [r4, #16]
+ 754              		.loc 1 221 5 discriminator 5 view .LVU202
+ 222:Core/Src/tim.c ****     __HAL_TIM_SET_COUNTER(&htim1, 0);
+ 755              		.loc 1 222 5 view .LVU203
+ 756 005a 214C     		ldr	r4, .L59+12
+ 757              	.LVL55:
+ 758              		.loc 1 222 5 is_stmt 0 view .LVU204
+ 759 005c 2368     		ldr	r3, [r4]
+ 760 005e 0025     		movs	r5, #0
+ 761 0060 5D62     		str	r5, [r3, #36]
+ 223:Core/Src/tim.c **** 
+ 224:Core/Src/tim.c ****     /* 先用 HAL 停止各通道以清理上一次残留状态（安全） */
  225:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
- 769              		.loc 1 225 5 is_stmt 1 view .LVU208
- 770 006c 2846     		mov	r0, r5
- 771 006e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 772              	.LVL56:
+ 762              		.loc 1 225 5 is_stmt 1 view .LVU205
+ 763 0062 2946     		mov	r1, r5
+ 764 0064 2046     		mov	r0, r4
+ 765 0066 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 766              	.LVL56:
  226:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
- 773              		.loc 1 226 5 view .LVU209
- 774 0072 0421     		movs	r1, #4
- 775 0074 2846     		mov	r0, r5
- 776 0076 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 777              	.LVL57:
+ 767              		.loc 1 226 5 view .LVU206
+ 768 006a 0421     		movs	r1, #4
+ 769 006c 2046     		mov	r0, r4
+ 770 006e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 771              	.LVL57:
  227:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
- 778              		.loc 1 227 5 view .LVU210
- 779 007a 0821     		movs	r1, #8
- 780 007c 2846     		mov	r0, r5
- 781 007e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 782              	.LVL58:
+ 772              		.loc 1 227 5 view .LVU207
+ 773 0072 0821     		movs	r1, #8
+ 774 0074 2046     		mov	r0, r4
+ 775 0076 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 776              	.LVL58:
  228:Core/Src/tim.c ****     HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
- 783              		.loc 1 228 5 view .LVU211
- 784 0082 0C21     		movs	r1, #12
- 785 0084 2846     		mov	r0, r5
- 786 0086 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 787              	.LVL59:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 21
-
-
+ 777              		.loc 1 228 5 view .LVU208
+ 778 007a 0C21     		movs	r1, #12
+ 779 007c 2046     		mov	r0, r4
+ 780 007e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 781              	.LVL59:
  229:Core/Src/tim.c **** 
- 230:Core/Src/tim.c ****     /* 临界区开始：防止中断打断写入与启动顺序 */
- 231:Core/Src/tim.c ****     __disable_irq();
- 788              		.loc 1 231 5 view .LVU212
- 789              	.LBB12:
- 790              	.LBI12:
- 791              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
+ 230:Core/Src/tim.c ****     /* 清除可能遗留的比较中断标志 */
+ 231:Core/Src/tim.c ****     TIM1->SR &= ~(TIM_SR_CC1IF | TIM_SR_CC2IF | TIM_SR_CC3IF | TIM_SR_CC4IF);
+ 782              		.loc 1 231 5 view .LVU209
+ 783              		.loc 1 231 9 is_stmt 0 view .LVU210
+ 784 0082 184B     		ldr	r3, .L59+16
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 21
+
+
+ 785 0084 1A69     		ldr	r2, [r3, #16]
+ 786              		.loc 1 231 14 view .LVU211
+ 787 0086 22F01E02 		bic	r2, r2, #30
+ 788 008a 1A61     		str	r2, [r3, #16]
+ 232:Core/Src/tim.c **** 
+ 233:Core/Src/tim.c ****     /* 进入临界区，避免中断打断写入/启动顺序 */
+ 234:Core/Src/tim.c ****     __disable_irq();
+ 789              		.loc 1 234 5 is_stmt 1 view .LVU212
+ 790              	.LBB12:
+ 791              	.LBI12:
+ 792              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
    1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
    2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
    3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
@@ -1254,13 +1258,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
   44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
   45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 22
+
+
   47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
   48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE
   50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 22
-
-
   51:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
   53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
@@ -1314,13 +1318,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
  103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 23
+
+
  104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
  105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
  106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
  107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 23
-
-
  108:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
  109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
@@ -1374,13 +1378,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  158:Drivers/CMSIS/Include/cmsis_gcc.h ****     for(uint32_t i=0u; i<pTable->wlen; ++i) {
  159:Drivers/CMSIS/Include/cmsis_gcc.h ****       pTable->dest[i] = 0u;
  160:Drivers/CMSIS/Include/cmsis_gcc.h ****     }
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 24
+
+
  161:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
  162:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  163:Drivers/CMSIS/Include/cmsis_gcc.h ****   _start();
  164:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 24
-
-
  165:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  166:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __PROGRAM_START           __cmsis_start
  167:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -1434,13 +1438,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  215:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=l" (r)
  216:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_RW_REG(r) "+l" (r)
  217:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "l" (r)
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 25
+
+
  218:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
  219:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=r" (r)
  220:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_RW_REG(r) "+r" (r)
  221:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "r" (r)
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 25
-
-
  222:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  223:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  224:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
@@ -1494,13 +1498,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  272:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  273:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  274:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 26
+
+
  275:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  276:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Data Memory Barrier
  277:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Ensures the apparent order of the explicit memory operations before
  278:Drivers/CMSIS/Include/cmsis_gcc.h ****            and after the instruction, without ensuring their completion.
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 26
-
-
  279:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  280:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __DMB(void)
  281:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -1554,13 +1558,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  329:Drivers/CMSIS/Include/cmsis_gcc.h ****   return (int16_t)__builtin_bswap16(value);
  330:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
  331:Drivers/CMSIS/Include/cmsis_gcc.h ****   int16_t result;
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 27
+
+
  332:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  333:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM ("revsh %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
  334:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
  335:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 27
-
-
  336:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  337:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  338:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1614,13 +1618,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  386:Drivers/CMSIS/Include/cmsis_gcc.h ****   {
  387:Drivers/CMSIS/Include/cmsis_gcc.h ****     result <<= 1U;
  388:Drivers/CMSIS/Include/cmsis_gcc.h ****     result |= value & 1U;
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 28
+
+
  389:Drivers/CMSIS/Include/cmsis_gcc.h ****     s--;
  390:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
  391:Drivers/CMSIS/Include/cmsis_gcc.h ****   result <<= s;                        /* shift when v's highest bits are zero */
  392:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 28
-
-
  393:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
  394:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  395:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1674,13 +1678,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  443:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  444:Drivers/CMSIS/Include/cmsis_gcc.h ****    return ((uint8_t) result);    /* Add explicit type cast here */
  445:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 29
+
+
  446:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  447:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  448:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  449:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   LDR Exclusive (16 bit)
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 29
-
-
  450:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a exclusive LDR instruction for 16 bit values.
  451:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to data
  452:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return        value of type uint16_t at (*ptr)
@@ -1734,13 +1738,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  500:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  501:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  502:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 30
+
+
  503:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   STR Exclusive (16 bit)
  504:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a exclusive STR instruction for 16 bit values.
  505:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
  506:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 30
-
-
  507:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return          0  Function succeeded
  508:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return          1  Function failed
  509:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -1794,13 +1798,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  557:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  ARG1  Value to be saturated
  558:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  ARG2  Bit position to saturate to (1..32)
  559:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return             Saturated value
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 31
+
+
  560:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  561:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __SSAT(ARG1, ARG2) \
  562:Drivers/CMSIS/Include/cmsis_gcc.h **** __extension__ \
  563:Drivers/CMSIS/Include/cmsis_gcc.h **** ({                          \
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 31
-
-
  564:Drivers/CMSIS/Include/cmsis_gcc.h ****   int32_t __RES, __ARG1 = (ARG1); \
  565:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("ssat %0, %1, %2" : "=r" (__RES) :  "I" (ARG2), "r" (__ARG1) : "cc" ); \
  566:Drivers/CMSIS/Include/cmsis_gcc.h ****   __RES; \
@@ -1854,13 +1858,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  614:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
  615:Drivers/CMSIS/Include/cmsis_gcc.h ****     /* Prior to GCC 4.8, "Q" will be expanded to [rx, #0] which is not
  616:Drivers/CMSIS/Include/cmsis_gcc.h ****        accepted by assembler. So has to use following less efficient pattern.
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 32
+
+
  617:Drivers/CMSIS/Include/cmsis_gcc.h ****     */
  618:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldrbt %0, [%1]" : "=r" (result) : "r" (ptr) : "memory" );
  619:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  620:Drivers/CMSIS/Include/cmsis_gcc.h ****    return ((uint8_t) result);    /* Add explicit type cast here */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 32
-
-
  621:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  622:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  623:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1914,13 +1918,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  671:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  672:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  673:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 33
+
+
  674:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   STRT Unprivileged (16 bit)
  675:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a Unprivileged STRT instruction for 16 bit values.
  676:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
  677:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 33
-
-
  678:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  679:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __STRHT(uint16_t value, volatile uint16_t *ptr)
  680:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -1974,13 +1978,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  728:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to be saturated
  729:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    sat  Bit position to saturate to (0..31)
  730:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return             Saturated value
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 34
+
+
  731:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  732:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __USAT(int32_t val, uint32_t sat)
  733:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  734:Drivers/CMSIS/Include/cmsis_gcc.h ****   if (sat <= 31U)
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 34
-
-
  735:Drivers/CMSIS/Include/cmsis_gcc.h ****   {
  736:Drivers/CMSIS/Include/cmsis_gcc.h ****     const uint32_t max = ((1U << sat) - 1U);
  737:Drivers/CMSIS/Include/cmsis_gcc.h ****     if (val > (int32_t)max)
@@ -2034,13 +2038,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  785:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  786:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  787:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Load-Acquire (32 bit)
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 35
+
+
  788:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a LDA instruction for 32 bit values.
  789:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to data
  790:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return        value of type uint32_t at (*ptr)
  791:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 35
-
-
  792:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __LDA(volatile uint32_t *ptr)
  793:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  794:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t result;
@@ -2094,13 +2098,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  842:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  843:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint8_t __LDAEXB(volatile uint8_t *ptr)
  844:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 36
+
+
  845:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t result;
  846:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  847:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldaexb %0, %1" : "=r" (result) : "Q" (*ptr) : "memory" );
  848:Drivers/CMSIS/Include/cmsis_gcc.h ****    return ((uint8_t) result);
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 36
-
-
  849:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  850:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  851:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -2154,13 +2158,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  899:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  900:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Store-Release Exclusive (16 bit)
  901:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a STLH exclusive instruction for 16 bit values.
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 37
+
+
  902:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
  903:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
  904:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return          0  Function succeeded
  905:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return          1  Function failed
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 37
-
-
  906:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  907:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __STLEXH(uint16_t value, volatile uint16_t *ptr)
  908:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -2214,383 +2218,386 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 1
  956:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
  957:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting special-purpose register PRIMASK.
  958:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 38
+
+
  959:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  960:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
- 792              		.loc 2 960 27 view .LVU213
- 793              	.LBB13:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 38
-
-
+ 793              		.loc 2 960 27 view .LVU213
+ 794              	.LBB13:
  961:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  962:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
- 794              		.loc 2 962 3 view .LVU214
- 795              		.syntax unified
- 796              	@ 962 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 797 008a 72B6     		cpsid i
- 798              	@ 0 "" 2
- 799              		.thumb
- 800              		.syntax unified
- 801              	.LBE13:
- 802              	.LBE12:
- 232:Core/Src/tim.c **** 
- 233:Core/Src/tim.c ****     /* 立即写入 CCR（直接或通过 HAL 宏均可，这里使用寄存器写以保证尽量�
- 234:Core/Src/tim.c ****     TIM1->CCR1 = tstart_ticks[0];
- 803              		.loc 1 234 5 view .LVU215
- 804              		.loc 1 234 30 is_stmt 0 view .LVU216
- 805 008c 0E4B     		ldr	r3, .L59
- 806 008e 1A68     		ldr	r2, [r3]
- 807              		.loc 1 234 16 view .LVU217
- 808 0090 6263     		str	r2, [r4, #52]
- 235:Core/Src/tim.c ****     TIM1->CCR2 = tstart_ticks[1];
- 809              		.loc 1 235 5 is_stmt 1 view .LVU218
- 810              		.loc 1 235 30 is_stmt 0 view .LVU219
- 811 0092 5A68     		ldr	r2, [r3, #4]
- 812              		.loc 1 235 16 view .LVU220
- 813 0094 A263     		str	r2, [r4, #56]
- 236:Core/Src/tim.c ****     TIM1->CCR3 = tstart_ticks[2];
- 814              		.loc 1 236 5 is_stmt 1 view .LVU221
- 815              		.loc 1 236 30 is_stmt 0 view .LVU222
- 816 0096 9A68     		ldr	r2, [r3, #8]
- 817              		.loc 1 236 16 view .LVU223
- 818 0098 E263     		str	r2, [r4, #60]
- 237:Core/Src/tim.c ****     TIM1->CCR4 = tstart_ticks[3];
- 819              		.loc 1 237 5 is_stmt 1 view .LVU224
- 820              		.loc 1 237 30 is_stmt 0 view .LVU225
- 821 009a DB68     		ldr	r3, [r3, #12]
- 822              		.loc 1 237 16 view .LVU226
- 823 009c 2364     		str	r3, [r4, #64]
- 238:Core/Src/tim.c **** 
- 239:Core/Src/tim.c ****     /* 启用 CC 中断位（一次性写入） */
- 240:Core/Src/tim.c ****     TIM1->DIER |= TIM_DIER_CC1IE | TIM_DIER_CC2IE | TIM_DIER_CC3IE | TIM_DIER_CC4IE;
- 824              		.loc 1 240 5 is_stmt 1 view .LVU227
- 825              		.loc 1 240 9 is_stmt 0 view .LVU228
- 826 009e E368     		ldr	r3, [r4, #12]
- 827              		.loc 1 240 16 view .LVU229
- 828 00a0 43F01E03 		orr	r3, r3, #30
- 829 00a4 E360     		str	r3, [r4, #12]
+ 795              		.loc 2 962 3 view .LVU214
+ 796              		.syntax unified
+ 797              	@ 962 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 798 008c 72B6     		cpsid i
+ 799              	@ 0 "" 2
+ 800              		.thumb
+ 801              		.syntax unified
+ 802              	.LBE13:
+ 803              	.LBE12:
+ 235:Core/Src/tim.c **** 
+ 236:Core/Src/tim.c ****     /* 直接写入 CCR（32-bit 写入，立即生效，OC Preload disabled 假设） */
+ 237:Core/Src/tim.c ****     TIM1->CCR1 = tstart_ticks[0];
+ 804              		.loc 1 237 5 view .LVU215
+ 805              		.loc 1 237 30 is_stmt 0 view .LVU216
+ 806 008e 114A     		ldr	r2, .L59
+ 807 0090 1168     		ldr	r1, [r2]
+ 808              		.loc 1 237 16 view .LVU217
+ 809 0092 5963     		str	r1, [r3, #52]
+ 238:Core/Src/tim.c ****     TIM1->CCR2 = tstart_ticks[1];
+ 810              		.loc 1 238 5 is_stmt 1 view .LVU218
+ 811              		.loc 1 238 30 is_stmt 0 view .LVU219
+ 812 0094 5168     		ldr	r1, [r2, #4]
+ 813              		.loc 1 238 16 view .LVU220
+ 814 0096 9963     		str	r1, [r3, #56]
+ 239:Core/Src/tim.c ****     TIM1->CCR3 = tstart_ticks[2];
+ 815              		.loc 1 239 5 is_stmt 1 view .LVU221
+ 816              		.loc 1 239 30 is_stmt 0 view .LVU222
+ 817 0098 9168     		ldr	r1, [r2, #8]
+ 818              		.loc 1 239 16 view .LVU223
+ 819 009a D963     		str	r1, [r3, #60]
+ 240:Core/Src/tim.c ****     TIM1->CCR4 = tstart_ticks[3];
+ 820              		.loc 1 240 5 is_stmt 1 view .LVU224
+ 821              		.loc 1 240 30 is_stmt 0 view .LVU225
+ 822 009c D268     		ldr	r2, [r2, #12]
+ 823              		.loc 1 240 16 view .LVU226
+ 824 009e 1A64     		str	r2, [r3, #64]
  241:Core/Src/tim.c **** 
- 242:Core/Src/tim.c ****     /* 使能通道输出（CCER），确保输出准备就绪 */
- 243:Core/Src/tim.c ****     TIM1->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E | TIM_CCER_CC3E | TIM_CCER_CC4E;
- 830              		.loc 1 243 5 is_stmt 1 view .LVU230
- 831              		.loc 1 243 9 is_stmt 0 view .LVU231
- 832 00a6 236A     		ldr	r3, [r4, #32]
- 833              		.loc 1 243 16 view .LVU232
- 834 00a8 43F48853 		orr	r3, r3, #4352
- 835 00ac 43F01103 		orr	r3, r3, #17
- 836 00b0 2362     		str	r3, [r4, #32]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 39
+ 242:Core/Src/tim.c ****     /* 同一临界区内用 HAL 启动各通道（启用输出并使能 CC 中断） */
+ 243:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
+ 825              		.loc 1 243 5 is_stmt 1 view .LVU227
+ 826 00a0 2946     		mov	r1, r5
+ 827 00a2 2046     		mov	r0, r4
+ 828 00a4 FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 829              	.LVL60:
+ 244:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_2);
+ 830              		.loc 1 244 5 view .LVU228
+ 831 00a8 0421     		movs	r1, #4
+ 832 00aa 2046     		mov	r0, r4
+ 833 00ac FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 834              	.LVL61:
+ 245:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_3);
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 39
 
 
- 244:Core/Src/tim.c **** 
- 245:Core/Src/tim.c ****     /* 清中断标志，启动计数器 */
- 246:Core/Src/tim.c ****     TIM1->SR &= ~(TIM_SR_CC1IF | TIM_SR_CC2IF | TIM_SR_CC3IF | TIM_SR_CC4IF);
- 837              		.loc 1 246 5 is_stmt 1 view .LVU233
- 838              		.loc 1 246 9 is_stmt 0 view .LVU234
- 839 00b2 2369     		ldr	r3, [r4, #16]
- 840              		.loc 1 246 14 view .LVU235
- 841 00b4 23F01E03 		bic	r3, r3, #30
- 842 00b8 2361     		str	r3, [r4, #16]
- 247:Core/Src/tim.c ****     TIM1->CR1 |= TIM_CR1_CEN;
- 843              		.loc 1 247 5 is_stmt 1 view .LVU236
- 844              		.loc 1 247 9 is_stmt 0 view .LVU237
- 845 00ba 2368     		ldr	r3, [r4]
- 846              		.loc 1 247 15 view .LVU238
- 847 00bc 43F00103 		orr	r3, r3, #1
- 848 00c0 2360     		str	r3, [r4]
- 248:Core/Src/tim.c **** 
- 249:Core/Src/tim.c ****     __enable_irq();
- 849              		.loc 1 249 5 is_stmt 1 view .LVU239
- 850              	.LBB14:
- 851              	.LBI14:
- 949:Drivers/CMSIS/Include/cmsis_gcc.h **** {
- 852              		.loc 2 949 27 view .LVU240
- 853              	.LBB15:
- 951:Drivers/CMSIS/Include/cmsis_gcc.h **** }
- 854              		.loc 2 951 3 view .LVU241
- 855              		.syntax unified
- 856              	@ 951 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
- 857 00c2 62B6     		cpsie i
- 858              	@ 0 "" 2
- 859              		.thumb
- 860              		.syntax unified
- 861              	.LBE15:
- 862              	.LBE14:
- 250:Core/Src/tim.c **** }
- 863              		.loc 1 250 1 is_stmt 0 view .LVU242
- 864 00c4 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 865              	.LVL60:
- 866              	.L60:
- 867              		.loc 1 250 1 view .LVU243
- 868 00c6 00BF     		.align	2
- 869              	.L59:
- 870 00c8 00000000 		.word	tstart_ticks
- 871 00cc 00000000 		.word	twidth_ticks
- 872 00d0 00000000 		.word	pulse_state
- 873 00d4 00000000 		.word	htim1
- 874 00d8 00000140 		.word	1073807360
- 875              		.cfi_endproc
- 876              	.LFE139:
- 878              		.section	.text.TIM1_ClockInit_Cache,"ax",%progbits
- 879              		.align	1
- 880              		.global	TIM1_ClockInit_Cache
- 881              		.syntax unified
- 882              		.thumb
- 883              		.thumb_func
- 885              	TIM1_ClockInit_Cache:
- 886              	.LFB140:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 40
-
-
+ 835              		.loc 1 245 5 view .LVU229
+ 836 00b0 0821     		movs	r1, #8
+ 837 00b2 2046     		mov	r0, r4
+ 838 00b4 FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 839              	.LVL62:
+ 246:Core/Src/tim.c ****     HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_4);
+ 840              		.loc 1 246 5 view .LVU230
+ 841 00b8 0C21     		movs	r1, #12
+ 842 00ba 2046     		mov	r0, r4
+ 843 00bc FFF7FEFF 		bl	HAL_TIM_OC_Start_IT
+ 844              	.LVL63:
+ 247:Core/Src/tim.c **** 
+ 248:Core/Src/tim.c ****     /* 清 TIMER 更新标志，启动计数器（原子完成） */
+ 249:Core/Src/tim.c ****     __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
+ 845              		.loc 1 249 5 view .LVU231
+ 846 00c0 2368     		ldr	r3, [r4]
+ 847 00c2 6FF00102 		mvn	r2, #1
+ 848 00c6 1A61     		str	r2, [r3, #16]
+ 250:Core/Src/tim.c ****     __HAL_TIM_ENABLE(&htim1);
+ 849              		.loc 1 250 5 view .LVU232
+ 850 00c8 1A68     		ldr	r2, [r3]
+ 851 00ca 42F00102 		orr	r2, r2, #1
+ 852 00ce 1A60     		str	r2, [r3]
  251:Core/Src/tim.c **** 
- 252:Core/Src/tim.c **** /* 调用位置：在 SystemClock_Config() 完成后调用一次 */
- 253:Core/Src/tim.c **** void TIM1_ClockInit_Cache(void)
- 254:Core/Src/tim.c **** {
- 887              		.loc 1 254 1 is_stmt 1 view -0
- 888              		.cfi_startproc
- 889              		@ args = 0, pretend = 0, frame = 0
- 890              		@ frame_needed = 0, uses_anonymous_args = 0
- 891 0000 08B5     		push	{r3, lr}
- 892              	.LCFI14:
- 893              		.cfi_def_cfa_offset 8
- 894              		.cfi_offset 3, -8
- 895              		.cfi_offset 14, -4
- 255:Core/Src/tim.c ****     /* 确保 SystemCoreClock 已被更新 */
- 256:Core/Src/tim.c ****     SystemCoreClockUpdate();
- 896              		.loc 1 256 5 view .LVU245
- 897 0002 FFF7FEFF 		bl	SystemCoreClockUpdate
- 898              	.LVL61:
- 257:Core/Src/tim.c ****     uint32_t hclk = SystemCoreClock;
- 899              		.loc 1 257 5 view .LVU246
- 900              		.loc 1 257 14 is_stmt 0 view .LVU247
- 901 0006 0D4B     		ldr	r3, .L71
- 902 0008 1A68     		ldr	r2, [r3]
- 903              	.LVL62:
- 258:Core/Src/tim.c **** 
- 259:Core/Src/tim.c ****     /* 读取 APB2 prescaler 字段（bits 13:11）*/
- 260:Core/Src/tim.c ****     uint32_t tmp = (RCC->CFGR & RCC_CFGR_PPRE2) >> RCC_CFGR_PPRE2_Pos;
- 904              		.loc 1 260 5 is_stmt 1 view .LVU248
- 905              		.loc 1 260 24 is_stmt 0 view .LVU249
- 906 000a 0D4B     		ldr	r3, .L71+4
- 907 000c 9B68     		ldr	r3, [r3, #8]
- 908              		.loc 1 260 14 view .LVU250
- 909 000e C3F34233 		ubfx	r3, r3, #13, #3
- 910              	.LVL63:
- 261:Core/Src/tim.c ****     uint32_t apb2_div;
- 911              		.loc 1 261 5 is_stmt 1 view .LVU251
- 262:Core/Src/tim.c ****     switch (tmp) {
- 912              		.loc 1 262 5 view .LVU252
- 913 0012 043B     		subs	r3, r3, #4
- 914              	.LVL64:
- 915              		.loc 1 262 5 is_stmt 0 view .LVU253
- 916 0014 032B     		cmp	r3, #3
- 917 0016 03D8     		bhi	.L62
- 918 0018 DFE803F0 		tbb	[pc, r3]
- 919              	.L64:
- 920 001c 0E       		.byte	(.L67-.L64)/2
- 921 001d 0C       		.byte	(.L66-.L64)/2
- 922 001e 0A       		.byte	(.L65-.L64)/2
- 923 001f 05       		.byte	(.L63-.L64)/2
- 924              		.p2align 1
- 925              	.L62:
- 926              	.LVL65:
- 263:Core/Src/tim.c ****         case 0: case 1: case 2: case 3: apb2_div = 1; break; /* 0xx = /1 */
- 264:Core/Src/tim.c ****         case 4: apb2_div = 2; break;  /* 100 -> /2 */
- 265:Core/Src/tim.c ****         case 5: apb2_div = 4; break;  /* 101 -> /4 */
- 266:Core/Src/tim.c ****         case 6: apb2_div = 8; break;  /* 110 -> /8 */
- 267:Core/Src/tim.c ****         case 7: apb2_div = 16; break; /* 111 -> /16 */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 41
+ 252:Core/Src/tim.c ****     __enable_irq();
+ 853              		.loc 1 252 5 view .LVU233
+ 854              	.LBB14:
+ 855              	.LBI14:
+ 949:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 856              		.loc 2 949 27 view .LVU234
+ 857              	.LBB15:
+ 951:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 858              		.loc 2 951 3 view .LVU235
+ 859              		.syntax unified
+ 860              	@ 951 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 861 00d0 62B6     		cpsie i
+ 862              	@ 0 "" 2
+ 863              		.thumb
+ 864              		.syntax unified
+ 865              	.LBE15:
+ 866              	.LBE14:
+ 253:Core/Src/tim.c **** }
+ 867              		.loc 1 253 1 is_stmt 0 view .LVU236
+ 868 00d2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 869              	.LVL64:
+ 870              	.L60:
+ 871              		.loc 1 253 1 view .LVU237
+ 872              		.align	2
+ 873              	.L59:
+ 874 00d4 00000000 		.word	tstart_ticks
+ 875 00d8 00000000 		.word	twidth_ticks
+ 876 00dc 00000000 		.word	pulse_state
+ 877 00e0 00000000 		.word	htim1
+ 878 00e4 00000140 		.word	1073807360
+ 879              		.cfi_endproc
+ 880              	.LFE139:
+ 882              		.section	.text.TIM1_ClockInit_Cache,"ax",%progbits
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 40
 
 
- 268:Core/Src/tim.c ****         default: apb2_div = 1; break;
- 269:Core/Src/tim.c ****     }
- 270:Core/Src/tim.c **** 
- 271:Core/Src/tim.c ****     uint32_t pclk2 = hclk / apb2_div;
- 927              		.loc 1 271 5 is_stmt 1 view .LVU254
- 272:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 928              		.loc 1 272 5 view .LVU255
- 929              		.loc 1 272 24 discriminator 1 view .LVU256
- 930              		.loc 1 272 36 is_stmt 0 discriminator 1 view .LVU257
- 931 0020 084B     		ldr	r3, .L71+8
- 932              	.LVL66:
- 933              		.loc 1 272 36 discriminator 1 view .LVU258
- 934 0022 1A60     		str	r2, [r3]
- 935 0024 03E0     		b	.L61
- 936              	.LVL67:
- 937              	.L63:
- 267:Core/Src/tim.c ****         default: apb2_div = 1; break;
- 938              		.loc 1 267 17 is_stmt 1 view .LVU259
- 267:Core/Src/tim.c ****         default: apb2_div = 1; break;
- 939              		.loc 1 267 32 view .LVU260
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 940              		.loc 1 271 5 view .LVU261
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 941              		.loc 1 271 14 is_stmt 0 view .LVU262
- 942 0026 1209     		lsrs	r2, r2, #4
- 943              	.LVL68:
- 944              		.loc 1 272 5 is_stmt 1 view .LVU263
- 945              	.L69:
- 273:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
- 946              		.loc 1 273 10 view .LVU264
- 947              		.loc 1 273 30 is_stmt 0 view .LVU265
- 948 0028 5200     		lsls	r2, r2, #1
- 949              	.LVL69:
- 950              		.loc 1 273 22 view .LVU266
- 951 002a 064B     		ldr	r3, .L71+8
- 952              	.LVL70:
- 953              		.loc 1 273 22 view .LVU267
- 954 002c 1A60     		str	r2, [r3]
- 955              	.LVL71:
- 956              	.L61:
- 274:Core/Src/tim.c **** }
- 957              		.loc 1 274 1 view .LVU268
- 958 002e 08BD     		pop	{r3, pc}
- 959              	.LVL72:
- 960              	.L65:
- 266:Core/Src/tim.c ****         case 7: apb2_div = 16; break; /* 111 -> /16 */
- 961              		.loc 1 266 17 is_stmt 1 view .LVU269
- 266:Core/Src/tim.c ****         case 7: apb2_div = 16; break; /* 111 -> /16 */
- 962              		.loc 1 266 31 view .LVU270
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 963              		.loc 1 271 5 view .LVU271
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 964              		.loc 1 271 14 is_stmt 0 view .LVU272
- 965 0030 D208     		lsrs	r2, r2, #3
- 966              	.LVL73:
- 272:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
- 967              		.loc 1 272 5 is_stmt 1 view .LVU273
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 42
+ 883              		.align	1
+ 884              		.global	TIM1_ClockInit_Cache
+ 885              		.syntax unified
+ 886              		.thumb
+ 887              		.thumb_func
+ 889              	TIM1_ClockInit_Cache:
+ 890              	.LFB140:
+ 254:Core/Src/tim.c **** 
+ 255:Core/Src/tim.c **** /* 调用位置：在 SystemClock_Config() 完成后调用一次 */
+ 256:Core/Src/tim.c **** void TIM1_ClockInit_Cache(void)
+ 257:Core/Src/tim.c **** {
+ 891              		.loc 1 257 1 is_stmt 1 view -0
+ 892              		.cfi_startproc
+ 893              		@ args = 0, pretend = 0, frame = 0
+ 894              		@ frame_needed = 0, uses_anonymous_args = 0
+ 895 0000 08B5     		push	{r3, lr}
+ 896              	.LCFI14:
+ 897              		.cfi_def_cfa_offset 8
+ 898              		.cfi_offset 3, -8
+ 899              		.cfi_offset 14, -4
+ 258:Core/Src/tim.c ****     /* 确保 SystemCoreClock 已被更新 */
+ 259:Core/Src/tim.c ****     SystemCoreClockUpdate();
+ 900              		.loc 1 259 5 view .LVU239
+ 901 0002 FFF7FEFF 		bl	SystemCoreClockUpdate
+ 902              	.LVL65:
+ 260:Core/Src/tim.c ****     uint32_t hclk = SystemCoreClock;
+ 903              		.loc 1 260 5 view .LVU240
+ 904              		.loc 1 260 14 is_stmt 0 view .LVU241
+ 905 0006 0D4B     		ldr	r3, .L71
+ 906 0008 1A68     		ldr	r2, [r3]
+ 907              	.LVL66:
+ 261:Core/Src/tim.c **** 
+ 262:Core/Src/tim.c ****     /* 读取 APB2 prescaler 字段（bits 13:11）*/
+ 263:Core/Src/tim.c ****     uint32_t tmp = (RCC->CFGR & RCC_CFGR_PPRE2) >> RCC_CFGR_PPRE2_Pos;
+ 908              		.loc 1 263 5 is_stmt 1 view .LVU242
+ 909              		.loc 1 263 24 is_stmt 0 view .LVU243
+ 910 000a 0D4B     		ldr	r3, .L71+4
+ 911 000c 9B68     		ldr	r3, [r3, #8]
+ 912              		.loc 1 263 14 view .LVU244
+ 913 000e C3F34233 		ubfx	r3, r3, #13, #3
+ 914              	.LVL67:
+ 264:Core/Src/tim.c ****     uint32_t apb2_div;
+ 915              		.loc 1 264 5 is_stmt 1 view .LVU245
+ 265:Core/Src/tim.c ****     switch (tmp) {
+ 916              		.loc 1 265 5 view .LVU246
+ 917 0012 043B     		subs	r3, r3, #4
+ 918              	.LVL68:
+ 919              		.loc 1 265 5 is_stmt 0 view .LVU247
+ 920 0014 032B     		cmp	r3, #3
+ 921 0016 03D8     		bhi	.L62
+ 922 0018 DFE803F0 		tbb	[pc, r3]
+ 923              	.L64:
+ 924 001c 0E       		.byte	(.L67-.L64)/2
+ 925 001d 0C       		.byte	(.L66-.L64)/2
+ 926 001e 0A       		.byte	(.L65-.L64)/2
+ 927 001f 05       		.byte	(.L63-.L64)/2
+ 928              		.p2align 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 41
 
 
- 968 0032 F9E7     		b	.L69
- 969              	.LVL74:
- 970              	.L66:
- 265:Core/Src/tim.c ****         case 6: apb2_div = 8; break;  /* 110 -> /8 */
- 971              		.loc 1 265 17 view .LVU274
- 265:Core/Src/tim.c ****         case 6: apb2_div = 8; break;  /* 110 -> /8 */
- 972              		.loc 1 265 31 view .LVU275
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 973              		.loc 1 271 5 view .LVU276
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 974              		.loc 1 271 14 is_stmt 0 view .LVU277
- 975 0034 9208     		lsrs	r2, r2, #2
- 976              	.LVL75:
- 272:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
- 977              		.loc 1 272 5 is_stmt 1 view .LVU278
- 978 0036 F7E7     		b	.L69
- 979              	.LVL76:
- 980              	.L67:
- 264:Core/Src/tim.c ****         case 5: apb2_div = 4; break;  /* 101 -> /4 */
- 981              		.loc 1 264 17 view .LVU279
- 264:Core/Src/tim.c ****         case 5: apb2_div = 4; break;  /* 101 -> /4 */
- 982              		.loc 1 264 31 view .LVU280
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 983              		.loc 1 271 5 view .LVU281
- 271:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
- 984              		.loc 1 271 14 is_stmt 0 view .LVU282
- 985 0038 5208     		lsrs	r2, r2, #1
- 986              	.LVL77:
- 272:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
- 987              		.loc 1 272 5 is_stmt 1 view .LVU283
- 988 003a F5E7     		b	.L69
- 989              	.L72:
- 990              		.align	2
- 991              	.L71:
- 992 003c 00000000 		.word	SystemCoreClock
- 993 0040 00380240 		.word	1073887232
- 994 0044 00000000 		.word	tim1_clk_hz
- 995              		.cfi_endproc
- 996              	.LFE140:
- 998              		.global	htim1
- 999              		.section	.bss.htim1,"aw",%nobits
- 1000              		.align	2
- 1003              	htim1:
- 1004 0000 00000000 		.space	72
- 1004      00000000 
- 1004      00000000 
- 1004      00000000 
- 1004      00000000 
- 1005              		.section	.bss.tim1_clk_hz,"aw",%nobits
- 1006              		.align	2
- 1009              	tim1_clk_hz:
- 1010 0000 00000000 		.space	4
- 1011              		.global	pulse_state
- 1012              		.section	.bss.pulse_state,"aw",%nobits
- 1013              		.align	2
- 1016              	pulse_state:
- 1017 0000 00000000 		.space	4
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 43
+ 929              	.L62:
+ 930              	.LVL69:
+ 266:Core/Src/tim.c ****         case 0: case 1: case 2: case 3: apb2_div = 1; break; /* 0xx = /1 */
+ 267:Core/Src/tim.c ****         case 4: apb2_div = 2; break;  /* 100 -> /2 */
+ 268:Core/Src/tim.c ****         case 5: apb2_div = 4; break;  /* 101 -> /4 */
+ 269:Core/Src/tim.c ****         case 6: apb2_div = 8; break;  /* 110 -> /8 */
+ 270:Core/Src/tim.c ****         case 7: apb2_div = 16; break; /* 111 -> /16 */
+ 271:Core/Src/tim.c ****         default: apb2_div = 1; break;
+ 272:Core/Src/tim.c ****     }
+ 273:Core/Src/tim.c **** 
+ 274:Core/Src/tim.c ****     uint32_t pclk2 = hclk / apb2_div;
+ 931              		.loc 1 274 5 is_stmt 1 view .LVU248
+ 275:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 932              		.loc 1 275 5 view .LVU249
+ 933              		.loc 1 275 24 discriminator 1 view .LVU250
+ 934              		.loc 1 275 36 is_stmt 0 discriminator 1 view .LVU251
+ 935 0020 084B     		ldr	r3, .L71+8
+ 936              	.LVL70:
+ 937              		.loc 1 275 36 discriminator 1 view .LVU252
+ 938 0022 1A60     		str	r2, [r3]
+ 939 0024 03E0     		b	.L61
+ 940              	.LVL71:
+ 941              	.L63:
+ 270:Core/Src/tim.c ****         default: apb2_div = 1; break;
+ 942              		.loc 1 270 17 is_stmt 1 view .LVU253
+ 270:Core/Src/tim.c ****         default: apb2_div = 1; break;
+ 943              		.loc 1 270 32 view .LVU254
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 944              		.loc 1 274 5 view .LVU255
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 945              		.loc 1 274 14 is_stmt 0 view .LVU256
+ 946 0026 1209     		lsrs	r2, r2, #4
+ 947              	.LVL72:
+ 948              		.loc 1 275 5 is_stmt 1 view .LVU257
+ 949              	.L69:
+ 276:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
+ 950              		.loc 1 276 10 view .LVU258
+ 951              		.loc 1 276 30 is_stmt 0 view .LVU259
+ 952 0028 5200     		lsls	r2, r2, #1
+ 953              	.LVL73:
+ 954              		.loc 1 276 22 view .LVU260
+ 955 002a 064B     		ldr	r3, .L71+8
+ 956              	.LVL74:
+ 957              		.loc 1 276 22 view .LVU261
+ 958 002c 1A60     		str	r2, [r3]
+ 959              	.LVL75:
+ 960              	.L61:
+ 277:Core/Src/tim.c **** }
+ 961              		.loc 1 277 1 view .LVU262
+ 962 002e 08BD     		pop	{r3, pc}
+ 963              	.LVL76:
+ 964              	.L65:
+ 269:Core/Src/tim.c ****         case 7: apb2_div = 16; break; /* 111 -> /16 */
+ 965              		.loc 1 269 17 is_stmt 1 view .LVU263
+ 269:Core/Src/tim.c ****         case 7: apb2_div = 16; break; /* 111 -> /16 */
+ 966              		.loc 1 269 31 view .LVU264
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 42
 
 
- 1018              		.global	twidth_ticks
- 1019              		.section	.bss.twidth_ticks,"aw",%nobits
- 1020              		.align	2
- 1023              	twidth_ticks:
- 1024 0000 00000000 		.space	16
- 1024      00000000 
- 1024      00000000 
- 1024      00000000 
- 1025              		.global	tstart_ticks
- 1026              		.section	.bss.tstart_ticks,"aw",%nobits
- 1027              		.align	2
- 1030              	tstart_ticks:
- 1031 0000 00000000 		.space	16
- 1031      00000000 
- 1031      00000000 
- 1031      00000000 
- 1032              		.text
- 1033              	.Letext0:
- 1034              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 1035              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 1036              		.file 5 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 1037              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1038              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 1039              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1040              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1041              		.file 10 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 1042              		.file 11 "Core/Inc/tim.h"
- 1043              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 1044              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
- 1045              		.file 14 "Core/Inc/main.h"
- 1046              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
- 1047              		.file 16 "<built-in>"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 44
+ 967              		.loc 1 274 5 view .LVU265
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 968              		.loc 1 274 14 is_stmt 0 view .LVU266
+ 969 0030 D208     		lsrs	r2, r2, #3
+ 970              	.LVL77:
+ 275:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
+ 971              		.loc 1 275 5 is_stmt 1 view .LVU267
+ 972 0032 F9E7     		b	.L69
+ 973              	.LVL78:
+ 974              	.L66:
+ 268:Core/Src/tim.c ****         case 6: apb2_div = 8; break;  /* 110 -> /8 */
+ 975              		.loc 1 268 17 view .LVU268
+ 268:Core/Src/tim.c ****         case 6: apb2_div = 8; break;  /* 110 -> /8 */
+ 976              		.loc 1 268 31 view .LVU269
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 977              		.loc 1 274 5 view .LVU270
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 978              		.loc 1 274 14 is_stmt 0 view .LVU271
+ 979 0034 9208     		lsrs	r2, r2, #2
+ 980              	.LVL79:
+ 275:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
+ 981              		.loc 1 275 5 is_stmt 1 view .LVU272
+ 982 0036 F7E7     		b	.L69
+ 983              	.LVL80:
+ 984              	.L67:
+ 267:Core/Src/tim.c ****         case 5: apb2_div = 4; break;  /* 101 -> /4 */
+ 985              		.loc 1 267 17 view .LVU273
+ 267:Core/Src/tim.c ****         case 5: apb2_div = 4; break;  /* 101 -> /4 */
+ 986              		.loc 1 267 31 view .LVU274
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 987              		.loc 1 274 5 view .LVU275
+ 274:Core/Src/tim.c ****     if (apb2_div == 1) tim1_clk_hz = pclk2;
+ 988              		.loc 1 274 14 is_stmt 0 view .LVU276
+ 989 0038 5208     		lsrs	r2, r2, #1
+ 990              	.LVL81:
+ 275:Core/Src/tim.c ****     else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
+ 991              		.loc 1 275 5 is_stmt 1 view .LVU277
+ 992 003a F5E7     		b	.L69
+ 993              	.L72:
+ 994              		.align	2
+ 995              	.L71:
+ 996 003c 00000000 		.word	SystemCoreClock
+ 997 0040 00380240 		.word	1073887232
+ 998 0044 00000000 		.word	tim1_clk_hz
+ 999              		.cfi_endproc
+ 1000              	.LFE140:
+ 1002              		.global	htim1
+ 1003              		.section	.bss.htim1,"aw",%nobits
+ 1004              		.align	2
+ 1007              	htim1:
+ 1008 0000 00000000 		.space	72
+ 1008      00000000 
+ 1008      00000000 
+ 1008      00000000 
+ 1008      00000000 
+ 1009              		.section	.bss.tim1_clk_hz,"aw",%nobits
+ 1010              		.align	2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 43
+
+
+ 1013              	tim1_clk_hz:
+ 1014 0000 00000000 		.space	4
+ 1015              		.global	pulse_state
+ 1016              		.section	.bss.pulse_state,"aw",%nobits
+ 1017              		.align	2
+ 1020              	pulse_state:
+ 1021 0000 00000000 		.space	4
+ 1022              		.global	twidth_ticks
+ 1023              		.section	.bss.twidth_ticks,"aw",%nobits
+ 1024              		.align	2
+ 1027              	twidth_ticks:
+ 1028 0000 00000000 		.space	16
+ 1028      00000000 
+ 1028      00000000 
+ 1028      00000000 
+ 1029              		.global	tstart_ticks
+ 1030              		.section	.bss.tstart_ticks,"aw",%nobits
+ 1031              		.align	2
+ 1034              	tstart_ticks:
+ 1035 0000 00000000 		.space	16
+ 1035      00000000 
+ 1035      00000000 
+ 1035      00000000 
+ 1036              		.text
+ 1037              	.Letext0:
+ 1038              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1039              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 1040              		.file 5 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 1041              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1042              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1043              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1044              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1045              		.file 10 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1046              		.file 11 "Core/Inc/tim.h"
+ 1047              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 1048              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
+ 1049              		.file 14 "Core/Inc/main.h"
+ 1050              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 1051              		.file 16 "<built-in>"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 44
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 tim.c
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:26     .text.us_to_ticks:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:31     .text.us_to_ticks:00000000 us_to_ticks
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:145    .text.us_to_ticks:00000070 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1009   .bss.tim1_clk_hz:00000000 tim1_clk_hz
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:156    .text.HAL_TIM_Base_MspInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:162    .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:224    .text.HAL_TIM_Base_MspInit:0000003c $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:229    .text.HAL_TIM_MspPostInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:235    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:325    .text.HAL_TIM_MspPostInit:00000054 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:332    .text.MX_TIM1_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:338    .text.MX_TIM1_Init:00000000 MX_TIM1_Init
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:607    .text.MX_TIM1_Init:00000118 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1003   .bss.htim1:00000000 htim1
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:613    .text.HAL_TIM_Base_MspDeInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:619    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:661    .text.HAL_TIM_Base_MspDeInit:00000020 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:667    .text.start_4_one_shot:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:673    .text.start_4_one_shot:00000000 start_4_one_shot
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:870    .text.start_4_one_shot:000000c8 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1030   .bss.tstart_ticks:00000000 tstart_ticks
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1023   .bss.twidth_ticks:00000000 twidth_ticks
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1016   .bss.pulse_state:00000000 pulse_state
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:879    .text.TIM1_ClockInit_Cache:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:885    .text.TIM1_ClockInit_Cache:00000000 TIM1_ClockInit_Cache
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:920    .text.TIM1_ClockInit_Cache:0000001c $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:924    .text.TIM1_ClockInit_Cache:00000020 $t
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:992    .text.TIM1_ClockInit_Cache:0000003c $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1000   .bss.htim1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1006   .bss.tim1_clk_hz:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1013   .bss.pulse_state:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1020   .bss.twidth_ticks:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s:1027   .bss.tstart_ticks:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:26     .text.us_to_ticks:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:31     .text.us_to_ticks:00000000 us_to_ticks
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:145    .text.us_to_ticks:00000070 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1013   .bss.tim1_clk_hz:00000000 tim1_clk_hz
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:156    .text.HAL_TIM_Base_MspInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:162    .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:224    .text.HAL_TIM_Base_MspInit:0000003c $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:229    .text.HAL_TIM_MspPostInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:235    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:325    .text.HAL_TIM_MspPostInit:00000054 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:332    .text.MX_TIM1_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:338    .text.MX_TIM1_Init:00000000 MX_TIM1_Init
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:607    .text.MX_TIM1_Init:00000118 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1007   .bss.htim1:00000000 htim1
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:613    .text.HAL_TIM_Base_MspDeInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:619    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:661    .text.HAL_TIM_Base_MspDeInit:00000020 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:667    .text.start_4_one_shot:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:673    .text.start_4_one_shot:00000000 start_4_one_shot
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:874    .text.start_4_one_shot:000000d4 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1034   .bss.tstart_ticks:00000000 tstart_ticks
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1027   .bss.twidth_ticks:00000000 twidth_ticks
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1020   .bss.pulse_state:00000000 pulse_state
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:883    .text.TIM1_ClockInit_Cache:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:889    .text.TIM1_ClockInit_Cache:00000000 TIM1_ClockInit_Cache
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:924    .text.TIM1_ClockInit_Cache:0000001c $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:928    .text.TIM1_ClockInit_Cache:00000020 $t
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:996    .text.TIM1_ClockInit_Cache:0000003c $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1004   .bss.htim1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1010   .bss.tim1_clk_hz:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1017   .bss.pulse_state:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1024   .bss.twidth_ticks:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s:1031   .bss.tstart_ticks:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_ui2d
@@ -2613,7 +2620,8 @@ HAL_TIMEx_ConfigBreakDeadTime
 Error_Handler
 HAL_NVIC_DisableIRQ
 HAL_TIM_OC_Stop_IT
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccNV1aw7.s 			page 45
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccQP7tMe.s 			page 45
 
 
+HAL_TIM_OC_Start_IT
 SystemCoreClockUpdate
