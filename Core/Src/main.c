@@ -98,7 +98,7 @@ int main(void)
 
   // HAL_Delay(2000);
 
-  double delays_us[4] = {1, 1, 1, 1}; /* 2us */
+  double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
   double widths_us[4] = {50.0, 25.0, 20.0, 35.0};
   // for (size_t i = 0; i < 9; i++)
   // {
