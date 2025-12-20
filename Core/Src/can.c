@@ -23,7 +23,7 @@
 /* USER CODE BEGIN 0 */
 
 __IO CAN_t can = {0};
-
+__IO CAN_t can2 = {0};
 /* USER CODE END 0 */
 
 CAN_HandleTypeDef hcan1;
@@ -224,32 +224,48 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
 	*/
 void USER_CAN1_Filter_Init(void)
 {
-	// 过滤器结构体
-	CAN_FilterTypeDef  sFilterConfig;
+    CAN_FilterTypeDef  sFilterConfig;
+    uint8_t id_o = 0x00, im_o = 0x00;
+    uint16_t id_l = (uint16_t)((uint16_t)id_o << 11) | CAN_ID_EXT;
+    uint16_t id_h = (uint16_t)((uint16_t)id_o >> 5);
+    uint16_t im_l = (uint16_t)((uint16_t)im_o << 11) | CAN_ID_EXT;
+    uint16_t im_h = (uint16_t)((uint16_t)im_o >> 5);
 
-	// 设置STM32的帧ID - 扩展帧格�? - 不过滤任何数据帧
-	__IO uint8_t id_o, im_o; __IO uint16_t id_l, id_h, im_l, im_h;
-	id_o = (0x00);
-	id_h = (uint16_t)((uint16_t)id_o >> 5);								// �?3�?
-	id_l = (uint16_t)((uint16_t)id_o << 11) | CAN_ID_EXT; // �?5�?
-	im_o = (0x00);
-	im_h = (uint16_t)((uint16_t)im_o >> 5);
-	im_l = (uint16_t)((uint16_t)im_o << 11) | CAN_ID_EXT;
+    sFilterConfig.FilterBank = 0;                      // CAN1 使用 bank 0 起始
+    sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+    sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+    sFilterConfig.FilterIdHigh = id_h;
+    sFilterConfig.FilterIdLow = id_l;
+    sFilterConfig.FilterMaskIdHigh = im_h;
+    sFilterConfig.FilterMaskIdLow = im_l;
+    sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+    sFilterConfig.FilterActivation = ENABLE;
+    sFilterConfig.SlaveStartFilterBank = 14;            // 关键：告诉 CAN1，bank >=14 分配给 CAN2
 
-	// 过滤器参�?
-	sFilterConfig.FilterBank = 0;                      		// 过滤�?1
-	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;  		// 掩码模式
-	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; 		// 32位过滤器位宽
-	sFilterConfig.FilterIdHigh = id_h;               			// 过滤器标识符的高16位�??
-	sFilterConfig.FilterIdLow = id_l;                			// 过滤器标识符的低16位�??
-	sFilterConfig.FilterMaskIdHigh = im_h;           			// 过滤器屏蔽标识符的高16位�??
-	sFilterConfig.FilterMaskIdLow = im_l;            			// 过滤器屏蔽标识符的低16位�??
-	sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0; 		// 指向过滤器的FIFO�?0
-	sFilterConfig.FilterActivation = ENABLE;           		// 使能过滤�?
-	sFilterConfig.SlaveStartFilterBank = 0;           		// 从过滤器配置，用来�?�择从过滤器的寄存器编号
+    while(HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK);
+}
 
-	// 配置并自�?
-	while(HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK);
+void USER_CAN2_Filter_Init(void)
+{
+    CAN_FilterTypeDef  sFilterConfig;
+    uint8_t id_o = 0x00, im_o = 0x00;
+    uint16_t id_l = (uint16_t)((uint16_t)id_o << 11) | CAN_ID_EXT;
+    uint16_t id_h = (uint16_t)((uint16_t)id_o >> 5);
+    uint16_t im_l = (uint16_t)((uint16_t)im_o << 11) | CAN_ID_EXT;
+    uint16_t im_h = (uint16_t)((uint16_t)im_o >> 5);
+
+    sFilterConfig.FilterBank = 14;                     // CAN2 使用从 14 开始的 bank
+    sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+    sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+    sFilterConfig.FilterIdHigh = id_h;
+    sFilterConfig.FilterIdLow = id_l;
+    sFilterConfig.FilterMaskIdHigh = im_h;
+    sFilterConfig.FilterMaskIdLow = im_l;
+    sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+    sFilterConfig.FilterActivation = ENABLE;
+    sFilterConfig.SlaveStartFilterBank = 0;            // 对 CAN2 无效，但填个值
+
+    while(HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig) != HAL_OK);
 }
 
 /**
@@ -296,4 +312,46 @@ void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
 	}
 }
 
+/**
+	* @brief   CAN发�?�多个字�?
+	* @param   �?
+	* @retval  �?
+	*/
+void can2_SendCmd(__IO uint8_t *cmd, uint8_t len)
+{
+	static uint32_t TxMailbox; __IO uint8_t i = 0, j = 0, k = 0, l = 0, packNum = 0;
+
+	// 除去ID地址和功能码后的数据长度
+	j = len - 2;
+
+	// 发�?�数�?
+	while(i < j)
+	{
+		// 数据个数
+		k = j - i;
+
+		// 填充缓存
+		can2.CAN_TxMsg.StdId = 0x00;
+		can2.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
+		can2.txData[0] = cmd[1];
+		can2.CAN_TxMsg.IDE = CAN_ID_EXT;
+		can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
+
+		// 小于8字节命令
+		if(k < 8)
+		{
+			for(l=0; l < k; l++,i++) { can2.txData[l + 1] = cmd[i + 2]; } can2.CAN_TxMsg.DLC = k + 1;
+		}
+		// 大于8字节命令，分包发送，每包数据�?多发�?8个字�?
+		else
+		{
+			for(l=0; l < 7; l++,i++) { can2.txData[l + 1] = cmd[i + 2]; } can2.CAN_TxMsg.DLC = 8;
+		}
+
+		// 发�?�数�?
+		while(HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.txData), (&TxMailbox)) != HAL_OK);
+		// 记录发�?�的第几包的数据
+		++packNum;
+	}
+}
 /* USER CODE END 1 */

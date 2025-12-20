@@ -93,53 +93,84 @@ int main(void)
   MX_TIM1_Init();
   MX_CAN2_Init();
   /* USER CODE BEGIN 2 */
-	USER_CAN1_Filter_Init();	     // 初始化CAN滤波器
-	if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN控制器
-	if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN控制器接收中断
-
+	USER_CAN1_Filter_Init();
+  USER_CAN2_Filter_Init();	    // 初始化CAN滤波器
+	if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN1控制器
+  if(HAL_CAN_Start(&hcan2) != HAL_OK) { Error_Handler(); }	// 启动CAN2控制器
+	if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN1控制器接收中断
+	if(HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN2控制器接收中断
   HAL_Delay(2000);
 
   double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
   double widths_us[4] = {50.0, 25.0, 20.0, 35.0};
-  for (size_t i = 0; i < 9; i++)
-  {
-    for (size_t j = 0; j < 9; j++)
-    {
-      ZDT_X42_V2_Traj_Position_Control(2, i%2, 2000, 2000, 2000.0f, 72.0f, 0, 0);
-	    HAL_Delay(10);
+  // for (size_t i = 0; i < 9; i++)
+  // {
+  //   for (size_t j = 0; j < 9; j++)
+  //   {
+  //     ZDT_X42_V2_Traj_Position_Control(2, i%2, 2000, 2000, 2000.0f, 72.0f, 0, 0);
+	//     HAL_Delay(10);
 
-      while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-      {
-        can.rxFrameFlag = false;
-      }
-      can.rxData[0] = 0;
-      can.rxData[1] = 0;
-      start_4_one_shot(delays_us, widths_us);
-      HAL_Delay(100);
-    }
+  //     while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  //     {
+  //       can.rxFrameFlag = false;
+  //     }
+  //     can.rxData[0] = 0;
+  //     can.rxData[1] = 0;
+  //     start_4_one_shot(delays_us, widths_us);
+  //     HAL_Delay(100);
+  //   }
 
-    ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
-	  HAL_Delay(10);
-    while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-    {
-      can.rxFrameFlag = false;
-    }
+  //   ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
+	//   HAL_Delay(10);
+  //   while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  //   {
+  //     can.rxFrameFlag = false;
+  //   }
 
-    can.rxData[0] = 0;
-    can.rxData[1] = 0;
-    start_4_one_shot(delays_us, widths_us);
-    HAL_Delay(100);
-  }
+  //   can.rxData[0] = 0;
+  //   can.rxData[1] = 0;
+  //   start_4_one_shot(delays_us, widths_us);
+  //   HAL_Delay(100);
+  // }
 
-  ZDT_X42_V2_Traj_Position_Control(0, 1, 1000, 1000, 1000.0f, 720.0f, 0, 0);
-	HAL_Delay(10);
-  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  {
-    can.rxFrameFlag = false;
-  }
-  can.rxData[0] = 0;
-  can.rxData[1] = 0;
+  // ZDT_X42_V2_Traj_Position_Control(0, 1, 1000, 1000, 1000.0f, 720.0f, 0, 0);
+	// HAL_Delay(10);
+  // while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  // {
+  //   can.rxFrameFlag = false;
+  // }
+  // can.rxData[0] = 0;
+  // can.rxData[1] = 0;
 
+
+  uint8_t cmd[32] = {0}; uint16_t vel = 0; uint32_t pos = 0;
+
+  // 将速度和位置放大10倍发送过去
+  vel = (uint16_t)ABS(2000 * 10.0f); pos = (uint32_t)ABS(720.0f * 10.0f);
+
+  // 装载命令
+  cmd[0]  =  2;                      // 地址
+  cmd[1]  =  0xFD;                      // 功能码
+  cmd[2]  =  1;                       // 符号（方向）
+  cmd[3]  =  (uint8_t)(2000 >> 8);       // 加速加速度(RPM/s)高8位字节
+  cmd[4]  =  (uint8_t)(2000 >> 0);       // 加速加速度(RPM/s)低8位字节
+  cmd[5]  =  (uint8_t)(2000 >> 8);       // 减速加速度(RPM/s)高8位字节
+  cmd[6]  =  (uint8_t)(2000 >> 0);       // 减速加速度(RPM/s)低8位字节
+  cmd[7]  =  (uint8_t)(vel >> 8);       // 最大速度(RPM)高8位字节
+  cmd[8]  =  (uint8_t)(vel >> 0);       // 最大速度(RPM)低8位字节
+  cmd[9]  =  (uint8_t)(pos >> 24);      // 位置(bit24 - bit31)
+  cmd[10] =  (uint8_t)(pos >> 16);      // 位置(bit16 - bit23)
+  cmd[11] =  (uint8_t)(pos >> 8);       // 位置(bit8  - bit15)
+  cmd[12] =  (uint8_t)(pos >> 0);       // 位置(bit0  - bit7 )
+  cmd[13] =  0;                       // 相位位置/绝对位置标志
+  cmd[14] =  0;                       // 多机同步运动标志
+  cmd[15] =  0x6B;                      // 校验字节
+
+  // 发送命令
+
+  can2_SendCmd(cmd, 16);
+  HAL_Delay(100);
+  ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
 
   /* USER CODE END 2 */
 
