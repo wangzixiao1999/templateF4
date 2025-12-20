@@ -91,6 +91,7 @@ int main(void)
   MX_GPIO_Init();
   MX_CAN1_Init();
   MX_TIM1_Init();
+  MX_CAN2_Init();
   /* USER CODE BEGIN 2 */
 	USER_CAN1_Filter_Init();	     // 初始化CAN滤波器
 	if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN控制器

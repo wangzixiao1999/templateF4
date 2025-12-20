@@ -44,11 +44,14 @@ typedef struct {
 
 extern CAN_HandleTypeDef hcan1;
 
+extern CAN_HandleTypeDef hcan2;
+
 /* USER CODE BEGIN Private defines */
 extern __IO CAN_t can;
 /* USER CODE END Private defines */
 
 void MX_CAN1_Init(void);
+void MX_CAN2_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 

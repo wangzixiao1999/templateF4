@@ -61,6 +61,7 @@ extern volatile uint8_t pulse_state[4];
 
 /* External variables --------------------------------------------------------*/
 extern CAN_HandleTypeDef hcan1;
+extern CAN_HandleTypeDef hcan2;
 extern TIM_HandleTypeDef htim1;
 /* USER CODE BEGIN EV */
 
@@ -211,10 +212,10 @@ void CAN1_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
   uint8_t i = 0;
-	// 接收�?包数�?
+	// 接收�?包数�?
 	if(HAL_CAN_GetRxMessage((&hcan1), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can.CAN_RxMsg), (uint8_t *)(&can.rxData)) == HAL_OK)
 	{
-		// �?帧数据接收完成，置位帧标志位
+		// �?帧数据接收完成，置位帧标志位
 		for(i=can.CAN_RxMsg.DLC; i < 8; i++) { can.rxData[i] = 0; } can.rxFrameFlag = true;
 	}
   /* USER CODE END CAN1_RX0_IRQn 0 */
@@ -337,10 +338,24 @@ void TIM1_CC_IRQHandler(void)
         }
     }
   /* USER CODE END TIM1_CC_IRQn 0 */
-  //HAL_TIM_IRQHandler(&htim1);
+  HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_CC_IRQn 1 */
 
   /* USER CODE END TIM1_CC_IRQn 1 */
+}
+
+/**
+  * @brief This function handles CAN2 RX0 interrupts.
+  */
+void CAN2_RX0_IRQHandler(void)
+{
+  /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
+
+  /* USER CODE END CAN2_RX0_IRQn 0 */
+  HAL_CAN_IRQHandler(&hcan2);
+  /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
+
+  /* USER CODE END CAN2_RX0_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
