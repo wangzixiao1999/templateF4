@@ -146,15 +146,15 @@ int main(void)
   uint8_t cmd[32] = {0};
 
   // 装载命令                 // 地址
-  cmd[0]  =  0xCF;                      // 功能码
-  // cmd[1]  =  0xE8;                      // 符号（方向）
-  // cmd[2]  =  0x03;
-  // cmd[3]  =  0x00;
-  // cmd[4]  =  0x00;
-
+  cmd[0]  =  0x01;
+  cmd[1]  =  0xC3;                      // 功能码
+  cmd[2]  =  0x00;                      // 符号（方向）
+  cmd[3]  =  0x40;
+  cmd[4]  =  0x00;
+  cmd[5]  =  0x00;
   // 发送命令
 
-  can2_SendCmd(1,cmd, 1);
+  can2_SendCmd(cmd, 6);
   HAL_Delay(1000);
   ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
 

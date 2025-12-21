@@ -317,23 +317,41 @@ void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
 	* @param   �?
 	* @retval  �?
 	*/
-void can2_SendCmd(uint32_t stdId, uint8_t *data, uint8_t dataLen)
+void can2_SendCmd( __IO uint8_t *cmd, uint8_t len)
 {
-    static uint32_t TxMailbox;
+	static uint32_t TxMailbox; __IO uint8_t i = 0, j = 0, k = 0, l = 0, packNum = 0;
 
-    can2.CAN_TxMsg.StdId = stdId;
-    can2.CAN_TxMsg.IDE = CAN_ID_STD;
-    can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
-    can2.CAN_TxMsg.DLC = dataLen;
+	// 除去ID地址和功能码后的数据长度
+	j = len - 2;
 
-    // 拷贝数据
-    for(uint8_t i = 0; i < dataLen; i++) {
-        can2.txData[i] = data[i];
-    }
+	// 发�?�数�?
+	while(i < j)
+	{
+		// 数据个数
+		k = j - i;
 
-    // 发送
-    while(HAL_CAN_AddTxMessage(&hcan2, &can2.CAN_TxMsg, can2.txData, &TxMailbox) != HAL_OK) {
-        // 超时或错误处理
-    }
+		// 填充缓存
+		can2.CAN_TxMsg.StdId = cmd[0];
+		can2.txData[0] = cmd[1];
+		can2.CAN_TxMsg.IDE = CAN_ID_STD;
+		can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
+
+		// 小于8字节命令
+		if(k < 8)
+		{
+			for(l=0; l < k; l++,i++) { can2.txData[l + 1] = cmd[i + 2]; } can2.CAN_TxMsg.DLC = k + 1;
+		}
+		// 大于8字节命令，分包发送，每包数据�?多发�?8个字�?
+		else
+		{
+			for(l=0; l < 7; l++,i++) { can2.txData[l + 1] = cmd[i + 2]; } can2.CAN_TxMsg.DLC = 8;
+		}
+
+		// 发�?�数�?
+		while(HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.txData), (&TxMailbox)) != HAL_OK);
+
+		// 记录发�?�的第几包的数据
+		++packNum;
+  }
 }
 /* USER CODE END 1 */
