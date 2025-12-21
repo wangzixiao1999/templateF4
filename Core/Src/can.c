@@ -41,7 +41,7 @@ void MX_CAN1_Init(void)
 
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
-  hcan1.Init.Prescaler = 14;
+  hcan1.Init.Prescaler = 7;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
   hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
   hcan1.Init.TimeSeg1 = CAN_BS1_4TQ;
@@ -73,7 +73,7 @@ void MX_CAN2_Init(void)
 
   /* USER CODE END CAN2_Init 1 */
   hcan2.Instance = CAN2;
-  hcan2.Init.Prescaler = 14;
+  hcan2.Init.Prescaler = 7;
   hcan2.Init.Mode = CAN_MODE_NORMAL;
   hcan2.Init.SyncJumpWidth = CAN_SJW_1TQ;
   hcan2.Init.TimeSeg1 = CAN_BS1_4TQ;
@@ -317,41 +317,23 @@ void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
 	* @param   �?
 	* @retval  �?
 	*/
-void can2_SendCmd(__IO uint8_t *cmd, uint8_t len)
+void can2_SendCmd(uint32_t stdId, uint8_t *data, uint8_t dataLen)
 {
-	static uint32_t TxMailbox; __IO uint8_t i = 0, j = 0, k = 0, l = 0, packNum = 0;
+    static uint32_t TxMailbox;
 
-	// 除去ID地址和功能码后的数据长度
-	j = len - 2;
+    can2.CAN_TxMsg.StdId = stdId;
+    can2.CAN_TxMsg.IDE = CAN_ID_STD;
+    can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
+    can2.CAN_TxMsg.DLC = dataLen;
 
-	// 发�?�数�?
-	while(i < j)
-	{
-		// 数据个数
-		k = j - i;
+    // 拷贝数据
+    for(uint8_t i = 0; i < dataLen; i++) {
+        can2.txData[i] = data[i];
+    }
 
-		// 填充缓存
-		can2.CAN_TxMsg.StdId = 0x00;
-		can2.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
-		can2.txData[0] = cmd[1];
-		can2.CAN_TxMsg.IDE = CAN_ID_EXT;
-		can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
-
-		// 小于8字节命令
-		if(k < 8)
-		{
-			for(l=0; l < k; l++,i++) { can2.txData[l + 1] = cmd[i + 2]; } can2.CAN_TxMsg.DLC = k + 1;
-		}
-		// 大于8字节命令，分包发送，每包数据�?多发�?8个字�?
-		else
-		{
-			for(l=0; l < 7; l++,i++) { can2.txData[l + 1] = cmd[i + 2]; } can2.CAN_TxMsg.DLC = 8;
-		}
-
-		// 发�?�数�?
-		while(HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.txData), (&TxMailbox)) != HAL_OK);
-		// 记录发�?�的第几包的数据
-		++packNum;
-	}
+    // 发送
+    while(HAL_CAN_AddTxMessage(&hcan2, &can2.CAN_TxMsg, can2.txData, &TxMailbox) != HAL_OK) {
+        // 超时或错误处理
+    }
 }
 /* USER CODE END 1 */

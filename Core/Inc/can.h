@@ -60,7 +60,7 @@ void USER_CAN1_Filter_Init(void);
 void can_SendCmd(__IO uint8_t *cmd, uint8_t len);
 
 void USER_CAN2_Filter_Init(void);
-void can2_SendCmd(__IO uint8_t *cmd, uint8_t len);
+void can2_SendCmd(uint32_t stdId, uint8_t *data, uint8_t dataLen);
 
 /* USER CODE END Prototypes */
 

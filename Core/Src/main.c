@@ -143,33 +143,19 @@ int main(void)
   // can.rxData[1] = 0;
 
 
-  uint8_t cmd[32] = {0}; uint16_t vel = 0; uint32_t pos = 0;
+  uint8_t cmd[32] = {0};
 
-  // 将速度和位置放大10倍发送过去
-  vel = (uint16_t)ABS(2000 * 10.0f); pos = (uint32_t)ABS(720.0f * 10.0f);
-
-  // 装载命令
-  cmd[0]  =  2;                      // 地址
-  cmd[1]  =  0xFD;                      // 功能码
-  cmd[2]  =  1;                       // 符号（方向）
-  cmd[3]  =  (uint8_t)(2000 >> 8);       // 加速加速度(RPM/s)高8位字节
-  cmd[4]  =  (uint8_t)(2000 >> 0);       // 加速加速度(RPM/s)低8位字节
-  cmd[5]  =  (uint8_t)(2000 >> 8);       // 减速加速度(RPM/s)高8位字节
-  cmd[6]  =  (uint8_t)(2000 >> 0);       // 减速加速度(RPM/s)低8位字节
-  cmd[7]  =  (uint8_t)(vel >> 8);       // 最大速度(RPM)高8位字节
-  cmd[8]  =  (uint8_t)(vel >> 0);       // 最大速度(RPM)低8位字节
-  cmd[9]  =  (uint8_t)(pos >> 24);      // 位置(bit24 - bit31)
-  cmd[10] =  (uint8_t)(pos >> 16);      // 位置(bit16 - bit23)
-  cmd[11] =  (uint8_t)(pos >> 8);       // 位置(bit8  - bit15)
-  cmd[12] =  (uint8_t)(pos >> 0);       // 位置(bit0  - bit7 )
-  cmd[13] =  0;                       // 相位位置/绝对位置标志
-  cmd[14] =  0;                       // 多机同步运动标志
-  cmd[15] =  0x6B;                      // 校验字节
+  // 装载命令                 // 地址
+  cmd[0]  =  0xCF;                      // 功能码
+  // cmd[1]  =  0xE8;                      // 符号（方向）
+  // cmd[2]  =  0x03;
+  // cmd[3]  =  0x00;
+  // cmd[4]  =  0x00;
 
   // 发送命令
 
-  can2_SendCmd(cmd, 16);
-  HAL_Delay(100);
+  can2_SendCmd(1,cmd, 1);
+  HAL_Delay(1000);
   ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
 
   /* USER CODE END 2 */
