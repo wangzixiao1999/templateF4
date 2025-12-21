@@ -331,7 +331,7 @@ void can2_SendCmd( __IO uint8_t *cmd, uint8_t len)
 		k = j - i;
 
 		// 填充缓存
-		can2.CAN_TxMsg.StdId = cmd[0];
+		can2.CAN_TxMsg.StdId = ((uint32_t)cmd[0]) & 0x7FF;
 		can2.txData[0] = cmd[1];
 		can2.CAN_TxMsg.IDE = CAN_ID_STD;
 		can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
