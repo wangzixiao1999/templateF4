@@ -312,11 +312,6 @@ void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
 	}
 }
 
-/**
-	* @brief   CAN2发送
-	* @param   �?
-	* @retval  �?
-	*/
 void can2_SendCmd( __IO uint8_t *cmd, uint8_t len)
 {
 	static uint32_t TxMailbox;

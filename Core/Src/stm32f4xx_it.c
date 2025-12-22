@@ -46,6 +46,7 @@ extern volatile uint8_t pulse_state[4];
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
+float can_freq = 0.f;
 float can2_freq = 0.f;
 /* USER CODE END PV */
 
@@ -212,6 +213,7 @@ void CAN1_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
   uint8_t i = 0;
+  static volatile uint32_t preTick = 0;
 	// 接收�?包数�?
 	if(HAL_CAN_GetRxMessage((&hcan1), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can.CAN_RxMsg), (uint8_t *)(&can.rxData)) == HAL_OK)
 	{
@@ -221,6 +223,10 @@ void CAN1_RX0_IRQHandler(void)
   /* USER CODE END CAN1_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan1);
   /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
+  // 计算CAN接收频率
+  uint32_t currTick = HAL_GetTick();
+  can_freq = 1000.f / (currTick - preTick);
+  preTick = currTick;
 
   /* USER CODE END CAN1_RX0_IRQn 1 */
 }

@@ -1,0 +1,2051 @@
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"HT_DM_S_7010.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/HT_DM_S_7010.c"
+  20              		.section	.text.HT_DM_S_7010_System_Restart,"ax",%progbits
+  21              		.align	1
+  22              		.global	HT_DM_S_7010_System_Restart
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	HT_DM_S_7010_System_Restart:
+  28              	.LVL0:
+  29              	.LFB134:
+   1:Core/Src/HT_DM_S_7010.c **** #include "HT_DM_S_7010.h"
+   2:Core/Src/HT_DM_S_7010.c **** #include <string.h>
+   3:Core/Src/HT_DM_S_7010.c **** 
+   4:Core/Src/HT_DM_S_7010.c **** /**
+   5:Core/Src/HT_DM_S_7010.c ****   * @brief    重启从机，主控制器发送该命令包后，从机立即重启不应答主控�
+   6:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+   7:Core/Src/HT_DM_S_7010.c ****   * @retval   地址 + 功能码
+   8:Core/Src/HT_DM_S_7010.c ****   */
+   9:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_System_Restart(uint8_t addr)
+  10:Core/Src/HT_DM_S_7010.c **** {
+  30              		.loc 1 10 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 16
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 10 1 is_stmt 0 view .LVU1
+  35 0000 00B5     		push	{lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 14, -4
+  39 0002 85B0     		sub	sp, sp, #20
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 24
+  11:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[16] = {0};
+  42              		.loc 1 11 3 is_stmt 1 view .LVU2
+  43              		.loc 1 11 11 is_stmt 0 view .LVU3
+  44 0004 0023     		movs	r3, #0
+  45 0006 0093     		str	r3, [sp]
+  46 0008 0193     		str	r3, [sp, #4]
+  47 000a 0293     		str	r3, [sp, #8]
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 2
+
+
+  48 000c 0393     		str	r3, [sp, #12]
+  12:Core/Src/HT_DM_S_7010.c **** 
+  13:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+  49              		.loc 1 13 3 is_stmt 1 view .LVU4
+  50              		.loc 1 13 10 is_stmt 0 view .LVU5
+  51 000e 8DF80000 		strb	r0, [sp]
+  14:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0x00;
+  52              		.loc 1 14 3 is_stmt 1 view .LVU6
+  15:Core/Src/HT_DM_S_7010.c ****   cmd[2] = 0xFF;
+  53              		.loc 1 15 3 view .LVU7
+  54              		.loc 1 15 10 is_stmt 0 view .LVU8
+  55 0012 FF23     		movs	r3, #255
+  56 0014 8DF80230 		strb	r3, [sp, #2]
+  16:Core/Src/HT_DM_S_7010.c ****   cmd[3] = 0x00;
+  57              		.loc 1 16 3 is_stmt 1 view .LVU9
+  17:Core/Src/HT_DM_S_7010.c ****   cmd[4] = 0xFF;
+  58              		.loc 1 17 3 view .LVU10
+  59              		.loc 1 17 10 is_stmt 0 view .LVU11
+  60 0018 8DF80430 		strb	r3, [sp, #4]
+  18:Core/Src/HT_DM_S_7010.c ****   cmd[5] = 0x00;
+  61              		.loc 1 18 3 is_stmt 1 view .LVU12
+  19:Core/Src/HT_DM_S_7010.c ****   cmd[6] = 0xFF;
+  62              		.loc 1 19 3 view .LVU13
+  63              		.loc 1 19 10 is_stmt 0 view .LVU14
+  64 001c 8DF80630 		strb	r3, [sp, #6]
+  20:Core/Src/HT_DM_S_7010.c ****   cmd[7] = 0x00;
+  65              		.loc 1 20 3 is_stmt 1 view .LVU15
+  21:Core/Src/HT_DM_S_7010.c ****   cmd[8] = 0xFF;
+  66              		.loc 1 21 3 view .LVU16
+  67              		.loc 1 21 10 is_stmt 0 view .LVU17
+  68 0020 8DF80830 		strb	r3, [sp, #8]
+  22:Core/Src/HT_DM_S_7010.c **** 
+  23:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 9);
+  69              		.loc 1 23 3 is_stmt 1 view .LVU18
+  70 0024 0921     		movs	r1, #9
+  71 0026 6846     		mov	r0, sp
+  72              	.LVL1:
+  73              		.loc 1 23 3 is_stmt 0 view .LVU19
+  74 0028 FFF7FEFF 		bl	can2_SendCmd
+  75              	.LVL2:
+  24:Core/Src/HT_DM_S_7010.c **** }
+  76              		.loc 1 24 1 view .LVU20
+  77 002c 05B0     		add	sp, sp, #20
+  78              	.LCFI2:
+  79              		.cfi_def_cfa_offset 4
+  80              		@ sp needed
+  81 002e 5DF804FB 		ldr	pc, [sp], #4
+  82              		.cfi_endproc
+  83              	.LFE134:
+  85              		.section	.text.HT_DM_S_7010_Read_Version,"ax",%progbits
+  86              		.align	1
+  87              		.global	HT_DM_S_7010_Read_Version
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  92              	HT_DM_S_7010_Read_Version:
+  93              	.LVL3:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 3
+
+
+  94              	.LFB135:
+  25:Core/Src/HT_DM_S_7010.c **** 
+  26:Core/Src/HT_DM_S_7010.c **** /**
+  27:Core/Src/HT_DM_S_7010.c ****   * @brief    读Boot、软件、硬件、自定义CAN协议版本
+  28:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+  29:Core/Src/HT_DM_S_7010.c ****   */
+  30:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Read_Version(uint8_t addr)
+  31:Core/Src/HT_DM_S_7010.c **** {
+  95              		.loc 1 31 1 is_stmt 1 view -0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 8
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              		.loc 1 31 1 is_stmt 0 view .LVU22
+ 100 0000 00B5     		push	{lr}
+ 101              	.LCFI3:
+ 102              		.cfi_def_cfa_offset 4
+ 103              		.cfi_offset 14, -4
+ 104 0002 83B0     		sub	sp, sp, #12
+ 105              	.LCFI4:
+ 106              		.cfi_def_cfa_offset 16
+  32:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 107              		.loc 1 32 3 is_stmt 1 view .LVU23
+ 108              		.loc 1 32 11 is_stmt 0 view .LVU24
+ 109 0004 0023     		movs	r3, #0
+ 110 0006 0093     		str	r3, [sp]
+ 111 0008 0193     		str	r3, [sp, #4]
+  33:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 112              		.loc 1 33 3 is_stmt 1 view .LVU25
+ 113              		.loc 1 33 10 is_stmt 0 view .LVU26
+ 114 000a 8DF80000 		strb	r0, [sp]
+  34:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xA0;
+ 115              		.loc 1 34 3 is_stmt 1 view .LVU27
+ 116              		.loc 1 34 10 is_stmt 0 view .LVU28
+ 117 000e A023     		movs	r3, #160
+ 118 0010 8DF80130 		strb	r3, [sp, #1]
+  35:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 119              		.loc 1 35 3 is_stmt 1 view .LVU29
+ 120 0014 0221     		movs	r1, #2
+ 121 0016 6846     		mov	r0, sp
+ 122              	.LVL4:
+ 123              		.loc 1 35 3 is_stmt 0 view .LVU30
+ 124 0018 FFF7FEFF 		bl	can2_SendCmd
+ 125              	.LVL5:
+  36:Core/Src/HT_DM_S_7010.c **** }
+ 126              		.loc 1 36 1 view .LVU31
+ 127 001c 03B0     		add	sp, sp, #12
+ 128              	.LCFI5:
+ 129              		.cfi_def_cfa_offset 4
+ 130              		@ sp needed
+ 131 001e 5DF804FB 		ldr	pc, [sp], #4
+ 132              		.cfi_endproc
+ 133              	.LFE135:
+ 135              		.section	.text.HT_DM_S_7010_Read_Current_Q_Axis,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	HT_DM_S_7010_Read_Current_Q_Axis
+ 138              		.syntax unified
+ 139              		.thumb
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 4
+
+
+ 140              		.thumb_func
+ 142              	HT_DM_S_7010_Read_Current_Q_Axis:
+ 143              	.LVL6:
+ 144              	.LFB136:
+  37:Core/Src/HT_DM_S_7010.c **** 
+  38:Core/Src/HT_DM_S_7010.c **** /**
+  39:Core/Src/HT_DM_S_7010.c ****   * @brief    读实时Q轴电流
+  40:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+  41:Core/Src/HT_DM_S_7010.c ****   */
+  42:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Read_Current_Q_Axis(uint8_t addr)
+  43:Core/Src/HT_DM_S_7010.c **** {
+ 145              		.loc 1 43 1 is_stmt 1 view -0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 8
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              		.loc 1 43 1 is_stmt 0 view .LVU33
+ 150 0000 00B5     		push	{lr}
+ 151              	.LCFI6:
+ 152              		.cfi_def_cfa_offset 4
+ 153              		.cfi_offset 14, -4
+ 154 0002 83B0     		sub	sp, sp, #12
+ 155              	.LCFI7:
+ 156              		.cfi_def_cfa_offset 16
+  44:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 157              		.loc 1 44 3 is_stmt 1 view .LVU34
+ 158              		.loc 1 44 11 is_stmt 0 view .LVU35
+ 159 0004 0023     		movs	r3, #0
+ 160 0006 0093     		str	r3, [sp]
+ 161 0008 0193     		str	r3, [sp, #4]
+  45:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 162              		.loc 1 45 3 is_stmt 1 view .LVU36
+ 163              		.loc 1 45 10 is_stmt 0 view .LVU37
+ 164 000a 8DF80000 		strb	r0, [sp]
+  46:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xA1;
+ 165              		.loc 1 46 3 is_stmt 1 view .LVU38
+ 166              		.loc 1 46 10 is_stmt 0 view .LVU39
+ 167 000e A123     		movs	r3, #161
+ 168 0010 8DF80130 		strb	r3, [sp, #1]
+  47:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 169              		.loc 1 47 3 is_stmt 1 view .LVU40
+ 170 0014 0221     		movs	r1, #2
+ 171 0016 6846     		mov	r0, sp
+ 172              	.LVL7:
+ 173              		.loc 1 47 3 is_stmt 0 view .LVU41
+ 174 0018 FFF7FEFF 		bl	can2_SendCmd
+ 175              	.LVL8:
+  48:Core/Src/HT_DM_S_7010.c **** }
+ 176              		.loc 1 48 1 view .LVU42
+ 177 001c 03B0     		add	sp, sp, #12
+ 178              	.LCFI8:
+ 179              		.cfi_def_cfa_offset 4
+ 180              		@ sp needed
+ 181 001e 5DF804FB 		ldr	pc, [sp], #4
+ 182              		.cfi_endproc
+ 183              	.LFE136:
+ 185              		.section	.text.HT_DM_S_7010_Read_Speed,"ax",%progbits
+ 186              		.align	1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 5
+
+
+ 187              		.global	HT_DM_S_7010_Read_Speed
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 192              	HT_DM_S_7010_Read_Speed:
+ 193              	.LVL9:
+ 194              	.LFB137:
+  49:Core/Src/HT_DM_S_7010.c **** 
+  50:Core/Src/HT_DM_S_7010.c **** /**
+  51:Core/Src/HT_DM_S_7010.c ****   * @brief    读实时旋转速度
+  52:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+  53:Core/Src/HT_DM_S_7010.c ****   */
+  54:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Read_Speed(uint8_t addr)
+  55:Core/Src/HT_DM_S_7010.c **** {
+ 195              		.loc 1 55 1 is_stmt 1 view -0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 8
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		.loc 1 55 1 is_stmt 0 view .LVU44
+ 200 0000 00B5     		push	{lr}
+ 201              	.LCFI9:
+ 202              		.cfi_def_cfa_offset 4
+ 203              		.cfi_offset 14, -4
+ 204 0002 83B0     		sub	sp, sp, #12
+ 205              	.LCFI10:
+ 206              		.cfi_def_cfa_offset 16
+  56:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 207              		.loc 1 56 3 is_stmt 1 view .LVU45
+ 208              		.loc 1 56 11 is_stmt 0 view .LVU46
+ 209 0004 0023     		movs	r3, #0
+ 210 0006 0093     		str	r3, [sp]
+ 211 0008 0193     		str	r3, [sp, #4]
+  57:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 212              		.loc 1 57 3 is_stmt 1 view .LVU47
+ 213              		.loc 1 57 10 is_stmt 0 view .LVU48
+ 214 000a 8DF80000 		strb	r0, [sp]
+  58:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xA2;
+ 215              		.loc 1 58 3 is_stmt 1 view .LVU49
+ 216              		.loc 1 58 10 is_stmt 0 view .LVU50
+ 217 000e A223     		movs	r3, #162
+ 218 0010 8DF80130 		strb	r3, [sp, #1]
+  59:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 219              		.loc 1 59 3 is_stmt 1 view .LVU51
+ 220 0014 0221     		movs	r1, #2
+ 221 0016 6846     		mov	r0, sp
+ 222              	.LVL10:
+ 223              		.loc 1 59 3 is_stmt 0 view .LVU52
+ 224 0018 FFF7FEFF 		bl	can2_SendCmd
+ 225              	.LVL11:
+  60:Core/Src/HT_DM_S_7010.c **** }
+ 226              		.loc 1 60 1 view .LVU53
+ 227 001c 03B0     		add	sp, sp, #12
+ 228              	.LCFI11:
+ 229              		.cfi_def_cfa_offset 4
+ 230              		@ sp needed
+ 231 001e 5DF804FB 		ldr	pc, [sp], #4
+ 232              		.cfi_endproc
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 6
+
+
+ 233              	.LFE137:
+ 235              		.section	.text.HT_DM_S_7010_Read_Absolute_Angle,"ax",%progbits
+ 236              		.align	1
+ 237              		.global	HT_DM_S_7010_Read_Absolute_Angle
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ 242              	HT_DM_S_7010_Read_Absolute_Angle:
+ 243              	.LVL12:
+ 244              	.LFB138:
+  61:Core/Src/HT_DM_S_7010.c **** 
+  62:Core/Src/HT_DM_S_7010.c **** /**
+  63:Core/Src/HT_DM_S_7010.c ****   * @brief    读实时单圈绝对值角度、多圈绝对值角度
+  64:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+  65:Core/Src/HT_DM_S_7010.c ****   */
+  66:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Read_Absolute_Angle(uint8_t addr)
+  67:Core/Src/HT_DM_S_7010.c **** {
+ 245              		.loc 1 67 1 is_stmt 1 view -0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 8
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249              		.loc 1 67 1 is_stmt 0 view .LVU55
+ 250 0000 00B5     		push	{lr}
+ 251              	.LCFI12:
+ 252              		.cfi_def_cfa_offset 4
+ 253              		.cfi_offset 14, -4
+ 254 0002 83B0     		sub	sp, sp, #12
+ 255              	.LCFI13:
+ 256              		.cfi_def_cfa_offset 16
+  68:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 257              		.loc 1 68 3 is_stmt 1 view .LVU56
+ 258              		.loc 1 68 11 is_stmt 0 view .LVU57
+ 259 0004 0023     		movs	r3, #0
+ 260 0006 0093     		str	r3, [sp]
+ 261 0008 0193     		str	r3, [sp, #4]
+  69:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 262              		.loc 1 69 3 is_stmt 1 view .LVU58
+ 263              		.loc 1 69 10 is_stmt 0 view .LVU59
+ 264 000a 8DF80000 		strb	r0, [sp]
+  70:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xA3;
+ 265              		.loc 1 70 3 is_stmt 1 view .LVU60
+ 266              		.loc 1 70 10 is_stmt 0 view .LVU61
+ 267 000e A323     		movs	r3, #163
+ 268 0010 8DF80130 		strb	r3, [sp, #1]
+  71:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 269              		.loc 1 71 3 is_stmt 1 view .LVU62
+ 270 0014 0221     		movs	r1, #2
+ 271 0016 6846     		mov	r0, sp
+ 272              	.LVL13:
+ 273              		.loc 1 71 3 is_stmt 0 view .LVU63
+ 274 0018 FFF7FEFF 		bl	can2_SendCmd
+ 275              	.LVL14:
+  72:Core/Src/HT_DM_S_7010.c **** }
+ 276              		.loc 1 72 1 view .LVU64
+ 277 001c 03B0     		add	sp, sp, #12
+ 278              	.LCFI14:
+ 279              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 7
+
+
+ 280              		@ sp needed
+ 281 001e 5DF804FB 		ldr	pc, [sp], #4
+ 282              		.cfi_endproc
+ 283              	.LFE138:
+ 285              		.section	.text.HT_DM_S_7010_Read_Status_Fault,"ax",%progbits
+ 286              		.align	1
+ 287              		.global	HT_DM_S_7010_Read_Status_Fault
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 292              	HT_DM_S_7010_Read_Status_Fault:
+ 293              	.LVL15:
+ 294              	.LFB139:
+  73:Core/Src/HT_DM_S_7010.c **** 
+  74:Core/Src/HT_DM_S_7010.c **** /**
+  75:Core/Src/HT_DM_S_7010.c ****   * @brief    读取母线电压、母线电流、工作温度、运行模式及故障码状态信�
+  76:Core/Src/HT_DM_S_7010.c **** 障，将以200ms时间周期上报实时状态信息
+  77:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+  78:Core/Src/HT_DM_S_7010.c ****   */
+  79:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Read_Status_Fault(uint8_t addr)
+  80:Core/Src/HT_DM_S_7010.c **** {
+ 295              		.loc 1 80 1 is_stmt 1 view -0
+ 296              		.cfi_startproc
+ 297              		@ args = 0, pretend = 0, frame = 8
+ 298              		@ frame_needed = 0, uses_anonymous_args = 0
+ 299              		.loc 1 80 1 is_stmt 0 view .LVU66
+ 300 0000 00B5     		push	{lr}
+ 301              	.LCFI15:
+ 302              		.cfi_def_cfa_offset 4
+ 303              		.cfi_offset 14, -4
+ 304 0002 83B0     		sub	sp, sp, #12
+ 305              	.LCFI16:
+ 306              		.cfi_def_cfa_offset 16
+  81:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 307              		.loc 1 81 3 is_stmt 1 view .LVU67
+ 308              		.loc 1 81 11 is_stmt 0 view .LVU68
+ 309 0004 0023     		movs	r3, #0
+ 310 0006 0093     		str	r3, [sp]
+ 311 0008 0193     		str	r3, [sp, #4]
+  82:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 312              		.loc 1 82 3 is_stmt 1 view .LVU69
+ 313              		.loc 1 82 10 is_stmt 0 view .LVU70
+ 314 000a 8DF80000 		strb	r0, [sp]
+  83:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xAE;
+ 315              		.loc 1 83 3 is_stmt 1 view .LVU71
+ 316              		.loc 1 83 10 is_stmt 0 view .LVU72
+ 317 000e AE23     		movs	r3, #174
+ 318 0010 8DF80130 		strb	r3, [sp, #1]
+  84:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 319              		.loc 1 84 3 is_stmt 1 view .LVU73
+ 320 0014 0221     		movs	r1, #2
+ 321 0016 6846     		mov	r0, sp
+ 322              	.LVL16:
+ 323              		.loc 1 84 3 is_stmt 0 view .LVU74
+ 324 0018 FFF7FEFF 		bl	can2_SendCmd
+ 325              	.LVL17:
+  85:Core/Src/HT_DM_S_7010.c **** }
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 8
+
+
+ 326              		.loc 1 85 1 view .LVU75
+ 327 001c 03B0     		add	sp, sp, #12
+ 328              	.LCFI17:
+ 329              		.cfi_def_cfa_offset 4
+ 330              		@ sp needed
+ 331 001e 5DF804FB 		ldr	pc, [sp], #4
+ 332              		.cfi_endproc
+ 333              	.LFE139:
+ 335              		.section	.text.HT_DM_S_7010_Clear_Fault,"ax",%progbits
+ 336              		.align	1
+ 337              		.global	HT_DM_S_7010_Clear_Fault
+ 338              		.syntax unified
+ 339              		.thumb
+ 340              		.thumb_func
+ 342              	HT_DM_S_7010_Clear_Fault:
+ 343              	.LVL18:
+ 344              	.LFB140:
+  86:Core/Src/HT_DM_S_7010.c **** 
+  87:Core/Src/HT_DM_S_7010.c **** /**
+  88:Core/Src/HT_DM_S_7010.c ****   * @brief    清除故障
+  89:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+  90:Core/Src/HT_DM_S_7010.c ****   */
+  91:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Clear_Fault(uint8_t addr)
+  92:Core/Src/HT_DM_S_7010.c **** {
+ 345              		.loc 1 92 1 is_stmt 1 view -0
+ 346              		.cfi_startproc
+ 347              		@ args = 0, pretend = 0, frame = 8
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349              		.loc 1 92 1 is_stmt 0 view .LVU77
+ 350 0000 00B5     		push	{lr}
+ 351              	.LCFI18:
+ 352              		.cfi_def_cfa_offset 4
+ 353              		.cfi_offset 14, -4
+ 354 0002 83B0     		sub	sp, sp, #12
+ 355              	.LCFI19:
+ 356              		.cfi_def_cfa_offset 16
+  93:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 357              		.loc 1 93 3 is_stmt 1 view .LVU78
+ 358              		.loc 1 93 11 is_stmt 0 view .LVU79
+ 359 0004 0023     		movs	r3, #0
+ 360 0006 0093     		str	r3, [sp]
+ 361 0008 0193     		str	r3, [sp, #4]
+  94:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 362              		.loc 1 94 3 is_stmt 1 view .LVU80
+ 363              		.loc 1 94 10 is_stmt 0 view .LVU81
+ 364 000a 8DF80000 		strb	r0, [sp]
+  95:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xAF;
+ 365              		.loc 1 95 3 is_stmt 1 view .LVU82
+ 366              		.loc 1 95 10 is_stmt 0 view .LVU83
+ 367 000e AF23     		movs	r3, #175
+ 368 0010 8DF80130 		strb	r3, [sp, #1]
+  96:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 369              		.loc 1 96 3 is_stmt 1 view .LVU84
+ 370 0014 0221     		movs	r1, #2
+ 371 0016 6846     		mov	r0, sp
+ 372              	.LVL19:
+ 373              		.loc 1 96 3 is_stmt 0 view .LVU85
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 9
+
+
+ 374 0018 FFF7FEFF 		bl	can2_SendCmd
+ 375              	.LVL20:
+  97:Core/Src/HT_DM_S_7010.c **** }
+ 376              		.loc 1 97 1 view .LVU86
+ 377 001c 03B0     		add	sp, sp, #12
+ 378              	.LCFI20:
+ 379              		.cfi_def_cfa_offset 4
+ 380              		@ sp needed
+ 381 001e 5DF804FB 		ldr	pc, [sp], #4
+ 382              		.cfi_endproc
+ 383              	.LFE140:
+ 385              		.section	.text.HT_DM_S_7010_Read_Motor_Params,"ax",%progbits
+ 386              		.align	1
+ 387              		.global	HT_DM_S_7010_Read_Motor_Params
+ 388              		.syntax unified
+ 389              		.thumb
+ 390              		.thumb_func
+ 392              	HT_DM_S_7010_Read_Motor_Params:
+ 393              	.LVL21:
+ 394              	.LFB141:
+  98:Core/Src/HT_DM_S_7010.c **** 
+  99:Core/Src/HT_DM_S_7010.c **** /* ---------- 参数配置命令 ---------- */
+ 100:Core/Src/HT_DM_S_7010.c **** 
+ 101:Core/Src/HT_DM_S_7010.c **** /**
+ 102:Core/Src/HT_DM_S_7010.c ****   * @brief    读取电机极对数、力矩常数、减速比
+ 103:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 104:Core/Src/HT_DM_S_7010.c ****   */
+ 105:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Read_Motor_Params(uint8_t addr)
+ 106:Core/Src/HT_DM_S_7010.c **** {
+ 395              		.loc 1 106 1 is_stmt 1 view -0
+ 396              		.cfi_startproc
+ 397              		@ args = 0, pretend = 0, frame = 8
+ 398              		@ frame_needed = 0, uses_anonymous_args = 0
+ 399              		.loc 1 106 1 is_stmt 0 view .LVU88
+ 400 0000 00B5     		push	{lr}
+ 401              	.LCFI21:
+ 402              		.cfi_def_cfa_offset 4
+ 403              		.cfi_offset 14, -4
+ 404 0002 83B0     		sub	sp, sp, #12
+ 405              	.LCFI22:
+ 406              		.cfi_def_cfa_offset 16
+ 107:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 407              		.loc 1 107 3 is_stmt 1 view .LVU89
+ 408              		.loc 1 107 11 is_stmt 0 view .LVU90
+ 409 0004 0023     		movs	r3, #0
+ 410 0006 0093     		str	r3, [sp]
+ 411 0008 0193     		str	r3, [sp, #4]
+ 108:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 412              		.loc 1 108 3 is_stmt 1 view .LVU91
+ 413              		.loc 1 108 10 is_stmt 0 view .LVU92
+ 414 000a 8DF80000 		strb	r0, [sp]
+ 109:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB0;
+ 415              		.loc 1 109 3 is_stmt 1 view .LVU93
+ 416              		.loc 1 109 10 is_stmt 0 view .LVU94
+ 417 000e B023     		movs	r3, #176
+ 418 0010 8DF80130 		strb	r3, [sp, #1]
+ 110:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 10
+
+
+ 419              		.loc 1 110 3 is_stmt 1 view .LVU95
+ 420 0014 0221     		movs	r1, #2
+ 421 0016 6846     		mov	r0, sp
+ 422              	.LVL22:
+ 423              		.loc 1 110 3 is_stmt 0 view .LVU96
+ 424 0018 FFF7FEFF 		bl	can2_SendCmd
+ 425              	.LVL23:
+ 111:Core/Src/HT_DM_S_7010.c **** }
+ 426              		.loc 1 111 1 view .LVU97
+ 427 001c 03B0     		add	sp, sp, #12
+ 428              	.LCFI23:
+ 429              		.cfi_def_cfa_offset 4
+ 430              		@ sp needed
+ 431 001e 5DF804FB 		ldr	pc, [sp], #4
+ 432              		.cfi_endproc
+ 433              	.LFE141:
+ 435              		.section	.text.HT_DM_S_7010_Set_Current_Position_As_Origin,"ax",%progbits
+ 436              		.align	1
+ 437              		.global	HT_DM_S_7010_Set_Current_Position_As_Origin
+ 438              		.syntax unified
+ 439              		.thumb
+ 440              		.thumb_func
+ 442              	HT_DM_S_7010_Set_Current_Position_As_Origin:
+ 443              	.LVL24:
+ 444              	.LFB142:
+ 112:Core/Src/HT_DM_S_7010.c **** 
+ 113:Core/Src/HT_DM_S_7010.c **** /**
+ 114:Core/Src/HT_DM_S_7010.c ****   * @brief    设置当前位置为原点
+ 115:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 116:Core/Src/HT_DM_S_7010.c ****   */
+ 117:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Current_Position_As_Origin(uint8_t addr)
+ 118:Core/Src/HT_DM_S_7010.c **** {
+ 445              		.loc 1 118 1 is_stmt 1 view -0
+ 446              		.cfi_startproc
+ 447              		@ args = 0, pretend = 0, frame = 8
+ 448              		@ frame_needed = 0, uses_anonymous_args = 0
+ 449              		.loc 1 118 1 is_stmt 0 view .LVU99
+ 450 0000 00B5     		push	{lr}
+ 451              	.LCFI24:
+ 452              		.cfi_def_cfa_offset 4
+ 453              		.cfi_offset 14, -4
+ 454 0002 83B0     		sub	sp, sp, #12
+ 455              	.LCFI25:
+ 456              		.cfi_def_cfa_offset 16
+ 119:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 457              		.loc 1 119 3 is_stmt 1 view .LVU100
+ 458              		.loc 1 119 11 is_stmt 0 view .LVU101
+ 459 0004 0023     		movs	r3, #0
+ 460 0006 0093     		str	r3, [sp]
+ 461 0008 0193     		str	r3, [sp, #4]
+ 120:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 462              		.loc 1 120 3 is_stmt 1 view .LVU102
+ 463              		.loc 1 120 10 is_stmt 0 view .LVU103
+ 464 000a 8DF80000 		strb	r0, [sp]
+ 121:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB1;
+ 465              		.loc 1 121 3 is_stmt 1 view .LVU104
+ 466              		.loc 1 121 10 is_stmt 0 view .LVU105
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 11
+
+
+ 467 000e B123     		movs	r3, #177
+ 468 0010 8DF80130 		strb	r3, [sp, #1]
+ 122:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 469              		.loc 1 122 3 is_stmt 1 view .LVU106
+ 470 0014 0221     		movs	r1, #2
+ 471 0016 6846     		mov	r0, sp
+ 472              	.LVL25:
+ 473              		.loc 1 122 3 is_stmt 0 view .LVU107
+ 474 0018 FFF7FEFF 		bl	can2_SendCmd
+ 475              	.LVL26:
+ 123:Core/Src/HT_DM_S_7010.c **** }
+ 476              		.loc 1 123 1 view .LVU108
+ 477 001c 03B0     		add	sp, sp, #12
+ 478              	.LCFI26:
+ 479              		.cfi_def_cfa_offset 4
+ 480              		@ sp needed
+ 481 001e 5DF804FB 		ldr	pc, [sp], #4
+ 482              		.cfi_endproc
+ 483              	.LFE142:
+ 485              		.section	.text.HT_DM_S_7010_Set_Position_Max_Speed,"ax",%progbits
+ 486              		.align	1
+ 487              		.global	HT_DM_S_7010_Set_Position_Max_Speed
+ 488              		.syntax unified
+ 489              		.thumb
+ 490              		.thumb_func
+ 492              	HT_DM_S_7010_Set_Position_Max_Speed:
+ 493              	.LVL27:
+ 494              	.LFB143:
+ 124:Core/Src/HT_DM_S_7010.c **** 
+ 125:Core/Src/HT_DM_S_7010.c **** /**
+ 126:Core/Src/HT_DM_S_7010.c ****   * @brief    设置位置模式旋转最大速度，断电不保存
+ 127:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 128:Core/Src/HT_DM_S_7010.c ****   * @param    max_speed  ：最大速度
+ 129:Core/Src/HT_DM_S_7010.c ****   */
+ 130:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Position_Max_Speed(uint8_t addr, uint32_t max_speed)
+ 131:Core/Src/HT_DM_S_7010.c **** {
+ 495              		.loc 1 131 1 is_stmt 1 view -0
+ 496              		.cfi_startproc
+ 497              		@ args = 0, pretend = 0, frame = 16
+ 498              		@ frame_needed = 0, uses_anonymous_args = 0
+ 499              		.loc 1 131 1 is_stmt 0 view .LVU110
+ 500 0000 00B5     		push	{lr}
+ 501              	.LCFI27:
+ 502              		.cfi_def_cfa_offset 4
+ 503              		.cfi_offset 14, -4
+ 504 0002 85B0     		sub	sp, sp, #20
+ 505              	.LCFI28:
+ 506              		.cfi_def_cfa_offset 24
+ 132:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 507              		.loc 1 132 3 is_stmt 1 view .LVU111
+ 508              		.loc 1 132 11 is_stmt 0 view .LVU112
+ 509 0004 0023     		movs	r3, #0
+ 510 0006 0193     		str	r3, [sp, #4]
+ 511 0008 0293     		str	r3, [sp, #8]
+ 512 000a 0393     		str	r3, [sp, #12]
+ 133:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 513              		.loc 1 133 3 is_stmt 1 view .LVU113
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 12
+
+
+ 514              		.loc 1 133 10 is_stmt 0 view .LVU114
+ 515 000c 8DF80400 		strb	r0, [sp, #4]
+ 134:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB2;
+ 516              		.loc 1 134 3 is_stmt 1 view .LVU115
+ 517              		.loc 1 134 10 is_stmt 0 view .LVU116
+ 518 0010 B223     		movs	r3, #178
+ 519 0012 8DF80530 		strb	r3, [sp, #5]
+ 135:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(max_speed >> 0);
+ 520              		.loc 1 135 3 is_stmt 1 view .LVU117
+ 521              		.loc 1 135 10 is_stmt 0 view .LVU118
+ 522 0016 8DF80610 		strb	r1, [sp, #6]
+ 136:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(max_speed >> 8);
+ 523              		.loc 1 136 3 is_stmt 1 view .LVU119
+ 524              		.loc 1 136 12 is_stmt 0 view .LVU120
+ 525 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 526              		.loc 1 136 10 view .LVU121
+ 527 001e 8DF80730 		strb	r3, [sp, #7]
+ 137:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(max_speed >> 16);
+ 528              		.loc 1 137 3 is_stmt 1 view .LVU122
+ 529              		.loc 1 137 12 is_stmt 0 view .LVU123
+ 530 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 531              		.loc 1 137 10 view .LVU124
+ 532 0026 8DF80830 		strb	r3, [sp, #8]
+ 138:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(max_speed >> 24);
+ 533              		.loc 1 138 3 is_stmt 1 view .LVU125
+ 534              		.loc 1 138 12 is_stmt 0 view .LVU126
+ 535 002a 090E     		lsrs	r1, r1, #24
+ 536              	.LVL28:
+ 537              		.loc 1 138 10 view .LVU127
+ 538 002c 8DF80910 		strb	r1, [sp, #9]
+ 139:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 539              		.loc 1 139 3 is_stmt 1 view .LVU128
+ 540 0030 0621     		movs	r1, #6
+ 541 0032 01A8     		add	r0, sp, #4
+ 542              	.LVL29:
+ 543              		.loc 1 139 3 is_stmt 0 view .LVU129
+ 544 0034 FFF7FEFF 		bl	can2_SendCmd
+ 545              	.LVL30:
+ 140:Core/Src/HT_DM_S_7010.c **** }
+ 546              		.loc 1 140 1 view .LVU130
+ 547 0038 05B0     		add	sp, sp, #20
+ 548              	.LCFI29:
+ 549              		.cfi_def_cfa_offset 4
+ 550              		@ sp needed
+ 551 003a 5DF804FB 		ldr	pc, [sp], #4
+ 552              		.cfi_endproc
+ 553              	.LFE143:
+ 555              		.section	.text.HT_DM_S_7010_Set_Max_Q_Current,"ax",%progbits
+ 556              		.align	1
+ 557              		.global	HT_DM_S_7010_Set_Max_Q_Current
+ 558              		.syntax unified
+ 559              		.thumb
+ 560              		.thumb_func
+ 562              	HT_DM_S_7010_Set_Max_Q_Current:
+ 563              	.LVL31:
+ 564              	.LFB144:
+ 141:Core/Src/HT_DM_S_7010.c **** 
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 13
+
+
+ 142:Core/Src/HT_DM_S_7010.c **** /**
+ 143:Core/Src/HT_DM_S_7010.c ****   * @brief    设置位置或速度模式最大Q轴电流，断电不保存
+ 144:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 145:Core/Src/HT_DM_S_7010.c ****   * @param    max_current  ：最大电流
+ 146:Core/Src/HT_DM_S_7010.c ****   */
+ 147:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Max_Q_Current(uint8_t addr, uint32_t max_current)
+ 148:Core/Src/HT_DM_S_7010.c **** {
+ 565              		.loc 1 148 1 is_stmt 1 view -0
+ 566              		.cfi_startproc
+ 567              		@ args = 0, pretend = 0, frame = 16
+ 568              		@ frame_needed = 0, uses_anonymous_args = 0
+ 569              		.loc 1 148 1 is_stmt 0 view .LVU132
+ 570 0000 00B5     		push	{lr}
+ 571              	.LCFI30:
+ 572              		.cfi_def_cfa_offset 4
+ 573              		.cfi_offset 14, -4
+ 574 0002 85B0     		sub	sp, sp, #20
+ 575              	.LCFI31:
+ 576              		.cfi_def_cfa_offset 24
+ 149:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 577              		.loc 1 149 3 is_stmt 1 view .LVU133
+ 578              		.loc 1 149 11 is_stmt 0 view .LVU134
+ 579 0004 0023     		movs	r3, #0
+ 580 0006 0193     		str	r3, [sp, #4]
+ 581 0008 0293     		str	r3, [sp, #8]
+ 582 000a 0393     		str	r3, [sp, #12]
+ 150:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 583              		.loc 1 150 3 is_stmt 1 view .LVU135
+ 584              		.loc 1 150 10 is_stmt 0 view .LVU136
+ 585 000c 8DF80400 		strb	r0, [sp, #4]
+ 151:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB3;
+ 586              		.loc 1 151 3 is_stmt 1 view .LVU137
+ 587              		.loc 1 151 10 is_stmt 0 view .LVU138
+ 588 0010 B323     		movs	r3, #179
+ 589 0012 8DF80530 		strb	r3, [sp, #5]
+ 152:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(max_current >> 0);
+ 590              		.loc 1 152 3 is_stmt 1 view .LVU139
+ 591              		.loc 1 152 10 is_stmt 0 view .LVU140
+ 592 0016 8DF80610 		strb	r1, [sp, #6]
+ 153:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(max_current >> 8);
+ 593              		.loc 1 153 3 is_stmt 1 view .LVU141
+ 594              		.loc 1 153 12 is_stmt 0 view .LVU142
+ 595 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 596              		.loc 1 153 10 view .LVU143
+ 597 001e 8DF80730 		strb	r3, [sp, #7]
+ 154:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(max_current >> 16);
+ 598              		.loc 1 154 3 is_stmt 1 view .LVU144
+ 599              		.loc 1 154 12 is_stmt 0 view .LVU145
+ 600 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 601              		.loc 1 154 10 view .LVU146
+ 602 0026 8DF80830 		strb	r3, [sp, #8]
+ 155:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(max_current >> 24);
+ 603              		.loc 1 155 3 is_stmt 1 view .LVU147
+ 604              		.loc 1 155 12 is_stmt 0 view .LVU148
+ 605 002a 090E     		lsrs	r1, r1, #24
+ 606              	.LVL32:
+ 607              		.loc 1 155 10 view .LVU149
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 14
+
+
+ 608 002c 8DF80910 		strb	r1, [sp, #9]
+ 156:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 609              		.loc 1 156 3 is_stmt 1 view .LVU150
+ 610 0030 0621     		movs	r1, #6
+ 611 0032 01A8     		add	r0, sp, #4
+ 612              	.LVL33:
+ 613              		.loc 1 156 3 is_stmt 0 view .LVU151
+ 614 0034 FFF7FEFF 		bl	can2_SendCmd
+ 615              	.LVL34:
+ 157:Core/Src/HT_DM_S_7010.c **** }
+ 616              		.loc 1 157 1 view .LVU152
+ 617 0038 05B0     		add	sp, sp, #20
+ 618              	.LCFI32:
+ 619              		.cfi_def_cfa_offset 4
+ 620              		@ sp needed
+ 621 003a 5DF804FB 		ldr	pc, [sp], #4
+ 622              		.cfi_endproc
+ 623              	.LFE144:
+ 625              		.section	.text.HT_DM_S_7010_Set_Q_Current_Slope,"ax",%progbits
+ 626              		.align	1
+ 627              		.global	HT_DM_S_7010_Set_Q_Current_Slope
+ 628              		.syntax unified
+ 629              		.thumb
+ 630              		.thumb_func
+ 632              	HT_DM_S_7010_Set_Q_Current_Slope:
+ 633              	.LVL35:
+ 634              	.LFB145:
+ 158:Core/Src/HT_DM_S_7010.c **** 
+ 159:Core/Src/HT_DM_S_7010.c **** /**
+ 160:Core/Src/HT_DM_S_7010.c ****   * @brief    设置Q轴电流控制模式下的Q轴电流斜率，断电不保存
+ 161:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 162:Core/Src/HT_DM_S_7010.c ****   * @param    slope  ：电流斜率
+ 163:Core/Src/HT_DM_S_7010.c ****   */
+ 164:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Q_Current_Slope(uint8_t addr, uint32_t slope)
+ 165:Core/Src/HT_DM_S_7010.c **** {
+ 635              		.loc 1 165 1 is_stmt 1 view -0
+ 636              		.cfi_startproc
+ 637              		@ args = 0, pretend = 0, frame = 16
+ 638              		@ frame_needed = 0, uses_anonymous_args = 0
+ 639              		.loc 1 165 1 is_stmt 0 view .LVU154
+ 640 0000 00B5     		push	{lr}
+ 641              	.LCFI33:
+ 642              		.cfi_def_cfa_offset 4
+ 643              		.cfi_offset 14, -4
+ 644 0002 85B0     		sub	sp, sp, #20
+ 645              	.LCFI34:
+ 646              		.cfi_def_cfa_offset 24
+ 166:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 647              		.loc 1 166 3 is_stmt 1 view .LVU155
+ 648              		.loc 1 166 11 is_stmt 0 view .LVU156
+ 649 0004 0023     		movs	r3, #0
+ 650 0006 0193     		str	r3, [sp, #4]
+ 651 0008 0293     		str	r3, [sp, #8]
+ 652 000a 0393     		str	r3, [sp, #12]
+ 167:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 653              		.loc 1 167 3 is_stmt 1 view .LVU157
+ 654              		.loc 1 167 10 is_stmt 0 view .LVU158
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 15
+
+
+ 655 000c 8DF80400 		strb	r0, [sp, #4]
+ 168:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB4;
+ 656              		.loc 1 168 3 is_stmt 1 view .LVU159
+ 657              		.loc 1 168 10 is_stmt 0 view .LVU160
+ 658 0010 B423     		movs	r3, #180
+ 659 0012 8DF80530 		strb	r3, [sp, #5]
+ 169:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(slope >> 0);
+ 660              		.loc 1 169 3 is_stmt 1 view .LVU161
+ 661              		.loc 1 169 10 is_stmt 0 view .LVU162
+ 662 0016 8DF80610 		strb	r1, [sp, #6]
+ 170:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(slope >> 8);
+ 663              		.loc 1 170 3 is_stmt 1 view .LVU163
+ 664              		.loc 1 170 12 is_stmt 0 view .LVU164
+ 665 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 666              		.loc 1 170 10 view .LVU165
+ 667 001e 8DF80730 		strb	r3, [sp, #7]
+ 171:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(slope >> 16);
+ 668              		.loc 1 171 3 is_stmt 1 view .LVU166
+ 669              		.loc 1 171 12 is_stmt 0 view .LVU167
+ 670 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 671              		.loc 1 171 10 view .LVU168
+ 672 0026 8DF80830 		strb	r3, [sp, #8]
+ 172:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(slope >> 24);
+ 673              		.loc 1 172 3 is_stmt 1 view .LVU169
+ 674              		.loc 1 172 12 is_stmt 0 view .LVU170
+ 675 002a 090E     		lsrs	r1, r1, #24
+ 676              	.LVL36:
+ 677              		.loc 1 172 10 view .LVU171
+ 678 002c 8DF80910 		strb	r1, [sp, #9]
+ 173:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 679              		.loc 1 173 3 is_stmt 1 view .LVU172
+ 680 0030 0621     		movs	r1, #6
+ 681 0032 01A8     		add	r0, sp, #4
+ 682              	.LVL37:
+ 683              		.loc 1 173 3 is_stmt 0 view .LVU173
+ 684 0034 FFF7FEFF 		bl	can2_SendCmd
+ 685              	.LVL38:
+ 174:Core/Src/HT_DM_S_7010.c **** }
+ 686              		.loc 1 174 1 view .LVU174
+ 687 0038 05B0     		add	sp, sp, #20
+ 688              	.LCFI35:
+ 689              		.cfi_def_cfa_offset 4
+ 690              		@ sp needed
+ 691 003a 5DF804FB 		ldr	pc, [sp], #4
+ 692              		.cfi_endproc
+ 693              	.LFE145:
+ 695              		.section	.text.HT_DM_S_7010_Set_Acceleration,"ax",%progbits
+ 696              		.align	1
+ 697              		.global	HT_DM_S_7010_Set_Acceleration
+ 698              		.syntax unified
+ 699              		.thumb
+ 700              		.thumb_func
+ 702              	HT_DM_S_7010_Set_Acceleration:
+ 703              	.LVL39:
+ 704              	.LFB146:
+ 175:Core/Src/HT_DM_S_7010.c **** 
+ 176:Core/Src/HT_DM_S_7010.c **** /**
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 16
+
+
+ 177:Core/Src/HT_DM_S_7010.c ****   * @brief    设置速度控制模式下的加速度，断电不保存
+ 178:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 179:Core/Src/HT_DM_S_7010.c ****   * @param    acceleration  ：加速度
+ 180:Core/Src/HT_DM_S_7010.c ****   */
+ 181:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Acceleration(uint8_t addr, uint32_t acceleration)
+ 182:Core/Src/HT_DM_S_7010.c **** {
+ 705              		.loc 1 182 1 is_stmt 1 view -0
+ 706              		.cfi_startproc
+ 707              		@ args = 0, pretend = 0, frame = 16
+ 708              		@ frame_needed = 0, uses_anonymous_args = 0
+ 709              		.loc 1 182 1 is_stmt 0 view .LVU176
+ 710 0000 00B5     		push	{lr}
+ 711              	.LCFI36:
+ 712              		.cfi_def_cfa_offset 4
+ 713              		.cfi_offset 14, -4
+ 714 0002 85B0     		sub	sp, sp, #20
+ 715              	.LCFI37:
+ 716              		.cfi_def_cfa_offset 24
+ 183:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 717              		.loc 1 183 3 is_stmt 1 view .LVU177
+ 718              		.loc 1 183 11 is_stmt 0 view .LVU178
+ 719 0004 0023     		movs	r3, #0
+ 720 0006 0193     		str	r3, [sp, #4]
+ 721 0008 0293     		str	r3, [sp, #8]
+ 722 000a 0393     		str	r3, [sp, #12]
+ 184:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 723              		.loc 1 184 3 is_stmt 1 view .LVU179
+ 724              		.loc 1 184 10 is_stmt 0 view .LVU180
+ 725 000c 8DF80400 		strb	r0, [sp, #4]
+ 185:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB5;
+ 726              		.loc 1 185 3 is_stmt 1 view .LVU181
+ 727              		.loc 1 185 10 is_stmt 0 view .LVU182
+ 728 0010 B523     		movs	r3, #181
+ 729 0012 8DF80530 		strb	r3, [sp, #5]
+ 186:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(acceleration >> 0);
+ 730              		.loc 1 186 3 is_stmt 1 view .LVU183
+ 731              		.loc 1 186 10 is_stmt 0 view .LVU184
+ 732 0016 8DF80610 		strb	r1, [sp, #6]
+ 187:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(acceleration >> 8);
+ 733              		.loc 1 187 3 is_stmt 1 view .LVU185
+ 734              		.loc 1 187 12 is_stmt 0 view .LVU186
+ 735 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 736              		.loc 1 187 10 view .LVU187
+ 737 001e 8DF80730 		strb	r3, [sp, #7]
+ 188:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(acceleration >> 16);
+ 738              		.loc 1 188 3 is_stmt 1 view .LVU188
+ 739              		.loc 1 188 12 is_stmt 0 view .LVU189
+ 740 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 741              		.loc 1 188 10 view .LVU190
+ 742 0026 8DF80830 		strb	r3, [sp, #8]
+ 189:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(acceleration >> 24);
+ 743              		.loc 1 189 3 is_stmt 1 view .LVU191
+ 744              		.loc 1 189 12 is_stmt 0 view .LVU192
+ 745 002a 090E     		lsrs	r1, r1, #24
+ 746              	.LVL40:
+ 747              		.loc 1 189 10 view .LVU193
+ 748 002c 8DF80910 		strb	r1, [sp, #9]
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 17
+
+
+ 190:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 749              		.loc 1 190 3 is_stmt 1 view .LVU194
+ 750 0030 0621     		movs	r1, #6
+ 751 0032 01A8     		add	r0, sp, #4
+ 752              	.LVL41:
+ 753              		.loc 1 190 3 is_stmt 0 view .LVU195
+ 754 0034 FFF7FEFF 		bl	can2_SendCmd
+ 755              	.LVL42:
+ 191:Core/Src/HT_DM_S_7010.c **** }
+ 756              		.loc 1 191 1 view .LVU196
+ 757 0038 05B0     		add	sp, sp, #20
+ 758              	.LCFI38:
+ 759              		.cfi_def_cfa_offset 4
+ 760              		@ sp needed
+ 761 003a 5DF804FB 		ldr	pc, [sp], #4
+ 762              		.cfi_endproc
+ 763              	.LFE146:
+ 765              		.section	.text.HT_DM_S_7010_Set_Position_Kp,"ax",%progbits
+ 766              		.align	1
+ 767              		.global	HT_DM_S_7010_Set_Position_Kp
+ 768              		.syntax unified
+ 769              		.thumb
+ 770              		.thumb_func
+ 772              	HT_DM_S_7010_Set_Position_Kp:
+ 773              	.LVL43:
+ 774              	.LFB147:
+ 192:Core/Src/HT_DM_S_7010.c **** 
+ 193:Core/Src/HT_DM_S_7010.c **** /**
+ 194:Core/Src/HT_DM_S_7010.c ****   * @brief    设置位置控制闭环Kp，断电不保存
+ 195:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 196:Core/Src/HT_DM_S_7010.c ****   * @param    kp  ：Kp值
+ 197:Core/Src/HT_DM_S_7010.c ****   */
+ 198:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Position_Kp(uint8_t addr, float kp)
+ 199:Core/Src/HT_DM_S_7010.c **** {
+ 775              		.loc 1 199 1 is_stmt 1 view -0
+ 776              		.cfi_startproc
+ 777              		@ args = 0, pretend = 0, frame = 24
+ 778              		@ frame_needed = 0, uses_anonymous_args = 0
+ 779              		.loc 1 199 1 is_stmt 0 view .LVU198
+ 780 0000 00B5     		push	{lr}
+ 781              	.LCFI39:
+ 782              		.cfi_def_cfa_offset 4
+ 783              		.cfi_offset 14, -4
+ 784 0002 87B0     		sub	sp, sp, #28
+ 785              	.LCFI40:
+ 786              		.cfi_def_cfa_offset 32
+ 787 0004 8DED010A 		vstr.32	s0, [sp, #4]
+ 200:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 788              		.loc 1 200 3 is_stmt 1 view .LVU199
+ 789              		.loc 1 200 11 is_stmt 0 view .LVU200
+ 790 0008 0023     		movs	r3, #0
+ 791 000a 0393     		str	r3, [sp, #12]
+ 792 000c 0493     		str	r3, [sp, #16]
+ 793 000e 0593     		str	r3, [sp, #20]
+ 201:Core/Src/HT_DM_S_7010.c ****   union
+ 794              		.loc 1 201 3 is_stmt 1 view .LVU201
+ 202:Core/Src/HT_DM_S_7010.c ****   {
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 18
+
+
+ 203:Core/Src/HT_DM_S_7010.c ****     float f;
+ 204:Core/Src/HT_DM_S_7010.c ****     uint8_t b[4];
+ 205:Core/Src/HT_DM_S_7010.c ****   } u;
+ 206:Core/Src/HT_DM_S_7010.c ****   u.f = kp;
+ 795              		.loc 1 206 3 view .LVU202
+ 207:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 796              		.loc 1 207 3 view .LVU203
+ 797              		.loc 1 207 10 is_stmt 0 view .LVU204
+ 798 0010 8DF80C00 		strb	r0, [sp, #12]
+ 208:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB6;
+ 799              		.loc 1 208 3 is_stmt 1 view .LVU205
+ 800              		.loc 1 208 10 is_stmt 0 view .LVU206
+ 801 0014 B623     		movs	r3, #182
+ 802 0016 8DF80D30 		strb	r3, [sp, #13]
+ 209:Core/Src/HT_DM_S_7010.c ****   cmd[2] = u.b[0];
+ 803              		.loc 1 209 3 is_stmt 1 view .LVU207
+ 804              		.loc 1 209 10 is_stmt 0 view .LVU208
+ 805 001a 019B     		ldr	r3, [sp, #4]
+ 806 001c 8DF80E30 		strb	r3, [sp, #14]
+ 210:Core/Src/HT_DM_S_7010.c ****   cmd[3] = u.b[1];
+ 807              		.loc 1 210 3 is_stmt 1 view .LVU209
+ 808              		.loc 1 210 10 is_stmt 0 view .LVU210
+ 809 0020 C3F30722 		ubfx	r2, r3, #8, #8
+ 810 0024 8DF80F20 		strb	r2, [sp, #15]
+ 211:Core/Src/HT_DM_S_7010.c ****   cmd[4] = u.b[2];
+ 811              		.loc 1 211 3 is_stmt 1 view .LVU211
+ 812              		.loc 1 211 10 is_stmt 0 view .LVU212
+ 813 0028 C3F30742 		ubfx	r2, r3, #16, #8
+ 814 002c 8DF81020 		strb	r2, [sp, #16]
+ 212:Core/Src/HT_DM_S_7010.c ****   cmd[5] = u.b[3];
+ 815              		.loc 1 212 3 is_stmt 1 view .LVU213
+ 816              		.loc 1 212 10 is_stmt 0 view .LVU214
+ 817 0030 C3F30763 		ubfx	r3, r3, #24, #8
+ 818 0034 8DF81130 		strb	r3, [sp, #17]
+ 213:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 819              		.loc 1 213 3 is_stmt 1 view .LVU215
+ 820 0038 0621     		movs	r1, #6
+ 821 003a 03A8     		add	r0, sp, #12
+ 822              	.LVL44:
+ 823              		.loc 1 213 3 is_stmt 0 view .LVU216
+ 824 003c FFF7FEFF 		bl	can2_SendCmd
+ 825              	.LVL45:
+ 214:Core/Src/HT_DM_S_7010.c **** }
+ 826              		.loc 1 214 1 view .LVU217
+ 827 0040 07B0     		add	sp, sp, #28
+ 828              	.LCFI41:
+ 829              		.cfi_def_cfa_offset 4
+ 830              		@ sp needed
+ 831 0042 5DF804FB 		ldr	pc, [sp], #4
+ 832              		.loc 1 214 1 view .LVU218
+ 833              		.cfi_endproc
+ 834              	.LFE147:
+ 836              		.section	.text.HT_DM_S_7010_Set_Position_Ki,"ax",%progbits
+ 837              		.align	1
+ 838              		.global	HT_DM_S_7010_Set_Position_Ki
+ 839              		.syntax unified
+ 840              		.thumb
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 19
+
+
+ 841              		.thumb_func
+ 843              	HT_DM_S_7010_Set_Position_Ki:
+ 844              	.LVL46:
+ 845              	.LFB148:
+ 215:Core/Src/HT_DM_S_7010.c **** 
+ 216:Core/Src/HT_DM_S_7010.c **** /**
+ 217:Core/Src/HT_DM_S_7010.c ****   * @brief    设置位置控制闭环Ki，断电不保存
+ 218:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 219:Core/Src/HT_DM_S_7010.c ****   * @param    ki  ：Ki值
+ 220:Core/Src/HT_DM_S_7010.c ****   */
+ 221:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Position_Ki(uint8_t addr, float ki)
+ 222:Core/Src/HT_DM_S_7010.c **** {
+ 846              		.loc 1 222 1 is_stmt 1 view -0
+ 847              		.cfi_startproc
+ 848              		@ args = 0, pretend = 0, frame = 24
+ 849              		@ frame_needed = 0, uses_anonymous_args = 0
+ 850              		.loc 1 222 1 is_stmt 0 view .LVU220
+ 851 0000 00B5     		push	{lr}
+ 852              	.LCFI42:
+ 853              		.cfi_def_cfa_offset 4
+ 854              		.cfi_offset 14, -4
+ 855 0002 87B0     		sub	sp, sp, #28
+ 856              	.LCFI43:
+ 857              		.cfi_def_cfa_offset 32
+ 858 0004 8DED010A 		vstr.32	s0, [sp, #4]
+ 223:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 859              		.loc 1 223 3 is_stmt 1 view .LVU221
+ 860              		.loc 1 223 11 is_stmt 0 view .LVU222
+ 861 0008 0023     		movs	r3, #0
+ 862 000a 0393     		str	r3, [sp, #12]
+ 863 000c 0493     		str	r3, [sp, #16]
+ 864 000e 0593     		str	r3, [sp, #20]
+ 224:Core/Src/HT_DM_S_7010.c ****   union
+ 865              		.loc 1 224 3 is_stmt 1 view .LVU223
+ 225:Core/Src/HT_DM_S_7010.c ****   {
+ 226:Core/Src/HT_DM_S_7010.c ****     float f;
+ 227:Core/Src/HT_DM_S_7010.c ****     uint8_t b[4];
+ 228:Core/Src/HT_DM_S_7010.c ****   } u;
+ 229:Core/Src/HT_DM_S_7010.c ****   u.f = ki;
+ 866              		.loc 1 229 3 view .LVU224
+ 230:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 867              		.loc 1 230 3 view .LVU225
+ 868              		.loc 1 230 10 is_stmt 0 view .LVU226
+ 869 0010 8DF80C00 		strb	r0, [sp, #12]
+ 231:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB7;
+ 870              		.loc 1 231 3 is_stmt 1 view .LVU227
+ 871              		.loc 1 231 10 is_stmt 0 view .LVU228
+ 872 0014 B723     		movs	r3, #183
+ 873 0016 8DF80D30 		strb	r3, [sp, #13]
+ 232:Core/Src/HT_DM_S_7010.c ****   cmd[2] = u.b[0];
+ 874              		.loc 1 232 3 is_stmt 1 view .LVU229
+ 875              		.loc 1 232 10 is_stmt 0 view .LVU230
+ 876 001a 019B     		ldr	r3, [sp, #4]
+ 877 001c 8DF80E30 		strb	r3, [sp, #14]
+ 233:Core/Src/HT_DM_S_7010.c ****   cmd[3] = u.b[1];
+ 878              		.loc 1 233 3 is_stmt 1 view .LVU231
+ 879              		.loc 1 233 10 is_stmt 0 view .LVU232
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 20
+
+
+ 880 0020 C3F30722 		ubfx	r2, r3, #8, #8
+ 881 0024 8DF80F20 		strb	r2, [sp, #15]
+ 234:Core/Src/HT_DM_S_7010.c ****   cmd[4] = u.b[2];
+ 882              		.loc 1 234 3 is_stmt 1 view .LVU233
+ 883              		.loc 1 234 10 is_stmt 0 view .LVU234
+ 884 0028 C3F30742 		ubfx	r2, r3, #16, #8
+ 885 002c 8DF81020 		strb	r2, [sp, #16]
+ 235:Core/Src/HT_DM_S_7010.c ****   cmd[5] = u.b[3];
+ 886              		.loc 1 235 3 is_stmt 1 view .LVU235
+ 887              		.loc 1 235 10 is_stmt 0 view .LVU236
+ 888 0030 C3F30763 		ubfx	r3, r3, #24, #8
+ 889 0034 8DF81130 		strb	r3, [sp, #17]
+ 236:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 890              		.loc 1 236 3 is_stmt 1 view .LVU237
+ 891 0038 0621     		movs	r1, #6
+ 892 003a 03A8     		add	r0, sp, #12
+ 893              	.LVL47:
+ 894              		.loc 1 236 3 is_stmt 0 view .LVU238
+ 895 003c FFF7FEFF 		bl	can2_SendCmd
+ 896              	.LVL48:
+ 237:Core/Src/HT_DM_S_7010.c **** }
+ 897              		.loc 1 237 1 view .LVU239
+ 898 0040 07B0     		add	sp, sp, #28
+ 899              	.LCFI44:
+ 900              		.cfi_def_cfa_offset 4
+ 901              		@ sp needed
+ 902 0042 5DF804FB 		ldr	pc, [sp], #4
+ 903              		.loc 1 237 1 view .LVU240
+ 904              		.cfi_endproc
+ 905              	.LFE148:
+ 907              		.section	.text.HT_DM_S_7010_Set_Velocity_Kp,"ax",%progbits
+ 908              		.align	1
+ 909              		.global	HT_DM_S_7010_Set_Velocity_Kp
+ 910              		.syntax unified
+ 911              		.thumb
+ 912              		.thumb_func
+ 914              	HT_DM_S_7010_Set_Velocity_Kp:
+ 915              	.LVL49:
+ 916              	.LFB149:
+ 238:Core/Src/HT_DM_S_7010.c **** 
+ 239:Core/Src/HT_DM_S_7010.c **** /**
+ 240:Core/Src/HT_DM_S_7010.c ****   * @brief    设置速度控制闭环Kp，断电不保存
+ 241:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 242:Core/Src/HT_DM_S_7010.c ****   * @param    kp  ：Kp值
+ 243:Core/Src/HT_DM_S_7010.c ****   */
+ 244:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Velocity_Kp(uint8_t addr, float kp)
+ 245:Core/Src/HT_DM_S_7010.c **** {
+ 917              		.loc 1 245 1 is_stmt 1 view -0
+ 918              		.cfi_startproc
+ 919              		@ args = 0, pretend = 0, frame = 24
+ 920              		@ frame_needed = 0, uses_anonymous_args = 0
+ 921              		.loc 1 245 1 is_stmt 0 view .LVU242
+ 922 0000 00B5     		push	{lr}
+ 923              	.LCFI45:
+ 924              		.cfi_def_cfa_offset 4
+ 925              		.cfi_offset 14, -4
+ 926 0002 87B0     		sub	sp, sp, #28
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 21
+
+
+ 927              	.LCFI46:
+ 928              		.cfi_def_cfa_offset 32
+ 929 0004 8DED010A 		vstr.32	s0, [sp, #4]
+ 246:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 930              		.loc 1 246 3 is_stmt 1 view .LVU243
+ 931              		.loc 1 246 11 is_stmt 0 view .LVU244
+ 932 0008 0023     		movs	r3, #0
+ 933 000a 0393     		str	r3, [sp, #12]
+ 934 000c 0493     		str	r3, [sp, #16]
+ 935 000e 0593     		str	r3, [sp, #20]
+ 247:Core/Src/HT_DM_S_7010.c ****   union
+ 936              		.loc 1 247 3 is_stmt 1 view .LVU245
+ 248:Core/Src/HT_DM_S_7010.c ****   {
+ 249:Core/Src/HT_DM_S_7010.c ****     float f;
+ 250:Core/Src/HT_DM_S_7010.c ****     uint8_t b[4];
+ 251:Core/Src/HT_DM_S_7010.c ****   } u;
+ 252:Core/Src/HT_DM_S_7010.c ****   u.f = kp;
+ 937              		.loc 1 252 3 view .LVU246
+ 253:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 938              		.loc 1 253 3 view .LVU247
+ 939              		.loc 1 253 10 is_stmt 0 view .LVU248
+ 940 0010 8DF80C00 		strb	r0, [sp, #12]
+ 254:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB8;
+ 941              		.loc 1 254 3 is_stmt 1 view .LVU249
+ 942              		.loc 1 254 10 is_stmt 0 view .LVU250
+ 943 0014 B823     		movs	r3, #184
+ 944 0016 8DF80D30 		strb	r3, [sp, #13]
+ 255:Core/Src/HT_DM_S_7010.c ****   cmd[2] = u.b[0];
+ 945              		.loc 1 255 3 is_stmt 1 view .LVU251
+ 946              		.loc 1 255 10 is_stmt 0 view .LVU252
+ 947 001a 019B     		ldr	r3, [sp, #4]
+ 948 001c 8DF80E30 		strb	r3, [sp, #14]
+ 256:Core/Src/HT_DM_S_7010.c ****   cmd[3] = u.b[1];
+ 949              		.loc 1 256 3 is_stmt 1 view .LVU253
+ 950              		.loc 1 256 10 is_stmt 0 view .LVU254
+ 951 0020 C3F30722 		ubfx	r2, r3, #8, #8
+ 952 0024 8DF80F20 		strb	r2, [sp, #15]
+ 257:Core/Src/HT_DM_S_7010.c ****   cmd[4] = u.b[2];
+ 953              		.loc 1 257 3 is_stmt 1 view .LVU255
+ 954              		.loc 1 257 10 is_stmt 0 view .LVU256
+ 955 0028 C3F30742 		ubfx	r2, r3, #16, #8
+ 956 002c 8DF81020 		strb	r2, [sp, #16]
+ 258:Core/Src/HT_DM_S_7010.c ****   cmd[5] = u.b[3];
+ 957              		.loc 1 258 3 is_stmt 1 view .LVU257
+ 958              		.loc 1 258 10 is_stmt 0 view .LVU258
+ 959 0030 C3F30763 		ubfx	r3, r3, #24, #8
+ 960 0034 8DF81130 		strb	r3, [sp, #17]
+ 259:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 961              		.loc 1 259 3 is_stmt 1 view .LVU259
+ 962 0038 0621     		movs	r1, #6
+ 963 003a 03A8     		add	r0, sp, #12
+ 964              	.LVL50:
+ 965              		.loc 1 259 3 is_stmt 0 view .LVU260
+ 966 003c FFF7FEFF 		bl	can2_SendCmd
+ 967              	.LVL51:
+ 260:Core/Src/HT_DM_S_7010.c **** }
+ 968              		.loc 1 260 1 view .LVU261
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 22
+
+
+ 969 0040 07B0     		add	sp, sp, #28
+ 970              	.LCFI47:
+ 971              		.cfi_def_cfa_offset 4
+ 972              		@ sp needed
+ 973 0042 5DF804FB 		ldr	pc, [sp], #4
+ 974              		.loc 1 260 1 view .LVU262
+ 975              		.cfi_endproc
+ 976              	.LFE149:
+ 978              		.section	.text.HT_DM_S_7010_Set_Velocity_Ki,"ax",%progbits
+ 979              		.align	1
+ 980              		.global	HT_DM_S_7010_Set_Velocity_Ki
+ 981              		.syntax unified
+ 982              		.thumb
+ 983              		.thumb_func
+ 985              	HT_DM_S_7010_Set_Velocity_Ki:
+ 986              	.LVL52:
+ 987              	.LFB150:
+ 261:Core/Src/HT_DM_S_7010.c **** 
+ 262:Core/Src/HT_DM_S_7010.c **** /**
+ 263:Core/Src/HT_DM_S_7010.c ****   * @brief    设置速度控制闭环Ki，断电不保存
+ 264:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 265:Core/Src/HT_DM_S_7010.c ****   * @param    ki  ：Ki值
+ 266:Core/Src/HT_DM_S_7010.c ****   */
+ 267:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Set_Velocity_Ki(uint8_t addr, float ki)
+ 268:Core/Src/HT_DM_S_7010.c **** {
+ 988              		.loc 1 268 1 is_stmt 1 view -0
+ 989              		.cfi_startproc
+ 990              		@ args = 0, pretend = 0, frame = 24
+ 991              		@ frame_needed = 0, uses_anonymous_args = 0
+ 992              		.loc 1 268 1 is_stmt 0 view .LVU264
+ 993 0000 00B5     		push	{lr}
+ 994              	.LCFI48:
+ 995              		.cfi_def_cfa_offset 4
+ 996              		.cfi_offset 14, -4
+ 997 0002 87B0     		sub	sp, sp, #28
+ 998              	.LCFI49:
+ 999              		.cfi_def_cfa_offset 32
+ 1000 0004 8DED010A 		vstr.32	s0, [sp, #4]
+ 269:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 1001              		.loc 1 269 3 is_stmt 1 view .LVU265
+ 1002              		.loc 1 269 11 is_stmt 0 view .LVU266
+ 1003 0008 0023     		movs	r3, #0
+ 1004 000a 0393     		str	r3, [sp, #12]
+ 1005 000c 0493     		str	r3, [sp, #16]
+ 1006 000e 0593     		str	r3, [sp, #20]
+ 270:Core/Src/HT_DM_S_7010.c ****   union
+ 1007              		.loc 1 270 3 is_stmt 1 view .LVU267
+ 271:Core/Src/HT_DM_S_7010.c ****   {
+ 272:Core/Src/HT_DM_S_7010.c ****     float f;
+ 273:Core/Src/HT_DM_S_7010.c ****     uint8_t b[4];
+ 274:Core/Src/HT_DM_S_7010.c ****   } u;
+ 275:Core/Src/HT_DM_S_7010.c ****   u.f = ki;
+ 1008              		.loc 1 275 3 view .LVU268
+ 276:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1009              		.loc 1 276 3 view .LVU269
+ 1010              		.loc 1 276 10 is_stmt 0 view .LVU270
+ 1011 0010 8DF80C00 		strb	r0, [sp, #12]
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 23
+
+
+ 277:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xB9;
+ 1012              		.loc 1 277 3 is_stmt 1 view .LVU271
+ 1013              		.loc 1 277 10 is_stmt 0 view .LVU272
+ 1014 0014 B923     		movs	r3, #185
+ 1015 0016 8DF80D30 		strb	r3, [sp, #13]
+ 278:Core/Src/HT_DM_S_7010.c ****   cmd[2] = u.b[0];
+ 1016              		.loc 1 278 3 is_stmt 1 view .LVU273
+ 1017              		.loc 1 278 10 is_stmt 0 view .LVU274
+ 1018 001a 019B     		ldr	r3, [sp, #4]
+ 1019 001c 8DF80E30 		strb	r3, [sp, #14]
+ 279:Core/Src/HT_DM_S_7010.c ****   cmd[3] = u.b[1];
+ 1020              		.loc 1 279 3 is_stmt 1 view .LVU275
+ 1021              		.loc 1 279 10 is_stmt 0 view .LVU276
+ 1022 0020 C3F30722 		ubfx	r2, r3, #8, #8
+ 1023 0024 8DF80F20 		strb	r2, [sp, #15]
+ 280:Core/Src/HT_DM_S_7010.c ****   cmd[4] = u.b[2];
+ 1024              		.loc 1 280 3 is_stmt 1 view .LVU277
+ 1025              		.loc 1 280 10 is_stmt 0 view .LVU278
+ 1026 0028 C3F30742 		ubfx	r2, r3, #16, #8
+ 1027 002c 8DF81020 		strb	r2, [sp, #16]
+ 281:Core/Src/HT_DM_S_7010.c ****   cmd[5] = u.b[3];
+ 1028              		.loc 1 281 3 is_stmt 1 view .LVU279
+ 1029              		.loc 1 281 10 is_stmt 0 view .LVU280
+ 1030 0030 C3F30763 		ubfx	r3, r3, #24, #8
+ 1031 0034 8DF81130 		strb	r3, [sp, #17]
+ 282:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 1032              		.loc 1 282 3 is_stmt 1 view .LVU281
+ 1033 0038 0621     		movs	r1, #6
+ 1034 003a 03A8     		add	r0, sp, #12
+ 1035              	.LVL53:
+ 1036              		.loc 1 282 3 is_stmt 0 view .LVU282
+ 1037 003c FFF7FEFF 		bl	can2_SendCmd
+ 1038              	.LVL54:
+ 283:Core/Src/HT_DM_S_7010.c **** }
+ 1039              		.loc 1 283 1 view .LVU283
+ 1040 0040 07B0     		add	sp, sp, #28
+ 1041              	.LCFI50:
+ 1042              		.cfi_def_cfa_offset 4
+ 1043              		@ sp needed
+ 1044 0042 5DF804FB 		ldr	pc, [sp], #4
+ 1045              		.loc 1 283 1 view .LVU284
+ 1046              		.cfi_endproc
+ 1047              	.LFE150:
+ 1049              		.section	.text.HT_DM_S_7010_Current_Control,"ax",%progbits
+ 1050              		.align	1
+ 1051              		.global	HT_DM_S_7010_Current_Control
+ 1052              		.syntax unified
+ 1053              		.thumb
+ 1054              		.thumb_func
+ 1056              	HT_DM_S_7010_Current_Control:
+ 1057              	.LVL55:
+ 1058              	.LFB151:
+ 284:Core/Src/HT_DM_S_7010.c **** 
+ 285:Core/Src/HT_DM_S_7010.c **** /**
+ 286:Core/Src/HT_DM_S_7010.c ****   * @brief    Q轴电流控制
+ 287:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 288:Core/Src/HT_DM_S_7010.c ****   * @param    current  ：Q轴电流
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 24
+
+
+ 289:Core/Src/HT_DM_S_7010.c ****   */
+ 290:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Current_Control(uint8_t addr, int32_t current)
+ 291:Core/Src/HT_DM_S_7010.c **** {
+ 1059              		.loc 1 291 1 is_stmt 1 view -0
+ 1060              		.cfi_startproc
+ 1061              		@ args = 0, pretend = 0, frame = 16
+ 1062              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1063              		.loc 1 291 1 is_stmt 0 view .LVU286
+ 1064 0000 00B5     		push	{lr}
+ 1065              	.LCFI51:
+ 1066              		.cfi_def_cfa_offset 4
+ 1067              		.cfi_offset 14, -4
+ 1068 0002 85B0     		sub	sp, sp, #20
+ 1069              	.LCFI52:
+ 1070              		.cfi_def_cfa_offset 24
+ 292:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 1071              		.loc 1 292 3 is_stmt 1 view .LVU287
+ 1072              		.loc 1 292 11 is_stmt 0 view .LVU288
+ 1073 0004 0023     		movs	r3, #0
+ 1074 0006 0193     		str	r3, [sp, #4]
+ 1075 0008 0293     		str	r3, [sp, #8]
+ 1076 000a 0393     		str	r3, [sp, #12]
+ 293:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1077              		.loc 1 293 3 is_stmt 1 view .LVU289
+ 1078              		.loc 1 293 10 is_stmt 0 view .LVU290
+ 1079 000c 8DF80400 		strb	r0, [sp, #4]
+ 294:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xC0;
+ 1080              		.loc 1 294 3 is_stmt 1 view .LVU291
+ 1081              		.loc 1 294 10 is_stmt 0 view .LVU292
+ 1082 0010 C023     		movs	r3, #192
+ 1083 0012 8DF80530 		strb	r3, [sp, #5]
+ 295:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(current >> 0);
+ 1084              		.loc 1 295 3 is_stmt 1 view .LVU293
+ 1085              		.loc 1 295 10 is_stmt 0 view .LVU294
+ 1086 0016 8DF80610 		strb	r1, [sp, #6]
+ 296:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(current >> 8);
+ 1087              		.loc 1 296 3 is_stmt 1 view .LVU295
+ 1088              		.loc 1 296 12 is_stmt 0 view .LVU296
+ 1089 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 1090              		.loc 1 296 10 view .LVU297
+ 1091 001e 8DF80730 		strb	r3, [sp, #7]
+ 297:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(current >> 16);
+ 1092              		.loc 1 297 3 is_stmt 1 view .LVU298
+ 1093              		.loc 1 297 12 is_stmt 0 view .LVU299
+ 1094 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 1095              		.loc 1 297 10 view .LVU300
+ 1096 0026 8DF80830 		strb	r3, [sp, #8]
+ 298:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(current >> 24);
+ 1097              		.loc 1 298 3 is_stmt 1 view .LVU301
+ 1098              		.loc 1 298 12 is_stmt 0 view .LVU302
+ 1099 002a 090E     		lsrs	r1, r1, #24
+ 1100              	.LVL56:
+ 1101              		.loc 1 298 10 view .LVU303
+ 1102 002c 8DF80910 		strb	r1, [sp, #9]
+ 299:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 1103              		.loc 1 299 3 is_stmt 1 view .LVU304
+ 1104 0030 0621     		movs	r1, #6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 25
+
+
+ 1105 0032 01A8     		add	r0, sp, #4
+ 1106              	.LVL57:
+ 1107              		.loc 1 299 3 is_stmt 0 view .LVU305
+ 1108 0034 FFF7FEFF 		bl	can2_SendCmd
+ 1109              	.LVL58:
+ 300:Core/Src/HT_DM_S_7010.c **** }
+ 1110              		.loc 1 300 1 view .LVU306
+ 1111 0038 05B0     		add	sp, sp, #20
+ 1112              	.LCFI53:
+ 1113              		.cfi_def_cfa_offset 4
+ 1114              		@ sp needed
+ 1115 003a 5DF804FB 		ldr	pc, [sp], #4
+ 1116              		.cfi_endproc
+ 1117              	.LFE151:
+ 1119              		.section	.text.HT_DM_S_7010_Velocity_Control,"ax",%progbits
+ 1120              		.align	1
+ 1121              		.global	HT_DM_S_7010_Velocity_Control
+ 1122              		.syntax unified
+ 1123              		.thumb
+ 1124              		.thumb_func
+ 1126              	HT_DM_S_7010_Velocity_Control:
+ 1127              	.LVL59:
+ 1128              	.LFB152:
+ 301:Core/Src/HT_DM_S_7010.c **** 
+ 302:Core/Src/HT_DM_S_7010.c **** /**
+ 303:Core/Src/HT_DM_S_7010.c ****   * @brief    速度控制
+ 304:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 305:Core/Src/HT_DM_S_7010.c ****   * @param    speed  ：速度
+ 306:Core/Src/HT_DM_S_7010.c ****   */
+ 307:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Velocity_Control(uint8_t addr, int32_t speed)
+ 308:Core/Src/HT_DM_S_7010.c **** {
+ 1129              		.loc 1 308 1 is_stmt 1 view -0
+ 1130              		.cfi_startproc
+ 1131              		@ args = 0, pretend = 0, frame = 16
+ 1132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1133              		.loc 1 308 1 is_stmt 0 view .LVU308
+ 1134 0000 00B5     		push	{lr}
+ 1135              	.LCFI54:
+ 1136              		.cfi_def_cfa_offset 4
+ 1137              		.cfi_offset 14, -4
+ 1138 0002 85B0     		sub	sp, sp, #20
+ 1139              	.LCFI55:
+ 1140              		.cfi_def_cfa_offset 24
+ 309:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 1141              		.loc 1 309 3 is_stmt 1 view .LVU309
+ 1142              		.loc 1 309 11 is_stmt 0 view .LVU310
+ 1143 0004 0023     		movs	r3, #0
+ 1144 0006 0193     		str	r3, [sp, #4]
+ 1145 0008 0293     		str	r3, [sp, #8]
+ 1146 000a 0393     		str	r3, [sp, #12]
+ 310:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1147              		.loc 1 310 3 is_stmt 1 view .LVU311
+ 1148              		.loc 1 310 10 is_stmt 0 view .LVU312
+ 1149 000c 8DF80400 		strb	r0, [sp, #4]
+ 311:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xC1;
+ 1150              		.loc 1 311 3 is_stmt 1 view .LVU313
+ 1151              		.loc 1 311 10 is_stmt 0 view .LVU314
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 26
+
+
+ 1152 0010 C123     		movs	r3, #193
+ 1153 0012 8DF80530 		strb	r3, [sp, #5]
+ 312:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(speed >> 0);
+ 1154              		.loc 1 312 3 is_stmt 1 view .LVU315
+ 1155              		.loc 1 312 10 is_stmt 0 view .LVU316
+ 1156 0016 8DF80610 		strb	r1, [sp, #6]
+ 313:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(speed >> 8);
+ 1157              		.loc 1 313 3 is_stmt 1 view .LVU317
+ 1158              		.loc 1 313 12 is_stmt 0 view .LVU318
+ 1159 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 1160              		.loc 1 313 10 view .LVU319
+ 1161 001e 8DF80730 		strb	r3, [sp, #7]
+ 314:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(speed >> 16);
+ 1162              		.loc 1 314 3 is_stmt 1 view .LVU320
+ 1163              		.loc 1 314 12 is_stmt 0 view .LVU321
+ 1164 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 1165              		.loc 1 314 10 view .LVU322
+ 1166 0026 8DF80830 		strb	r3, [sp, #8]
+ 315:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(speed >> 24);
+ 1167              		.loc 1 315 3 is_stmt 1 view .LVU323
+ 1168              		.loc 1 315 12 is_stmt 0 view .LVU324
+ 1169 002a 090E     		lsrs	r1, r1, #24
+ 1170              	.LVL60:
+ 1171              		.loc 1 315 10 view .LVU325
+ 1172 002c 8DF80910 		strb	r1, [sp, #9]
+ 316:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 1173              		.loc 1 316 3 is_stmt 1 view .LVU326
+ 1174 0030 0621     		movs	r1, #6
+ 1175 0032 01A8     		add	r0, sp, #4
+ 1176              	.LVL61:
+ 1177              		.loc 1 316 3 is_stmt 0 view .LVU327
+ 1178 0034 FFF7FEFF 		bl	can2_SendCmd
+ 1179              	.LVL62:
+ 317:Core/Src/HT_DM_S_7010.c **** }
+ 1180              		.loc 1 317 1 view .LVU328
+ 1181 0038 05B0     		add	sp, sp, #20
+ 1182              	.LCFI56:
+ 1183              		.cfi_def_cfa_offset 4
+ 1184              		@ sp needed
+ 1185 003a 5DF804FB 		ldr	pc, [sp], #4
+ 1186              		.cfi_endproc
+ 1187              	.LFE152:
+ 1189              		.section	.text.HT_DM_S_7010_Absolute_Position_Control,"ax",%progbits
+ 1190              		.align	1
+ 1191              		.global	HT_DM_S_7010_Absolute_Position_Control
+ 1192              		.syntax unified
+ 1193              		.thumb
+ 1194              		.thumb_func
+ 1196              	HT_DM_S_7010_Absolute_Position_Control:
+ 1197              	.LVL63:
+ 1198              	.LFB153:
+ 318:Core/Src/HT_DM_S_7010.c **** 
+ 319:Core/Src/HT_DM_S_7010.c **** /**
+ 320:Core/Src/HT_DM_S_7010.c ****   * @brief    绝对值位置控制
+ 321:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 322:Core/Src/HT_DM_S_7010.c ****   * @param    position  ：绝对位置
+ 323:Core/Src/HT_DM_S_7010.c ****   */
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 27
+
+
+ 324:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Absolute_Position_Control(uint8_t addr, int32_t position)
+ 325:Core/Src/HT_DM_S_7010.c **** {
+ 1199              		.loc 1 325 1 is_stmt 1 view -0
+ 1200              		.cfi_startproc
+ 1201              		@ args = 0, pretend = 0, frame = 16
+ 1202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1203              		.loc 1 325 1 is_stmt 0 view .LVU330
+ 1204 0000 00B5     		push	{lr}
+ 1205              	.LCFI57:
+ 1206              		.cfi_def_cfa_offset 4
+ 1207              		.cfi_offset 14, -4
+ 1208 0002 85B0     		sub	sp, sp, #20
+ 1209              	.LCFI58:
+ 1210              		.cfi_def_cfa_offset 24
+ 326:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 1211              		.loc 1 326 3 is_stmt 1 view .LVU331
+ 1212              		.loc 1 326 11 is_stmt 0 view .LVU332
+ 1213 0004 0023     		movs	r3, #0
+ 1214 0006 0193     		str	r3, [sp, #4]
+ 1215 0008 0293     		str	r3, [sp, #8]
+ 1216 000a 0393     		str	r3, [sp, #12]
+ 327:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1217              		.loc 1 327 3 is_stmt 1 view .LVU333
+ 1218              		.loc 1 327 10 is_stmt 0 view .LVU334
+ 1219 000c 8DF80400 		strb	r0, [sp, #4]
+ 328:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xC2;
+ 1220              		.loc 1 328 3 is_stmt 1 view .LVU335
+ 1221              		.loc 1 328 10 is_stmt 0 view .LVU336
+ 1222 0010 C223     		movs	r3, #194
+ 1223 0012 8DF80530 		strb	r3, [sp, #5]
+ 329:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(position >> 0);
+ 1224              		.loc 1 329 3 is_stmt 1 view .LVU337
+ 1225              		.loc 1 329 10 is_stmt 0 view .LVU338
+ 1226 0016 8DF80610 		strb	r1, [sp, #6]
+ 330:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(position >> 8);
+ 1227              		.loc 1 330 3 is_stmt 1 view .LVU339
+ 1228              		.loc 1 330 12 is_stmt 0 view .LVU340
+ 1229 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 1230              		.loc 1 330 10 view .LVU341
+ 1231 001e 8DF80730 		strb	r3, [sp, #7]
+ 331:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(position >> 16);
+ 1232              		.loc 1 331 3 is_stmt 1 view .LVU342
+ 1233              		.loc 1 331 12 is_stmt 0 view .LVU343
+ 1234 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 1235              		.loc 1 331 10 view .LVU344
+ 1236 0026 8DF80830 		strb	r3, [sp, #8]
+ 332:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(position >> 24);
+ 1237              		.loc 1 332 3 is_stmt 1 view .LVU345
+ 1238              		.loc 1 332 12 is_stmt 0 view .LVU346
+ 1239 002a 090E     		lsrs	r1, r1, #24
+ 1240              	.LVL64:
+ 1241              		.loc 1 332 10 view .LVU347
+ 1242 002c 8DF80910 		strb	r1, [sp, #9]
+ 333:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 1243              		.loc 1 333 3 is_stmt 1 view .LVU348
+ 1244 0030 0621     		movs	r1, #6
+ 1245 0032 01A8     		add	r0, sp, #4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 28
+
+
+ 1246              	.LVL65:
+ 1247              		.loc 1 333 3 is_stmt 0 view .LVU349
+ 1248 0034 FFF7FEFF 		bl	can2_SendCmd
+ 1249              	.LVL66:
+ 334:Core/Src/HT_DM_S_7010.c **** }
+ 1250              		.loc 1 334 1 view .LVU350
+ 1251 0038 05B0     		add	sp, sp, #20
+ 1252              	.LCFI59:
+ 1253              		.cfi_def_cfa_offset 4
+ 1254              		@ sp needed
+ 1255 003a 5DF804FB 		ldr	pc, [sp], #4
+ 1256              		.cfi_endproc
+ 1257              	.LFE153:
+ 1259              		.section	.text.HT_DM_S_7010_Relative_Position_Control,"ax",%progbits
+ 1260              		.align	1
+ 1261              		.global	HT_DM_S_7010_Relative_Position_Control
+ 1262              		.syntax unified
+ 1263              		.thumb
+ 1264              		.thumb_func
+ 1266              	HT_DM_S_7010_Relative_Position_Control:
+ 1267              	.LVL67:
+ 1268              	.LFB154:
+ 335:Core/Src/HT_DM_S_7010.c **** 
+ 336:Core/Src/HT_DM_S_7010.c **** /**
+ 337:Core/Src/HT_DM_S_7010.c ****   * @brief    相对值位置控制
+ 338:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 339:Core/Src/HT_DM_S_7010.c ****   * @param    position  ：相对位置
+ 340:Core/Src/HT_DM_S_7010.c ****   */
+ 341:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Relative_Position_Control(uint8_t addr, int32_t position)
+ 342:Core/Src/HT_DM_S_7010.c **** {
+ 1269              		.loc 1 342 1 is_stmt 1 view -0
+ 1270              		.cfi_startproc
+ 1271              		@ args = 0, pretend = 0, frame = 16
+ 1272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1273              		.loc 1 342 1 is_stmt 0 view .LVU352
+ 1274 0000 00B5     		push	{lr}
+ 1275              	.LCFI60:
+ 1276              		.cfi_def_cfa_offset 4
+ 1277              		.cfi_offset 14, -4
+ 1278 0002 85B0     		sub	sp, sp, #20
+ 1279              	.LCFI61:
+ 1280              		.cfi_def_cfa_offset 24
+ 343:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[12] = {0};
+ 1281              		.loc 1 343 3 is_stmt 1 view .LVU353
+ 1282              		.loc 1 343 11 is_stmt 0 view .LVU354
+ 1283 0004 0023     		movs	r3, #0
+ 1284 0006 0193     		str	r3, [sp, #4]
+ 1285 0008 0293     		str	r3, [sp, #8]
+ 1286 000a 0393     		str	r3, [sp, #12]
+ 344:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1287              		.loc 1 344 3 is_stmt 1 view .LVU355
+ 1288              		.loc 1 344 10 is_stmt 0 view .LVU356
+ 1289 000c 8DF80400 		strb	r0, [sp, #4]
+ 345:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xC3;
+ 1290              		.loc 1 345 3 is_stmt 1 view .LVU357
+ 1291              		.loc 1 345 10 is_stmt 0 view .LVU358
+ 1292 0010 C323     		movs	r3, #195
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 29
+
+
+ 1293 0012 8DF80530 		strb	r3, [sp, #5]
+ 346:Core/Src/HT_DM_S_7010.c ****   cmd[2] = (uint8_t)(position >> 0);
+ 1294              		.loc 1 346 3 is_stmt 1 view .LVU359
+ 1295              		.loc 1 346 10 is_stmt 0 view .LVU360
+ 1296 0016 8DF80610 		strb	r1, [sp, #6]
+ 347:Core/Src/HT_DM_S_7010.c ****   cmd[3] = (uint8_t)(position >> 8);
+ 1297              		.loc 1 347 3 is_stmt 1 view .LVU361
+ 1298              		.loc 1 347 12 is_stmt 0 view .LVU362
+ 1299 001a C1F30723 		ubfx	r3, r1, #8, #8
+ 1300              		.loc 1 347 10 view .LVU363
+ 1301 001e 8DF80730 		strb	r3, [sp, #7]
+ 348:Core/Src/HT_DM_S_7010.c ****   cmd[4] = (uint8_t)(position >> 16);
+ 1302              		.loc 1 348 3 is_stmt 1 view .LVU364
+ 1303              		.loc 1 348 12 is_stmt 0 view .LVU365
+ 1304 0022 C1F30743 		ubfx	r3, r1, #16, #8
+ 1305              		.loc 1 348 10 view .LVU366
+ 1306 0026 8DF80830 		strb	r3, [sp, #8]
+ 349:Core/Src/HT_DM_S_7010.c ****   cmd[5] = (uint8_t)(position >> 24);
+ 1307              		.loc 1 349 3 is_stmt 1 view .LVU367
+ 1308              		.loc 1 349 12 is_stmt 0 view .LVU368
+ 1309 002a 090E     		lsrs	r1, r1, #24
+ 1310              	.LVL68:
+ 1311              		.loc 1 349 10 view .LVU369
+ 1312 002c 8DF80910 		strb	r1, [sp, #9]
+ 350:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 6);
+ 1313              		.loc 1 350 3 is_stmt 1 view .LVU370
+ 1314 0030 0621     		movs	r1, #6
+ 1315 0032 01A8     		add	r0, sp, #4
+ 1316              	.LVL69:
+ 1317              		.loc 1 350 3 is_stmt 0 view .LVU371
+ 1318 0034 FFF7FEFF 		bl	can2_SendCmd
+ 1319              	.LVL70:
+ 351:Core/Src/HT_DM_S_7010.c **** }
+ 1320              		.loc 1 351 1 view .LVU372
+ 1321 0038 05B0     		add	sp, sp, #20
+ 1322              	.LCFI62:
+ 1323              		.cfi_def_cfa_offset 4
+ 1324              		@ sp needed
+ 1325 003a 5DF804FB 		ldr	pc, [sp], #4
+ 1326              		.cfi_endproc
+ 1327              	.LFE154:
+ 1329              		.section	.text.HT_DM_S_7010_Return_To_Origin,"ax",%progbits
+ 1330              		.align	1
+ 1331              		.global	HT_DM_S_7010_Return_To_Origin
+ 1332              		.syntax unified
+ 1333              		.thumb
+ 1334              		.thumb_func
+ 1336              	HT_DM_S_7010_Return_To_Origin:
+ 1337              	.LVL71:
+ 1338              	.LFB155:
+ 352:Core/Src/HT_DM_S_7010.c **** 
+ 353:Core/Src/HT_DM_S_7010.c **** /**
+ 354:Core/Src/HT_DM_S_7010.c ****   * @brief    最短距离回原点
+ 355:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 356:Core/Src/HT_DM_S_7010.c ****   */
+ 357:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Return_To_Origin(uint8_t addr)
+ 358:Core/Src/HT_DM_S_7010.c **** {
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 30
+
+
+ 1339              		.loc 1 358 1 is_stmt 1 view -0
+ 1340              		.cfi_startproc
+ 1341              		@ args = 0, pretend = 0, frame = 8
+ 1342              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1343              		.loc 1 358 1 is_stmt 0 view .LVU374
+ 1344 0000 00B5     		push	{lr}
+ 1345              	.LCFI63:
+ 1346              		.cfi_def_cfa_offset 4
+ 1347              		.cfi_offset 14, -4
+ 1348 0002 83B0     		sub	sp, sp, #12
+ 1349              	.LCFI64:
+ 1350              		.cfi_def_cfa_offset 16
+ 359:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 1351              		.loc 1 359 3 is_stmt 1 view .LVU375
+ 1352              		.loc 1 359 11 is_stmt 0 view .LVU376
+ 1353 0004 0023     		movs	r3, #0
+ 1354 0006 0093     		str	r3, [sp]
+ 1355 0008 0193     		str	r3, [sp, #4]
+ 360:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1356              		.loc 1 360 3 is_stmt 1 view .LVU377
+ 1357              		.loc 1 360 10 is_stmt 0 view .LVU378
+ 1358 000a 8DF80000 		strb	r0, [sp]
+ 361:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xC4;
+ 1359              		.loc 1 361 3 is_stmt 1 view .LVU379
+ 1360              		.loc 1 361 10 is_stmt 0 view .LVU380
+ 1361 000e C423     		movs	r3, #196
+ 1362 0010 8DF80130 		strb	r3, [sp, #1]
+ 362:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 1363              		.loc 1 362 3 is_stmt 1 view .LVU381
+ 1364 0014 0221     		movs	r1, #2
+ 1365 0016 6846     		mov	r0, sp
+ 1366              	.LVL72:
+ 1367              		.loc 1 362 3 is_stmt 0 view .LVU382
+ 1368 0018 FFF7FEFF 		bl	can2_SendCmd
+ 1369              	.LVL73:
+ 363:Core/Src/HT_DM_S_7010.c **** }
+ 1370              		.loc 1 363 1 view .LVU383
+ 1371 001c 03B0     		add	sp, sp, #12
+ 1372              	.LCFI65:
+ 1373              		.cfi_def_cfa_offset 4
+ 1374              		@ sp needed
+ 1375 001e 5DF804FB 		ldr	pc, [sp], #4
+ 1376              		.cfi_endproc
+ 1377              	.LFE155:
+ 1379              		.section	.text.HT_DM_S_7010_Brake_Control,"ax",%progbits
+ 1380              		.align	1
+ 1381              		.global	HT_DM_S_7010_Brake_Control
+ 1382              		.syntax unified
+ 1383              		.thumb
+ 1384              		.thumb_func
+ 1386              	HT_DM_S_7010_Brake_Control:
+ 1387              	.LVL74:
+ 1388              	.LFB156:
+ 364:Core/Src/HT_DM_S_7010.c **** 
+ 365:Core/Src/HT_DM_S_7010.c **** /**
+ 366:Core/Src/HT_DM_S_7010.c ****   * @brief    抱闸开关输出控制
+ 367:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 31
+
+
+ 368:Core/Src/HT_DM_S_7010.c ****   * @param    state ：抱闸状态，0为断开抱闸，1为闭合抱闸
+ 369:Core/Src/HT_DM_S_7010.c ****   */
+ 370:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Brake_Control(uint8_t addr, uint8_t state)
+ 371:Core/Src/HT_DM_S_7010.c **** {
+ 1389              		.loc 1 371 1 is_stmt 1 view -0
+ 1390              		.cfi_startproc
+ 1391              		@ args = 0, pretend = 0, frame = 8
+ 1392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1393              		.loc 1 371 1 is_stmt 0 view .LVU385
+ 1394 0000 00B5     		push	{lr}
+ 1395              	.LCFI66:
+ 1396              		.cfi_def_cfa_offset 4
+ 1397              		.cfi_offset 14, -4
+ 1398 0002 83B0     		sub	sp, sp, #12
+ 1399              	.LCFI67:
+ 1400              		.cfi_def_cfa_offset 16
+ 372:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 1401              		.loc 1 372 3 is_stmt 1 view .LVU386
+ 1402              		.loc 1 372 11 is_stmt 0 view .LVU387
+ 1403 0004 0023     		movs	r3, #0
+ 1404 0006 0093     		str	r3, [sp]
+ 1405 0008 0193     		str	r3, [sp, #4]
+ 373:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1406              		.loc 1 373 3 is_stmt 1 view .LVU388
+ 1407              		.loc 1 373 10 is_stmt 0 view .LVU389
+ 1408 000a 8DF80000 		strb	r0, [sp]
+ 374:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xFE;
+ 1409              		.loc 1 374 3 is_stmt 1 view .LVU390
+ 1410              		.loc 1 374 10 is_stmt 0 view .LVU391
+ 1411 000e FE23     		movs	r3, #254
+ 1412 0010 8DF80130 		strb	r3, [sp, #1]
+ 375:Core/Src/HT_DM_S_7010.c ****   cmd[2] = state;
+ 1413              		.loc 1 375 3 is_stmt 1 view .LVU392
+ 1414              		.loc 1 375 10 is_stmt 0 view .LVU393
+ 1415 0014 8DF80210 		strb	r1, [sp, #2]
+ 376:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 3);
+ 1416              		.loc 1 376 3 is_stmt 1 view .LVU394
+ 1417 0018 0321     		movs	r1, #3
+ 1418              	.LVL75:
+ 1419              		.loc 1 376 3 is_stmt 0 view .LVU395
+ 1420 001a 6846     		mov	r0, sp
+ 1421              	.LVL76:
+ 1422              		.loc 1 376 3 view .LVU396
+ 1423 001c FFF7FEFF 		bl	can2_SendCmd
+ 1424              	.LVL77:
+ 377:Core/Src/HT_DM_S_7010.c **** }
+ 1425              		.loc 1 377 1 view .LVU397
+ 1426 0020 03B0     		add	sp, sp, #12
+ 1427              	.LCFI68:
+ 1428              		.cfi_def_cfa_offset 4
+ 1429              		@ sp needed
+ 1430 0022 5DF804FB 		ldr	pc, [sp], #4
+ 1431              		.cfi_endproc
+ 1432              	.LFE156:
+ 1434              		.section	.text.HT_DM_S_7010_Disable_Motor,"ax",%progbits
+ 1435              		.align	1
+ 1436              		.global	HT_DM_S_7010_Disable_Motor
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 32
+
+
+ 1437              		.syntax unified
+ 1438              		.thumb
+ 1439              		.thumb_func
+ 1441              	HT_DM_S_7010_Disable_Motor:
+ 1442              	.LVL78:
+ 1443              	.LFB157:
+ 378:Core/Src/HT_DM_S_7010.c **** 
+ 379:Core/Src/HT_DM_S_7010.c **** /**
+ 380:Core/Src/HT_DM_S_7010.c ****   * @brief    关闭电机输出
+ 381:Core/Src/HT_DM_S_7010.c ****   * @param    addr  ：电机地址
+ 382:Core/Src/HT_DM_S_7010.c ****   */
+ 383:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Disable_Motor(uint8_t addr)
+ 384:Core/Src/HT_DM_S_7010.c **** {
+ 1444              		.loc 1 384 1 is_stmt 1 view -0
+ 1445              		.cfi_startproc
+ 1446              		@ args = 0, pretend = 0, frame = 8
+ 1447              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1448              		.loc 1 384 1 is_stmt 0 view .LVU399
+ 1449 0000 00B5     		push	{lr}
+ 1450              	.LCFI69:
+ 1451              		.cfi_def_cfa_offset 4
+ 1452              		.cfi_offset 14, -4
+ 1453 0002 83B0     		sub	sp, sp, #12
+ 1454              	.LCFI70:
+ 1455              		.cfi_def_cfa_offset 16
+ 385:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd[8] = {0};
+ 1456              		.loc 1 385 3 is_stmt 1 view .LVU400
+ 1457              		.loc 1 385 11 is_stmt 0 view .LVU401
+ 1458 0004 0023     		movs	r3, #0
+ 1459 0006 0093     		str	r3, [sp]
+ 1460 0008 0193     		str	r3, [sp, #4]
+ 386:Core/Src/HT_DM_S_7010.c ****   cmd[0] = addr;
+ 1461              		.loc 1 386 3 is_stmt 1 view .LVU402
+ 1462              		.loc 1 386 10 is_stmt 0 view .LVU403
+ 1463 000a 8DF80000 		strb	r0, [sp]
+ 387:Core/Src/HT_DM_S_7010.c ****   cmd[1] = 0xEF;
+ 1464              		.loc 1 387 3 is_stmt 1 view .LVU404
+ 1465              		.loc 1 387 10 is_stmt 0 view .LVU405
+ 1466 000e EF23     		movs	r3, #239
+ 1467 0010 8DF80130 		strb	r3, [sp, #1]
+ 388:Core/Src/HT_DM_S_7010.c ****   can2_SendCmd((__IO uint8_t *)cmd, 2);
+ 1468              		.loc 1 388 3 is_stmt 1 view .LVU406
+ 1469 0014 0221     		movs	r1, #2
+ 1470 0016 6846     		mov	r0, sp
+ 1471              	.LVL79:
+ 1472              		.loc 1 388 3 is_stmt 0 view .LVU407
+ 1473 0018 FFF7FEFF 		bl	can2_SendCmd
+ 1474              	.LVL80:
+ 389:Core/Src/HT_DM_S_7010.c **** }
+ 1475              		.loc 1 389 1 view .LVU408
+ 1476 001c 03B0     		add	sp, sp, #12
+ 1477              	.LCFI71:
+ 1478              		.cfi_def_cfa_offset 4
+ 1479              		@ sp needed
+ 1480 001e 5DF804FB 		ldr	pc, [sp], #4
+ 1481              		.cfi_endproc
+ 1482              	.LFE157:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 33
+
+
+ 1484              		.section	.text.HT_DM_S_7010_Receive_Data,"ax",%progbits
+ 1485              		.align	1
+ 1486              		.global	HT_DM_S_7010_Receive_Data
+ 1487              		.syntax unified
+ 1488              		.thumb
+ 1489              		.thumb_func
+ 1491              	HT_DM_S_7010_Receive_Data:
+ 1492              	.LVL81:
+ 1493              	.LFB158:
+ 390:Core/Src/HT_DM_S_7010.c **** 
+ 391:Core/Src/HT_DM_S_7010.c **** /**
+ 392:Core/Src/HT_DM_S_7010.c ****   * @brief    返回数据接收函数
+ 393:Core/Src/HT_DM_S_7010.c ****   * @param    rxCmd   : 接收到的数据缓存在该数组
+ 394:Core/Src/HT_DM_S_7010.c ****   * @param    rxCount : 接收到的数据长度
+ 395:Core/Src/HT_DM_S_7010.c ****   */
+ 396:Core/Src/HT_DM_S_7010.c **** void HT_DM_S_7010_Receive_Data(uint8_t *rxCmd, uint8_t *rxCount)
+ 397:Core/Src/HT_DM_S_7010.c **** {
+ 1494              		.loc 1 397 1 is_stmt 1 view -0
+ 1495              		.cfi_startproc
+ 1496              		@ args = 0, pretend = 0, frame = 0
+ 1497              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1498              		@ link register save eliminated.
+ 398:Core/Src/HT_DM_S_7010.c ****   if (rxCmd == NULL || rxCount == NULL)
+ 1499              		.loc 1 398 3 view .LVU410
+ 399:Core/Src/HT_DM_S_7010.c ****     return;
+ 400:Core/Src/HT_DM_S_7010.c ****   if (*rxCount == 0)
+ 401:Core/Src/HT_DM_S_7010.c ****     return;
+ 402:Core/Src/HT_DM_S_7010.c **** 
+ 403:Core/Src/HT_DM_S_7010.c ****   uint8_t cmd = rxCmd[0];
+ 404:Core/Src/HT_DM_S_7010.c ****   switch (cmd)
+ 405:Core/Src/HT_DM_S_7010.c ****   {
+ 406:Core/Src/HT_DM_S_7010.c ****   case 0xA0: // 版本信息
+ 407:Core/Src/HT_DM_S_7010.c ****     // rxCmd[1..7] 包含 Boot/app/hw/can_ver 按文档分布
+ 408:Core/Src/HT_DM_S_7010.c ****     break;
+ 409:Core/Src/HT_DM_S_7010.c ****   case 0xA1: // Q轴电流（4s）
+ 410:Core/Src/HT_DM_S_7010.c ****     if (*rxCount >= 5)
+ 411:Core/Src/HT_DM_S_7010.c ****     {
+ 412:Core/Src/HT_DM_S_7010.c ****       int32_t cur = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 
+ 413:Core/Src/HT_DM_S_7010.c ****       (void)cur; // 用户可以在此处理 cur（单位 0.001A）
+ 414:Core/Src/HT_DM_S_7010.c ****     }
+ 415:Core/Src/HT_DM_S_7010.c ****     break;
+ 416:Core/Src/HT_DM_S_7010.c ****   case 0xA2: // 转速（4s）
+ 417:Core/Src/HT_DM_S_7010.c ****     if (*rxCount >= 5)
+ 418:Core/Src/HT_DM_S_7010.c ****     {
+ 419:Core/Src/HT_DM_S_7010.c ****       int32_t spd = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 
+ 420:Core/Src/HT_DM_S_7010.c ****       (void)spd; // 单位 0.01 Rpm
+ 421:Core/Src/HT_DM_S_7010.c ****     }
+ 422:Core/Src/HT_DM_S_7010.c ****     break;
+ 423:Core/Src/HT_DM_S_7010.c ****   case 0xA3: // 单圈/多圈角度
+ 424:Core/Src/HT_DM_S_7010.c ****     // 单圈 2u 小端，多圈 4s 小端
+ 425:Core/Src/HT_DM_S_7010.c ****     break;
+ 426:Core/Src/HT_DM_S_7010.c ****   case 0xAE: // 状态/故障
+ 427:Core/Src/HT_DM_S_7010.c ****     // rxCmd[1..7] 包含母线电压/电流/温度/模式/故障码
+ 428:Core/Src/HT_DM_S_7010.c ****     break;
+ 429:Core/Src/HT_DM_S_7010.c ****   default:
+ 430:Core/Src/HT_DM_S_7010.c ****     break;
+ 431:Core/Src/HT_DM_S_7010.c ****   }
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 34
+
+
+ 432:Core/Src/HT_DM_S_7010.c **** }...
+ 1500              		.loc 1 432 1 is_stmt 0 view .LVU411
+ 1501 0000 7047     		bx	lr
+ 1502              		.cfi_endproc
+ 1503              	.LFE158:
+ 1505              		.text
+ 1506              	.Letext0:
+ 1507              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 1508              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 1509              		.file 4 "Core/Inc/can.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccDqddAb.s 			page 35
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 HT_DM_S_7010.c
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:21     .text.HT_DM_S_7010_System_Restart:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:27     .text.HT_DM_S_7010_System_Restart:00000000 HT_DM_S_7010_System_Restart
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:86     .text.HT_DM_S_7010_Read_Version:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:92     .text.HT_DM_S_7010_Read_Version:00000000 HT_DM_S_7010_Read_Version
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:136    .text.HT_DM_S_7010_Read_Current_Q_Axis:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:142    .text.HT_DM_S_7010_Read_Current_Q_Axis:00000000 HT_DM_S_7010_Read_Current_Q_Axis
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:186    .text.HT_DM_S_7010_Read_Speed:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:192    .text.HT_DM_S_7010_Read_Speed:00000000 HT_DM_S_7010_Read_Speed
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:236    .text.HT_DM_S_7010_Read_Absolute_Angle:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:242    .text.HT_DM_S_7010_Read_Absolute_Angle:00000000 HT_DM_S_7010_Read_Absolute_Angle
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:286    .text.HT_DM_S_7010_Read_Status_Fault:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:292    .text.HT_DM_S_7010_Read_Status_Fault:00000000 HT_DM_S_7010_Read_Status_Fault
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:336    .text.HT_DM_S_7010_Clear_Fault:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:342    .text.HT_DM_S_7010_Clear_Fault:00000000 HT_DM_S_7010_Clear_Fault
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:386    .text.HT_DM_S_7010_Read_Motor_Params:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:392    .text.HT_DM_S_7010_Read_Motor_Params:00000000 HT_DM_S_7010_Read_Motor_Params
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:436    .text.HT_DM_S_7010_Set_Current_Position_As_Origin:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:442    .text.HT_DM_S_7010_Set_Current_Position_As_Origin:00000000 HT_DM_S_7010_Set_Current_Position_As_Origin
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:486    .text.HT_DM_S_7010_Set_Position_Max_Speed:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:492    .text.HT_DM_S_7010_Set_Position_Max_Speed:00000000 HT_DM_S_7010_Set_Position_Max_Speed
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:556    .text.HT_DM_S_7010_Set_Max_Q_Current:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:562    .text.HT_DM_S_7010_Set_Max_Q_Current:00000000 HT_DM_S_7010_Set_Max_Q_Current
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:626    .text.HT_DM_S_7010_Set_Q_Current_Slope:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:632    .text.HT_DM_S_7010_Set_Q_Current_Slope:00000000 HT_DM_S_7010_Set_Q_Current_Slope
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:696    .text.HT_DM_S_7010_Set_Acceleration:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:702    .text.HT_DM_S_7010_Set_Acceleration:00000000 HT_DM_S_7010_Set_Acceleration
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:766    .text.HT_DM_S_7010_Set_Position_Kp:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:772    .text.HT_DM_S_7010_Set_Position_Kp:00000000 HT_DM_S_7010_Set_Position_Kp
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:837    .text.HT_DM_S_7010_Set_Position_Ki:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:843    .text.HT_DM_S_7010_Set_Position_Ki:00000000 HT_DM_S_7010_Set_Position_Ki
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:908    .text.HT_DM_S_7010_Set_Velocity_Kp:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:914    .text.HT_DM_S_7010_Set_Velocity_Kp:00000000 HT_DM_S_7010_Set_Velocity_Kp
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:979    .text.HT_DM_S_7010_Set_Velocity_Ki:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:985    .text.HT_DM_S_7010_Set_Velocity_Ki:00000000 HT_DM_S_7010_Set_Velocity_Ki
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1050   .text.HT_DM_S_7010_Current_Control:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1056   .text.HT_DM_S_7010_Current_Control:00000000 HT_DM_S_7010_Current_Control
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1120   .text.HT_DM_S_7010_Velocity_Control:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1126   .text.HT_DM_S_7010_Velocity_Control:00000000 HT_DM_S_7010_Velocity_Control
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1190   .text.HT_DM_S_7010_Absolute_Position_Control:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1196   .text.HT_DM_S_7010_Absolute_Position_Control:00000000 HT_DM_S_7010_Absolute_Position_Control
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1260   .text.HT_DM_S_7010_Relative_Position_Control:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1266   .text.HT_DM_S_7010_Relative_Position_Control:00000000 HT_DM_S_7010_Relative_Position_Control
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1330   .text.HT_DM_S_7010_Return_To_Origin:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1336   .text.HT_DM_S_7010_Return_To_Origin:00000000 HT_DM_S_7010_Return_To_Origin
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1380   .text.HT_DM_S_7010_Brake_Control:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1386   .text.HT_DM_S_7010_Brake_Control:00000000 HT_DM_S_7010_Brake_Control
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1435   .text.HT_DM_S_7010_Disable_Motor:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1441   .text.HT_DM_S_7010_Disable_Motor:00000000 HT_DM_S_7010_Disable_Motor
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1485   .text.HT_DM_S_7010_Receive_Data:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccDqddAb.s:1491   .text.HT_DM_S_7010_Receive_Data:00000000 HT_DM_S_7010_Receive_Data
+
+UNDEFINED SYMBOLS
+can2_SendCmd
