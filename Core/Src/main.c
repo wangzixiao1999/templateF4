@@ -143,21 +143,35 @@ int main(void)
   // can.rxData[1] = 0;
 
 
-  uint8_t cmd[32] = {0};
+    uint8_t cmd1[32] = {0};
 
   // 装载命令                 // 地址
-  cmd[0]  =  0x01;
-  cmd[1]  =  0xC3;                      // 功能码
-  cmd[2]  =  0x00;                      // 符号（方向）
-  cmd[3]  =  0x40;
-  cmd[4]  =  0x00;
-  cmd[5]  =  0x00;
+  cmd1[0]  =  0x01;
+  cmd1[1]  =  0xB1;                      // 功能码
+  // 发送命令
+  can2_SendCmd(cmd1, 2);
+  HAL_Delay(1000);
+
+  uint8_t cmd2[32] = {0};
+
+  // 装载命令                 // 地址
+  cmd2[0]  =  0x01;
+  cmd2[1]  =  0xC3;                      // 功能码
+  cmd2[2]  =  0x00;                      // 符号（方向）
+  cmd2[3]  =  0x10;
+  cmd2[4]  =  0x00;
+  cmd2[5]  =  0x00;
   // 发送命令
 
-  can2_SendCmd(cmd, 6);
+  can2_SendCmd(cmd2, 6);
   HAL_Delay(1000);
-  ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
 
+  ZDT_X42_V2_Traj_Position_Control(1, 1, 2000, 2000, 2000.0f, 72.0f, 0, 0);
+  HAL_Delay(100);
+  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
+  {
+    can.rxFrameFlag = false;
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */

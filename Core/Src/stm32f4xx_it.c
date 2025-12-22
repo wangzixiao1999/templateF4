@@ -46,7 +46,7 @@ extern volatile uint8_t pulse_state[4];
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+float can2_freq = 0.f;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -350,10 +350,22 @@ void TIM1_CC_IRQHandler(void)
 void CAN2_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
+  uint8_t i = 0;
+  static volatile uint32_t preTick = 0;
 
+	// 接收�?包数�?
+	if(HAL_CAN_GetRxMessage((&hcan2), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can2.CAN_RxMsg), (uint8_t *)(&can2.rxData)) == HAL_OK)
+	{
+		//?帧数据接收完成，置位帧标志位
+		for(i=can2.CAN_RxMsg.DLC; i < 8; i++) { can2.rxData[i] = 0; } can2.rxFrameFlag = true;
+	}
   /* USER CODE END CAN2_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan2);
   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
+  // 计算CAN2接收频率
+  uint32_t currTick = HAL_GetTick();
+  can2_freq = 1000.f / (currTick - preTick);
+  preTick = currTick;
 
   /* USER CODE END CAN2_RX0_IRQn 1 */
 }
