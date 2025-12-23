@@ -895,5 +895,37 @@
    "build/startup_stm32f407xx.o"
   ],
   "file": "startup_stm32f407xx.s"
+ },
+ {
+  "directory": "C:\\Users\\81506\\Desktop\\test\\templateF4",
+  "arguments": [
+   "arm-none-eabi-gcc",
+   "-c",
+   "-mcpu=cortex-m4",
+   "-mthumb",
+   "-mfpu=fpv4-sp-d16",
+   "-mfloat-abi=hard",
+   "-DUSE_HAL_DRIVER",
+   "-DSTM32F407xx",
+   "-ICore/Inc",
+   "-IDrivers/STM32F4xx_HAL_Driver/Inc",
+   "-IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+   "-IDrivers/CMSIS/Device/ST/STM32F4xx/Include",
+   "-IDrivers/CMSIS/Include",
+   "-Og",
+   "-Wall",
+   "-fdata-sections",
+   "-ffunction-sections",
+   "-g",
+   "-gdwarf-2",
+   "-MMD",
+   "-MP",
+   "-MFbuild/XYR_Control.d",
+   "-Wa,-a,-ad,-alms=build/XYR_Control.lst",
+   "Core/Src/XYR_Control.c",
+   "-o",
+   "build/XYR_Control.o"
+  ],
+  "file": "Core/Src/XYR_Control.c"
  }
 ]

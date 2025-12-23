@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include "ZDT_X42_V2.h"
 #include "HT_DM_S_7010.h"
+#include "XYR_Control.h"
 
 /* USER CODE END Includes */
 
@@ -145,24 +146,20 @@ int main(void)
   // can.rxData[1] = 0;
 
 
-    uint8_t cmd1[32] = {0};
+  //   uint8_t cmd1[32] = {0};
 
-  // 装载命令                 // 地址
-  cmd1[0]  =  0x01;
-  cmd1[1]  =  0xB1;                      // 功能码
-  // 发送命令
-  can2_SendCmd(cmd1, 2);
-  HAL_Delay(1000);
+  // // 装载命令                 // 地址
+  // cmd1[0]  =  0x01;
+  // cmd1[1]  =  0xB1;                      // 功能码
+  // // 发送命令
+  // can2_SendCmd(cmd1, 2);
+  // HAL_Delay(1000);
 
-  HT_DM_S_7010_Relative_Position_Control(0x01, 16384);
-  HAL_Delay(1000);
+  XYR_Collision_Home(0);
 
-  ZDT_X42_V2_Traj_Position_Control(1, 1, 2000, 2000, 2000.0f, 72.0f, 0, 0);
-  HAL_Delay(100);
-  while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  {
-    can.rxFrameFlag = false;
-  }
+  HT_DM_S_7010_Relative_Position_Control(1, 16384);
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

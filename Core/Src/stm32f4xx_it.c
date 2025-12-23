@@ -357,7 +357,7 @@ void CAN2_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
   uint8_t i = 0;
-  static volatile uint32_t preTick = 0;
+  static volatile uint32_t preTick2 = 0;
 
 	// 接收�?包数�?
 	if(HAL_CAN_GetRxMessage((&hcan2), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can2.CAN_RxMsg), (uint8_t *)(&can2.rxData)) == HAL_OK)
@@ -369,9 +369,9 @@ void CAN2_RX0_IRQHandler(void)
   HAL_CAN_IRQHandler(&hcan2);
   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
   // 计算CAN2接收频率
-  uint32_t currTick = HAL_GetTick();
-  can2_freq = 1000.f / (currTick - preTick);
-  preTick = currTick;
+  uint32_t currTick2 = HAL_GetTick();
+  can2_freq = 1000.f / (currTick2 - preTick2);
+  preTick2 = currTick2;
 
   /* USER CODE END CAN2_RX0_IRQn 1 */
 }

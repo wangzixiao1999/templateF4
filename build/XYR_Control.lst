@@ -1,0 +1,187 @@
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"XYR_Control.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/XYR_Control.c"
+  20              		.section	.text.XYR_Collision_Home,"ax",%progbits
+  21              		.align	1
+  22              		.global	XYR_Collision_Home
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	XYR_Collision_Home:
+  28              	.LVL0:
+  29              	.LFB134:
+   1:Core/Src/XYR_Control.c **** #include "XYR_Control.h"
+   2:Core/Src/XYR_Control.c **** 
+   3:Core/Src/XYR_Control.c **** void XYR_Collision_Home(uint8_t addr)
+   4:Core/Src/XYR_Control.c **** {
+  30              		.loc 1 4 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 4 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 0446     		mov	r4, r0
+   5:Core/Src/XYR_Control.c **** 	ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
+  41              		.loc 1 5 2 is_stmt 1 view .LVU2
+  42 0004 0022     		movs	r2, #0
+  43 0006 0221     		movs	r1, #2
+  44 0008 FFF7FEFF 		bl	ZDT_X42_V2_Origin_Trigger_Return
+  45              	.LVL1:
+   6:Core/Src/XYR_Control.c **** 	HAL_Delay(10);
+  46              		.loc 1 6 2 view .LVU3
+  47 000c 0A20     		movs	r0, #10
+  48 000e FFF7FEFF 		bl	HAL_Delay
+  49              	.LVL2:
+   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  50              		.loc 1 7 2 view .LVU4
+  51              		.loc 1 7 7 is_stmt 0 view .LVU5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 2
+
+
+  52 0012 03E0     		b	.L2
+  53              	.L3:
+   8:Core/Src/XYR_Control.c **** 	{
+   9:Core/Src/XYR_Control.c ****     	can.rxFrameFlag = false;
+  54              		.loc 1 9 6 is_stmt 1 view .LVU6
+  55              		.loc 1 9 22 is_stmt 0 view .LVU7
+  56 0014 174B     		ldr	r3, .L7
+  57 0016 0022     		movs	r2, #0
+  58 0018 83F87420 		strb	r2, [r3, #116]
+  59              	.L2:
+   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  60              		.loc 1 7 30 is_stmt 1 view .LVU8
+   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  61              		.loc 1 7 18 is_stmt 0 view .LVU9
+  62 001c 154B     		ldr	r3, .L7
+  63 001e 1B7F     		ldrb	r3, [r3, #28]	@ zero_extendqisi2
+  64 0020 DBB2     		uxtb	r3, r3
+   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  65              		.loc 1 7 30 view .LVU10
+  66 0022 9A2B     		cmp	r3, #154
+  67 0024 F6D1     		bne	.L3
+   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  68              		.loc 1 7 43 discriminator 1 view .LVU11
+  69 0026 134B     		ldr	r3, .L7
+  70 0028 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
+  71 002a DBB2     		uxtb	r3, r3
+   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  72              		.loc 1 7 30 discriminator 1 view .LVU12
+  73 002c 9F2B     		cmp	r3, #159
+  74 002e F1D1     		bne	.L3
+  10:Core/Src/XYR_Control.c ****     }
+  11:Core/Src/XYR_Control.c **** 		HAL_Delay(500);
+  75              		.loc 1 11 3 is_stmt 1 view .LVU13
+  76 0030 4FF4FA70 		mov	r0, #500
+  77 0034 FFF7FEFF 		bl	HAL_Delay
+  78              	.LVL3:
+  12:Core/Src/XYR_Control.c **** 	ZDT_X42_V2_Bypass_Position_LV_Control( addr, 1, 500, 4500, 0, 0);
+  79              		.loc 1 12 2 view .LVU14
+  80 0038 0023     		movs	r3, #0
+  81 003a 1A46     		mov	r2, r3
+  82 003c DFED0E0A 		vldr.32	s1, .L7+4
+  83 0040 9FED0E0A 		vldr.32	s0, .L7+8
+  84 0044 0121     		movs	r1, #1
+  85 0046 2046     		mov	r0, r4
+  86 0048 FFF7FEFF 		bl	ZDT_X42_V2_Bypass_Position_LV_Control
+  87              	.LVL4:
+  13:Core/Src/XYR_Control.c **** 	HAL_Delay(10);
+  88              		.loc 1 13 2 view .LVU15
+  89 004c 0A20     		movs	r0, #10
+  90 004e FFF7FEFF 		bl	HAL_Delay
+  91              	.LVL5:
+  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+  92              		.loc 1 14 2 view .LVU16
+  93              		.loc 1 14 7 is_stmt 0 view .LVU17
+  94 0052 03E0     		b	.L4
+  95              	.L5:
+  15:Core/Src/XYR_Control.c **** 	{
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 3
+
+
+  16:Core/Src/XYR_Control.c ****     	can.rxFrameFlag = false;
+  96              		.loc 1 16 6 is_stmt 1 view .LVU18
+  97              		.loc 1 16 22 is_stmt 0 view .LVU19
+  98 0054 074B     		ldr	r3, .L7
+  99 0056 0022     		movs	r2, #0
+ 100 0058 83F87420 		strb	r2, [r3, #116]
+ 101              	.L4:
+  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 102              		.loc 1 14 30 is_stmt 1 view .LVU20
+  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 103              		.loc 1 14 18 is_stmt 0 view .LVU21
+ 104 005c 054B     		ldr	r3, .L7
+ 105 005e 1B7F     		ldrb	r3, [r3, #28]	@ zero_extendqisi2
+ 106 0060 DBB2     		uxtb	r3, r3
+  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 107              		.loc 1 14 30 view .LVU22
+ 108 0062 FB2B     		cmp	r3, #251
+ 109 0064 F6D1     		bne	.L5
+  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 110              		.loc 1 14 43 discriminator 1 view .LVU23
+ 111 0066 034B     		ldr	r3, .L7
+ 112 0068 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
+ 113 006a DBB2     		uxtb	r3, r3
+  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 114              		.loc 1 14 30 discriminator 1 view .LVU24
+ 115 006c 9F2B     		cmp	r3, #159
+ 116 006e F1D1     		bne	.L5
+  17:Core/Src/XYR_Control.c ****     }
+  18:Core/Src/XYR_Control.c **** }...
+ 117              		.loc 1 18 1 view .LVU25
+ 118 0070 10BD     		pop	{r4, pc}
+ 119              	.LVL6:
+ 120              	.L8:
+ 121              		.loc 1 18 1 view .LVU26
+ 122 0072 00BF     		.align	2
+ 123              	.L7:
+ 124 0074 00000000 		.word	can
+ 125 0078 00A08C45 		.word	1166843904
+ 126 007c 0000FA43 		.word	1140457472
+ 127              		.cfi_endproc
+ 128              	.LFE134:
+ 130              		.text
+ 131              	.Letext0:
+ 132              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 133              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 134              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 135              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 136              		.file 6 "Core/Inc/can.h"
+ 137              		.file 7 "Core/Inc/ZDT_X42_V2.h"
+ 138              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 XYR_Control.c
+C:\Users\81506\AppData\Local\Temp\ccc08eZU.s:21     .text.XYR_Collision_Home:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccc08eZU.s:27     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
+C:\Users\81506\AppData\Local\Temp\ccc08eZU.s:124    .text.XYR_Collision_Home:00000074 $d
+
+UNDEFINED SYMBOLS
+ZDT_X42_V2_Origin_Trigger_Return
+HAL_Delay
+ZDT_X42_V2_Bypass_Position_LV_Control
+can
