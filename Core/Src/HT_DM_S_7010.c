@@ -403,28 +403,25 @@ void HT_DM_S_7010_Receive_Data(uint8_t *rxCmd, uint8_t *rxCount)
   uint8_t cmd = rxCmd[0];
   switch (cmd)
   {
-  case 0xA0: // 版本信息
-    // rxCmd[1..7] 包含 Boot/app/hw/can_ver 按文档分布
+  case 0xA0: // 版本信息（4s）
     break;
   case 0xA1: // Q轴电流（4s）
     if (*rxCount >= 5)
     {
       int32_t cur = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
-      (void)cur; // 用户可以在此处理 cur（单位 0.001A）
+      (void)cur;
     }
     break;
-  case 0xA2: // 转速（4s）
+  case 0xA2: // 速度（4s）
     if (*rxCount >= 5)
     {
       int32_t spd = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
-      (void)spd; // 单位 0.01 Rpm
+      (void)spd;
     }
     break;
-  case 0xA3: // 单圈/多圈角度
-    // 单圈 2u 小端，多圈 4s 小端
+  case 0xA3:
     break;
-  case 0xAE: // 状态/故障
-    // rxCmd[1..7] 包含母线电压/电流/温度/模式/故障码
+  case 0xAE:
     break;
   default:
     break;

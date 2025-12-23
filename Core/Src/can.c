@@ -269,9 +269,9 @@ void USER_CAN2_Filter_Init(void)
 }
 
 /**
-	* @brief   CAN发�?�多个字�?
-	* @param   �?
-	* @retval  �?
+	* @brief   通过 CAN1 发送命令
+	* @param   cmd: 命令数据指针
+	* @param   len: 命令长度
 	*/
 void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
 {
@@ -312,6 +312,11 @@ void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
 	}
 }
 
+/**
+	* @brief   通过 CAN2 发送命令
+	* @param   cmd: 命令数据指针
+	* @param   len: 命令长度
+	*/
 void can2_SendCmd( __IO uint8_t *cmd, uint8_t len)
 {
 	static uint32_t TxMailbox;

@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ZDT_X42_V2.h"
+#include "HT_DM_S_7010.h"
 
 /* USER CODE END Includes */
 
@@ -101,8 +102,9 @@ int main(void)
 	if(HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN2控制器接收中断
   HAL_Delay(2000);
 
-  double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
-  double widths_us[4] = {50.0, 25.0, 20.0, 35.0};
+  // double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
+  // double widths_us[4] = {50.0, 25.0, 20.0, 35.0};
+
   // for (size_t i = 0; i < 9; i++)
   // {
   //   for (size_t j = 0; j < 9; j++)
@@ -152,18 +154,7 @@ int main(void)
   can2_SendCmd(cmd1, 2);
   HAL_Delay(1000);
 
-  uint8_t cmd2[32] = {0};
-
-  // 装载命令                 // 地址
-  cmd2[0]  =  0x01;
-  cmd2[1]  =  0xC3;                      // 功能码
-  cmd2[2]  =  0x00;                      // 符号（方向）
-  cmd2[3]  =  0x10;
-  cmd2[4]  =  0x00;
-  cmd2[5]  =  0x00;
-  // 发送命令
-
-  can2_SendCmd(cmd2, 6);
+  HT_DM_S_7010_Relative_Position_Control(0x01, 16384);
   HAL_Delay(1000);
 
   ZDT_X42_V2_Traj_Position_Control(1, 1, 2000, 2000, 2000.0f, 72.0f, 0, 0);
