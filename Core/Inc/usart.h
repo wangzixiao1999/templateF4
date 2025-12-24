@@ -1,9 +1,9 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    tim.h
+  * @file    usart.h
   * @brief   This file contains all the function prototypes for
-  *          the tim.c file
+  *          the usart.c file
   ******************************************************************************
   * @attention
   *
@@ -18,8 +18,8 @@
   */
 /* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __TIM_H__
-#define __TIM_H__
+#ifndef __USART_H__
+#define __USART_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,24 +32,15 @@ extern "C" {
 
 /* USER CODE END Includes */
 
-extern TIM_HandleTypeDef htim1;
-
-extern TIM_HandleTypeDef htim4;
+extern UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_TIM1_Init(void);
-void MX_TIM4_Init(void);
-
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
-void start_4_one_shot(double delays_us[4], double widths_us[4]);
-
-void TIM1_ClockInit_Cache(void);
 
 /* USER CODE END Prototypes */
 
@@ -57,5 +48,5 @@ void TIM1_ClockInit_Cache(void);
 }
 #endif
 
-#endif /* __TIM_H__ */
+#endif /* __USART_H__ */
 

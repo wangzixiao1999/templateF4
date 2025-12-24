@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -20,168 +20,284 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "Core/Src/XYR_Control.c"
-  20              		.section	.text.XYR_Collision_Home,"ax",%progbits
+  20              		.section	.text.XYR_Init,"ax",%progbits
   21              		.align	1
-  22              		.global	XYR_Collision_Home
+  22              		.global	XYR_Init
   23              		.syntax unified
   24              		.thumb
   25              		.thumb_func
-  27              	XYR_Collision_Home:
-  28              	.LVL0:
-  29              	.LFB134:
+  27              	XYR_Init:
+  28              	.LFB134:
    1:Core/Src/XYR_Control.c **** #include "XYR_Control.h"
    2:Core/Src/XYR_Control.c **** 
-   3:Core/Src/XYR_Control.c **** void XYR_Collision_Home(uint8_t addr)
-   4:Core/Src/XYR_Control.c **** {
-  30              		.loc 1 4 1 view -0
-  31              		.cfi_startproc
-  32              		@ args = 0, pretend = 0, frame = 0
-  33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 4 1 is_stmt 0 view .LVU1
-  35 0000 10B5     		push	{r4, lr}
-  36              	.LCFI0:
-  37              		.cfi_def_cfa_offset 8
-  38              		.cfi_offset 4, -8
-  39              		.cfi_offset 14, -4
-  40 0002 0446     		mov	r4, r0
-   5:Core/Src/XYR_Control.c **** 	ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-  41              		.loc 1 5 2 is_stmt 1 view .LVU2
-  42 0004 0022     		movs	r2, #0
-  43 0006 0221     		movs	r1, #2
-  44 0008 FFF7FEFF 		bl	ZDT_X42_V2_Origin_Trigger_Return
-  45              	.LVL1:
-   6:Core/Src/XYR_Control.c **** 	HAL_Delay(10);
-  46              		.loc 1 6 2 view .LVU3
-  47 000c 0A20     		movs	r0, #10
-  48 000e FFF7FEFF 		bl	HAL_Delay
-  49              	.LVL2:
-   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
-  50              		.loc 1 7 2 view .LVU4
-  51              		.loc 1 7 7 is_stmt 0 view .LVU5
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 2
+   3:Core/Src/XYR_Control.c **** 
+   4:Core/Src/XYR_Control.c **** float Tim4_freq = 0.f;
+   5:Core/Src/XYR_Control.c **** int32_t cur = 0;
+   6:Core/Src/XYR_Control.c **** /**
+   7:Core/Src/XYR_Control.c ****   * @brief    初始化XYR三轴位移台
+   8:Core/Src/XYR_Control.c ****   */
+   9:Core/Src/XYR_Control.c **** void XYR_Init()
+  10:Core/Src/XYR_Control.c **** {
+  29              		.loc 1 10 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  11:Core/Src/XYR_Control.c **** //ZDT_X42_V2_Origin_Modify_Params(0, false, 2, 0, 1000, 10000, 500, 150, 150, false);
+  12:Core/Src/XYR_Control.c **** }
+  34              		.loc 1 12 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE134:
+  39              		.section	.text.XYR_Collision_Home,"ax",%progbits
+  40              		.align	1
+  41              		.global	XYR_Collision_Home
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	XYR_Collision_Home:
+  47              	.LVL0:
+  48              	.LFB135:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s 			page 2
 
 
-  52 0012 03E0     		b	.L2
-  53              	.L3:
-   8:Core/Src/XYR_Control.c **** 	{
-   9:Core/Src/XYR_Control.c ****     	can.rxFrameFlag = false;
-  54              		.loc 1 9 6 is_stmt 1 view .LVU6
-  55              		.loc 1 9 22 is_stmt 0 view .LVU7
-  56 0014 174B     		ldr	r3, .L7
-  57 0016 0022     		movs	r2, #0
-  58 0018 83F87420 		strb	r2, [r3, #116]
-  59              	.L2:
-   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
-  60              		.loc 1 7 30 is_stmt 1 view .LVU8
-   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
-  61              		.loc 1 7 18 is_stmt 0 view .LVU9
-  62 001c 154B     		ldr	r3, .L7
-  63 001e 1B7F     		ldrb	r3, [r3, #28]	@ zero_extendqisi2
-  64 0020 DBB2     		uxtb	r3, r3
-   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
-  65              		.loc 1 7 30 view .LVU10
-  66 0022 9A2B     		cmp	r3, #154
-  67 0024 F6D1     		bne	.L3
-   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
-  68              		.loc 1 7 43 discriminator 1 view .LVU11
-  69 0026 134B     		ldr	r3, .L7
-  70 0028 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
-  71 002a DBB2     		uxtb	r3, r3
-   7:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
-  72              		.loc 1 7 30 discriminator 1 view .LVU12
-  73 002c 9F2B     		cmp	r3, #159
-  74 002e F1D1     		bne	.L3
-  10:Core/Src/XYR_Control.c ****     }
-  11:Core/Src/XYR_Control.c **** 		HAL_Delay(500);
-  75              		.loc 1 11 3 is_stmt 1 view .LVU13
-  76 0030 4FF4FA70 		mov	r0, #500
-  77 0034 FFF7FEFF 		bl	HAL_Delay
-  78              	.LVL3:
-  12:Core/Src/XYR_Control.c **** 	ZDT_X42_V2_Bypass_Position_LV_Control( addr, 1, 500, 4500, 0, 0);
-  79              		.loc 1 12 2 view .LVU14
-  80 0038 0023     		movs	r3, #0
-  81 003a 1A46     		mov	r2, r3
-  82 003c DFED0E0A 		vldr.32	s1, .L7+4
-  83 0040 9FED0E0A 		vldr.32	s0, .L7+8
-  84 0044 0121     		movs	r1, #1
-  85 0046 2046     		mov	r0, r4
-  86 0048 FFF7FEFF 		bl	ZDT_X42_V2_Bypass_Position_LV_Control
-  87              	.LVL4:
-  13:Core/Src/XYR_Control.c **** 	HAL_Delay(10);
-  88              		.loc 1 13 2 view .LVU15
-  89 004c 0A20     		movs	r0, #10
-  90 004e FFF7FEFF 		bl	HAL_Delay
-  91              	.LVL5:
-  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
-  92              		.loc 1 14 2 view .LVU16
-  93              		.loc 1 14 7 is_stmt 0 view .LVU17
-  94 0052 03E0     		b	.L4
-  95              	.L5:
-  15:Core/Src/XYR_Control.c **** 	{
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 3
+  13:Core/Src/XYR_Control.c **** 
+  14:Core/Src/XYR_Control.c **** /**
+  15:Core/Src/XYR_Control.c ****   * @brief    碰撞回零
+  16:Core/Src/XYR_Control.c ****   * @param    addr  ：电机地址
+  17:Core/Src/XYR_Control.c ****   */
+  18:Core/Src/XYR_Control.c **** void XYR_Collision_Home(uint8_t addr)
+  19:Core/Src/XYR_Control.c **** {
+  49              		.loc 1 19 1 view -0
+  50              		.cfi_startproc
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		.loc 1 19 1 is_stmt 0 view .LVU3
+  54 0000 10B5     		push	{r4, lr}
+  55              	.LCFI0:
+  56              		.cfi_def_cfa_offset 8
+  57              		.cfi_offset 4, -8
+  58              		.cfi_offset 14, -4
+  59 0002 0446     		mov	r4, r0
+  20:Core/Src/XYR_Control.c **** 	ZDT_X42_V2_Origin_Trigger_Return(addr, 2,   false);
+  60              		.loc 1 20 2 is_stmt 1 view .LVU4
+  61 0004 0022     		movs	r2, #0
+  62 0006 0221     		movs	r1, #2
+  63 0008 FFF7FEFF 		bl	ZDT_X42_V2_Origin_Trigger_Return
+  64              	.LVL1:
+  21:Core/Src/XYR_Control.c **** 	HAL_Delay(10);
+  65              		.loc 1 21 2 view .LVU5
+  66 000c 0A20     		movs	r0, #10
+  67 000e FFF7FEFF 		bl	HAL_Delay
+  68              	.LVL2:
+  22:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  69              		.loc 1 22 2 view .LVU6
+  70              		.loc 1 22 7 is_stmt 0 view .LVU7
+  71 0012 03E0     		b	.L3
+  72              	.L4:
+  23:Core/Src/XYR_Control.c **** 	{
+  24:Core/Src/XYR_Control.c ****     	can.rxFrameFlag = false;
+  73              		.loc 1 24 6 is_stmt 1 view .LVU8
+  74              		.loc 1 24 22 is_stmt 0 view .LVU9
+  75 0014 154B     		ldr	r3, .L8
+  76 0016 0022     		movs	r2, #0
+  77 0018 83F87420 		strb	r2, [r3, #116]
+  78              	.L3:
+  22:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  79              		.loc 1 22 30 is_stmt 1 view .LVU10
+  22:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  80              		.loc 1 22 18 is_stmt 0 view .LVU11
+  81 001c 134B     		ldr	r3, .L8
+  82 001e 1B7F     		ldrb	r3, [r3, #28]	@ zero_extendqisi2
+  83 0020 DBB2     		uxtb	r3, r3
+  22:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  84              		.loc 1 22 30 view .LVU12
+  85 0022 9A2B     		cmp	r3, #154
+  86 0024 F6D1     		bne	.L4
+  22:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  87              		.loc 1 22 43 discriminator 1 view .LVU13
+  88 0026 114B     		ldr	r3, .L8
+  89 0028 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s 			page 3
 
 
-  16:Core/Src/XYR_Control.c ****     	can.rxFrameFlag = false;
-  96              		.loc 1 16 6 is_stmt 1 view .LVU18
-  97              		.loc 1 16 22 is_stmt 0 view .LVU19
-  98 0054 074B     		ldr	r3, .L7
-  99 0056 0022     		movs	r2, #0
- 100 0058 83F87420 		strb	r2, [r3, #116]
- 101              	.L4:
-  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
- 102              		.loc 1 14 30 is_stmt 1 view .LVU20
-  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
- 103              		.loc 1 14 18 is_stmt 0 view .LVU21
- 104 005c 054B     		ldr	r3, .L7
- 105 005e 1B7F     		ldrb	r3, [r3, #28]	@ zero_extendqisi2
- 106 0060 DBB2     		uxtb	r3, r3
-  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
- 107              		.loc 1 14 30 view .LVU22
- 108 0062 FB2B     		cmp	r3, #251
- 109 0064 F6D1     		bne	.L5
-  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
- 110              		.loc 1 14 43 discriminator 1 view .LVU23
- 111 0066 034B     		ldr	r3, .L7
- 112 0068 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
- 113 006a DBB2     		uxtb	r3, r3
-  14:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
- 114              		.loc 1 14 30 discriminator 1 view .LVU24
- 115 006c 9F2B     		cmp	r3, #159
- 116 006e F1D1     		bne	.L5
-  17:Core/Src/XYR_Control.c ****     }
-  18:Core/Src/XYR_Control.c **** }...
- 117              		.loc 1 18 1 view .LVU25
- 118 0070 10BD     		pop	{r4, pc}
- 119              	.LVL6:
- 120              	.L8:
- 121              		.loc 1 18 1 view .LVU26
- 122 0072 00BF     		.align	2
- 123              	.L7:
- 124 0074 00000000 		.word	can
- 125 0078 00A08C45 		.word	1166843904
- 126 007c 0000FA43 		.word	1140457472
- 127              		.cfi_endproc
- 128              	.LFE134:
- 130              		.text
- 131              	.Letext0:
- 132              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 133              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 134              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 135              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 136              		.file 6 "Core/Inc/can.h"
- 137              		.file 7 "Core/Inc/ZDT_X42_V2.h"
- 138              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccc08eZU.s 			page 4
+  90 002a DBB2     		uxtb	r3, r3
+  22:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+  91              		.loc 1 22 30 discriminator 1 view .LVU14
+  92 002c 9F2B     		cmp	r3, #159
+  93 002e F1D1     		bne	.L4
+  25:Core/Src/XYR_Control.c ****     }
+  26:Core/Src/XYR_Control.c **** 	ZDT_X42_V2_Bypass_Position_LV_Control( addr, 1, 500, 4500, 0, 0);
+  94              		.loc 1 26 2 is_stmt 1 view .LVU15
+  95 0030 0023     		movs	r3, #0
+  96 0032 1A46     		mov	r2, r3
+  97 0034 DFED0E0A 		vldr.32	s1, .L8+4
+  98 0038 9FED0E0A 		vldr.32	s0, .L8+8
+  99 003c 0121     		movs	r1, #1
+ 100 003e 2046     		mov	r0, r4
+ 101 0040 FFF7FEFF 		bl	ZDT_X42_V2_Bypass_Position_LV_Control
+ 102              	.LVL3:
+  27:Core/Src/XYR_Control.c **** 	HAL_Delay(10);
+ 103              		.loc 1 27 2 view .LVU16
+ 104 0044 0A20     		movs	r0, #10
+ 105 0046 FFF7FEFF 		bl	HAL_Delay
+ 106              	.LVL4:
+  28:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 107              		.loc 1 28 2 view .LVU17
+ 108              		.loc 1 28 7 is_stmt 0 view .LVU18
+ 109 004a 03E0     		b	.L5
+ 110              	.L6:
+  29:Core/Src/XYR_Control.c **** 	{
+  30:Core/Src/XYR_Control.c ****     	can.rxFrameFlag = false;
+ 111              		.loc 1 30 6 is_stmt 1 view .LVU19
+ 112              		.loc 1 30 22 is_stmt 0 view .LVU20
+ 113 004c 074B     		ldr	r3, .L8
+ 114 004e 0022     		movs	r2, #0
+ 115 0050 83F87420 		strb	r2, [r3, #116]
+ 116              	.L5:
+  28:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 117              		.loc 1 28 30 is_stmt 1 view .LVU21
+  28:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 118              		.loc 1 28 18 is_stmt 0 view .LVU22
+ 119 0054 054B     		ldr	r3, .L8
+ 120 0056 1B7F     		ldrb	r3, [r3, #28]	@ zero_extendqisi2
+ 121 0058 DBB2     		uxtb	r3, r3
+  28:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 122              		.loc 1 28 30 view .LVU23
+ 123 005a FB2B     		cmp	r3, #251
+ 124 005c F6D1     		bne	.L6
+  28:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 125              		.loc 1 28 43 discriminator 1 view .LVU24
+ 126 005e 034B     		ldr	r3, .L8
+ 127 0060 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
+ 128 0062 DBB2     		uxtb	r3, r3
+  28:Core/Src/XYR_Control.c **** 	while(can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
+ 129              		.loc 1 28 30 discriminator 1 view .LVU25
+ 130 0064 9F2B     		cmp	r3, #159
+ 131 0066 F1D1     		bne	.L6
+  31:Core/Src/XYR_Control.c ****     }
+  32:Core/Src/XYR_Control.c **** }
+ 132              		.loc 1 32 1 view .LVU26
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s 			page 4
+
+
+ 133 0068 10BD     		pop	{r4, pc}
+ 134              	.LVL5:
+ 135              	.L9:
+ 136              		.loc 1 32 1 view .LVU27
+ 137 006a 00BF     		.align	2
+ 138              	.L8:
+ 139 006c 00000000 		.word	can
+ 140 0070 00A08C45 		.word	1166843904
+ 141 0074 0000FA43 		.word	1140457472
+ 142              		.cfi_endproc
+ 143              	.LFE135:
+ 145              		.section	.text.Controller_Update_Callback,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	Controller_Update_Callback
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 152              	Controller_Update_Callback:
+ 153              	.LFB136:
+  33:Core/Src/XYR_Control.c **** 
+  34:Core/Src/XYR_Control.c **** /**
+  35:Core/Src/XYR_Control.c ****  * @brief:中断函数使用
+  36:Core/Src/XYR_Control.c ****  */
+  37:Core/Src/XYR_Control.c **** void Controller_Update_Callback(void)
+  38:Core/Src/XYR_Control.c **** {
+ 154              		.loc 1 38 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158 0000 08B5     		push	{r3, lr}
+ 159              	.LCFI1:
+ 160              		.cfi_def_cfa_offset 8
+ 161              		.cfi_offset 3, -8
+ 162              		.cfi_offset 14, -4
+  39:Core/Src/XYR_Control.c ****  	// static volatile uint32_t preTick_Tim4 = 0;
+  40:Core/Src/XYR_Control.c **** 	HT_DM_S_7010_Read_Current_Q_Axis(1);
+ 163              		.loc 1 40 2 view .LVU29
+ 164 0002 0120     		movs	r0, #1
+ 165 0004 FFF7FEFF 		bl	HT_DM_S_7010_Read_Current_Q_Axis
+ 166              	.LVL6:
+  41:Core/Src/XYR_Control.c **** 
+  42:Core/Src/XYR_Control.c **** 	cur = HT_DM_S_7010_Receive_Data(can2.rxData, &can2.CAN_RxMsg.DLC);
+ 167              		.loc 1 42 2 view .LVU30
+ 168              		.loc 1 42 8 is_stmt 0 view .LVU31
+ 169 0008 0349     		ldr	r1, .L12
+ 170 000a 01F10C00 		add	r0, r1, #12
+ 171 000e FFF7FEFF 		bl	HT_DM_S_7010_Receive_Data
+ 172              	.LVL7:
+ 173              		.loc 1 42 6 discriminator 1 view .LVU32
+ 174 0012 024B     		ldr	r3, .L12+4
+ 175 0014 1860     		str	r0, [r3]
+  43:Core/Src/XYR_Control.c **** 	// uint32_t currTick_Tim4 = HAL_GetTick();
+  44:Core/Src/XYR_Control.c ****   	// Tim4_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
+  45:Core/Src/XYR_Control.c ****   	// preTick_Tim4 = currTick_Tim4;
+  46:Core/Src/XYR_Control.c ****     //每50ms发送一次数据
+  47:Core/Src/XYR_Control.c ****     // static int send_sount=0;
+  48:Core/Src/XYR_Control.c ****     // if(++send_sount>=5)
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s 			page 5
+
+
+  49:Core/Src/XYR_Control.c ****     // {
+  50:Core/Src/XYR_Control.c **** 
+  51:Core/Src/XYR_Control.c ****     // }
+  52:Core/Src/XYR_Control.c **** 
+  53:Core/Src/XYR_Control.c **** }...
+ 176              		.loc 1 53 1 view .LVU33
+ 177 0016 08BD     		pop	{r3, pc}
+ 178              	.L13:
+ 179              		.align	2
+ 180              	.L12:
+ 181 0018 10000000 		.word	can2+16
+ 182 001c 00000000 		.word	cur
+ 183              		.cfi_endproc
+ 184              	.LFE136:
+ 186              		.global	cur
+ 187              		.section	.bss.cur,"aw",%nobits
+ 188              		.align	2
+ 191              	cur:
+ 192 0000 00000000 		.space	4
+ 193              		.global	Tim4_freq
+ 194              		.section	.bss.Tim4_freq,"aw",%nobits
+ 195              		.align	2
+ 198              	Tim4_freq:
+ 199 0000 00000000 		.space	4
+ 200              		.text
+ 201              	.Letext0:
+ 202              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 203              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 204              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 205              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 206              		.file 6 "Core/Inc/can.h"
+ 207              		.file 7 "Core/Inc/HT_DM_S_7010.h"
+ 208              		.file 8 "Core/Inc/ZDT_X42_V2.h"
+ 209              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 XYR_Control.c
-C:\Users\81506\AppData\Local\Temp\ccc08eZU.s:21     .text.XYR_Collision_Home:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccc08eZU.s:27     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
-C:\Users\81506\AppData\Local\Temp\ccc08eZU.s:124    .text.XYR_Collision_Home:00000074 $d
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:21     .text.XYR_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:27     .text.XYR_Init:00000000 XYR_Init
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:40     .text.XYR_Collision_Home:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:46     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:139    .text.XYR_Collision_Home:0000006c $d
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:146    .text.Controller_Update_Callback:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:152    .text.Controller_Update_Callback:00000000 Controller_Update_Callback
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:181    .text.Controller_Update_Callback:00000018 $d
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:191    .bss.cur:00000000 cur
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:188    .bss.cur:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:198    .bss.Tim4_freq:00000000 Tim4_freq
+C:\Users\81506\AppData\Local\Temp\ccCKVuSA.s:195    .bss.Tim4_freq:00000000 $d
 
 UNDEFINED SYMBOLS
 ZDT_X42_V2_Origin_Trigger_Return
 HAL_Delay
 ZDT_X42_V2_Bypass_Position_LV_Control
 can
+HT_DM_S_7010_Read_Current_Q_Axis
+HT_DM_S_7010_Receive_Data
+can2

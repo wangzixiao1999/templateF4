@@ -393,30 +393,30 @@ void HT_DM_S_7010_Disable_Motor(uint8_t addr)
   * @param    rxCmd   : 接收到的数据缓存在该数组
   * @param    rxCount : 接收到的数据长度
   */
-void HT_DM_S_7010_Receive_Data(uint8_t *rxCmd, uint8_t *rxCount)
+int32_t HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCount)
 {
   if (rxCmd == NULL || rxCount == NULL)
-    return;
+    return 0;
   if (*rxCount == 0)
-    return;
+    return 0;
 
   uint8_t cmd = rxCmd[0];
   switch (cmd)
   {
-  case 0xA0: // 版本信息（4s）
+  case 0xA0:
     break;
-  case 0xA1: // Q轴电流（4s）
-    if (*rxCount >= 5)
-    {
+  case 0xA1:
+    // if (*rxCount >= 5)
+    // {
       int32_t cur = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
-      (void)cur;
-    }
+      return cur;
+    // }
     break;
-  case 0xA2: // 速度（4s）
+  case 0xA2:
     if (*rxCount >= 5)
     {
       int32_t spd = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
-      (void)spd;
+      return spd;
     }
     break;
   case 0xA3:

@@ -39,6 +39,6 @@ void HT_DM_S_7010_Brake_Control(uint8_t addr, uint8_t state);                   
 void HT_DM_S_7010_Disable_Motor(uint8_t addr);                                      // 关闭电机输出
 
 // 数据接收函数（用于解析从机应答）
-void HT_DM_S_7010_Receive_Data(uint8_t *rxCmd, uint8_t *rxCount);                   // 返回数据接收函数
+int32_t HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCount);                   // 返回数据接收函数
 
 #endif /* __HT_DM_S_7010_H */

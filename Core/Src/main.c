@@ -20,6 +20,7 @@
 #include "main.h"
 #include "can.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -94,6 +95,8 @@ int main(void)
   MX_CAN1_Init();
   MX_TIM1_Init();
   MX_CAN2_Init();
+  MX_TIM4_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	USER_CAN1_Filter_Init();
   USER_CAN2_Filter_Init();	    // 初始化CAN滤波器
@@ -101,6 +104,9 @@ int main(void)
   if(HAL_CAN_Start(&hcan2) != HAL_OK) { Error_Handler(); }	// 启动CAN2控制器
 	if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN1控制器接收中断
 	if(HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN2控制器接收中断
+
+  HAL_TIM_Base_Start_IT(&htim4);
+
   HAL_Delay(2000);
 
   // double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
@@ -155,8 +161,8 @@ int main(void)
   // can2_SendCmd(cmd1, 2);
   // HAL_Delay(1000);
 
-  XYR_Collision_Home(0);
-
+  // XYR_Collision_Home(1);
+  // XYR_Collision_Home(2);
   HT_DM_S_7010_Relative_Position_Control(1, 16384);
 
 
@@ -222,7 +228,13 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if(htim->Instance==TIM4)
+  {
+    Controller_Update_Callback();
+  }
+}
 /* USER CODE END 4 */
 
 /**
