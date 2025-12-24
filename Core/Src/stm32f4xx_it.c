@@ -23,6 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "can.h"
+#include "ZDT_X42_V2.h"
+#include "HT_DM_S_7010.h"
 
 extern volatile uint32_t tstart_ticks[4];
 extern volatile uint32_t twidth_ticks[4];
@@ -46,8 +48,8 @@ extern volatile uint8_t pulse_state[4];
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-float can_freq = 0.f;
-float can2_freq = 0.f;
+float canRev_freq = 0.f;
+float can2Rev_freq = 0.f;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -216,7 +218,7 @@ void CAN1_RX0_IRQHandler(void)
   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
   uint8_t i = 0;
   static volatile uint32_t preTick = 0;
-	// 接收�?包数�?
+	// 接收CAN包数据
 	if(HAL_CAN_GetRxMessage((&hcan1), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can.CAN_RxMsg), (uint8_t *)(&can.rxData)) == HAL_OK)
 	{
 		// �?帧数据接收完成，置位帧标志位
@@ -227,7 +229,7 @@ void CAN1_RX0_IRQHandler(void)
   /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
   // 计算CAN接收频率
   uint32_t currTick = HAL_GetTick();
-  can_freq = 1000.f / (currTick - preTick);
+  canRev_freq = 1000.f / (currTick - preTick);
   preTick = currTick;
 
   /* USER CODE END CAN1_RX0_IRQn 1 */
@@ -386,22 +388,23 @@ void USART1_IRQHandler(void)
 void CAN2_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
-  uint8_t i = 0;
   static volatile uint32_t preTick2 = 0;
 
-	// 接收�?包数�?
+	// 接收CAN2包数据
 	if(HAL_CAN_GetRxMessage((&hcan2), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can2.CAN_RxMsg), (uint8_t *)(&can2.rxData)) == HAL_OK)
 	{
-		//?帧数据接收完成，置位帧标志位
-		for(i=can2.CAN_RxMsg.DLC; i < 8; i++) { can2.rxData[i] = 0; } can2.rxFrameFlag = true;
+    HT_DM_S_7010_Receive_Data(can2.rxData, &can2.CAN_RxMsg.DLC);
+    can2.rxFrameFlag = 1;
+
+    uint32_t currTick2 = HAL_GetTick();
+    can2Rev_freq = 1000.f / (currTick2 - preTick2);
+    preTick2 = currTick2;
 	}
   /* USER CODE END CAN2_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan2);
   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
   // 计算CAN2接收频率
-  uint32_t currTick2 = HAL_GetTick();
-  can2_freq = 1000.f / (currTick2 - preTick2);
-  preTick2 = currTick2;
+
 
   /* USER CODE END CAN2_RX0_IRQn 1 */
 }

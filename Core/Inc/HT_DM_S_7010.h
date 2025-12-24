@@ -3,6 +3,9 @@
 
 #include "can.h"
 
+extern int32_t HT_current; // 转台电流
+extern int32_t HT_speed;   // 转台速度
+
 /**********************************************************
 *** HT_DM_S_7010 转台闭环控制
 *** 编写作者：wzx
@@ -39,6 +42,7 @@ void HT_DM_S_7010_Brake_Control(uint8_t addr, uint8_t state);                   
 void HT_DM_S_7010_Disable_Motor(uint8_t addr);                                      // 关闭电机输出
 
 // 数据接收函数（用于解析从机应答）
-int32_t HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCount);                   // 返回数据接收函数
+void HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCount);                   // 返回数据接收函数
+
 
 #endif /* __HT_DM_S_7010_H */

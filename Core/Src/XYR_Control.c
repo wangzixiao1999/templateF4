@@ -1,7 +1,7 @@
 #include "XYR_Control.h"
 
 
-float Tim4_freq = 0.f;
+float Tim4Rev_freq = 0.f;
 int32_t cur = 0;
 /**
   * @brief    初始化XYR三轴位移台
@@ -36,13 +36,22 @@ void XYR_Collision_Home(uint8_t addr)
  */
 void Controller_Update_Callback(void)
 {
- 	// static volatile uint32_t preTick_Tim4 = 0;
-	HT_DM_S_7010_Read_Current_Q_Axis(1);
+ 	static volatile uint32_t preTick_Tim4 = 0;
+	static uint8_t request_index = 0;
 
-	cur = HT_DM_S_7010_Receive_Data(can2.rxData, &can2.CAN_RxMsg.DLC);
-	// uint32_t currTick_Tim4 = HAL_GetTick();
-  	// Tim4_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
-  	// preTick_Tim4 = currTick_Tim4;
+
+	switch(request_index)
+    {
+        case 0: HT_DM_S_7010_Read_Current_Q_Axis(1); break;
+        case 1: HT_DM_S_7010_Read_Speed(1);
+        // 其他参数...
+    }
+
+	request_index = (request_index + 1) % 2;
+
+	uint32_t currTick_Tim4 = HAL_GetTick();
+  	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
+  	preTick_Tim4 = currTick_Tim4;
     //每50ms发送一次数据
     // static int send_sount=0;
     // if(++send_sount>=5)

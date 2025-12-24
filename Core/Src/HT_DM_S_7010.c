@@ -1,6 +1,10 @@
 #include "HT_DM_S_7010.h"
 #include <string.h>
 
+
+int32_t HT_current = 0; // 转台电流
+int32_t HT_speed = 0;   // 转台速度
+
 /**
   * @brief    重启从机，主控制器发送该命令包后，从机立即重启不应答主控制器
   * @param    addr  ：电机地址
@@ -393,12 +397,12 @@ void HT_DM_S_7010_Disable_Motor(uint8_t addr)
   * @param    rxCmd   : 接收到的数据缓存在该数组
   * @param    rxCount : 接收到的数据长度
   */
-int32_t HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCount)
+void HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCount)
 {
   if (rxCmd == NULL || rxCount == NULL)
-    return 0;
+    return;
   if (*rxCount == 0)
-    return 0;
+    return;
 
   uint8_t cmd = rxCmd[0];
   switch (cmd)
@@ -406,17 +410,15 @@ int32_t HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rx
   case 0xA0:
     break;
   case 0xA1:
-    // if (*rxCount >= 5)
-    // {
-      int32_t cur = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
-      return cur;
-    // }
+    if (*rxCount >= 5)
+    {
+      HT_current = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
+    }
     break;
   case 0xA2:
     if (*rxCount >= 5)
     {
-      int32_t spd = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
-      return spd;
+      HT_speed = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8) | ((int32_t)rxCmd[3] << 16) | ((int32_t)rxCmd[4] << 24));
     }
     break;
   case 0xA3:

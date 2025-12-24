@@ -60,7 +60,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+float Tim4Send_freq = 0.f;
 /* USER CODE END 0 */
 
 /**
@@ -232,7 +232,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim->Instance==TIM4)
   {
+    static volatile uint32_t preTick_Tim4 = 0;
     Controller_Update_Callback();
+    uint32_t currTick_Tim4 = HAL_GetTick();
+  	Tim4Send_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
+  	preTick_Tim4 = currTick_Tim4;
   }
 }
 /* USER CODE END 4 */
