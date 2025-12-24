@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 1
   46              	XYR_Collision_Home:
   47              	.LVL0:
   48              	.LFB135:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s 			page 2
 
 
   13:Core/Src/XYR_Control.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 1
   87              		.loc 1 22 43 discriminator 1 view .LVU13
   88 0026 114B     		ldr	r3, .L8
   89 0028 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s 			page 3
 
 
   90 002a DBB2     		uxtb	r3, r3
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 1
   31:Core/Src/XYR_Control.c ****     }
   32:Core/Src/XYR_Control.c **** }
  132              		.loc 1 32 1 view .LVU26
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s 			page 4
 
 
  133 0068 10BD     		pop	{r4, pc}
@@ -217,152 +217,120 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 1
  162              		.cfi_offset 14, -4
   39:Core/Src/XYR_Control.c ****  	static volatile uint32_t preTick_Tim4 = 0;
  163              		.loc 1 39 3 view .LVU29
-  40:Core/Src/XYR_Control.c **** 	static uint8_t request_index = 0;
- 164              		.loc 1 40 2 view .LVU30
-  41:Core/Src/XYR_Control.c **** 
-  42:Core/Src/XYR_Control.c **** 
-  43:Core/Src/XYR_Control.c **** 	switch(request_index)
- 165              		.loc 1 43 2 view .LVU31
- 166 0002 134B     		ldr	r3, .L15
- 167 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 168 0006 2BB1     		cbz	r3, .L11
- 169 0008 012B     		cmp	r3, #1
- 170 000a 06D1     		bne	.L13
-  44:Core/Src/XYR_Control.c ****     {
-  45:Core/Src/XYR_Control.c ****         case 0: HT_DM_S_7010_Read_Current_Q_Axis(1); break;
-  46:Core/Src/XYR_Control.c ****         case 1: HT_DM_S_7010_Read_Speed(1);
- 171              		.loc 1 46 17 view .LVU32
- 172 000c 0120     		movs	r0, #1
- 173 000e FFF7FEFF 		bl	HT_DM_S_7010_Read_Speed
- 174              	.LVL6:
- 175 0012 02E0     		b	.L13
- 176              	.L11:
-  45:Core/Src/XYR_Control.c ****         case 1: HT_DM_S_7010_Read_Speed(1);
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 5
+  40:Core/Src/XYR_Control.c **** 
+  41:Core/Src/XYR_Control.c **** 	HT_DM_S_7010_Read_Current_Q_Axis(1);
+ 164              		.loc 1 41 2 view .LVU30
+ 165 0002 0120     		movs	r0, #1
+ 166 0004 FFF7FEFF 		bl	HT_DM_S_7010_Read_Current_Q_Axis
+ 167              	.LVL6:
+  42:Core/Src/XYR_Control.c ****  	HT_DM_S_7010_Read_Speed(1);
+ 168              		.loc 1 42 3 view .LVU31
+ 169 0008 0120     		movs	r0, #1
+ 170 000a FFF7FEFF 		bl	HT_DM_S_7010_Read_Speed
+ 171              	.LVL7:
+  43:Core/Src/XYR_Control.c **** 	HT_DM_S_7010_Read_Absolute_Angle(1);
+ 172              		.loc 1 43 2 view .LVU32
+ 173 000e 0120     		movs	r0, #1
+ 174 0010 FFF7FEFF 		bl	HT_DM_S_7010_Read_Absolute_Angle
+ 175              	.LVL8:
+  44:Core/Src/XYR_Control.c **** 
+  45:Core/Src/XYR_Control.c **** 	uint32_t currTick_Tim4 = HAL_GetTick();
+ 176              		.loc 1 45 2 view .LVU33
+ 177              		.loc 1 45 27 is_stmt 0 view .LVU34
+ 178 0014 FFF7FEFF 		bl	HAL_GetTick
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s 			page 5
 
 
- 177              		.loc 1 45 17 view .LVU33
- 178 0014 0120     		movs	r0, #1
- 179 0016 FFF7FEFF 		bl	HT_DM_S_7010_Read_Current_Q_Axis
- 180              	.LVL7:
-  45:Core/Src/XYR_Control.c ****         case 1: HT_DM_S_7010_Read_Speed(1);
- 181              		.loc 1 45 54 discriminator 1 view .LVU34
- 182              	.L13:
-  47:Core/Src/XYR_Control.c ****         // 其他参数...
-  48:Core/Src/XYR_Control.c ****     }
-  49:Core/Src/XYR_Control.c **** 
-  50:Core/Src/XYR_Control.c **** 	request_index = (request_index + 1) % 2;
- 183              		.loc 1 50 2 view .LVU35
- 184              		.loc 1 50 33 is_stmt 0 view .LVU36
- 185 001a 0D4A     		ldr	r2, .L15
- 186 001c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 187              		.loc 1 50 38 view .LVU37
- 188 001e 0133     		adds	r3, r3, #1
- 189 0020 03F00103 		and	r3, r3, #1
- 190 0024 48BF     		it	mi
- 191 0026 5B42     		rsbmi	r3, r3, #0
- 192              		.loc 1 50 16 view .LVU38
- 193 0028 1370     		strb	r3, [r2]
-  51:Core/Src/XYR_Control.c **** 
-  52:Core/Src/XYR_Control.c **** 	uint32_t currTick_Tim4 = HAL_GetTick();
- 194              		.loc 1 52 2 is_stmt 1 view .LVU39
- 195              		.loc 1 52 27 is_stmt 0 view .LVU40
- 196 002a FFF7FEFF 		bl	HAL_GetTick
- 197              	.LVL8:
-  53:Core/Src/XYR_Control.c ****   	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
- 198              		.loc 1 53 4 is_stmt 1 view .LVU41
- 199              		.loc 1 53 43 is_stmt 0 view .LVU42
- 200 002e 094A     		ldr	r2, .L15+4
- 201 0030 1368     		ldr	r3, [r2]
- 202 0032 C31A     		subs	r3, r0, r3
- 203              		.loc 1 53 26 view .LVU43
- 204 0034 07EE903A 		vmov	s15, r3	@ int
- 205 0038 F8EE677A 		vcvt.f32.u32	s15, s15
- 206 003c DFED066A 		vldr.32	s13, .L15+8
- 207 0040 86EEA77A 		vdiv.f32	s14, s13, s15
- 208              		.loc 1 53 17 view .LVU44
- 209 0044 054B     		ldr	r3, .L15+12
- 210 0046 83ED007A 		vstr.32	s14, [r3]
-  54:Core/Src/XYR_Control.c ****   	preTick_Tim4 = currTick_Tim4;
- 211              		.loc 1 54 4 is_stmt 1 view .LVU45
- 212              		.loc 1 54 17 is_stmt 0 view .LVU46
- 213 004a 1060     		str	r0, [r2]
-  55:Core/Src/XYR_Control.c ****     //每50ms发送一次数据
-  56:Core/Src/XYR_Control.c ****     // static int send_sount=0;
-  57:Core/Src/XYR_Control.c ****     // if(++send_sount>=5)
-  58:Core/Src/XYR_Control.c ****     // {
-  59:Core/Src/XYR_Control.c **** 
-  60:Core/Src/XYR_Control.c ****     // }
-  61:Core/Src/XYR_Control.c **** 
-  62:Core/Src/XYR_Control.c **** }...
- 214              		.loc 1 62 1 view .LVU47
- 215 004c 08BD     		pop	{r3, pc}
- 216              	.L16:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 6
+ 179              	.LVL9:
+  46:Core/Src/XYR_Control.c ****   	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
+ 180              		.loc 1 46 4 is_stmt 1 view .LVU35
+ 181              		.loc 1 46 43 is_stmt 0 view .LVU36
+ 182 0018 074A     		ldr	r2, .L12
+ 183 001a 1368     		ldr	r3, [r2]
+ 184 001c C31A     		subs	r3, r0, r3
+ 185              		.loc 1 46 26 view .LVU37
+ 186 001e 07EE903A 		vmov	s15, r3	@ int
+ 187 0022 F8EE677A 		vcvt.f32.u32	s15, s15
+ 188 0026 DFED056A 		vldr.32	s13, .L12+4
+ 189 002a 86EEA77A 		vdiv.f32	s14, s13, s15
+ 190              		.loc 1 46 17 view .LVU38
+ 191 002e 044B     		ldr	r3, .L12+8
+ 192 0030 83ED007A 		vstr.32	s14, [r3]
+  47:Core/Src/XYR_Control.c ****   	preTick_Tim4 = currTick_Tim4;
+ 193              		.loc 1 47 4 is_stmt 1 view .LVU39
+ 194              		.loc 1 47 17 is_stmt 0 view .LVU40
+ 195 0034 1060     		str	r0, [r2]
+  48:Core/Src/XYR_Control.c ****     //每50ms发送一次数据
+  49:Core/Src/XYR_Control.c ****     // static int send_sount=0;
+  50:Core/Src/XYR_Control.c ****     // if(++send_sount>=5)
+  51:Core/Src/XYR_Control.c ****     // {
+  52:Core/Src/XYR_Control.c **** 
+  53:Core/Src/XYR_Control.c ****     // }
+  54:Core/Src/XYR_Control.c **** 
+  55:Core/Src/XYR_Control.c **** }...
+ 196              		.loc 1 55 1 view .LVU41
+ 197 0036 08BD     		pop	{r3, pc}
+ 198              	.L13:
+ 199              		.align	2
+ 200              	.L12:
+ 201 0038 00000000 		.word	preTick_Tim4.0
+ 202 003c 00007A44 		.word	1148846080
+ 203 0040 00000000 		.word	Tim4Rev_freq
+ 204              		.cfi_endproc
+ 205              	.LFE136:
+ 207              		.section	.bss.preTick_Tim4.0,"aw",%nobits
+ 208              		.align	2
+ 211              	preTick_Tim4.0:
+ 212 0000 00000000 		.space	4
+ 213              		.global	cur
+ 214              		.section	.bss.cur,"aw",%nobits
+ 215              		.align	2
+ 218              	cur:
+ 219 0000 00000000 		.space	4
+ 220              		.global	Tim4Rev_freq
+ 221              		.section	.bss.Tim4Rev_freq,"aw",%nobits
+ 222              		.align	2
+ 225              	Tim4Rev_freq:
+ 226 0000 00000000 		.space	4
+ 227              		.text
+ 228              	.Letext0:
+ 229              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 230              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 231              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 232              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s 			page 6
 
 
- 217 004e 00BF     		.align	2
- 218              	.L15:
- 219 0050 00000000 		.word	request_index.1
- 220 0054 00000000 		.word	preTick_Tim4.0
- 221 0058 00007A44 		.word	1148846080
- 222 005c 00000000 		.word	Tim4Rev_freq
- 223              		.cfi_endproc
- 224              	.LFE136:
- 226              		.section	.bss.preTick_Tim4.0,"aw",%nobits
- 227              		.align	2
- 230              	preTick_Tim4.0:
- 231 0000 00000000 		.space	4
- 232              		.section	.bss.request_index.1,"aw",%nobits
- 235              	request_index.1:
- 236 0000 00       		.space	1
- 237              		.global	cur
- 238              		.section	.bss.cur,"aw",%nobits
- 239              		.align	2
- 242              	cur:
- 243 0000 00000000 		.space	4
- 244              		.global	Tim4Rev_freq
- 245              		.section	.bss.Tim4Rev_freq,"aw",%nobits
- 246              		.align	2
- 249              	Tim4Rev_freq:
- 250 0000 00000000 		.space	4
- 251              		.text
- 252              	.Letext0:
- 253              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 254              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 255              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 256              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 257              		.file 6 "Core/Inc/can.h"
- 258              		.file 7 "Core/Inc/HT_DM_S_7010.h"
- 259              		.file 8 "Core/Inc/ZDT_X42_V2.h"
- 260              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccMRwb02.s 			page 7
+ 233              		.file 6 "Core/Inc/can.h"
+ 234              		.file 7 "Core/Inc/HT_DM_S_7010.h"
+ 235              		.file 8 "Core/Inc/ZDT_X42_V2.h"
+ 236              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 XYR_Control.c
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:21     .text.XYR_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:27     .text.XYR_Init:00000000 XYR_Init
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:40     .text.XYR_Collision_Home:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:46     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:139    .text.XYR_Collision_Home:0000006c $d
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:146    .text.Controller_Update_Callback:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:152    .text.Controller_Update_Callback:00000000 Controller_Update_Callback
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:219    .text.Controller_Update_Callback:00000050 $d
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:235    .bss.request_index.1:00000000 request_index.1
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:230    .bss.preTick_Tim4.0:00000000 preTick_Tim4.0
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:249    .bss.Tim4Rev_freq:00000000 Tim4Rev_freq
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:227    .bss.preTick_Tim4.0:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:236    .bss.request_index.1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:242    .bss.cur:00000000 cur
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:239    .bss.cur:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccMRwb02.s:246    .bss.Tim4Rev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:21     .text.XYR_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:27     .text.XYR_Init:00000000 XYR_Init
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:40     .text.XYR_Collision_Home:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:46     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:139    .text.XYR_Collision_Home:0000006c $d
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:146    .text.Controller_Update_Callback:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:152    .text.Controller_Update_Callback:00000000 Controller_Update_Callback
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:201    .text.Controller_Update_Callback:00000038 $d
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:211    .bss.preTick_Tim4.0:00000000 preTick_Tim4.0
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:225    .bss.Tim4Rev_freq:00000000 Tim4Rev_freq
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:208    .bss.preTick_Tim4.0:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:218    .bss.cur:00000000 cur
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:215    .bss.cur:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccHbgrwy.s:222    .bss.Tim4Rev_freq:00000000 $d
 
 UNDEFINED SYMBOLS
 ZDT_X42_V2_Origin_Trigger_Return
 HAL_Delay
 ZDT_X42_V2_Bypass_Position_LV_Control
 can
-HT_DM_S_7010_Read_Speed
 HT_DM_S_7010_Read_Current_Q_Axis
+HT_DM_S_7010_Read_Speed
+HT_DM_S_7010_Read_Absolute_Angle
 HAL_GetTick

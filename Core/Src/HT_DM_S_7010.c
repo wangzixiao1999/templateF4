@@ -4,7 +4,8 @@
 
 int32_t HT_current = 0; // 转台电流
 int32_t HT_speed = 0;   // 转台速度
-
+int32_t HT_Single_circle_absolute_angle = 0;   // 转台单圈绝对角度
+int32_t HT_Multi_circle_absolute_angle = 0;   // 转台多圈绝对角度
 /**
   * @brief    重启从机，主控制器发送该命令包后，从机立即重启不应答主控制器
   * @param    addr  ：电机地址
@@ -422,6 +423,11 @@ void HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCou
     }
     break;
   case 0xA3:
+    if (*rxCount >= 7)
+    {
+      HT_Single_circle_absolute_angle = (int32_t)((int32_t)rxCmd[1] | ((int32_t)rxCmd[2] << 8));
+      HT_Multi_circle_absolute_angle = (int32_t)((int32_t)rxCmd[3] | ((int32_t)rxCmd[4] << 8) | ((int32_t)rxCmd[5] << 16) | ((int32_t)rxCmd[6] << 24));
+    }
     break;
   case 0xAE:
     break;
