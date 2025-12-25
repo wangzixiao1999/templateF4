@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
   47              	.LVL0:
   48              	.LFB135:
   12:Core/Src/XYR_Control.c **** 
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 2
 
 
   13:Core/Src/XYR_Control.c **** /**
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
   88 0026 114B     		ldr	r3, .L8
   89 0028 5B7F     		ldrb	r3, [r3, #29]	@ zero_extendqisi2
   90 002a DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 3
 
 
   21:Core/Src/XYR_Control.c **** 	while (can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
   31:Core/Src/XYR_Control.c **** }
  132              		.loc 1 31 1 view .LVU26
  133 0068 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 4
 
 
  134              	.LVL5:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
  177              	.LVL6:
  178              	.L11:
   45:Core/Src/XYR_Control.c **** 	case 1:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 5
 
 
   46:Core/Src/XYR_Control.c **** 		HT_DM_S_7010_Read_Speed(1); // 读取转台速度
@@ -269,83 +269,84 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
   52:Core/Src/XYR_Control.c **** 	{
   53:Core/Src/XYR_Control.c **** 
   54:Core/Src/XYR_Control.c **** 	case 1:
-  55:Core/Src/XYR_Control.c **** 		ZDT_X42_V2_Read_Sys_Params(1, S_CPHA); // 读取张大头1号机相电流
+  55:Core/Src/XYR_Control.c **** 		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机相电流
  198              		.loc 1 55 3 view .LVU37
- 199 0030 0621     		movs	r1, #6
+ 199 0030 1421     		movs	r1, #20
  200 0032 0120     		movs	r0, #1
  201 0034 FFF7FEFF 		bl	ZDT_X42_V2_Read_Sys_Params
  202              	.LVL9:
  203              	.L15:
   56:Core/Src/XYR_Control.c **** 	case 2:
-  57:Core/Src/XYR_Control.c **** 		ZDT_X42_V2_Read_Sys_Params(2, S_CPHA); // 读取张大头2号机相电流
+  57:Core/Src/XYR_Control.c **** 		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机相电流
  204              		.loc 1 57 3 view .LVU38
- 205 0038 0621     		movs	r1, #6
+ 205 0038 1421     		movs	r1, #20
  206 003a 0220     		movs	r0, #2
  207 003c FFF7FEFF 		bl	ZDT_X42_V2_Read_Sys_Params
  208              	.LVL10:
  209              	.L16:
-  58:Core/Src/XYR_Control.c **** 	}
-  59:Core/Src/XYR_Control.c **** 
-  60:Core/Src/XYR_Control.c **** 	HT_request_index = (HT_request_index + 1) % 3;
- 210              		.loc 1 60 2 view .LVU39
- 211              		.loc 1 60 39 is_stmt 0 view .LVU40
+  58:Core/Src/XYR_Control.c **** 
+  59:Core/Src/XYR_Control.c **** 	}
+  60:Core/Src/XYR_Control.c **** 
+  61:Core/Src/XYR_Control.c **** 	HT_request_index = (HT_request_index + 1) % 3;
+ 210              		.loc 1 61 2 view .LVU39
+ 211              		.loc 1 61 39 is_stmt 0 view .LVU40
  212 0040 1149     		ldr	r1, .L18
  213 0042 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
  214 0044 0132     		adds	r2, r2, #1
- 215              		.loc 1 60 44 view .LVU41
+ 215              		.loc 1 61 44 view .LVU41
  216 0046 124B     		ldr	r3, .L18+8
  217 0048 83FB0203 		smull	r0, r3, r3, r2
  218 004c 03EB4303 		add	r3, r3, r3, lsl #1
  219 0050 D31A     		subs	r3, r2, r3
- 220              		.loc 1 60 19 view .LVU42
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 6
 
 
+ 220              		.loc 1 61 19 view .LVU42
  221 0052 0B70     		strb	r3, [r1]
-  61:Core/Src/XYR_Control.c **** 	ZDT_request_index = (ZDT_request_index + 1) % 2;
- 222              		.loc 1 61 2 is_stmt 1 view .LVU43
- 223              		.loc 1 61 41 is_stmt 0 view .LVU44
+  62:Core/Src/XYR_Control.c **** 	ZDT_request_index = (ZDT_request_index + 1) % 2;
+ 222              		.loc 1 62 2 is_stmt 1 view .LVU43
+ 223              		.loc 1 62 41 is_stmt 0 view .LVU44
  224 0054 0D4A     		ldr	r2, .L18+4
  225 0056 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 226              		.loc 1 61 46 view .LVU45
+ 226              		.loc 1 62 46 view .LVU45
  227 0058 0133     		adds	r3, r3, #1
  228 005a 03F00103 		and	r3, r3, #1
  229 005e 48BF     		it	mi
  230 0060 5B42     		rsbmi	r3, r3, #0
- 231              		.loc 1 61 20 view .LVU46
+ 231              		.loc 1 62 20 view .LVU46
  232 0062 1370     		strb	r3, [r2]
-  62:Core/Src/XYR_Control.c **** 
-  63:Core/Src/XYR_Control.c **** 	uint32_t currTick_Tim4 = HAL_GetTick();
- 233              		.loc 1 63 2 is_stmt 1 view .LVU47
- 234              		.loc 1 63 27 is_stmt 0 view .LVU48
+  63:Core/Src/XYR_Control.c **** 
+  64:Core/Src/XYR_Control.c **** 	uint32_t currTick_Tim4 = HAL_GetTick();
+ 233              		.loc 1 64 2 is_stmt 1 view .LVU47
+ 234              		.loc 1 64 27 is_stmt 0 view .LVU48
  235 0064 FFF7FEFF 		bl	HAL_GetTick
  236              	.LVL11:
-  64:Core/Src/XYR_Control.c **** 	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
- 237              		.loc 1 64 2 is_stmt 1 view .LVU49
- 238              		.loc 1 64 41 is_stmt 0 view .LVU50
+  65:Core/Src/XYR_Control.c **** 	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
+ 237              		.loc 1 65 2 is_stmt 1 view .LVU49
+ 238              		.loc 1 65 41 is_stmt 0 view .LVU50
  239 0068 0A4A     		ldr	r2, .L18+12
  240 006a 1368     		ldr	r3, [r2]
  241 006c C31A     		subs	r3, r0, r3
- 242              		.loc 1 64 24 view .LVU51
+ 242              		.loc 1 65 24 view .LVU51
  243 006e 07EE903A 		vmov	s15, r3	@ int
  244 0072 F8EE677A 		vcvt.f32.u32	s15, s15
  245 0076 DFED086A 		vldr.32	s13, .L18+16
  246 007a 86EEA77A 		vdiv.f32	s14, s13, s15
- 247              		.loc 1 64 15 view .LVU52
+ 247              		.loc 1 65 15 view .LVU52
  248 007e 074B     		ldr	r3, .L18+20
  249 0080 83ED007A 		vstr.32	s14, [r3]
-  65:Core/Src/XYR_Control.c **** 	preTick_Tim4 = currTick_Tim4;
- 250              		.loc 1 65 2 is_stmt 1 view .LVU53
- 251              		.loc 1 65 15 is_stmt 0 view .LVU54
+  66:Core/Src/XYR_Control.c **** 	preTick_Tim4 = currTick_Tim4;
+ 250              		.loc 1 66 2 is_stmt 1 view .LVU53
+ 251              		.loc 1 66 15 is_stmt 0 view .LVU54
  252 0084 1060     		str	r0, [r2]
-  66:Core/Src/XYR_Control.c **** 	// 每50ms发送一次数据
-  67:Core/Src/XYR_Control.c **** 	//  static int send_sount=0;
-  68:Core/Src/XYR_Control.c **** 	//  if(++send_sount>=5)
-  69:Core/Src/XYR_Control.c **** 	//  {
-  70:Core/Src/XYR_Control.c **** 
-  71:Core/Src/XYR_Control.c **** 	// }
-  72:Core/Src/XYR_Control.c **** }...
- 253              		.loc 1 72 1 view .LVU55
+  67:Core/Src/XYR_Control.c **** 	// 每50ms发送一次数据
+  68:Core/Src/XYR_Control.c **** 	//  static int send_sount=0;
+  69:Core/Src/XYR_Control.c **** 	//  if(++send_sount>=5)
+  70:Core/Src/XYR_Control.c **** 	//  {
+  71:Core/Src/XYR_Control.c **** 
+  72:Core/Src/XYR_Control.c **** 	// }
+  73:Core/Src/XYR_Control.c **** }...
+ 253              		.loc 1 73 1 view .LVU55
  254 0086 08BD     		pop	{r3, pc}
  255              	.L19:
  256              		.align	2
@@ -357,10 +358,10 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
  262 0098 00007A44 		.word	1148846080
  263 009c 00000000 		.word	Tim4Rev_freq
  264              		.cfi_endproc
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 7
+
+
  265              	.LFE136:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 7
-
-
  267              		.section	.bss.preTick_Tim4.0,"aw",%nobits
  268              		.align	2
  271              	preTick_Tim4.0:
@@ -391,29 +392,29 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 1
  304              		.file 7 "Core/Inc/ZDT_X42_V2.h"
  305              		.file 8 "Core/Inc/HT_DM_S_7010.h"
  306              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccobTpRx.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccKofCSV.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 XYR_Control.c
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:21     .text.XYR_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:27     .text.XYR_Init:00000000 XYR_Init
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:40     .text.XYR_Collision_Home:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:46     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:139    .text.XYR_Collision_Home:0000006c $d
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:146    .text.Controller_Update_Callback:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:152    .text.Controller_Update_Callback:00000000 Controller_Update_Callback
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:258    .text.Controller_Update_Callback:00000088 $d
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:281    .bss.HT_request_index.2:00000000 HT_request_index.2
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:276    .bss.ZDT_request_index.1:00000000 ZDT_request_index.1
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:271    .bss.preTick_Tim4.0:00000000 preTick_Tim4.0
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:295    .bss.Tim4Rev_freq:00000000 Tim4Rev_freq
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:268    .bss.preTick_Tim4.0:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:277    .bss.ZDT_request_index.1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:282    .bss.HT_request_index.2:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:288    .bss.cur:00000000 cur
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:285    .bss.cur:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccobTpRx.s:292    .bss.Tim4Rev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:21     .text.XYR_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:27     .text.XYR_Init:00000000 XYR_Init
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:40     .text.XYR_Collision_Home:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:46     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:139    .text.XYR_Collision_Home:0000006c $d
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:146    .text.Controller_Update_Callback:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:152    .text.Controller_Update_Callback:00000000 Controller_Update_Callback
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:258    .text.Controller_Update_Callback:00000088 $d
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:281    .bss.HT_request_index.2:00000000 HT_request_index.2
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:276    .bss.ZDT_request_index.1:00000000 ZDT_request_index.1
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:271    .bss.preTick_Tim4.0:00000000 preTick_Tim4.0
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:295    .bss.Tim4Rev_freq:00000000 Tim4Rev_freq
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:268    .bss.preTick_Tim4.0:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:277    .bss.ZDT_request_index.1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:282    .bss.HT_request_index.2:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:288    .bss.cur:00000000 cur
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:285    .bss.cur:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccKofCSV.s:292    .bss.Tim4Rev_freq:00000000 $d
 
 UNDEFINED SYMBOLS
 ZDT_X42_V2_Origin_Trigger_Return

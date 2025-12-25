@@ -222,8 +222,7 @@ void CAN1_RX0_IRQHandler(void)
   // 接收CAN包数据
   if (HAL_CAN_GetRxMessage((&hcan1), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can.CAN_RxMsg), (uint8_t *)(&can.rxData)) == HAL_OK)
   {
-    int ZDT_id = can.CAN_RxMsg.ExtId >> 8;
-    ZDT_X42_V2_Receive_Data((uint8_t) (ZDT_id), (uint8_t *)(&can.rxData), (uint8_t *)(&can.CAN_RxMsg.DLC));
+    ZDT_X42_V2_Receive_Data((uint8_t *)(&can.CAN_RxMsg.ExtId), (uint8_t *)(&can.rxData), (uint8_t *)(&can.CAN_RxMsg.DLC));
     // 多帧数据接收完成，置位帧标志位
     for (i = can.CAN_RxMsg.DLC; i < 8; i++)
     {

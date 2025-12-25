@@ -1,5 +1,5 @@
 #include "ZDT_X42_V2.h"
-
+#include <string.h>
 /**********************************************************
 *** ZDT_X42_V2.0步进闭环控制例程
 *** 编写作者：ZHANGDATOU
@@ -490,26 +490,69 @@ void ZDT_X42_V2_Origin_Interrupt(uint8_t addr)
  * @param    rxCount : 接收到的数据长度
  * @retval   无
  */
-void ZDT_X42_V2_Receive_Data(uint8_t ExtId, uint8_t *rxCmd, uint8_t *rxCount)
+void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
 {
-  if (rxCmd == NULL || rxCount == NULL)
-    return;
-  if (*rxCount == 0)
-    return;
+  uint16_t ext_id_value = *(uint16_t *)ExtId; // 读取2个字节
+  uint8_t frame_seq = ext_id_value & 0xFF;
+  uint8_t id = ext_id_value >> 8;
 
-  uint8_t cmd = rxCmd[0];
-  switch (cmd)
+  static uint8_t multi_frame_buffer[64];
+  static uint8_t total_frames = 0;
+  static uint8_t received_frames = 0;
+  static uint8_t total_bytes = 0;
+  // 如果是第一帧（帧序列号为0）
+  if (frame_seq == 0x00)
   {
-  case 0x27: // 读取相电流
-    ZDT_data_cache[ExtId - 1].current = (int32_t)((int16_t)((rxCmd[1] << 8) | rxCmd[2]));
-    break;
-  }
-}
+    total_bytes = rxCmd[1];                     // 第一字节是总字节数
+    total_frames = ((total_bytes - 2) / 7) - 1; // 计算总帧数（每帧7字节）
+    received_frames = 0;
 
-/**
- * @brief    更新全局参数
- * @retval   无
- */
-void ZDT_UpdateParameters(void)
-{
+    // 复制第一帧数据（跳过第一个字节，因为它是总字节数）
+    memcpy(&multi_frame_buffer[0], &rxCmd[1], 7);
+    received_frames = 1;
+  }
+  // 如果是后续帧
+  else
+  {
+    uint8_t frame_index = frame_seq;
+    if (frame_index < total_frames && frame_index > 0)
+    {
+      uint8_t start_pos = (frame_index * 7) + 1; // 计算存储位置
+      memcpy(&multi_frame_buffer[start_pos], &rxCmd[1], 7);
+      received_frames++;
+    }
+  }
+
+  // 如果所有帧都接收完成
+  if (received_frames == total_frames)
+  {
+
+    // 电机相电流（第7-8字节）
+    ZDT_current[id - 1] = ((uint16_t)multi_frame_buffer[7] << 8) | multi_frame_buffer[8];
+
+    // 电机实时转速（第17-19字节）
+    int32_t speed = ((uint16_t)multi_frame_buffer[19] << 8) | multi_frame_buffer[20];
+    if (multi_frame_buffer[18] == 0x01)
+      speed = -speed;
+    ZDT_speed[id - 1] = speed / 10.0f; // 转换为RPM
+
+    // 电机实时位置（第20-23字节）
+    int32_t real_pos = (multi_frame_buffer[22] << 24) |
+                       (multi_frame_buffer[23] << 16) |
+                       (multi_frame_buffer[24] << 8) |
+                       multi_frame_buffer[25];
+    if (multi_frame_buffer[21] == 0x01)
+      real_pos = -real_pos;
+    ZDT_angle[id - 1] = real_pos / 10.0f; // 转换为度
+
+    // 就绪状态标志（第30字节）
+    // zdt_system_params.ready_status = multi_frame_buffer[29];
+
+    // // 电机状态标志（第31字节）
+    // zdt_system_params.motor_status = multi_frame_buffer[30];
+
+    // 重置缓冲区
+    received_frames = 0;
+    total_frames = 0;
+  }
 }

@@ -52,9 +52,10 @@ void Controller_Update_Callback(void)
 	{
 
 	case 1:
-		ZDT_X42_V2_Read_Sys_Params(1, S_CPHA); // 读取张大头1号机相电流
+		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机相电流
 	case 2:
-		ZDT_X42_V2_Read_Sys_Params(2, S_CPHA); // 读取张大头2号机相电流
+		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机相电流
+
 	}
 
 	HT_request_index = (HT_request_index + 1) % 3;
