@@ -178,6 +178,7 @@ int main(void)
   // XYR_Collision_Home(2);
   HT_DM_S_7010_Relative_Position_Control(1, 16384);
 
+  ZDT_X42_V2_Read_Sys_Params(2, S_CPHA); // 读取张大头1号机相电流
   /* USER CODE END 2 */
 
   /* Infinite loop */
