@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2025 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
 #include "ZDT_X42_V2.h"
 #include "HT_DM_S_7010.h"
 #include "XYR_Control.h"
@@ -61,12 +62,13 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 float Tim4Send_freq = 0.f;
+static volatile int usartTest = 0;
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
 
@@ -98,12 +100,24 @@ int main(void)
   MX_TIM4_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-	USER_CAN1_Filter_Init();
-  USER_CAN2_Filter_Init();	    // 初始化CAN滤波器
-	if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN1控制器
-  if(HAL_CAN_Start(&hcan2) != HAL_OK) { Error_Handler(); }	// 启动CAN2控制器
-	if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN1控制器接收中断
-	if(HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN2控制器接收中断
+  USER_CAN1_Filter_Init();
+  USER_CAN2_Filter_Init(); // 初始化CAN滤波器
+  if (HAL_CAN_Start(&hcan1) != HAL_OK)
+  {
+    Error_Handler();
+  } // 启动CAN1控制器
+  if (HAL_CAN_Start(&hcan2) != HAL_OK)
+  {
+    Error_Handler();
+  } // 启动CAN2控制器
+  if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+  {
+    Error_Handler();
+  } // 使能CAN1控制器接收中断
+  if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+  {
+    Error_Handler();
+  } // 使能CAN2控制器接收中断
 
   HAL_TIM_Base_Start_IT(&htim4);
 
@@ -117,7 +131,7 @@ int main(void)
   //   for (size_t j = 0; j < 9; j++)
   //   {
   //     ZDT_X42_V2_Traj_Position_Control(2, i%2, 2000, 2000, 2000.0f, 72.0f, 0, 0);
-	//     HAL_Delay(10);
+  //     HAL_Delay(10);
 
   //     while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
   //     {
@@ -130,7 +144,7 @@ int main(void)
   //   }
 
   //   ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
-	//   HAL_Delay(10);
+  //   HAL_Delay(10);
   //   while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
   //   {
   //     can.rxFrameFlag = false;
@@ -143,14 +157,13 @@ int main(void)
   // }
 
   // ZDT_X42_V2_Traj_Position_Control(0, 1, 1000, 1000, 1000.0f, 720.0f, 0, 0);
-	// HAL_Delay(10);
+  // HAL_Delay(10);
   // while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
   // {
   //   can.rxFrameFlag = false;
   // }
   // can.rxData[0] = 0;
   // can.rxData[1] = 0;
-
 
   //   uint8_t cmd1[32] = {0};
 
@@ -165,13 +178,10 @@ int main(void)
   // XYR_Collision_Home(2);
   HT_DM_S_7010_Relative_Position_Control(1, 16384);
 
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-
 
   while (1)
   {
@@ -183,22 +193,22 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-  */
+   */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -213,9 +223,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -230,21 +239,36 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  if(htim->Instance==TIM4)
+  if (htim->Instance == TIM4)
   {
     static volatile uint32_t preTick_Tim4 = 0;
     Controller_Update_Callback();
     uint32_t currTick_Tim4 = HAL_GetTick();
-  	Tim4Send_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
-  	preTick_Tim4 = currTick_Tim4;
+    Tim4Send_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
+    preTick_Tim4 = currTick_Tim4;
   }
 }
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+
+  if (huart->Instance == USART1)
+  {
+    usartTest++;
+
+    /* 回显收到的字节，便于在串口助手观察，并重新启动中断接收
+     使用回调传入的 huart 指针以避免对全局句柄依赖 */
+    HAL_UART_Transmit(&huart1, rx_buffer, 1, 10);
+    HAL_UART_Receive_IT(huart, rx_buffer, 1);
+  }
+}
+
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -256,14 +280,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

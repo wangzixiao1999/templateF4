@@ -16,7 +16,8 @@
             "compilerPath": "C:/DevToolBox_Slot/GNU_CompilerCollection/bin/gcc.exe",
             "intelliSenseMode": "windows-gcc-arm",
             "cStandard": "gnu11",
-            "cppStandard": "gnu++17"
+            "cppStandard": "gnu++17",
+            "mergeConfigurations": true
         }
     ],
     "version": 4

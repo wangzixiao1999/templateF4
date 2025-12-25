@@ -9,6 +9,11 @@
 *** qq交流群：262438510
 **********************************************************/
 
+int32_t ZDT_current; // 张大头电流
+int32_t ZDT_speed;   // 张大头速度
+int32_t ZDT_angle;   // 张大头角度
+int32_t ZDT_state;   // 张大头状态
+
 /**
   * @brief    将当前位置清零
   * @param    addr  ：电机地址
@@ -432,22 +437,25 @@ void ZDT_X42_V2_Origin_Interrupt(uint8_t addr)
   */
 void ZDT_X42_V2_Receive_Data(uint8_t *rxCmd, uint8_t *rxCount)
 {
-	uint16_t i = 0, timeout = 0;
+  if (rxCmd == NULL || rxCount == NULL)
+    return;
+  if (*rxCount == 0)
+    return;
 
-	// can.rxFrameFlag在can.c的CAN接收中断中进行置位
-	while(can.rxFrameFlag == false)
-	{
-		// 等待100毫秒还未置位，就判定为没有数据返回，超时退出
-		HAL_Delay(1); ++timeout; if(timeout > 100) { can.CAN_RxMsg.DLC = 0; break; }
-	}
-	can.rxFrameFlag = false;
+  uint8_t cmd = rxCmd[0];
+  switch (cmd)
+  {
 
-	// 获取返回数据长度
-	*rxCount = can.CAN_RxMsg.DLC;
+  }
 
-	// 获取返回数据地址
-	rxCmd[0] = (uint8_t)(can.CAN_TxMsg.ExtId >> 8);
-
-	// 获取返回数据（只能获取8字节以内的单包数据）
-	for(i=0; i < can.CAN_RxMsg.DLC; i++) { rxCmd[i + 1] = can.rxData[i]; }
 }
+
+/**
+  * @brief    更新全局参数
+  * @retval   无
+  */
+void ZDT_UpdateParameters(void)
+{
+
+}
+

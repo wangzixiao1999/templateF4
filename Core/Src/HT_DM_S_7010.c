@@ -436,30 +436,29 @@ void HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCou
       HT_UpdateParameters();
     }
     break;
-  default:
-    break;
   }
 }
 
+/**
+  * @brief    更新全局参数
+  * @retval   无
+  */
 void HT_UpdateParameters(void)
 {
   static volatile uint32_t preTick_HT = 0;
-  // 检查是否所有数据都已接收到
+
   if (HT_data_cache.flag_current && HT_data_cache.flag_speed && HT_data_cache.flag_angle)
   {
-    // 同步更新所有参数
+
     HT_current = HT_data_cache.current;
     HT_speed = HT_data_cache.speed;
     HT_Single_circle_absolute_angle = HT_data_cache.single_circle_angle;
     HT_Multi_circle_absolute_angle = HT_data_cache.multi_circle_angle;
 
-    // 清除标志位，准备接收下一组数据
     HT_data_cache.flag_current = 0;
     HT_data_cache.flag_speed = 0;
     HT_data_cache.flag_angle = 0;
 
-    // 可以在这里添加数据更新完成的回调或通知
-    // HT_DataUpdateCompleteCallback();
     uint32_t currTick_HT = HAL_GetTick();
     HTRev_freq = 1000.f / (currTick_HT - preTick_HT);
     preTick_HT = currTick_HT;

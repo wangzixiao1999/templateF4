@@ -38,6 +38,25 @@ typedef enum {
   S_State = 20,     /* 读取系统状态参数 */
 }SysParams_t;
 
+extern int32_t ZDT_current; // 张大头电流
+extern int32_t ZDT_speed;   // 张大头速度
+extern int32_t ZDT_angle;   // 张大头角度
+extern int32_t ZDT_state;   // 张大头状态
+
+typedef struct {
+    int32_t current;
+    int32_t speed;
+    int32_t angle;
+    int32_t state;
+    uint8_t flag_current : 1;
+    uint8_t flag_speed : 1;
+    uint8_t flag_angle : 1;
+    uint8_t flag_state : 1;
+} ZDT_DataCache;
+
+// 全局缓存变量
+static ZDT_DataCache zdT_data_cache = {0};
+
 void ZDT_X42_V2_Reset_CurPos_To_Zero(uint8_t addr); // 将当前位置清零
 void ZDT_X42_V2_Reset_Clog_Pro(uint8_t addr); // 解除堵转保护
 void ZDT_X42_V2_Read_Sys_Params(uint8_t addr, SysParams_t s); // 读取参数
@@ -54,5 +73,6 @@ void ZDT_X42_V2_Origin_Modify_Params(uint8_t addr, bool svF, uint8_t o_mode, uin
 void ZDT_X42_V2_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF); // 发送命令触发回零
 void ZDT_X42_V2_Origin_Interrupt(uint8_t addr); // 强制中断并退出回零
 void ZDT_X42_V2_Receive_Data(uint8_t *rxCmd, uint8_t *rxCount); // 返回数据接收函数
+void ZDT_UpdateParameters(void);									// 更新全局参数函数
 
 #endif
