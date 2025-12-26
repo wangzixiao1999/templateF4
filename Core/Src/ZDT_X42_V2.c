@@ -493,55 +493,58 @@ void ZDT_X42_V2_Origin_Interrupt(uint8_t addr)
 void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
 {
   uint16_t ext_id_value = *(uint16_t *)ExtId; // 读取2个字节
-  uint8_t frame_seq = ext_id_value & 0xFF;
   uint8_t id = ext_id_value >> 8;
+  if (id < 1 || id > 2)
+    return; // 无效ID，直接返回
+uint8_t frame_seq[2] = {0};
+frame_seq[id - 1] = ext_id_value & 0xFF;
 
-  static uint8_t multi_frame_buffer[64];
-  static uint8_t total_frames = 0;
-  static uint8_t received_frames = 0;
-  static uint8_t total_bytes = 0;
+  static uint8_t multi_frame_buffer[2][64] = {0};
+  static uint8_t total_frames[2] = {0};
+  static uint8_t received_frames[2] = {0};
+  static uint8_t total_bytes[2] = {0};
   // 如果是第一帧（帧序列号为0）
-  if (frame_seq == 0x00)
+  if (frame_seq[id - 1] == 0x00)
   {
-    total_bytes = rxCmd[1];                     // 第一字节是总字节数
-    total_frames = ((total_bytes - 2) / 7) - 1; // 计算总帧数（每帧7字节）
-    received_frames = 0;
+    total_bytes[id - 1] = rxCmd[1];                             // 第一字节是总字节数
+    total_frames[id - 1] = ((total_bytes[id - 1] - 2) / 7) - 1; // 计算总帧数（每帧7字节）
+    received_frames[id - 1] = 0;
 
-    // 复制第一帧数据（跳过第一个字节，因为它是总字节数）
-    memcpy(&multi_frame_buffer[0], &rxCmd[1], 7);
-    received_frames = 1;
+    // 复制第一帧数据(一共8字节)
+    memcpy(&multi_frame_buffer[id - 1][0], &rxCmd[0], 8);
+    received_frames[id - 1] = 1;
   }
   // 如果是后续帧
   else
   {
-    uint8_t frame_index = frame_seq;
-    if (frame_index < total_frames && frame_index > 0)
+    uint8_t frame_index[2] = {0};
+    frame_index[id - 1] = frame_seq[id - 1];
+    if (frame_index[id - 1] < total_frames[id - 1] && frame_index[id - 1] > 0)
     {
-      uint8_t start_pos = (frame_index * 7) + 1; // 计算存储位置
-      memcpy(&multi_frame_buffer[start_pos], &rxCmd[1], 7);
-      received_frames++;
+      uint8_t start_pos = (frame_index[id - 1] * 7) + 1; // 计算存储位置
+      memcpy(&multi_frame_buffer[id - 1][start_pos], &rxCmd[1], 7);//后续都是7了，第一个字节是命令符
+      received_frames[id - 1]++;
     }
   }
 
   // 如果所有帧都接收完成
-  if (received_frames == total_frames)
+  if (received_frames[id - 1] == total_frames[id - 1])
   {
 
     // 电机相电流（第7-8字节）
-    ZDT_current[id - 1] = ((uint16_t)multi_frame_buffer[7] << 8) | multi_frame_buffer[8];
-
+    ZDT_current[id - 1] = ((uint16_t)multi_frame_buffer[id - 1][7] << 8) | multi_frame_buffer[id - 1][8];
     // 电机实时转速（第17-19字节）
-    int32_t speed = ((uint16_t)multi_frame_buffer[19] << 8) | multi_frame_buffer[20];
-    if (multi_frame_buffer[18] == 0x01)
+    int32_t speed = ((uint16_t)multi_frame_buffer[id - 1][19] << 8) | multi_frame_buffer[id - 1][20];
+    if (multi_frame_buffer[id - 1][18] == 0x01)
       speed = -speed;
     ZDT_speed[id - 1] = speed / 10.0f; // 转换为RPM
 
     // 电机实时位置（第20-23字节）
-    int32_t real_pos = (multi_frame_buffer[22] << 24) |
-                       (multi_frame_buffer[23] << 16) |
-                       (multi_frame_buffer[24] << 8) |
-                       multi_frame_buffer[25];
-    if (multi_frame_buffer[21] == 0x01)
+    int32_t real_pos = (multi_frame_buffer[id - 1][22] << 24) |
+                       (multi_frame_buffer[id - 1][23] << 16) |
+                       (multi_frame_buffer[id - 1][24] << 8) |
+                       multi_frame_buffer[id - 1][25];
+    if (multi_frame_buffer[id - 1][21] == 0x01)
       real_pos = -real_pos;
     ZDT_angle[id - 1] = real_pos / 10.0f; // 转换为度
 
@@ -552,7 +555,7 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
     // zdt_system_params.motor_status = multi_frame_buffer[30];
 
     // 重置缓冲区
-    received_frames = 0;
-    total_frames = 0;
+    received_frames[id - 1] = 0;
+    total_frames[id - 1] = 0;
   }
 }

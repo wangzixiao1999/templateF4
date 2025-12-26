@@ -37,7 +37,7 @@ void Controller_Update_Callback(void)
 {
 	static volatile uint32_t preTick_Tim4 = 0;
 	static uint8_t HT_request_index = 0;
-	static uint8_t ZDT_request_index = 0;
+	//static uint8_t ZDT_request_index = 0;
 	switch (HT_request_index)
 	{
 	case 0:
@@ -46,20 +46,19 @@ void Controller_Update_Callback(void)
 		HT_DM_S_7010_Read_Speed(1); // 读取转台速度
 	case 2:
 		HT_DM_S_7010_Read_Absolute_Angle(1); // 读取转台角度
-	}
-
-	switch (ZDT_request_index)
-	{
-
-	case 1:
+	case 3:
 		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机相电流
-	case 2:
+	case 4:
 		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机相电流
-
 	}
 
-	HT_request_index = (HT_request_index + 1) % 3;
-	ZDT_request_index = (ZDT_request_index + 1) % 2;
+	// switch (ZDT_request_index)
+	// {
+
+	// }
+
+	HT_request_index = (HT_request_index + 1) % 5;
+	// ZDT_request_index = (ZDT_request_index + 1) % 2;
 
 	uint32_t currTick_Tim4 = HAL_GetTick();
 	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
