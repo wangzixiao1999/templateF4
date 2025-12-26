@@ -7,7 +7,7 @@ int32_t cur = 0;
  */
 void XYR_Init()
 {
-	// ZDT_X42_V2_Origin_Modify_Params(0, false, 2, 0, 1000, 10000, 500, 150, 150, false);
+	can.rxFrameFlag = true;
 }
 
 /**
@@ -16,22 +16,62 @@ void XYR_Init()
  */
 void XYR_Collision_Home(uint8_t addr)
 {
-	ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-	HAL_Delay(10);
-	while (can.rxData[0] != 0x9A || can.rxData[1] != 0x9F)
+	if (can.rxFrameFlag)
 	{
 		can.rxFrameFlag = false;
-	}
-	ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
-	HAL_Delay(10);
-	while (can.rxData[0] != 0xFB || can.rxData[1] != 0x9F)
-	{
-		can.rxFrameFlag = false;
+		if (addr == 1 || addr == 2)
+		{
+			ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
+			HAL_Delay(10);
+			while (!(ZDT_state[addr - 1] & 0x02))
+				;
+
+			ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
+			HAL_Delay(10);
+			while (!(ZDT_state[addr - 1] & 0x02))
+				;
+		}
+		else if (addr == 0)
+		{
+			ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
+			HAL_Delay(10);
+			while (!((ZDT_state[0] & 0x02) && (ZDT_state[1] & 0x02)))
+				;
+			ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
+			HAL_Delay(10);
+			while (!((ZDT_state[0] & 0x02) && (ZDT_state[1] & 0x02)))
+				;
+		}
+
+		can.rxFrameFlag = true;
 	}
 }
 
 /**
- * @brief:中断函数使用
+ * @brief    张大头定长移动
+ * @param    addr  	：电机地址
+ * @param    dir     ：方向										，0为CW，其余值为CCW
+ * @param    velocity：最大速度(RPM)					，范围0.0 - 4000.0RPM
+ * @param    position：位置(°)								，范围0.0°- (2^32 - 1)°
+ */
+void XYR_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
+{
+	if (can.rxFrameFlag)
+	{
+		can.rxFrameFlag = false;
+		if (addr == 1 || addr == 2)
+		{
+			ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity, position, 0, 0);
+			HAL_Delay(10);
+			while (!(ZDT_state[addr - 1] & 0x02))
+				;
+		}
+		can.rxFrameFlag = true;
+	}
+}
+
+/**
+ * @brief:状态观测器发送端
  */
 void Controller_Update_Callback(void)
 {

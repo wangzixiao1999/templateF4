@@ -8,7 +8,8 @@
 #include "HT_DM_S_7010.h"
 
 void XYR_Init();
-void XYR_Collision_Home(uint8_t addr);
+void XYR_Collision_Home(uint8_t addr);//碰撞回零
+void XYR_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position);//定长移动
 
 //中断函数使用
 void Controller_Update_Callback(void);
