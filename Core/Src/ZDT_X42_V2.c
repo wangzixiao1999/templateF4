@@ -12,7 +12,7 @@
 int32_t ZDT_current[2] = {0}; // 张大头电流
 int32_t ZDT_speed[2] = {0};   // 张大头速度
 int32_t ZDT_angle[2] = {0};   // 张大头角度
-int32_t ZDT_state[2] = {0};   // 张大头状态
+uint8_t ZDT_state[2] = {0};   // 张大头状态
 
 /**
  * @brief    将当前位置清零
@@ -507,7 +507,7 @@ frame_seq[id - 1] = ext_id_value & 0xFF;
   if (frame_seq[id - 1] == 0x00)
   {
     total_bytes[id - 1] = rxCmd[1];                             // 第一字节是总字节数
-    total_frames[id - 1] = ((total_bytes[id - 1] - 2) / 7) - 1; // 计算总帧数（每帧7字节）
+    total_frames[id - 1] = (total_bytes[id - 1] - 2) / 7; // 计算总帧数（每帧7字节）
     received_frames[id - 1] = 0;
 
     // 复制第一帧数据(一共8字节)
@@ -548,11 +548,8 @@ frame_seq[id - 1] = ext_id_value & 0xFF;
       real_pos = -real_pos;
     ZDT_angle[id - 1] = real_pos / 10.0f; // 转换为度
 
-    // 就绪状态标志（第30字节）
-    // zdt_system_params.ready_status = multi_frame_buffer[29];
-
-    // // 电机状态标志（第31字节）
-    // zdt_system_params.motor_status = multi_frame_buffer[30];
+    // 电机状态标志（第34字节）
+    ZDT_state[id - 1] = multi_frame_buffer[id - 1][34];
 
     // 重置缓冲区
     received_frames[id - 1] = 0;

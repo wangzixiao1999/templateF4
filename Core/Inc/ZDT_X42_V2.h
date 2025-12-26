@@ -41,7 +41,7 @@ typedef enum {
 extern int32_t ZDT_current[2]; // 张大头电流
 extern int32_t ZDT_speed[2];   // 张大头速度
 extern int32_t ZDT_angle[2];   // 张大头角度
-extern int32_t ZDT_state[2];   // 张大头状态
+extern uint8_t ZDT_state[2];   // 张大头状态
 
 
 void ZDT_X42_V2_Reset_CurPos_To_Zero(uint8_t addr); // 将当前位置清零
