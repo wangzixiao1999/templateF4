@@ -14,6 +14,8 @@ int32_t ZDT_speed[2] = {0};   // 张大头速度
 int32_t ZDT_angle[2] = {0};   // 张大头角度
 uint8_t ZDT_state[2] = {0};   // 张大头状态
 
+float ZDTRev_freq[2] = {0.f, 0.f};
+
 /**
  * @brief    将当前位置清零
  * @param    addr  ：电机地址
@@ -492,12 +494,14 @@ void ZDT_X42_V2_Origin_Interrupt(uint8_t addr)
  */
 void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
 {
+  static volatile uint32_t preTick_ZDT[2] = {0 , 0};
+
   uint16_t ext_id_value = *(uint16_t *)ExtId; // 读取2个字节
   uint8_t id = ext_id_value >> 8;
   if (id < 1 || id > 2)
     return; // 无效ID，直接返回
-uint8_t frame_seq[2] = {0};
-frame_seq[id - 1] = ext_id_value & 0xFF;
+  uint8_t frame_seq[2] = {0};
+  frame_seq[id - 1] = ext_id_value & 0xFF;
 
   static uint8_t multi_frame_buffer[2][64] = {0};
   static uint8_t total_frames[2] = {0};
@@ -506,7 +510,7 @@ frame_seq[id - 1] = ext_id_value & 0xFF;
   // 如果是第一帧（帧序列号为0）
   if (frame_seq[id - 1] == 0x00)
   {
-    total_bytes[id - 1] = rxCmd[1];                             // 第一字节是总字节数
+    total_bytes[id - 1] = rxCmd[1];                       // 第一字节是总字节数
     total_frames[id - 1] = (total_bytes[id - 1] - 2) / 7; // 计算总帧数（每帧7字节）
     received_frames[id - 1] = 0;
 
@@ -521,8 +525,8 @@ frame_seq[id - 1] = ext_id_value & 0xFF;
     frame_index[id - 1] = frame_seq[id - 1];
     if (frame_index[id - 1] < total_frames[id - 1] && frame_index[id - 1] > 0)
     {
-      uint8_t start_pos = (frame_index[id - 1] * 7) + 1; // 计算存储位置
-      memcpy(&multi_frame_buffer[id - 1][start_pos], &rxCmd[1], 7);//后续都是7了，第一个字节是命令符
+      uint8_t start_pos = (frame_index[id - 1] * 7) + 1;            // 计算存储位置
+      memcpy(&multi_frame_buffer[id - 1][start_pos], &rxCmd[1], 7); // 后续都是7了，第一个字节是命令符
       received_frames[id - 1]++;
     }
   }
@@ -554,5 +558,10 @@ frame_seq[id - 1] = ext_id_value & 0xFF;
     // 重置缓冲区
     received_frames[id - 1] = 0;
     total_frames[id - 1] = 0;
+
+    uint32_t currTick_ZDT[2] = {0};
+    currTick_ZDT[id - 1] = HAL_GetTick();
+    ZDTRev_freq[id - 1] = 1000.f / (currTick_ZDT[id - 1] - preTick_ZDT[id - 1]);
+    preTick_ZDT[id - 1] = currTick_ZDT[id - 1];
   }
 }
