@@ -1,7 +1,7 @@
 #include "XYR_Control.h"
 
 float Tim4Rev_freq = 0.f;
-volatile bool moveFlag = true;
+volatile bool moveFlag[3] = {true, true, true};
 /**
  * @brief    初始化XYR三轴位移台
  */
@@ -15,9 +15,9 @@ void XYR_Init()
  */
 void XYR_Collision_Home(uint8_t addr)
 {
-	if (moveFlag)
+	if (moveFlag[addr - 1])
 	{
-		moveFlag = false;
+		moveFlag[addr - 1] = false;
 		if (addr == 1 || addr == 2)
 		{
 			ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
@@ -50,7 +50,7 @@ void XYR_Collision_Home(uint8_t addr)
 			}
 		}
 
-		moveFlag = true;
+		moveFlag[addr - 1] = true;
 	}
 }
 
@@ -63,9 +63,9 @@ void XYR_Collision_Home(uint8_t addr)
  */
 void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
 {
-	if (moveFlag)
+	if (moveFlag[addr - 1])
 	{
-		moveFlag = false;
+		moveFlag[addr - 1] = false;
 
 		if (velocity < 0.f)
 			velocity = 0.f;
@@ -90,20 +90,30 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
 				ZDT_state[addr - 1] &= ~(0x02);
 			}
 		}
-		moveFlag = true;
+		moveFlag[addr - 1] = true;
 	}
 }
 
 /**
- * @brief    转台定长移动
+ * @brief    转台定角度移动
  * @param    dir     ：方向								，0为归零方向，其余值为电机方向
  * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
  * @param    position：位置(mm)							，范围0 - 118mm
  */
-// void XYR_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
-// {
+void XYR_HT_Fixed_Length_Move(uint8_t dir, uint32_t velocity, int32_t position)
+{
+	if (moveFlag[2])
+	{
+		moveFlag[2] = false;
+		HT_DM_S_7010_Set_Position_Max_Speed(1, velocity);
+		HAL_Delay(10);
+		if (dir)
+			position = -position;
+		HT_DM_S_7010_Relative_Position_Control(1, position);
 
-// }
+		moveFlag[2] = true;
+	}
+}
 
 /**
  * @brief    XYR解除故障
