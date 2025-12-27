@@ -379,7 +379,7 @@ void HT_DM_S_7010_Brake_Control(uint8_t addr, uint8_t state)
 {
   uint8_t cmd[8] = {0};
   cmd[0] = addr;
-  cmd[1] = 0xFE;
+  cmd[1] = 0xCE;
   cmd[2] = state;
   can2_SendCmd((__IO uint8_t *)cmd, 3);
 }
@@ -392,7 +392,7 @@ void HT_DM_S_7010_Disable_Motor(uint8_t addr)
 {
   uint8_t cmd[8] = {0};
   cmd[0] = addr;
-  cmd[1] = 0xEF;
+  cmd[1] = 0xCF;
   can2_SendCmd((__IO uint8_t *)cmd, 2);
 }
 

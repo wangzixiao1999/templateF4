@@ -7,7 +7,6 @@ volatile bool moveFlag = true;
  */
 void XYR_Init()
 {
-
 }
 
 /**
@@ -19,39 +18,39 @@ void XYR_Collision_Home(uint8_t addr)
 	if (moveFlag)
 	{
 		moveFlag = false;
-	if (addr == 1 || addr == 2)
-	{
-		ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-		HAL_Delay(10);
-		while (!(ZDT_state[addr - 1] == 0x03))
+		if (addr == 1 || addr == 2)
 		{
-			// HAL_Delay(1);
+			ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
+			HAL_Delay(10);
+			while (!(ZDT_state[addr - 1] == 0x03))
+			{
+				// HAL_Delay(1);
+			}
+
+			ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
+			HAL_Delay(10);
+			while (!(ZDT_state[addr - 1] == 0x03))
+			{
+				// HAL_Delay(1);
+			}
+		}
+		else if (addr == 0)
+		{
+			ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
+			HAL_Delay(10);
+			while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
+			{
+				// HAL_Delay(1);
+			}
+			ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
+			HAL_Delay(10);
+			while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
+			{
+				// HAL_Delay(1);
+			}
 		}
 
-		ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
-		HAL_Delay(10);
-		while (!(ZDT_state[addr - 1] == 0x03))
-		{
-			// HAL_Delay(1);
-		}
-	}
-	else if (addr == 0)
-	{
-		ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-		HAL_Delay(10);
-		while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
-		{
-			// HAL_Delay(1);
-		}
-		ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
-		HAL_Delay(10);
-		while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
-		{
-			// HAL_Delay(1);
-		}
-	}
-
-	moveFlag = true;
+		moveFlag = true;
 	}
 }
 
@@ -60,9 +59,9 @@ void XYR_Collision_Home(uint8_t addr)
  * @param    addr  	：电机地址
  * @param    dir     ：方向								，0为归零方向，其余值为电机方向
  * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
- * @param    position：位置(mm)							，范围0 - 100mm
+ * @param    position：位置(mm)							，范围0 - 118mm
  */
-void XYR_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
+void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
 {
 	if (moveFlag)
 	{
@@ -75,24 +74,53 @@ void XYR_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float posi
 
 		if (position < 0.f)
 			position = 0.f;
-		else if (position > 100.f)
-			position = 100.f;
+		else if (position > 118.f)
+			position = 118.f;
 
 		if (addr == 1 || addr == 2)
 		{
-	if (ZDT_state[addr - 1] == 0x03)
-	{
-		ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity * 15, position * 90, 0, 0);
-		HAL_Delay(10);
-		while (!(ZDT_state[addr - 1] == 0x03))
-		{
-			// HAL_Delay(1);
-		}
-		ZDT_state[addr - 1] &= ~(0x02);
-	}
+			if (ZDT_state[addr - 1] == 0x03)
+			{
+				ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity * 15, position * 72, 0, 0);
+				HAL_Delay(10);
+				while (!(ZDT_state[addr - 1] == 0x03))
+				{
+					// HAL_Delay(1);
+				}
+				ZDT_state[addr - 1] &= ~(0x02);
+			}
 		}
 		moveFlag = true;
 	}
+}
+
+/**
+ * @brief    转台定长移动
+ * @param    dir     ：方向								，0为归零方向，其余值为电机方向
+ * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
+ * @param    position：位置(mm)							，范围0 - 118mm
+ */
+// void XYR_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
+// {
+
+// }
+
+/**
+ * @brief    XYR解除故障
+ */
+void XYR_Relieve_Malfunction()
+{
+	ZDT_X42_V2_Reset_Clog_Pro(0);
+	HT_DM_S_7010_Clear_Fault(1);
+}
+
+/**
+ * @brief    XYR停止移动,R去使能
+ */
+void XYR_Stop_Move()
+{
+	ZDT_X42_V2_Stop_Now(0, 0);
+	HT_DM_S_7010_Disable_Motor(1);
 }
 
 /**
