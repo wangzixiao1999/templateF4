@@ -50,6 +50,9 @@ extern CAN_HandleTypeDef hcan2;
 
 extern __IO CAN_t can;
 extern __IO CAN_t can2;
+
+extern __IO HAL_StatusTypeDef SendState;
+
 /* USER CODE END Private defines */
 
 void MX_CAN1_Init(void);
@@ -61,7 +64,7 @@ void USER_CAN1_Filter_Init(void);
 bool can_SendCmd(__IO uint8_t *cmd, uint8_t len);
 
 void USER_CAN2_Filter_Init(void);
-void can2_SendCmd(__IO uint8_t *cmd, uint8_t len);
+bool can2_SendCmd(__IO uint8_t *cmd, uint8_t len);
 
 /* USER CODE END Prototypes */
 

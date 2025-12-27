@@ -17,5 +17,6 @@ void Controller_Update_Callback(void);
 
 extern __IO CAN_t can;
 extern __IO CAN_t can2;
+extern volatile bool moveFlag;
 
 #endif // XYR_CONTROL_H

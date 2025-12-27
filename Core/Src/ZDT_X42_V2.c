@@ -572,30 +572,7 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
   }
 }
 
-/**
- * @brief 等待指定电机状态位被置位，带超时
- * @param addr  电机地址（1 或 2）
- * @param mask  需要检测的位掩码，例如 0x02 表示到位/完成标志
- * @param timeout_ms 超时（毫秒），0 表示无限等待
- * @retval true  表示在超时前检测到位
- *         false 表示超时未检测到
- */
-bool ZDT_WaitForFlag(uint8_t addr, uint8_t mask, uint32_t timeout_ms)
-{
-  if (addr < 1 || addr > 2) return false;
-  uint8_t idx = addr - 1;
-  uint32_t start = HAL_GetTick();
 
-  while ((ZDT_state[idx] & mask) == 0)
-  {
-    if (timeout_ms != 0 && (HAL_GetTick() - start) >= timeout_ms)
-      return false;
-    /* 给出一个小延迟，避免紧循环占满 CPU */
-    HAL_Delay(1);
-  }
-
-  return true;
-}
 
 /**
  * @brief 命令装载并准备发送
@@ -611,3 +588,4 @@ void ZDT_cmdSend()
   }
 
 }
+

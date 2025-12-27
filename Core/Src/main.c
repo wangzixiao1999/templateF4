@@ -175,9 +175,14 @@ int main(void)
   // can2_SendCmd(cmd1, 2);
   // HAL_Delay(1000);
 
-  XYR_Collision_Home(0);
-  XYR_Fixed_Length_Move(2, 0, 500, 720);
-  XYR_Fixed_Length_Move(1, 0, 500, 720);
+ //XYR_Collision_Home(0);
+  XYR_Fixed_Length_Move(2, 0, 100, 10);
+  //HAL_Delay(100);
+  XYR_Fixed_Length_Move(1, 0, 100, 10);
+  //HAL_Delay(100);
+  XYR_Fixed_Length_Move(2, 1, 100, 10);
+  //HAL_Delay(100);
+  XYR_Fixed_Length_Move(1, 1, 100, 10);
   HT_DM_S_7010_Relative_Position_Control(1, 16384);
 
   /* USER CODE END 2 */
