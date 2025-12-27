@@ -50,28 +50,39 @@ void XYR_Collision_Home(uint8_t addr)
 /**
  * @brief    张大头定长移动
  * @param    addr  	：电机地址
- * @param    dir     ：方向										，0为CW，其余值为CCW
- * @param    velocity：最大速度(RPM)					，范围0.0 - 4000.0RPM
- * @param    position：位置(°)								，范围0.0°- (2^32 - 1)°
+ * @param    dir     ：方向								，0为归零方向，其余值为电机方向
+ * @param    velocity：最大速度(mm/s)					，范围0 - 40mm/s
+ * @param    position：位置(mm)							，范围0 - 100mm
  */
 void XYR_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
 {
-	if (can.rxFrameFlag)
-	{
-		can.rxFrameFlag = false;
-		if (addr == 1 || addr == 2)
-		{
-			ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity, position, 0, 0);
-			HAL_Delay(10);
-			while (!(ZDT_state[addr - 1] & 0x02))
-				;
-		}
-		can.rxFrameFlag = true;
-	}
+	// if (can.rxFrameFlag)
+	// {
+	// 	// can.rxFrameFlag = false;
+
+	// 	// if (velocity < 0.f)
+	// 	// 	velocity = 0.f;
+	// 	// else if (velocity > 40.f)
+	// 	// 	velocity = 40.f;
+
+	// 	// if (position < 0.f)
+	// 	// 	position = 0.f;
+	// 	// else if (position > 100.f)
+	// 	// 	position = 100.f;
+
+	// 	if (addr == 1 || addr == 2)
+	// 	{
+	ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity, position, 0, 0);
+	HAL_Delay(10);
+	while (!(ZDT_state[addr - 1] & 0x02))
+		;
+	// 	}
+	// 	can.rxFrameFlag = true;
+	// }
 }
 
 /**
- * @brief:状态观测器发送端
+ * @brief:指令发送端
  */
 void Controller_Update_Callback(void)
 {
@@ -96,10 +107,12 @@ void Controller_Update_Callback(void)
 		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机相电流
 	case 1:
 		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机相电流
+	case 2:
+		ZDT_cmdSend(); // 发送装载好的命令
 	}
 
 	HT_request_index = (HT_request_index + 1) % 3;
-	ZDT_request_index = (ZDT_request_index + 1) % 2;
+	ZDT_request_index = (ZDT_request_index + 1) % 3;
 
 	uint32_t currTick_Tim4 = HAL_GetTick();
 	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);

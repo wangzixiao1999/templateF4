@@ -47,6 +47,7 @@ extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 
 /* USER CODE BEGIN Private defines */
+
 extern __IO CAN_t can;
 extern __IO CAN_t can2;
 /* USER CODE END Private defines */
@@ -57,7 +58,7 @@ void MX_CAN2_Init(void);
 /* USER CODE BEGIN Prototypes */
 
 void USER_CAN1_Filter_Init(void);
-void can_SendCmd(__IO uint8_t *cmd, uint8_t len);
+bool can_SendCmd(__IO uint8_t *cmd, uint8_t len);
 
 void USER_CAN2_Filter_Init(void);
 void can2_SendCmd(__IO uint8_t *cmd, uint8_t len);

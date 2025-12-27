@@ -273,43 +273,56 @@ void USER_CAN2_Filter_Init(void)
 	* @param   cmd: 命令数据指针
 	* @param   len: 命令长度
 	*/
-void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
+bool can_SendCmd(__IO uint8_t *cmd, uint8_t len)
 {
 	static uint32_t TxMailbox; __IO uint8_t i = 0, j = 0, k = 0, l = 0, packNum = 0;
 
-	// 除去ID地址和功能码后的数据长度
-	j = len - 2;
+  // 除去ID地址和功能码后的数据长度
+  j = len - 2;
 
-	// 发�?�数�?
-	while(i < j)
-	{
-		// 数据个数
-		k = j - i;
+  // 发包
+  while (i < j)
+  {
+    // 数据个数
+    k = j - i;
 
-		// 填充缓存
-		can.CAN_TxMsg.StdId = 0x00;
-		can.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
-		can.txData[0] = cmd[1];
-		can.CAN_TxMsg.IDE = CAN_ID_EXT;
-		can.CAN_TxMsg.RTR = CAN_RTR_DATA;
+    // 填充缓存
+    can.CAN_TxMsg.StdId = 0x00;
+    can.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
+    can.txData[0] = cmd[1];
+    can.CAN_TxMsg.IDE = CAN_ID_EXT;
+    can.CAN_TxMsg.RTR = CAN_RTR_DATA;
 
-		// 小于8字节命令
-		if(k < 8)
-		{
-			for(l=0; l < k; l++,i++) { can.txData[l + 1] = cmd[i + 2]; } can.CAN_TxMsg.DLC = k + 1;
-		}
-		// 大于8字节命令，分包发送，每包数据�?多发�?8个字�?
-		else
-		{
-			for(l=0; l < 7; l++,i++) { can.txData[l + 1] = cmd[i + 2]; } can.CAN_TxMsg.DLC = 8;
-		}
+    // 小于8字节命令
+    if (k < 8)
+    {
+      for (l = 0; l < k; l++, i++) { can.txData[l + 1] = cmd[i + 2]; }
+      can.CAN_TxMsg.DLC = k + 1;
+    }
+    // 大于8字节命令，分包发送，每包数据最多发 8 个字节
+    else
+    {
+      for (l = 0; l < 7; l++, i++) { can.txData[l + 1] = cmd[i + 2]; }
+      can.CAN_TxMsg.DLC = 8;
+    }
 
-		// 发送数据
-		while(HAL_CAN_AddTxMessage((&hcan1), (CAN_TxHeaderTypeDef *)(&can.CAN_TxMsg), (uint8_t *)(&can.txData), (&TxMailbox)) != HAL_OK);
+    // 发送数据，带超时保护：如果在调试中断或总线不可用时不致于无限阻塞
+    uint32_t start = HAL_GetTick();
+    const uint32_t tx_timeout_ms = 200; // 每包最多等待 200ms
+    while (HAL_CAN_AddTxMessage((&hcan1), (CAN_TxHeaderTypeDef *)(&can.CAN_TxMsg), (uint8_t *)(&can.txData), (&TxMailbox)) != HAL_OK)
+    {
+      if ((HAL_GetTick() - start) >= tx_timeout_ms)
+      {
+        // 超时则放弃此次发送，退出函数（避免在调试断点时无限卡死）
+        return false;
+      }
+    }
 
     // 记录发的第几包的数据
     ++packNum;
-	}
+  }
+
+  return true;
 }
 
 /**

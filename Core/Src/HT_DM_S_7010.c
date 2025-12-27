@@ -2,10 +2,10 @@
 #include "HT_DM_S_7010.h"
 #include <string.h>
 
-int32_t HT_current = 0;                      // 转台电流
-int32_t HT_speed = 0;                        // 转台速度
-int32_t HT_Single_circle_absolute_angle = 0; // 转台单圈绝对角度
-int32_t HT_Multi_circle_absolute_angle = 0;  // 转台多圈绝对角度
+volatile int32_t HT_current = 0;                      // 转台电流
+volatile int32_t HT_speed = 0;                        // 转台速度
+volatile int32_t HT_Single_circle_absolute_angle = 0; // 转台单圈绝对角度
+volatile int32_t HT_Multi_circle_absolute_angle = 0;  // 转台多圈绝对角度
 
 float HTRev_freq = 0.f;
 

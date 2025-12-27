@@ -9,10 +9,12 @@
 *** qq交流群：262438510
 **********************************************************/
 
-int32_t ZDT_current[2] = {0}; // 张大头电流
-int32_t ZDT_speed[2] = {0};   // 张大头速度
-int32_t ZDT_angle[2] = {0};   // 张大头角度
-uint8_t ZDT_state[2] = {0};   // 张大头状态
+volatile int32_t ZDT_current[2] = {0}; // 张大头电流
+volatile int32_t ZDT_speed[2] = {0};   // 张大头速度
+volatile int32_t ZDT_angle[2] = {0};   // 张大头角度
+volatile uint8_t ZDT_state[2] = {0};   // 张大头状态（由接收回调更新，声明为 volatile）
+volatile uint8_t cmd[32] = {0};        // 用于发送命令的全局变量
+volatile uint8_t cmdLength = 0;        // 用于发送命令的全局变量数组长度，同时用于发送准备标志位
 
 float ZDTRev_freq[2] = {0.f, 0.f};
 
@@ -269,7 +271,7 @@ void ZDT_X42_V2_Velocity_Control(uint8_t addr, uint8_t dir, uint16_t v_ramp, flo
  */
 void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF)
 {
-  uint8_t cmd[16] = {0};
+  // uint8_t cmd[16] = {0};
   uint16_t vel = 0;
   uint32_t pos = 0;
 
@@ -291,8 +293,10 @@ void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velo
   cmd[10] = snF;                 // 多机同步运动标志
   cmd[11] = 0x6B;                // 校验字节
 
+  // 发送装载并准备发送
+  cmdLength = 12;
   // 发送命令
-  can_SendCmd(cmd, 12);
+  //can_SendCmd(cmd, 12);
 }
 
 /**
@@ -453,7 +457,7 @@ void ZDT_X42_V2_Origin_Modify_Params(uint8_t addr, bool svF, uint8_t o_mode, uin
  */
 void ZDT_X42_V2_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF)
 {
-  uint8_t cmd[16] = {0};
+  // uint8_t cmd[16] = {0};
 
   // 装载命令
   cmd[0] = addr;   // 地址
@@ -462,8 +466,10 @@ void ZDT_X42_V2_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF)
   cmd[3] = snF;    // 多机同步运动标志，false为不启用，true为启用
   cmd[4] = 0x6B;   // 校验字节
 
+  // 发送装载并准备发送
+  cmdLength = 5;
   // 发送命令
-  can_SendCmd(cmd, 5);
+  // can_SendCmd(cmd, 5);
 }
 
 /**
@@ -564,4 +570,44 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
     ZDTRev_freq[id - 1] = 1000.f / (currTick_ZDT[id - 1] - preTick_ZDT[id - 1]);
     preTick_ZDT[id - 1] = currTick_ZDT[id - 1];
   }
+}
+
+/**
+ * @brief 等待指定电机状态位被置位，带超时
+ * @param addr  电机地址（1 或 2）
+ * @param mask  需要检测的位掩码，例如 0x02 表示到位/完成标志
+ * @param timeout_ms 超时（毫秒），0 表示无限等待
+ * @retval true  表示在超时前检测到位
+ *         false 表示超时未检测到
+ */
+bool ZDT_WaitForFlag(uint8_t addr, uint8_t mask, uint32_t timeout_ms)
+{
+  if (addr < 1 || addr > 2) return false;
+  uint8_t idx = addr - 1;
+  uint32_t start = HAL_GetTick();
+
+  while ((ZDT_state[idx] & mask) == 0)
+  {
+    if (timeout_ms != 0 && (HAL_GetTick() - start) >= timeout_ms)
+      return false;
+    /* 给出一个小延迟，避免紧循环占满 CPU */
+    HAL_Delay(1);
+  }
+
+  return true;
+}
+
+/**
+ * @brief 命令装载并准备发送
+ * @retval cmdLength  用于发送命令的全局变量数组长度
+ */
+void ZDT_cmdSend()
+{
+  if (cmdLength > 0)
+  {
+    can_SendCmd(cmd, cmdLength);
+    memset((void*)cmd, 0, sizeof(cmd));
+    cmdLength = 0;
+  }
+
 }

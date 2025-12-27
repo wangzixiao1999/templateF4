@@ -3,10 +3,10 @@
 
 #include "can.h"
 
-extern int32_t HT_current; // 转台电流
-extern int32_t HT_speed;   // 转台速度
-extern int32_t HT_Single_circle_absolute_angle;   // 转台单圈绝对角度
-extern int32_t HT_Multi_circle_absolute_angle;   // 转台多圈绝对角度
+extern volatile int32_t HT_current; // 转台电流
+extern volatile int32_t HT_speed;   // 转台速度
+extern volatile int32_t HT_Single_circle_absolute_angle;   // 转台单圈绝对角度
+extern volatile int32_t HT_Multi_circle_absolute_angle;   // 转台多圈绝对角度
 
 typedef struct {
     int32_t current;

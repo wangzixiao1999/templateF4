@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
   28:Core/Src/can.c **** 
   29:Core/Src/can.c **** CAN_HandleTypeDef hcan1;
   30:Core/Src/can.c **** CAN_HandleTypeDef hcan2;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 2
 
 
   31:Core/Src/can.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
   50:Core/Src/can.c ****   hcan1.Init.AutoBusOff = ENABLE;
   64              		.loc 1 50 3 is_stmt 1 view .LVU15
   65              		.loc 1 50 25 is_stmt 0 view .LVU16
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 3
 
 
   66 001c 0122     		movs	r2, #1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  107              		.thumb
  108              		.thumb_func
  110              	MX_CAN2_Init:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 4
 
 
  111              	.LFB135:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
   82:Core/Src/can.c ****   hcan2.Init.AutoBusOff = ENABLE;
  147              		.loc 1 82 3 is_stmt 1 view .LVU46
  148              		.loc 1 82 25 is_stmt 0 view .LVU47
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 5
 
 
  149 001c 0122     		movs	r2, #1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  190              		.thumb
  191              		.thumb_func
  193              	HAL_CAN_MspInit:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 6
 
 
  194              	.LVL4:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  120:Core/Src/can.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
  121:Core/Src/can.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
  122:Core/Src/can.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 7
 
 
  123:Core/Src/can.c ****     GPIO_InitStruct.Alternate = GPIO_AF9_CAN1;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  236              		@ sp needed
  237 0020 10BD     		pop	{r4, pc}
  238              	.LVL6:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 8
 
 
  239              	.L19:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  278 004c 0223     		movs	r3, #2
  279 004e 0693     		str	r3, [sp, #24]
  121:Core/Src/can.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 9
 
 
  280              		.loc 1 121 5 is_stmt 1 view .LVU87
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  322 0086 0093     		str	r3, [sp]
  111:Core/Src/can.c ****     }
  323              		.loc 1 111 7 view .LVU100
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 10
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 10
 
 
  324 0088 009B     		ldr	r3, [sp]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  364 00b4 194B     		ldr	r3, .L23+12
  365 00b6 1A6B     		ldr	r2, [r3, #48]
  366 00b8 42F00202 		orr	r2, r2, #2
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 11
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 11
 
 
  367 00bc 1A63     		str	r2, [r3, #48]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  159:Core/Src/can.c ****   /* USER CODE BEGIN CAN2_MspInit 1 */
  406              		.loc 1 159 5 view .LVU130
  407 00ec 4020     		movs	r0, #64
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 12
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 12
 
 
  408 00ee FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  456              		@ args = 0, pretend = 0, frame = 0
  457              		@ frame_needed = 0, uses_anonymous_args = 0
  458              		.loc 1 167 1 is_stmt 0 view .LVU138
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 13
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 13
 
 
  459 0000 08B5     		push	{r3, lr}
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  203:Core/Src/can.c **** 
  204:Core/Src/can.c ****     /**CAN2 GPIO Configuration
  205:Core/Src/can.c ****     PB12     ------> CAN2_RX
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 14
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 14
 
 
  206:Core/Src/can.c ****     PB13     ------> CAN2_TX
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  512 0038 02F5E832 		add	r2, r2, #118784
  513 003c 136C     		ldr	r3, [r2, #64]
  514 003e 23F08063 		bic	r3, r3, #67108864
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 15
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 15
 
 
  515 0042 1364     		str	r3, [r2, #64]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  563              	USER_CAN1_Filter_Init:
  564              	.LFB138:
  217:Core/Src/can.c **** 
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 16
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 16
 
 
  218:Core/Src/can.c **** /* USER CODE BEGIN 1 */
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  598              		.loc 1 238 31 is_stmt 0 view .LVU179
  599 0010 0421     		movs	r1, #4
  600 0012 0191     		str	r1, [sp, #4]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 17
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 17
 
 
  239:Core/Src/can.c ****     sFilterConfig.FilterMaskIdHigh = im_h;
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  649              	.LFB139:
  247:Core/Src/can.c **** 
  248:Core/Src/can.c **** void USER_CAN2_Filter_Init(void)
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 18
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 18
 
 
  249:Core/Src/can.c **** {
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  689              		.loc 1 263 5 is_stmt 1 view .LVU214
  690              		.loc 1 263 35 is_stmt 0 view .LVU215
  691 0016 0393     		str	r3, [sp, #12]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 19
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 19
 
 
  264:Core/Src/can.c ****     sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
@@ -1134,547 +1134,570 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 1
  273:Core/Src/can.c **** 	* @param   cmd: 命令数据指针
  274:Core/Src/can.c **** 	* @param   len: 命令长度
  275:Core/Src/can.c **** 	*/
- 276:Core/Src/can.c **** void can_SendCmd(__IO uint8_t *cmd, uint8_t len)
+ 276:Core/Src/can.c **** bool can_SendCmd(__IO uint8_t *cmd, uint8_t len)
  277:Core/Src/can.c **** {
  735              		.loc 1 277 1 is_stmt 1 view -0
  736              		.cfi_startproc
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 20
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 20
 
 
  737              		@ args = 0, pretend = 0, frame = 8
  738              		@ frame_needed = 0, uses_anonymous_args = 0
  739              		.loc 1 277 1 is_stmt 0 view .LVU228
- 740 0000 10B5     		push	{r4, lr}
+ 740 0000 30B5     		push	{r4, r5, lr}
  741              	.LCFI13:
- 742              		.cfi_def_cfa_offset 8
- 743              		.cfi_offset 4, -8
- 744              		.cfi_offset 14, -4
- 745 0002 82B0     		sub	sp, sp, #8
- 746              	.LCFI14:
- 747              		.cfi_def_cfa_offset 16
- 748 0004 0446     		mov	r4, r0
+ 742              		.cfi_def_cfa_offset 12
+ 743              		.cfi_offset 4, -12
+ 744              		.cfi_offset 5, -8
+ 745              		.cfi_offset 14, -4
+ 746 0002 83B0     		sub	sp, sp, #12
+ 747              	.LCFI14:
+ 748              		.cfi_def_cfa_offset 24
+ 749 0004 0446     		mov	r4, r0
  278:Core/Src/can.c **** 	static uint32_t TxMailbox; __IO uint8_t i = 0, j = 0, k = 0, l = 0, packNum = 0;
- 749              		.loc 1 278 2 is_stmt 1 view .LVU229
- 750              		.loc 1 278 29 view .LVU230
- 751              		.loc 1 278 42 is_stmt 0 view .LVU231
- 752 0006 0023     		movs	r3, #0
- 753 0008 8DF80730 		strb	r3, [sp, #7]
- 754              		.loc 1 278 49 view .LVU232
- 755 000c 8DF80630 		strb	r3, [sp, #6]
- 756              		.loc 1 278 56 view .LVU233
- 757 0010 8DF80530 		strb	r3, [sp, #5]
- 758              		.loc 1 278 63 view .LVU234
- 759 0014 8DF80430 		strb	r3, [sp, #4]
- 760              		.loc 1 278 70 view .LVU235
- 761 0018 8DF80330 		strb	r3, [sp, #3]
+ 750              		.loc 1 278 2 is_stmt 1 view .LVU229
+ 751              		.loc 1 278 29 view .LVU230
+ 752              		.loc 1 278 42 is_stmt 0 view .LVU231
+ 753 0006 0023     		movs	r3, #0
+ 754 0008 8DF80730 		strb	r3, [sp, #7]
+ 755              		.loc 1 278 49 view .LVU232
+ 756 000c 8DF80630 		strb	r3, [sp, #6]
+ 757              		.loc 1 278 56 view .LVU233
+ 758 0010 8DF80530 		strb	r3, [sp, #5]
+ 759              		.loc 1 278 63 view .LVU234
+ 760 0014 8DF80430 		strb	r3, [sp, #4]
+ 761              		.loc 1 278 70 view .LVU235
+ 762 0018 8DF80330 		strb	r3, [sp, #3]
  279:Core/Src/can.c **** 
- 280:Core/Src/can.c **** 	// 除去ID地址和功能码后的数据长度
- 281:Core/Src/can.c **** 	j = len - 2;
- 762              		.loc 1 281 2 is_stmt 1 view .LVU236
- 763              		.loc 1 281 10 is_stmt 0 view .LVU237
- 764 001c 8B1E     		subs	r3, r1, #2
- 765 001e DBB2     		uxtb	r3, r3
- 766              		.loc 1 281 4 view .LVU238
- 767 0020 8DF80630 		strb	r3, [sp, #6]
+ 280:Core/Src/can.c ****   // 除去ID地址和功能码后的数据长度
+ 281:Core/Src/can.c ****   j = len - 2;
+ 763              		.loc 1 281 3 is_stmt 1 view .LVU236
+ 764              		.loc 1 281 11 is_stmt 0 view .LVU237
+ 765 001c 8B1E     		subs	r3, r1, #2
+ 766 001e DBB2     		uxtb	r3, r3
+ 767              		.loc 1 281 5 view .LVU238
+ 768 0020 8DF80630 		strb	r3, [sp, #6]
  282:Core/Src/can.c **** 
- 283:Core/Src/can.c **** 	// 发�?�数�?
- 284:Core/Src/can.c **** 	while(i < j)
- 768              		.loc 1 284 2 is_stmt 1 view .LVU239
- 769              		.loc 1 284 7 is_stmt 0 view .LVU240
- 770 0024 13E0     		b	.L46
- 771              	.LVL32:
- 772              	.L57:
- 285:Core/Src/can.c **** 	{
- 286:Core/Src/can.c **** 		// 数据个数
- 287:Core/Src/can.c **** 		k = j - i;
+ 283:Core/Src/can.c ****   // 发包
+ 284:Core/Src/can.c ****   while (i < j)
+ 769              		.loc 1 284 3 is_stmt 1 view .LVU239
+ 770              	.LVL32:
+ 771              	.L46:
+ 772              		.loc 1 284 12 view .LVU240
+ 773 0024 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
+ 774 0028 D2B2     		uxtb	r2, r2
+ 775 002a 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 776 002e DBB2     		uxtb	r3, r3
+ 777 0030 9A42     		cmp	r2, r3
+ 778 0032 80F08480 		bcs	.L59
+ 779              	.LBB7:
+ 285:Core/Src/can.c ****   {
+ 286:Core/Src/can.c ****     // 数据个数
+ 287:Core/Src/can.c ****     k = j - i;
+ 780              		.loc 1 287 5 view .LVU241
+ 781              		.loc 1 287 11 is_stmt 0 view .LVU242
+ 782 0036 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 783 003a 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 21
+
+
+ 784 003e 9B1A     		subs	r3, r3, r2
+ 785 0040 DBB2     		uxtb	r3, r3
+ 786              		.loc 1 287 7 view .LVU243
+ 787 0042 8DF80530 		strb	r3, [sp, #5]
  288:Core/Src/can.c **** 
- 289:Core/Src/can.c **** 		// 填充缓存
- 290:Core/Src/can.c **** 		can.CAN_TxMsg.StdId = 0x00;
- 291:Core/Src/can.c **** 		can.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
- 292:Core/Src/can.c **** 		can.txData[0] = cmd[1];
- 293:Core/Src/can.c **** 		can.CAN_TxMsg.IDE = CAN_ID_EXT;
- 294:Core/Src/can.c **** 		can.CAN_TxMsg.RTR = CAN_RTR_DATA;
+ 289:Core/Src/can.c ****     // 填充缓存
+ 290:Core/Src/can.c ****     can.CAN_TxMsg.StdId = 0x00;
+ 788              		.loc 1 290 5 is_stmt 1 view .LVU244
+ 789              		.loc 1 290 25 is_stmt 0 view .LVU245
+ 790 0046 3F4B     		ldr	r3, .L61
+ 791 0048 0021     		movs	r1, #0
+ 792 004a D963     		str	r1, [r3, #60]
+ 291:Core/Src/can.c ****     can.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
+ 793              		.loc 1 291 5 is_stmt 1 view .LVU246
+ 794              		.loc 1 291 41 is_stmt 0 view .LVU247
+ 795 004c 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 796              		.loc 1 291 53 view .LVU248
+ 797 004e 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 798              		.loc 1 291 51 view .LVU249
+ 799 0052 42EA0022 		orr	r2, r2, r0, lsl #8
+ 800              		.loc 1 291 25 view .LVU250
+ 801 0056 1A64     		str	r2, [r3, #64]
+ 292:Core/Src/can.c ****     can.txData[0] = cmd[1];
+ 802              		.loc 1 292 5 is_stmt 1 view .LVU251
+ 803              		.loc 1 292 24 is_stmt 0 view .LVU252
+ 804 0058 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
+ 805 005a D2B2     		uxtb	r2, r2
+ 806              		.loc 1 292 19 view .LVU253
+ 807 005c 83F85420 		strb	r2, [r3, #84]
+ 293:Core/Src/can.c ****     can.CAN_TxMsg.IDE = CAN_ID_EXT;
+ 808              		.loc 1 293 5 is_stmt 1 view .LVU254
+ 809              		.loc 1 293 23 is_stmt 0 view .LVU255
+ 810 0060 0422     		movs	r2, #4
+ 811 0062 5A64     		str	r2, [r3, #68]
+ 294:Core/Src/can.c ****     can.CAN_TxMsg.RTR = CAN_RTR_DATA;
+ 812              		.loc 1 294 5 is_stmt 1 view .LVU256
+ 813              		.loc 1 294 23 is_stmt 0 view .LVU257
+ 814 0064 9964     		str	r1, [r3, #72]
  295:Core/Src/can.c **** 
- 296:Core/Src/can.c **** 		// 小于8字节命令
- 297:Core/Src/can.c **** 		if(k < 8)
- 298:Core/Src/can.c **** 		{
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 21
+ 296:Core/Src/can.c ****     // 小于8字节命令
+ 297:Core/Src/can.c ****     if (k < 8)
+ 815              		.loc 1 297 5 is_stmt 1 view .LVU258
+ 816              		.loc 1 297 11 is_stmt 0 view .LVU259
+ 817 0066 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 818 006a DBB2     		uxtb	r3, r3
+ 819              		.loc 1 297 8 view .LVU260
+ 820 006c 072B     		cmp	r3, #7
+ 821 006e 3AD8     		bhi	.L47
+ 298:Core/Src/can.c ****     {
+ 299:Core/Src/can.c ****       for (l = 0; l < k; l++, i++) { can.txData[l + 1] = cmd[i + 2]; }
+ 822              		.loc 1 299 7 is_stmt 1 view .LVU261
+ 823              		.loc 1 299 14 is_stmt 0 view .LVU262
+ 824 0070 8DF80410 		strb	r1, [sp, #4]
+ 825              		.loc 1 299 7 view .LVU263
+ 826 0074 17E0     		b	.L48
+ 827              	.L49:
+ 828              		.loc 1 299 38 is_stmt 1 discriminator 3 view .LVU264
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 22
 
 
- 299:Core/Src/can.c **** 			for(l=0; l < k; l++,i++) { can.txData[l + 1] = cmd[i + 2]; } can.CAN_TxMsg.DLC = k + 1;
- 773              		.loc 1 299 65 is_stmt 1 discriminator 4 view .LVU241
- 774              		.loc 1 299 87 is_stmt 0 discriminator 4 view .LVU242
- 775 0026 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
- 776 002a 0133     		adds	r3, r3, #1
- 777              		.loc 1 299 83 discriminator 4 view .LVU243
- 778 002c 3F4A     		ldr	r2, .L59
- 779 002e D364     		str	r3, [r2, #76]
- 780              	.L53:
- 300:Core/Src/can.c **** 		}
- 301:Core/Src/can.c **** 		// 大于8字节命令，分包发送，每包数据�?多发�?8个字�?
- 302:Core/Src/can.c **** 		else
- 303:Core/Src/can.c **** 		{
- 304:Core/Src/can.c **** 			for(l=0; l < 7; l++,i++) { can.txData[l + 1] = cmd[i + 2]; } can.CAN_TxMsg.DLC = 8;
- 305:Core/Src/can.c **** 		}
- 306:Core/Src/can.c **** 
- 307:Core/Src/can.c **** 		// 发送数据
- 308:Core/Src/can.c **** 		while(HAL_CAN_AddTxMessage((&hcan1), (CAN_TxHeaderTypeDef *)(&can.CAN_TxMsg), (uint8_t *)(&can.tx
- 781              		.loc 1 308 121 is_stmt 1 discriminator 1 view .LVU244
- 782              		.loc 1 308 9 is_stmt 0 discriminator 1 view .LVU245
- 783 0030 3F4A     		ldr	r2, .L59+4
- 784 0032 404B     		ldr	r3, .L59+8
- 785 0034 A2F11801 		sub	r1, r2, #24
- 786 0038 3F48     		ldr	r0, .L59+12
- 787 003a FFF7FEFF 		bl	HAL_CAN_AddTxMessage
- 788              	.LVL33:
- 789              		.loc 1 308 121 discriminator 1 view .LVU246
- 790 003e 0028     		cmp	r0, #0
- 791 0040 F6D1     		bne	.L53
- 309:Core/Src/can.c **** 
- 310:Core/Src/can.c ****     // 记录发的第几包的数据
- 311:Core/Src/can.c ****     ++packNum;
- 792              		.loc 1 311 5 is_stmt 1 view .LVU247
- 793 0042 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
- 794 0046 0133     		adds	r3, r3, #1
- 795 0048 DBB2     		uxtb	r3, r3
- 796 004a 8DF80330 		strb	r3, [sp, #3]
- 797              	.L46:
- 284:Core/Src/can.c **** 	{
- 798              		.loc 1 284 10 view .LVU248
- 799 004e 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
- 800 0052 D2B2     		uxtb	r2, r2
- 801 0054 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
- 802 0058 DBB2     		uxtb	r3, r3
- 803 005a 9A42     		cmp	r2, r3
- 804 005c 64D2     		bcs	.L56
- 287:Core/Src/can.c **** 
- 805              		.loc 1 287 3 view .LVU249
- 287:Core/Src/can.c **** 
- 806              		.loc 1 287 9 is_stmt 0 view .LVU250
- 807 005e 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
- 808 0062 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
- 809 0066 9B1A     		subs	r3, r3, r2
- 810 0068 DBB2     		uxtb	r3, r3
- 287:Core/Src/can.c **** 
- 811              		.loc 1 287 5 view .LVU251
- 812 006a 8DF80530 		strb	r3, [sp, #5]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 22
+ 829              		.loc 1 299 61 is_stmt 0 discriminator 3 view .LVU265
+ 830 0076 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 831 007a 0233     		adds	r3, r3, #2
+ 832              		.loc 1 299 51 discriminator 3 view .LVU266
+ 833 007c 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
+ 834 0080 0131     		adds	r1, r1, #1
+ 835              		.loc 1 299 61 discriminator 3 view .LVU267
+ 836 0082 E25C     		ldrb	r2, [r4, r3]	@ zero_extendqisi2
+ 837 0084 D2B2     		uxtb	r2, r2
+ 838              		.loc 1 299 56 discriminator 3 view .LVU268
+ 839 0086 2F4B     		ldr	r3, .L61
+ 840 0088 0B44     		add	r3, r3, r1
+ 841 008a 83F85420 		strb	r2, [r3, #84]
+ 842              		.loc 1 299 29 is_stmt 1 discriminator 3 view .LVU269
+ 843              		.loc 1 299 27 is_stmt 0 discriminator 3 view .LVU270
+ 844 008e 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 845 0092 0133     		adds	r3, r3, #1
+ 846 0094 DBB2     		uxtb	r3, r3
+ 847 0096 8DF80430 		strb	r3, [sp, #4]
+ 848              		.loc 1 299 32 discriminator 3 view .LVU271
+ 849 009a 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 850 009e 0133     		adds	r3, r3, #1
+ 851 00a0 DBB2     		uxtb	r3, r3
+ 852 00a2 8DF80730 		strb	r3, [sp, #7]
+ 853              	.L48:
+ 854              		.loc 1 299 21 is_stmt 1 discriminator 1 view .LVU272
+ 855 00a6 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 856 00aa D2B2     		uxtb	r2, r2
+ 857 00ac 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 858 00b0 DBB2     		uxtb	r3, r3
+ 859 00b2 9A42     		cmp	r2, r3
+ 860 00b4 DFD3     		bcc	.L49
+ 300:Core/Src/can.c ****       can.CAN_TxMsg.DLC = k + 1;
+ 861              		.loc 1 300 7 view .LVU273
+ 862              		.loc 1 300 29 is_stmt 0 view .LVU274
+ 863 00b6 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 864 00ba 0133     		adds	r3, r3, #1
+ 865              		.loc 1 300 25 view .LVU275
+ 866 00bc 214A     		ldr	r2, .L61
+ 867 00be D364     		str	r3, [r2, #76]
+ 868              	.L50:
+ 301:Core/Src/can.c ****     }
+ 302:Core/Src/can.c ****     // 大于8字节命令，分包发送，每包数据最多发 8 个字节
+ 303:Core/Src/can.c ****     else
+ 304:Core/Src/can.c ****     {
+ 305:Core/Src/can.c ****       for (l = 0; l < 7; l++, i++) { can.txData[l + 1] = cmd[i + 2]; }
+ 306:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 307:Core/Src/can.c ****     }
+ 308:Core/Src/can.c **** 
+ 309:Core/Src/can.c ****     // 发送数据，带超时保护：如果在调试中断或总线不可用时不致于无限�
+ 310:Core/Src/can.c ****     uint32_t start = HAL_GetTick();
+ 869              		.loc 1 310 5 is_stmt 1 view .LVU276
+ 870              		.loc 1 310 22 is_stmt 0 view .LVU277
+ 871 00c0 FFF7FEFF 		bl	HAL_GetTick
+ 872              	.LVL33:
+ 873 00c4 0546     		mov	r5, r0
+ 874              	.LVL34:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 23
 
 
- 290:Core/Src/can.c **** 		can.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
- 813              		.loc 1 290 3 is_stmt 1 view .LVU252
- 290:Core/Src/can.c **** 		can.CAN_TxMsg.ExtId = ((uint32_t)cmd[0] << 8) | (uint32_t)packNum;
- 814              		.loc 1 290 23 is_stmt 0 view .LVU253
- 815 006e 2F4B     		ldr	r3, .L59
- 816 0070 0021     		movs	r1, #0
- 817 0072 D963     		str	r1, [r3, #60]
- 291:Core/Src/can.c **** 		can.txData[0] = cmd[1];
- 818              		.loc 1 291 3 is_stmt 1 view .LVU254
- 291:Core/Src/can.c **** 		can.txData[0] = cmd[1];
- 819              		.loc 1 291 39 is_stmt 0 view .LVU255
- 820 0074 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
- 291:Core/Src/can.c **** 		can.txData[0] = cmd[1];
- 821              		.loc 1 291 51 view .LVU256
- 822 0076 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
- 291:Core/Src/can.c **** 		can.txData[0] = cmd[1];
- 823              		.loc 1 291 49 view .LVU257
- 824 007a 42EA0022 		orr	r2, r2, r0, lsl #8
- 291:Core/Src/can.c **** 		can.txData[0] = cmd[1];
- 825              		.loc 1 291 23 view .LVU258
- 826 007e 1A64     		str	r2, [r3, #64]
- 292:Core/Src/can.c **** 		can.CAN_TxMsg.IDE = CAN_ID_EXT;
- 827              		.loc 1 292 3 is_stmt 1 view .LVU259
- 292:Core/Src/can.c **** 		can.CAN_TxMsg.IDE = CAN_ID_EXT;
- 828              		.loc 1 292 22 is_stmt 0 view .LVU260
- 829 0080 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
- 830 0082 D2B2     		uxtb	r2, r2
- 292:Core/Src/can.c **** 		can.CAN_TxMsg.IDE = CAN_ID_EXT;
- 831              		.loc 1 292 17 view .LVU261
- 832 0084 83F85420 		strb	r2, [r3, #84]
- 293:Core/Src/can.c **** 		can.CAN_TxMsg.RTR = CAN_RTR_DATA;
- 833              		.loc 1 293 3 is_stmt 1 view .LVU262
- 293:Core/Src/can.c **** 		can.CAN_TxMsg.RTR = CAN_RTR_DATA;
- 834              		.loc 1 293 21 is_stmt 0 view .LVU263
- 835 0088 0422     		movs	r2, #4
- 836 008a 5A64     		str	r2, [r3, #68]
- 294:Core/Src/can.c **** 
- 837              		.loc 1 294 3 is_stmt 1 view .LVU264
- 294:Core/Src/can.c **** 
- 838              		.loc 1 294 21 is_stmt 0 view .LVU265
- 839 008c 9964     		str	r1, [r3, #72]
- 297:Core/Src/can.c **** 		{
- 840              		.loc 1 297 3 is_stmt 1 view .LVU266
- 297:Core/Src/can.c **** 		{
- 841              		.loc 1 297 8 is_stmt 0 view .LVU267
- 842 008e 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
- 843 0092 DBB2     		uxtb	r3, r3
- 297:Core/Src/can.c **** 		{
- 844              		.loc 1 297 5 view .LVU268
- 845 0094 072B     		cmp	r3, #7
- 846 0096 22D8     		bhi	.L47
- 299:Core/Src/can.c **** 		}
- 847              		.loc 1 299 4 is_stmt 1 view .LVU269
- 299:Core/Src/can.c **** 		}
- 848              		.loc 1 299 9 is_stmt 0 view .LVU270
- 849 0098 8DF80410 		strb	r1, [sp, #4]
- 850              	.L48:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 23
+ 311:Core/Src/can.c ****     const uint32_t tx_timeout_ms = 200; // 每包最多等待 200ms
+ 875              		.loc 1 311 5 is_stmt 1 view .LVU278
+ 312:Core/Src/can.c ****     while (HAL_CAN_AddTxMessage((&hcan1), (CAN_TxHeaderTypeDef *)(&can.CAN_TxMsg), (uint8_t *)(&can
+ 876              		.loc 1 312 5 view .LVU279
+ 877              	.L53:
+ 878              		.loc 1 312 124 view .LVU280
+ 879              		.loc 1 312 12 is_stmt 0 view .LVU281
+ 880 00c6 204A     		ldr	r2, .L61+4
+ 881 00c8 204B     		ldr	r3, .L61+8
+ 882 00ca A2F11801 		sub	r1, r2, #24
+ 883 00ce 2048     		ldr	r0, .L61+12
+ 884 00d0 FFF7FEFF 		bl	HAL_CAN_AddTxMessage
+ 885              	.LVL35:
+ 886              		.loc 1 312 124 discriminator 1 view .LVU282
+ 887 00d4 60B3     		cbz	r0, .L60
+ 313:Core/Src/can.c ****     {
+ 314:Core/Src/can.c ****       if ((HAL_GetTick() - start) >= tx_timeout_ms)
+ 888              		.loc 1 314 7 is_stmt 1 view .LVU283
+ 889              		.loc 1 314 12 is_stmt 0 view .LVU284
+ 890 00d6 FFF7FEFF 		bl	HAL_GetTick
+ 891              	.LVL36:
+ 892              		.loc 1 314 26 discriminator 1 view .LVU285
+ 893 00da 401B     		subs	r0, r0, r5
+ 894              		.loc 1 314 10 discriminator 1 view .LVU286
+ 895 00dc C728     		cmp	r0, #199
+ 896 00de F2D9     		bls	.L53
+ 315:Core/Src/can.c ****       {
+ 316:Core/Src/can.c ****         // 超时则放弃此次发送，退出函数（避免在调试断点时无限卡死）
+ 317:Core/Src/can.c ****         return false;
+ 897              		.loc 1 317 16 view .LVU287
+ 898 00e0 0020     		movs	r0, #0
+ 899              	.LVL37:
+ 900              	.L54:
+ 901              		.loc 1 317 16 view .LVU288
+ 902              	.LBE7:
+ 318:Core/Src/can.c ****       }
+ 319:Core/Src/can.c ****     }
+ 320:Core/Src/can.c **** 
+ 321:Core/Src/can.c ****     // 记录发的第几包的数据
+ 322:Core/Src/can.c ****     ++packNum;
+ 323:Core/Src/can.c ****   }
+ 324:Core/Src/can.c **** 
+ 325:Core/Src/can.c ****   return true;
+ 326:Core/Src/can.c **** }
+ 903              		.loc 1 326 1 view .LVU289
+ 904 00e2 03B0     		add	sp, sp, #12
+ 905              	.LCFI15:
+ 906              		.cfi_remember_state
+ 907              		.cfi_def_cfa_offset 12
+ 908              		@ sp needed
+ 909 00e4 30BD     		pop	{r4, r5, pc}
+ 910              	.LVL38:
+ 911              	.L47:
+ 912              	.LCFI16:
+ 913              		.cfi_restore_state
+ 914              	.LBB8:
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 24
 
 
- 299:Core/Src/can.c **** 		}
- 851              		.loc 1 299 15 is_stmt 1 discriminator 1 view .LVU271
- 852 009c 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
- 853 00a0 D2B2     		uxtb	r2, r2
- 854 00a2 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
- 855 00a6 DBB2     		uxtb	r3, r3
- 856 00a8 9A42     		cmp	r2, r3
- 857 00aa BCD2     		bcs	.L57
- 299:Core/Src/can.c **** 		}
- 858              		.loc 1 299 31 discriminator 3 view .LVU272
- 299:Core/Src/can.c **** 		}
- 859              		.loc 1 299 54 is_stmt 0 discriminator 3 view .LVU273
- 860 00ac 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 861 00b0 0233     		adds	r3, r3, #2
- 299:Core/Src/can.c **** 		}
- 862              		.loc 1 299 44 discriminator 3 view .LVU274
- 863 00b2 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
- 864 00b6 0131     		adds	r1, r1, #1
- 299:Core/Src/can.c **** 		}
- 865              		.loc 1 299 54 discriminator 3 view .LVU275
- 866 00b8 E25C     		ldrb	r2, [r4, r3]	@ zero_extendqisi2
- 867 00ba D2B2     		uxtb	r2, r2
- 299:Core/Src/can.c **** 		}
- 868              		.loc 1 299 49 discriminator 3 view .LVU276
- 869 00bc 1B4B     		ldr	r3, .L59
- 870 00be 0B44     		add	r3, r3, r1
- 871 00c0 83F85420 		strb	r2, [r3, #84]
- 299:Core/Src/can.c **** 		}
- 872              		.loc 1 299 23 is_stmt 1 discriminator 3 view .LVU277
- 299:Core/Src/can.c **** 		}
- 873              		.loc 1 299 21 is_stmt 0 discriminator 3 view .LVU278
- 874 00c4 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
- 875 00c8 0133     		adds	r3, r3, #1
- 876 00ca DBB2     		uxtb	r3, r3
- 877 00cc 8DF80430 		strb	r3, [sp, #4]
- 299:Core/Src/can.c **** 		}
- 878              		.loc 1 299 25 discriminator 3 view .LVU279
- 879 00d0 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 880 00d4 0133     		adds	r3, r3, #1
- 881 00d6 DBB2     		uxtb	r3, r3
- 882 00d8 8DF80730 		strb	r3, [sp, #7]
- 883 00dc DEE7     		b	.L48
- 884              	.L47:
- 304:Core/Src/can.c **** 		}
- 885              		.loc 1 304 4 is_stmt 1 view .LVU280
- 304:Core/Src/can.c **** 		}
- 886              		.loc 1 304 9 is_stmt 0 view .LVU281
- 887 00de 0023     		movs	r3, #0
- 888 00e0 8DF80430 		strb	r3, [sp, #4]
- 889              	.L51:
- 304:Core/Src/can.c **** 		}
- 890              		.loc 1 304 15 is_stmt 1 discriminator 1 view .LVU282
- 891 00e4 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
- 892 00e8 DBB2     		uxtb	r3, r3
- 893 00ea 062B     		cmp	r3, #6
- 894 00ec 18D8     		bhi	.L58
- 304:Core/Src/can.c **** 		}
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 24
+ 915              		.loc 1 305 7 is_stmt 1 view .LVU290
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 916              		.loc 1 305 14 is_stmt 0 view .LVU291
+ 917 00e6 0023     		movs	r3, #0
+ 918 00e8 8DF80430 		strb	r3, [sp, #4]
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 919              		.loc 1 305 7 view .LVU292
+ 920 00ec 17E0     		b	.L51
+ 921              	.L52:
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 922              		.loc 1 305 38 is_stmt 1 discriminator 3 view .LVU293
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 923              		.loc 1 305 61 is_stmt 0 discriminator 3 view .LVU294
+ 924 00ee 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 925 00f2 0233     		adds	r3, r3, #2
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 926              		.loc 1 305 51 discriminator 3 view .LVU295
+ 927 00f4 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
+ 928 00f8 0131     		adds	r1, r1, #1
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 929              		.loc 1 305 61 discriminator 3 view .LVU296
+ 930 00fa E25C     		ldrb	r2, [r4, r3]	@ zero_extendqisi2
+ 931 00fc D2B2     		uxtb	r2, r2
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 932              		.loc 1 305 56 discriminator 3 view .LVU297
+ 933 00fe 114B     		ldr	r3, .L61
+ 934 0100 0B44     		add	r3, r3, r1
+ 935 0102 83F85420 		strb	r2, [r3, #84]
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 936              		.loc 1 305 29 is_stmt 1 discriminator 3 view .LVU298
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 937              		.loc 1 305 27 is_stmt 0 discriminator 3 view .LVU299
+ 938 0106 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 939 010a 0133     		adds	r3, r3, #1
+ 940 010c DBB2     		uxtb	r3, r3
+ 941 010e 8DF80430 		strb	r3, [sp, #4]
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 942              		.loc 1 305 32 discriminator 3 view .LVU300
+ 943 0112 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 944 0116 0133     		adds	r3, r3, #1
+ 945 0118 DBB2     		uxtb	r3, r3
+ 946 011a 8DF80730 		strb	r3, [sp, #7]
+ 947              	.L51:
+ 305:Core/Src/can.c ****       can.CAN_TxMsg.DLC = 8;
+ 948              		.loc 1 305 21 is_stmt 1 discriminator 1 view .LVU301
+ 949 011e 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 950 0122 DBB2     		uxtb	r3, r3
+ 951 0124 062B     		cmp	r3, #6
+ 952 0126 E2D9     		bls	.L52
+ 306:Core/Src/can.c ****     }
+ 953              		.loc 1 306 7 view .LVU302
+ 306:Core/Src/can.c ****     }
+ 954              		.loc 1 306 25 is_stmt 0 view .LVU303
+ 955 0128 064B     		ldr	r3, .L61
+ 956 012a 0822     		movs	r2, #8
+ 957 012c DA64     		str	r2, [r3, #76]
+ 958 012e C7E7     		b	.L50
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 25
 
 
- 895              		.loc 1 304 31 discriminator 3 view .LVU283
- 304:Core/Src/can.c **** 		}
- 896              		.loc 1 304 54 is_stmt 0 discriminator 3 view .LVU284
- 897 00ee 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 898 00f2 0233     		adds	r3, r3, #2
- 304:Core/Src/can.c **** 		}
- 899              		.loc 1 304 44 discriminator 3 view .LVU285
- 900 00f4 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
- 901 00f8 0131     		adds	r1, r1, #1
- 304:Core/Src/can.c **** 		}
- 902              		.loc 1 304 54 discriminator 3 view .LVU286
- 903 00fa E25C     		ldrb	r2, [r4, r3]	@ zero_extendqisi2
- 904 00fc D2B2     		uxtb	r2, r2
- 304:Core/Src/can.c **** 		}
- 905              		.loc 1 304 49 discriminator 3 view .LVU287
- 906 00fe 0B4B     		ldr	r3, .L59
- 907 0100 0B44     		add	r3, r3, r1
- 908 0102 83F85420 		strb	r2, [r3, #84]
- 304:Core/Src/can.c **** 		}
- 909              		.loc 1 304 23 is_stmt 1 discriminator 3 view .LVU288
- 304:Core/Src/can.c **** 		}
- 910              		.loc 1 304 21 is_stmt 0 discriminator 3 view .LVU289
- 911 0106 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
- 912 010a 0133     		adds	r3, r3, #1
- 913 010c DBB2     		uxtb	r3, r3
- 914 010e 8DF80430 		strb	r3, [sp, #4]
- 304:Core/Src/can.c **** 		}
- 915              		.loc 1 304 25 discriminator 3 view .LVU290
- 916 0112 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 917 0116 0133     		adds	r3, r3, #1
- 918 0118 DBB2     		uxtb	r3, r3
- 919 011a 8DF80730 		strb	r3, [sp, #7]
- 920 011e E1E7     		b	.L51
- 921              	.L58:
- 304:Core/Src/can.c **** 		}
- 922              		.loc 1 304 65 is_stmt 1 discriminator 4 view .LVU291
- 304:Core/Src/can.c **** 		}
- 923              		.loc 1 304 83 is_stmt 0 discriminator 4 view .LVU292
- 924 0120 024B     		ldr	r3, .L59
- 925 0122 0822     		movs	r2, #8
- 926 0124 DA64     		str	r2, [r3, #76]
- 927 0126 83E7     		b	.L53
- 928              	.L56:
- 312:Core/Src/can.c **** 	}
- 313:Core/Src/can.c **** }
- 929              		.loc 1 313 1 view .LVU293
- 930 0128 02B0     		add	sp, sp, #8
- 931              	.LCFI15:
- 932              		.cfi_def_cfa_offset 8
- 933              		@ sp needed
- 934 012a 10BD     		pop	{r4, pc}
- 935              	.LVL34:
- 936              	.L60:
- 937              		.loc 1 313 1 view .LVU294
- 938              		.align	2
- 939              	.L59:
- 940 012c 00000000 		.word	can
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 25
+ 959              	.LVL39:
+ 960              	.L60:
+ 322:Core/Src/can.c ****   }
+ 961              		.loc 1 322 5 is_stmt 1 view .LVU304
+ 962 0130 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 963 0134 0133     		adds	r3, r3, #1
+ 964 0136 DBB2     		uxtb	r3, r3
+ 965 0138 8DF80330 		strb	r3, [sp, #3]
+ 966 013c 72E7     		b	.L46
+ 967              	.LVL40:
+ 968              	.L59:
+ 322:Core/Src/can.c ****   }
+ 969              		.loc 1 322 5 is_stmt 0 view .LVU305
+ 970              	.LBE8:
+ 325:Core/Src/can.c **** }
+ 971              		.loc 1 325 10 view .LVU306
+ 972 013e 0120     		movs	r0, #1
+ 973 0140 CFE7     		b	.L54
+ 974              	.L62:
+ 975 0142 00BF     		.align	2
+ 976              	.L61:
+ 977 0144 00000000 		.word	can
+ 978 0148 54000000 		.word	can+84
+ 979 014c 00000000 		.word	TxMailbox.1
+ 980 0150 00000000 		.word	hcan1
+ 981              		.cfi_endproc
+ 982              	.LFE140:
+ 984              		.section	.text.can2_SendCmd,"ax",%progbits
+ 985              		.align	1
+ 986              		.global	can2_SendCmd
+ 987              		.syntax unified
+ 988              		.thumb
+ 989              		.thumb_func
+ 991              	can2_SendCmd:
+ 992              	.LVL41:
+ 993              	.LFB141:
+ 327:Core/Src/can.c **** 
+ 328:Core/Src/can.c **** /**
+ 329:Core/Src/can.c **** 	* @brief   通过 CAN2 发送命令
+ 330:Core/Src/can.c **** 	* @param   cmd: 命令数据指针
+ 331:Core/Src/can.c **** 	* @param   len: 命令长度
+ 332:Core/Src/can.c **** 	*/
+ 333:Core/Src/can.c **** void can2_SendCmd( __IO uint8_t *cmd, uint8_t len)
+ 334:Core/Src/can.c **** {
+ 994              		.loc 1 334 1 is_stmt 1 view -0
+ 995              		.cfi_startproc
+ 996              		@ args = 0, pretend = 0, frame = 0
+ 997              		@ frame_needed = 0, uses_anonymous_args = 0
+ 998              		.loc 1 334 1 is_stmt 0 view .LVU308
+ 999 0000 08B5     		push	{r3, lr}
+ 1000              	.LCFI17:
+ 1001              		.cfi_def_cfa_offset 8
+ 1002              		.cfi_offset 3, -8
+ 1003              		.cfi_offset 14, -4
+ 335:Core/Src/can.c **** 	static uint32_t TxMailbox;
+ 1004              		.loc 1 335 2 is_stmt 1 view .LVU309
+ 336:Core/Src/can.c **** 
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 26
 
 
- 941 0130 54000000 		.word	can+84
- 942 0134 00000000 		.word	TxMailbox.1
- 943 0138 00000000 		.word	hcan1
- 944              		.cfi_endproc
- 945              	.LFE140:
- 947              		.section	.text.can2_SendCmd,"ax",%progbits
- 948              		.align	1
- 949              		.global	can2_SendCmd
- 950              		.syntax unified
- 951              		.thumb
- 952              		.thumb_func
- 954              	can2_SendCmd:
- 955              	.LVL35:
- 956              	.LFB141:
- 314:Core/Src/can.c **** 
- 315:Core/Src/can.c **** /**
- 316:Core/Src/can.c **** 	* @brief   通过 CAN2 发送命令
- 317:Core/Src/can.c **** 	* @param   cmd: 命令数据指针
- 318:Core/Src/can.c **** 	* @param   len: 命令长度
- 319:Core/Src/can.c **** 	*/
- 320:Core/Src/can.c **** void can2_SendCmd( __IO uint8_t *cmd, uint8_t len)
- 321:Core/Src/can.c **** {
- 957              		.loc 1 321 1 is_stmt 1 view -0
- 958              		.cfi_startproc
- 959              		@ args = 0, pretend = 0, frame = 0
- 960              		@ frame_needed = 0, uses_anonymous_args = 0
- 961              		.loc 1 321 1 is_stmt 0 view .LVU296
- 962 0000 08B5     		push	{r3, lr}
- 963              	.LCFI16:
- 964              		.cfi_def_cfa_offset 8
- 965              		.cfi_offset 3, -8
- 966              		.cfi_offset 14, -4
- 322:Core/Src/can.c **** 	static uint32_t TxMailbox;
- 967              		.loc 1 322 2 is_stmt 1 view .LVU297
- 323:Core/Src/can.c **** 
- 324:Core/Src/can.c **** 	can2.CAN_TxMsg.StdId = ((uint32_t)cmd[0]) & 0x7FF;
- 968              		.loc 1 324 2 view .LVU298
- 969              		.loc 1 324 39 is_stmt 0 view .LVU299
- 970 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
- 971 0004 DBB2     		uxtb	r3, r3
- 972              		.loc 1 324 23 view .LVU300
- 973 0006 0F4A     		ldr	r2, .L66
- 974 0008 D363     		str	r3, [r2, #60]
- 325:Core/Src/can.c **** 	can2.CAN_TxMsg.IDE = CAN_ID_STD;
- 975              		.loc 1 325 2 is_stmt 1 view .LVU301
- 976              		.loc 1 325 21 is_stmt 0 view .LVU302
- 977 000a 0023     		movs	r3, #0
- 978 000c 5364     		str	r3, [r2, #68]
- 326:Core/Src/can.c **** 	can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
- 979              		.loc 1 326 2 is_stmt 1 view .LVU303
- 980              		.loc 1 326 21 is_stmt 0 view .LVU304
- 981 000e 9364     		str	r3, [r2, #72]
- 327:Core/Src/can.c ****   can2.CAN_TxMsg.DLC = len - 1;
- 982              		.loc 1 327 3 is_stmt 1 view .LVU305
- 983              		.loc 1 327 28 is_stmt 0 view .LVU306
- 984 0010 0139     		subs	r1, r1, #1
- 985              	.LVL36:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 26
+ 337:Core/Src/can.c **** 	can2.CAN_TxMsg.StdId = ((uint32_t)cmd[0]) & 0x7FF;
+ 1005              		.loc 1 337 2 view .LVU310
+ 1006              		.loc 1 337 39 is_stmt 0 view .LVU311
+ 1007 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 1008 0004 DBB2     		uxtb	r3, r3
+ 1009              		.loc 1 337 23 view .LVU312
+ 1010 0006 0F4A     		ldr	r2, .L68
+ 1011 0008 D363     		str	r3, [r2, #60]
+ 338:Core/Src/can.c **** 	can2.CAN_TxMsg.IDE = CAN_ID_STD;
+ 1012              		.loc 1 338 2 is_stmt 1 view .LVU313
+ 1013              		.loc 1 338 21 is_stmt 0 view .LVU314
+ 1014 000a 0023     		movs	r3, #0
+ 1015 000c 5364     		str	r3, [r2, #68]
+ 339:Core/Src/can.c **** 	can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
+ 1016              		.loc 1 339 2 is_stmt 1 view .LVU315
+ 1017              		.loc 1 339 21 is_stmt 0 view .LVU316
+ 1018 000e 9364     		str	r3, [r2, #72]
+ 340:Core/Src/can.c ****   can2.CAN_TxMsg.DLC = len - 1;
+ 1019              		.loc 1 340 3 is_stmt 1 view .LVU317
+ 1020              		.loc 1 340 28 is_stmt 0 view .LVU318
+ 1021 0010 0139     		subs	r1, r1, #1
+ 1022              	.LVL42:
+ 1023              		.loc 1 340 22 view .LVU319
+ 1024 0012 D164     		str	r1, [r2, #76]
+ 341:Core/Src/can.c **** 
+ 342:Core/Src/can.c ****   for(int i = 0; i < len - 1; i++)
+ 1025              		.loc 1 342 3 is_stmt 1 view .LVU320
+ 1026              	.LBB9:
+ 1027              		.loc 1 342 7 view .LVU321
+ 1028              	.LVL43:
+ 1029              		.loc 1 342 3 is_stmt 0 view .LVU322
+ 1030 0014 0AE0     		b	.L64
+ 1031              	.LVL44:
+ 1032              	.L65:
+ 343:Core/Src/can.c ****   {
+ 344:Core/Src/can.c ****     can2.txData[i] = cmd[i + 1];
+ 1033              		.loc 1 344 5 is_stmt 1 view .LVU323
+ 1034              		.loc 1 344 25 is_stmt 0 view .LVU324
+ 1035 0016 03F1010E 		add	lr, r3, #1
+ 1036 001a 10F80EC0 		ldrb	ip, [r0, lr]	@ zero_extendqisi2
+ 1037 001e 5FFA8CFC 		uxtb	ip, ip
+ 1038              		.loc 1 344 20 view .LVU325
+ 1039 0022 084A     		ldr	r2, .L68
+ 1040 0024 1344     		add	r3, r3, r2
+ 1041              	.LVL45:
+ 1042              		.loc 1 344 20 view .LVU326
+ 1043 0026 83F854C0 		strb	ip, [r3, #84]
+ 342:Core/Src/can.c ****   {
+ 1044              		.loc 1 342 32 is_stmt 1 discriminator 3 view .LVU327
+ 1045 002a 7346     		mov	r3, lr
+ 1046              	.LVL46:
+ 1047              	.L64:
+ 342:Core/Src/can.c ****   {
+ 1048              		.loc 1 342 20 discriminator 1 view .LVU328
+ 1049 002c 9942     		cmp	r1, r3
+ 1050 002e F2DC     		bgt	.L65
+ 1051              	.LVL47:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 27
 
 
- 986              		.loc 1 327 22 view .LVU307
- 987 0012 D164     		str	r1, [r2, #76]
- 328:Core/Src/can.c **** 
- 329:Core/Src/can.c ****   for(int i = 0; i < len - 1; i++)
- 988              		.loc 1 329 3 is_stmt 1 view .LVU308
- 989              	.LBB7:
- 990              		.loc 1 329 7 view .LVU309
- 991              	.LVL37:
- 992              		.loc 1 329 3 is_stmt 0 view .LVU310
- 993 0014 0AE0     		b	.L62
- 994              	.LVL38:
- 995              	.L63:
- 330:Core/Src/can.c ****   {
- 331:Core/Src/can.c ****     can2.txData[i] = cmd[i + 1];
- 996              		.loc 1 331 5 is_stmt 1 view .LVU311
- 997              		.loc 1 331 25 is_stmt 0 view .LVU312
- 998 0016 03F1010E 		add	lr, r3, #1
- 999 001a 10F80EC0 		ldrb	ip, [r0, lr]	@ zero_extendqisi2
- 1000 001e 5FFA8CFC 		uxtb	ip, ip
- 1001              		.loc 1 331 20 view .LVU313
- 1002 0022 084A     		ldr	r2, .L66
- 1003 0024 1344     		add	r3, r3, r2
- 1004              	.LVL39:
- 1005              		.loc 1 331 20 view .LVU314
- 1006 0026 83F854C0 		strb	ip, [r3, #84]
- 329:Core/Src/can.c ****   {
- 1007              		.loc 1 329 32 is_stmt 1 discriminator 3 view .LVU315
- 1008 002a 7346     		mov	r3, lr
- 1009              	.LVL40:
- 1010              	.L62:
- 329:Core/Src/can.c ****   {
- 1011              		.loc 1 329 20 discriminator 1 view .LVU316
- 1012 002c 9942     		cmp	r1, r3
- 1013 002e F2DC     		bgt	.L63
- 1014              	.LVL41:
- 1015              	.L64:
- 329:Core/Src/can.c ****   {
- 1016              		.loc 1 329 20 is_stmt 0 discriminator 1 view .LVU317
- 1017              	.LBE7:
- 332:Core/Src/can.c ****   }
- 333:Core/Src/can.c ****   // 发送数据
- 334:Core/Src/can.c ****   while(HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.
- 1018              		.loc 1 334 123 is_stmt 1 discriminator 1 view .LVU318
- 1019              		.loc 1 334 9 is_stmt 0 discriminator 1 view .LVU319
- 1020 0030 054A     		ldr	r2, .L66+4
- 1021 0032 064B     		ldr	r3, .L66+8
- 1022 0034 A2F11801 		sub	r1, r2, #24
- 1023 0038 0548     		ldr	r0, .L66+12
- 1024 003a FFF7FEFF 		bl	HAL_CAN_AddTxMessage
- 1025              	.LVL42:
- 1026              		.loc 1 334 123 discriminator 1 view .LVU320
- 1027 003e 0028     		cmp	r0, #0
- 1028 0040 F6D1     		bne	.L64
- 335:Core/Src/can.c **** }
- 1029              		.loc 1 335 1 view .LVU321
- 1030 0042 08BD     		pop	{r3, pc}
- 1031              	.L67:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 27
+ 1052              	.L66:
+ 342:Core/Src/can.c ****   {
+ 1053              		.loc 1 342 20 is_stmt 0 discriminator 1 view .LVU329
+ 1054              	.LBE9:
+ 345:Core/Src/can.c ****   }
+ 346:Core/Src/can.c ****   // 发送数据
+ 347:Core/Src/can.c ****   while(HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.
+ 1055              		.loc 1 347 123 is_stmt 1 discriminator 1 view .LVU330
+ 1056              		.loc 1 347 9 is_stmt 0 discriminator 1 view .LVU331
+ 1057 0030 054A     		ldr	r2, .L68+4
+ 1058 0032 064B     		ldr	r3, .L68+8
+ 1059 0034 A2F11801 		sub	r1, r2, #24
+ 1060 0038 0548     		ldr	r0, .L68+12
+ 1061 003a FFF7FEFF 		bl	HAL_CAN_AddTxMessage
+ 1062              	.LVL48:
+ 1063              		.loc 1 347 123 discriminator 1 view .LVU332
+ 1064 003e 0028     		cmp	r0, #0
+ 1065 0040 F6D1     		bne	.L66
+ 348:Core/Src/can.c **** }
+ 1066              		.loc 1 348 1 view .LVU333
+ 1067 0042 08BD     		pop	{r3, pc}
+ 1068              	.L69:
+ 1069              		.align	2
+ 1070              	.L68:
+ 1071 0044 00000000 		.word	can2
+ 1072 0048 54000000 		.word	can2+84
+ 1073 004c 00000000 		.word	TxMailbox.0
+ 1074 0050 00000000 		.word	hcan2
+ 1075              		.cfi_endproc
+ 1076              	.LFE141:
+ 1078              		.section	.bss.TxMailbox.0,"aw",%nobits
+ 1079              		.align	2
+ 1082              	TxMailbox.0:
+ 1083 0000 00000000 		.space	4
+ 1084              		.section	.bss.TxMailbox.1,"aw",%nobits
+ 1085              		.align	2
+ 1088              	TxMailbox.1:
+ 1089 0000 00000000 		.space	4
+ 1090              		.section	.bss.HAL_RCC_CAN1_CLK_ENABLED,"aw",%nobits
+ 1091              		.align	2
+ 1094              	HAL_RCC_CAN1_CLK_ENABLED:
+ 1095 0000 00000000 		.space	4
+ 1096              		.global	hcan2
+ 1097              		.section	.bss.hcan2,"aw",%nobits
+ 1098              		.align	2
+ 1101              	hcan2:
+ 1102 0000 00000000 		.space	40
+ 1102      00000000 
+ 1102      00000000 
+ 1102      00000000 
+ 1102      00000000 
+ 1103              		.global	hcan1
+ 1104              		.section	.bss.hcan1,"aw",%nobits
+ 1105              		.align	2
+ 1108              	hcan1:
+ 1109 0000 00000000 		.space	40
+ 1109      00000000 
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 28
 
 
- 1032              		.align	2
- 1033              	.L66:
- 1034 0044 00000000 		.word	can2
- 1035 0048 54000000 		.word	can2+84
- 1036 004c 00000000 		.word	TxMailbox.0
- 1037 0050 00000000 		.word	hcan2
- 1038              		.cfi_endproc
- 1039              	.LFE141:
- 1041              		.section	.bss.TxMailbox.0,"aw",%nobits
- 1042              		.align	2
- 1045              	TxMailbox.0:
- 1046 0000 00000000 		.space	4
- 1047              		.section	.bss.TxMailbox.1,"aw",%nobits
- 1048              		.align	2
- 1051              	TxMailbox.1:
- 1052 0000 00000000 		.space	4
- 1053              		.section	.bss.HAL_RCC_CAN1_CLK_ENABLED,"aw",%nobits
- 1054              		.align	2
- 1057              	HAL_RCC_CAN1_CLK_ENABLED:
- 1058 0000 00000000 		.space	4
- 1059              		.global	hcan2
- 1060              		.section	.bss.hcan2,"aw",%nobits
- 1061              		.align	2
- 1064              	hcan2:
- 1065 0000 00000000 		.space	40
- 1065      00000000 
- 1065      00000000 
- 1065      00000000 
- 1065      00000000 
- 1066              		.global	hcan1
- 1067              		.section	.bss.hcan1,"aw",%nobits
- 1068              		.align	2
- 1071              	hcan1:
- 1072 0000 00000000 		.space	40
- 1072      00000000 
- 1072      00000000 
- 1072      00000000 
- 1072      00000000 
- 1073              		.global	can2
- 1074              		.section	.bss.can2,"aw",%nobits
- 1075              		.align	2
- 1078              	can2:
- 1079 0000 00000000 		.space	120
- 1079      00000000 
- 1079      00000000 
- 1079      00000000 
- 1079      00000000 
- 1080              		.global	can
- 1081              		.section	.bss.can,"aw",%nobits
- 1082              		.align	2
- 1085              	can:
- 1086 0000 00000000 		.space	120
- 1086      00000000 
- 1086      00000000 
- 1086      00000000 
- 1086      00000000 
- 1087              		.text
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 28
-
-
- 1088              	.Letext0:
- 1089              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 1090              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 1091              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 1092              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 1093              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1094              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 1095              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 1096              		.file 9 "Core/Inc/can.h"
- 1097              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 1098              		.file 11 "Core/Inc/main.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s 			page 29
+ 1109      00000000 
+ 1109      00000000 
+ 1109      00000000 
+ 1110              		.global	can2
+ 1111              		.section	.bss.can2,"aw",%nobits
+ 1112              		.align	2
+ 1115              	can2:
+ 1116 0000 00000000 		.space	120
+ 1116      00000000 
+ 1116      00000000 
+ 1116      00000000 
+ 1116      00000000 
+ 1117              		.global	can
+ 1118              		.section	.bss.can,"aw",%nobits
+ 1119              		.align	2
+ 1122              	can:
+ 1123 0000 00000000 		.space	120
+ 1123      00000000 
+ 1123      00000000 
+ 1123      00000000 
+ 1123      00000000 
+ 1124              		.text
+ 1125              	.Letext0:
+ 1126              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1127              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 1128              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 1129              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1130              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1131              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1132              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 1133              		.file 9 "Core/Inc/can.h"
+ 1134              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 1135              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1136              		.file 12 "Core/Inc/main.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s 			page 29
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 can.c
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:21     .text.MX_CAN1_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:27     .text.MX_CAN1_Init:00000000 MX_CAN1_Init
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:98     .text.MX_CAN1_Init:00000038 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1071   .bss.hcan1:00000000 hcan1
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:104    .text.MX_CAN2_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:110    .text.MX_CAN2_Init:00000000 MX_CAN2_Init
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:181    .text.MX_CAN2_Init:00000038 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1064   .bss.hcan2:00000000 hcan2
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:187    .text.HAL_CAN_MspInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:193    .text.HAL_CAN_MspInit:00000000 HAL_CAN_MspInit
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:434    .text.HAL_CAN_MspInit:00000110 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1057   .bss.HAL_RCC_CAN1_CLK_ENABLED:00000000 HAL_RCC_CAN1_CLK_ENABLED
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:445    .text.HAL_CAN_MspDeInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:451    .text.HAL_CAN_MspDeInit:00000000 HAL_CAN_MspDeInit
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:547    .text.HAL_CAN_MspDeInit:0000006c $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:557    .text.USER_CAN1_Filter_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:563    .text.USER_CAN1_Filter_Init:00000000 USER_CAN1_Filter_Init
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:637    .text.USER_CAN1_Filter_Init:00000034 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:642    .text.USER_CAN2_Filter_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:648    .text.USER_CAN2_Filter_Init:00000000 USER_CAN2_Filter_Init
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:721    .text.USER_CAN2_Filter_Init:00000030 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:726    .text.can_SendCmd:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:732    .text.can_SendCmd:00000000 can_SendCmd
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:940    .text.can_SendCmd:0000012c $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1085   .bss.can:00000000 can
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1051   .bss.TxMailbox.1:00000000 TxMailbox.1
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:948    .text.can2_SendCmd:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:954    .text.can2_SendCmd:00000000 can2_SendCmd
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1034   .text.can2_SendCmd:00000044 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1078   .bss.can2:00000000 can2
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1045   .bss.TxMailbox.0:00000000 TxMailbox.0
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1042   .bss.TxMailbox.0:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1048   .bss.TxMailbox.1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1054   .bss.HAL_RCC_CAN1_CLK_ENABLED:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1061   .bss.hcan2:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1068   .bss.hcan1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1075   .bss.can2:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmoJRjb.s:1082   .bss.can:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:21     .text.MX_CAN1_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:27     .text.MX_CAN1_Init:00000000 MX_CAN1_Init
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:98     .text.MX_CAN1_Init:00000038 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1108   .bss.hcan1:00000000 hcan1
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:104    .text.MX_CAN2_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:110    .text.MX_CAN2_Init:00000000 MX_CAN2_Init
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:181    .text.MX_CAN2_Init:00000038 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1101   .bss.hcan2:00000000 hcan2
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:187    .text.HAL_CAN_MspInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:193    .text.HAL_CAN_MspInit:00000000 HAL_CAN_MspInit
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:434    .text.HAL_CAN_MspInit:00000110 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1094   .bss.HAL_RCC_CAN1_CLK_ENABLED:00000000 HAL_RCC_CAN1_CLK_ENABLED
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:445    .text.HAL_CAN_MspDeInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:451    .text.HAL_CAN_MspDeInit:00000000 HAL_CAN_MspDeInit
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:547    .text.HAL_CAN_MspDeInit:0000006c $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:557    .text.USER_CAN1_Filter_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:563    .text.USER_CAN1_Filter_Init:00000000 USER_CAN1_Filter_Init
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:637    .text.USER_CAN1_Filter_Init:00000034 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:642    .text.USER_CAN2_Filter_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:648    .text.USER_CAN2_Filter_Init:00000000 USER_CAN2_Filter_Init
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:721    .text.USER_CAN2_Filter_Init:00000030 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:726    .text.can_SendCmd:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:732    .text.can_SendCmd:00000000 can_SendCmd
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:977    .text.can_SendCmd:00000144 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1122   .bss.can:00000000 can
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1088   .bss.TxMailbox.1:00000000 TxMailbox.1
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:985    .text.can2_SendCmd:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:991    .text.can2_SendCmd:00000000 can2_SendCmd
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1071   .text.can2_SendCmd:00000044 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1115   .bss.can2:00000000 can2
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1082   .bss.TxMailbox.0:00000000 TxMailbox.0
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1079   .bss.TxMailbox.0:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1085   .bss.TxMailbox.1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1091   .bss.HAL_RCC_CAN1_CLK_ENABLED:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1098   .bss.hcan2:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1105   .bss.hcan1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1112   .bss.can2:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccsKaPJ2.s:1119   .bss.can:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_CAN_Init
@@ -1685,4 +1708,5 @@ HAL_NVIC_EnableIRQ
 HAL_GPIO_DeInit
 HAL_NVIC_DisableIRQ
 HAL_CAN_ConfigFilter
+HAL_GetTick
 HAL_CAN_AddTxMessage
