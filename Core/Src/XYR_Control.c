@@ -2,11 +2,149 @@
 
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
+// 非阻塞状态机相关
+typedef enum
+{
+	XYR_IDLE = 0,
+	XYR_START,
+	XYR_WAIT_ORIGIN,
+	XYR_TRIGGER_RETURN_SENT,
+	XYR_WAIT_POSITION_DONE,
+	XYR_RUNNING_SPEED,
+	XYR_DONE
+} XYR_State_t;
+
+typedef struct
+{
+	XYR_State_t state;
+	// 通用参数
+	uint8_t addr; // 1 or 2 for ZDT, 3 for HT (we'll index HT as 3 internally)
+	uint8_t dir;
+	float velocity;
+	float position_f;
+	int32_t position_i;
+	uint32_t velocity_u32;
+	int32_t speed;
+	// HT specific
+	int32_t ht_position_before;
+	int32_t ht_target_rel;
+} XYR_SM_t;
+
+static XYR_SM_t xyr_sm[3]; // 0->ZDT addr1, 1->ZDT addr2, 2->HT
+
+// 内部：开始并由状态机推进
+static void XYR_SM_Start_ZDT_Home(uint8_t idx)
+{
+	xyr_sm[idx].state = XYR_START;
+	xyr_sm[idx].addr = idx + 1;
+	moveFlag[idx] = false; // 标记为忙
+}
+
+static void XYR_SM_Start_ZDT_Move(uint8_t idx, uint8_t dir, float velocity, float position)
+{
+	xyr_sm[idx].state = XYR_START;
+	xyr_sm[idx].addr = idx + 1;
+	xyr_sm[idx].dir = dir;
+	xyr_sm[idx].velocity = velocity;
+	xyr_sm[idx].position_f = position;
+	moveFlag[idx] = false;
+}
+
+static void XYR_SM_Start_HT_RelPos(int32_t position, uint32_t velocity)
+{
+	xyr_sm[2].state = XYR_START;
+	xyr_sm[2].addr = 3; // HT
+	xyr_sm[2].position_i = position;
+	xyr_sm[2].velocity_u32 = velocity;
+	moveFlag[2] = false;
+}
+
+static void XYR_SM_Start_HT_Speed(int32_t speed)
+{
+	xyr_sm[2].state = XYR_RUNNING_SPEED;
+	xyr_sm[2].addr = 3;
+	xyr_sm[2].speed = speed;
+	moveFlag[2] = false;
+}
+
+// 状态机推进函数，需要被周期性调用（如Controller_Update_Callback内）
+static void XYR_SM_Update(void)
+{
+	// ZDT axis 1 and 2
+	for (uint8_t i = 0; i < 2; ++i)
+	{
+		switch (xyr_sm[i].state)
+		{
+		case XYR_IDLE:
+		case XYR_DONE:
+			break;
+		case XYR_START:
+			// 发送回零触发
+			ZDT_X42_V2_Origin_Trigger_Return(xyr_sm[i].addr, 2, false);
+			xyr_sm[i].state = XYR_WAIT_ORIGIN;
+			break;
+		case XYR_WAIT_ORIGIN:
+			if (ZDT_state[xyr_sm[i].addr - 1] == 0x03)
+			{
+				// 发送位置指令（如果是home流程，走到位置0附近）
+				ZDT_X42_V2_Bypass_Position_LV_Control(xyr_sm[i].addr, 1, 500, 4500, 0, 0);
+				xyr_sm[i].state = XYR_WAIT_POSITION_DONE;
+			}
+			break;
+		case XYR_WAIT_POSITION_DONE:
+			if (ZDT_state[xyr_sm[i].addr - 1] == 0x03)
+			{
+				xyr_sm[i].state = XYR_DONE;
+				moveFlag[i] = true;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	// HT axis (index 2)
+	switch (xyr_sm[2].state)
+	{
+	case XYR_IDLE:
+	case XYR_DONE:
+		break;
+	case XYR_START:
+		// 设置速度上限，然后发出相对位置指令
+		HT_DM_S_7010_Set_Position_Max_Speed(1, xyr_sm[2].velocity_u32);
+		// 记录当前多圈角度作为基准
+		xyr_sm[2].ht_position_before = HT_Multi_circle_absolute_angle;
+		HT_DM_S_7010_Relative_Position_Control(1, xyr_sm[2].position_i);
+		xyr_sm[2].state = XYR_WAIT_POSITION_DONE;
+		break;
+	case XYR_WAIT_POSITION_DONE:
+		// 完成条件尽量复用原有逻辑：角度接近目标、速度为0、电流正常
+		if ((labs(HT_Multi_circle_absolute_angle - xyr_sm[2].ht_position_before - xyr_sm[2].position_i) <= 10) && (!HT_speed) && (labs(HT_current) < 200))
+		{
+			xyr_sm[2].state = XYR_DONE;
+			moveFlag[2] = true;
+		}
+		break;
+	case XYR_RUNNING_SPEED:
+		// 直接控制速度即可，保持状态直到外部停止或再次调用停止
+		HT_DM_S_7010_Velocity_Control(1, xyr_sm[2].speed);
+		// remain in RUNNING until user calls Stop or another command overwrites state
+		break;
+	default:
+		break;
+	}
+}
 /**
  * @brief    初始化XYR三轴位移台
  */
 void XYR_Init()
 {
+	// 初始化状态机为idle
+	for (int i = 0; i < 3; ++i)
+	{
+		xyr_sm[i].state = XYR_IDLE;
+		moveFlag[i] = true;
+	}
 }
 
 /**
@@ -15,42 +153,21 @@ void XYR_Init()
  */
 void XYR_Collision_Home(uint8_t addr)
 {
-	if (moveFlag[addr - 1])
+	// 非阻塞：仅启动状态机，由周期回调推进
+	if (addr == 0)
 	{
-		moveFlag[addr - 1] = false;
-		if (addr == 1 || addr == 2)
+		// 同步启动两个ZDT轴的回零
+		for (uint8_t i = 0; i < 2; ++i)
 		{
-			ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-			HAL_Delay(10);
-			while (!(ZDT_state[addr - 1] == 0x03))
-			{
-				// HAL_Delay(1);
-			}
-
-			ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
-			HAL_Delay(10);
-			while (!(ZDT_state[addr - 1] == 0x03))
-			{
-				// HAL_Delay(1);
-			}
+			if (moveFlag[i])
+				XYR_SM_Start_ZDT_Home(i);
 		}
-		else if (addr == 0)
-		{
-			ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-			HAL_Delay(10);
-			while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
-			{
-				// HAL_Delay(1);
-			}
-			ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
-			HAL_Delay(10);
-			while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
-			{
-				// HAL_Delay(1);
-			}
-		}
-
-		moveFlag[addr - 1] = true;
+	}
+	else if ((addr == 1) || (addr == 2))
+	{
+		uint8_t idx = addr - 1;
+		if (moveFlag[idx])
+			XYR_SM_Start_ZDT_Home(idx);
 	}
 }
 
@@ -63,9 +180,12 @@ void XYR_Collision_Home(uint8_t addr)
  */
 void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
 {
-	if (moveFlag[addr - 1])
+	// 非阻塞：只做参数校验并启动状态机，由XYR_SM_Update推进完成
+	if ((addr == 1) || (addr == 2))
 	{
-		moveFlag[addr - 1] = false;
+		uint8_t idx = addr - 1;
+		if (!moveFlag[idx])
+			return; // 忙碌中
 
 		if (velocity < 0.f)
 			velocity = 0.f;
@@ -77,42 +197,43 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
 		else if (position > 118.f)
 			position = 118.f;
 
-		if (addr == 1 || addr == 2)
-		{
-			if (ZDT_state[addr - 1] == 0x03)
-			{
-				ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity * 15, position * 72, 0, 0);
-				HAL_Delay(10);
-				while (!(ZDT_state[addr - 1] == 0x03))
-				{
-					// HAL_Delay(1);
-				}
-				ZDT_state[addr - 1] &= ~(0x02);
-			}
-		}
-		moveFlag[addr - 1] = true;
+		XYR_SM_Start_ZDT_Move(idx, dir, velocity, position);
+		// 状态机会在XYR_SM_Update里发送指令，当ZDT_ready后会发出相应位置命令
 	}
 }
 
 /**
- * @brief    转台定角度移动
+ * @brief    转台旋转固定角度
  * @param    dir     ：方向								，0为归零方向，其余值为电机方向
  * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
  * @param    position：位置(mm)							，范围0 - 118mm
  */
 void XYR_HT_Fixed_Length_Move(uint8_t dir, uint32_t velocity, int32_t position)
 {
-	if (moveFlag[2])
-	{
-		moveFlag[2] = false;
-		HT_DM_S_7010_Set_Position_Max_Speed(1, velocity);
-		HAL_Delay(10);
-		if (dir)
-			position = -position;
-		HT_DM_S_7010_Relative_Position_Control(1, position);
+	if (!moveFlag[2])
+		return; // 忙碌中
 
-		moveFlag[2] = true;
-	}
+	if (dir)
+		position = -position;
+
+	XYR_SM_Start_HT_RelPos(position, velocity);
+}
+
+/**
+ * @brief    转台固定速度旋转
+ * @param    dir     ：方向								，0为归零方向，其余值为电机方向
+ * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
+ */
+void XYR_HT_Fixed_Speed_Move(uint8_t dir, int32_t speed)
+{
+	// 非阻塞速度控制：直接设置并进入RUNNING状态
+	if (!moveFlag[2])
+		return; // 忙碌中
+
+	if (dir)
+		speed = -speed;
+
+	XYR_SM_Start_HT_Speed(speed);
 }
 
 /**
@@ -138,6 +259,8 @@ void XYR_Stop_Move()
  */
 void Controller_Update_Callback(void)
 {
+	// 推进XYR状态机（非阻塞动作由此推进）
+	XYR_SM_Update();
 	static volatile uint32_t preTick_Tim4 = 0;
 	static uint8_t HT_request_index = 0;
 	static uint8_t ZDT_request_index = 0;

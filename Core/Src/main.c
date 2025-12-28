@@ -175,14 +175,14 @@ int main(void)
   // can2_SendCmd(cmd1, 2);
   // HAL_Delay(1000);
 
- //XYR_Collision_Home(0);
+  // XYR_Collision_Home(0);
   XYR_ZDT_Fixed_Length_Move(2, 0, 100, 10);
   XYR_ZDT_Fixed_Length_Move(1, 0, 100, 10);
   XYR_ZDT_Fixed_Length_Move(2, 1, 100, 10);
   XYR_ZDT_Fixed_Length_Move(1, 1, 100, 10);
   XYR_HT_Fixed_Length_Move(1, 2000, 16384);
-  //HT_DM_S_7010_Relative_Position_Control(1, 16384);
-
+  XYR_HT_Fixed_Length_Move(0, 2000, 16384);
+  // HT_DM_S_7010_Relative_Position_Control(1, 16384);
 
   /* USER CODE END 2 */
 
