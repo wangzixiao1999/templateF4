@@ -21,7 +21,7 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-uint8_t rx_buffer[4] = {0};
+uint8_t rx_buffer[5] = {0};
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -51,7 +51,7 @@ void MX_USART1_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART1_Init 2 */
-  HAL_UART_Receive_IT(&huart1, rx_buffer, 4);
+  HAL_UART_Receive_IT(&huart1, rx_buffer, 5);
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -127,3 +127,18 @@ void FireWater_Test(void)
 
 }
 /* USER CODE END 1 */
+
+/**
+ * @brief  UART error callback (called by HAL on reception error)
+ *         Clear error flags and restart reception to recover from ORE/FE/NE.
+ */
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+  if (huart->Instance == USART1)
+  {
+    /* 捕获并清除错误标志（例如溢出 ORE） */
+    __HAL_UART_CLEAR_OREFLAG(huart);
+    /* 重新启动接收，恢复中断接收 */
+    HAL_UART_Receive_IT(&huart1, rx_buffer, sizeof(rx_buffer));
+  }
+}

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -51,14 +51,14 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
   21:Core/Src/usart.c **** #include "usart.h"
   22:Core/Src/usart.c **** 
   23:Core/Src/usart.c **** /* USER CODE BEGIN 0 */
-  24:Core/Src/usart.c **** uint8_t rx_buffer[4] = {0};
+  24:Core/Src/usart.c **** uint8_t rx_buffer[5] = {0};
   25:Core/Src/usart.c **** /* USER CODE END 0 */
   26:Core/Src/usart.c **** 
   27:Core/Src/usart.c **** UART_HandleTypeDef huart1;
   28:Core/Src/usart.c **** 
   29:Core/Src/usart.c **** /* USART1 init function */
   30:Core/Src/usart.c **** 
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 2
 
 
   31:Core/Src/usart.c **** void MX_USART1_UART_Init(void)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
   65              		.loc 1 48 28 is_stmt 0 view .LVU16
   66 001c C361     		str	r3, [r0, #28]
   49:Core/Src/usart.c ****   if (HAL_UART_Init(&huart1) != HAL_OK)
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 3
 
 
   67              		.loc 1 49 3 is_stmt 1 view .LVU17
@@ -132,9 +132,9 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
   51:Core/Src/usart.c ****     Error_Handler();
   52:Core/Src/usart.c ****   }
   53:Core/Src/usart.c ****   /* USER CODE BEGIN USART1_Init 2 */
-  54:Core/Src/usart.c ****   HAL_UART_Receive_IT(&huart1, rx_buffer, 4);
+  54:Core/Src/usart.c ****   HAL_UART_Receive_IT(&huart1, rx_buffer, 5);
   74              		.loc 1 54 3 is_stmt 1 view .LVU20
-  75 0024 0422     		movs	r2, #4
+  75 0024 0522     		movs	r2, #5
   76 0026 0649     		ldr	r1, .L5+8
   77 0028 0348     		ldr	r0, .L5
   78 002a FFF7FEFF 		bl	HAL_UART_Receive_IT
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
  111 0000 10B5     		push	{r4, lr}
  112              	.LCFI1:
  113              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 4
 
 
  114              		.cfi_offset 4, -8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
  138 001e 08B0     		add	sp, sp, #32
  139              	.LCFI3:
  140              		.cfi_remember_state
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 5
 
 
  141              		.cfi_def_cfa_offset 8
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
  182              		.loc 1 76 5 view .LVU43
   76:Core/Src/usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
  183              		.loc 1 76 25 is_stmt 0 view .LVU44
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 6
 
 
  184 0050 4FF4C063 		mov	r3, #1536
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
  228              		.syntax unified
  229              		.thumb
  230              		.thumb_func
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 7
 
 
  232              	HAL_UART_MspDeInit:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
  260 000e 536C     		ldr	r3, [r2, #68]
  261 0010 23F01003 		bic	r3, r3, #16
  262 0014 5364     		str	r3, [r2, #68]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 8
 
 
  107:Core/Src/usart.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
  311 0008 0148     		ldr	r0, .L21
  312              	.LVL18:
  313              		.loc 1 120 3 view .LVU72
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 9
 
 
  314 000a FFF7FEFF 		bl	HAL_UART_Transmit
@@ -516,58 +516,149 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 1
  340 0000 7047     		bx	lr
  341              		.cfi_endproc
  342              	.LFE138:
- 344              		.global	huart1
- 345              		.section	.bss.huart1,"aw",%nobits
- 346              		.align	2
- 349              	huart1:
- 350 0000 00000000 		.space	72
- 350      00000000 
- 350      00000000 
- 350      00000000 
- 350      00000000 
- 351              		.global	rx_buffer
- 352              		.section	.bss.rx_buffer,"aw",%nobits
- 353              		.align	2
- 356              	rx_buffer:
- 357 0000 00000000 		.space	4
- 358              		.text
- 359              	.Letext0:
- 360              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 361              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 362              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 363              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 364              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 365              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 10
+ 344              		.section	.text.HAL_UART_ErrorCallback,"ax",%progbits
+ 345              		.align	1
+ 346              		.global	HAL_UART_ErrorCallback
+ 347              		.syntax unified
+ 348              		.thumb
+ 349              		.thumb_func
+ 351              	HAL_UART_ErrorCallback:
+ 352              	.LVL20:
+ 353              	.LFB139:
+ 129:Core/Src/usart.c **** /* USER CODE END 1 */
+ 130:Core/Src/usart.c **** 
+ 131:Core/Src/usart.c **** /**
+ 132:Core/Src/usart.c ****  * @brief  UART error callback (called by HAL on reception error)
+ 133:Core/Src/usart.c ****  *         Clear error flags and restart reception to recover from ORE/FE/NE.
+ 134:Core/Src/usart.c ****  */
+ 135:Core/Src/usart.c **** void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+ 136:Core/Src/usart.c **** {
+ 354              		.loc 1 136 1 view -0
+ 355              		.cfi_startproc
+ 356              		@ args = 0, pretend = 0, frame = 8
+ 357              		@ frame_needed = 0, uses_anonymous_args = 0
+ 137:Core/Src/usart.c ****   if (huart->Instance == USART1)
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 10
 
 
- 366              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 367              		.file 9 "Core/Inc/usart.h"
- 368              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 369              		.file 11 "Core/Inc/main.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s 			page 11
+ 358              		.loc 1 137 3 view .LVU77
+ 359              		.loc 1 137 12 is_stmt 0 view .LVU78
+ 360 0000 0368     		ldr	r3, [r0]
+ 361              		.loc 1 137 6 view .LVU79
+ 362 0002 0A4A     		ldr	r2, .L31
+ 363 0004 9342     		cmp	r3, r2
+ 364 0006 00D0     		beq	.L30
+ 365 0008 7047     		bx	lr
+ 366              	.L30:
+ 136:Core/Src/usart.c ****   if (huart->Instance == USART1)
+ 367              		.loc 1 136 1 view .LVU80
+ 368 000a 00B5     		push	{lr}
+ 369              	.LCFI7:
+ 370              		.cfi_def_cfa_offset 4
+ 371              		.cfi_offset 14, -4
+ 372 000c 83B0     		sub	sp, sp, #12
+ 373              	.LCFI8:
+ 374              		.cfi_def_cfa_offset 16
+ 138:Core/Src/usart.c ****   {
+ 139:Core/Src/usart.c ****     /* 捕获并清除错误标志（例如溢出 ORE） */
+ 140:Core/Src/usart.c ****     __HAL_UART_CLEAR_OREFLAG(huart);
+ 375              		.loc 1 140 5 is_stmt 1 view .LVU81
+ 376              	.LBB4:
+ 377              		.loc 1 140 5 view .LVU82
+ 378 000e 0022     		movs	r2, #0
+ 379 0010 0192     		str	r2, [sp, #4]
+ 380              		.loc 1 140 5 view .LVU83
+ 381 0012 1A68     		ldr	r2, [r3]
+ 382 0014 0192     		str	r2, [sp, #4]
+ 383              		.loc 1 140 5 view .LVU84
+ 384 0016 5B68     		ldr	r3, [r3, #4]
+ 385 0018 0193     		str	r3, [sp, #4]
+ 386              		.loc 1 140 5 view .LVU85
+ 387 001a 019B     		ldr	r3, [sp, #4]
+ 388              	.LBE4:
+ 389              		.loc 1 140 5 view .LVU86
+ 141:Core/Src/usart.c ****     /* 重新启动接收，恢复中断接收 */
+ 142:Core/Src/usart.c ****     HAL_UART_Receive_IT(&huart1, rx_buffer, sizeof(rx_buffer));
+ 390              		.loc 1 142 5 view .LVU87
+ 391 001c 0522     		movs	r2, #5
+ 392 001e 0449     		ldr	r1, .L31+4
+ 393 0020 0448     		ldr	r0, .L31+8
+ 394              	.LVL21:
+ 395              		.loc 1 142 5 is_stmt 0 view .LVU88
+ 396 0022 FFF7FEFF 		bl	HAL_UART_Receive_IT
+ 397              	.LVL22:
+ 143:Core/Src/usart.c ****   }
+ 144:Core/Src/usart.c **** }
+ 398              		.loc 1 144 1 view .LVU89
+ 399 0026 03B0     		add	sp, sp, #12
+ 400              	.LCFI9:
+ 401              		.cfi_def_cfa_offset 4
+ 402              		@ sp needed
+ 403 0028 5DF804FB 		ldr	pc, [sp], #4
+ 404              	.L32:
+ 405              		.align	2
+ 406              	.L31:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 11
+
+
+ 407 002c 00100140 		.word	1073811456
+ 408 0030 00000000 		.word	rx_buffer
+ 409 0034 00000000 		.word	huart1
+ 410              		.cfi_endproc
+ 411              	.LFE139:
+ 413              		.global	huart1
+ 414              		.section	.bss.huart1,"aw",%nobits
+ 415              		.align	2
+ 418              	huart1:
+ 419 0000 00000000 		.space	72
+ 419      00000000 
+ 419      00000000 
+ 419      00000000 
+ 419      00000000 
+ 420              		.global	rx_buffer
+ 421              		.section	.bss.rx_buffer,"aw",%nobits
+ 422              		.align	2
+ 425              	rx_buffer:
+ 426 0000 00000000 		.space	5
+ 426      00
+ 427              		.text
+ 428              	.Letext0:
+ 429              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 430              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 431              		.file 4 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 432              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 433              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 434              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 435              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 436              		.file 9 "Core/Inc/usart.h"
+ 437              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 438              		.file 11 "Core/Inc/main.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccRHclbE.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usart.c
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:21     .text.MX_USART1_UART_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:27     .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:90     .text.MX_USART1_UART_Init:00000038 $d
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:349    .bss.huart1:00000000 huart1
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:356    .bss.rx_buffer:00000000 rx_buffer
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:97     .text.HAL_UART_MspInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:103    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:221    .text.HAL_UART_MspInit:0000007c $d
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:226    .text.HAL_UART_MspDeInit:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:232    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:279    .text.HAL_UART_MspDeInit:00000028 $d
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:286    .text.USER_Send_Data_USART:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:292    .text.USER_Send_Data_USART:00000000 USER_Send_Data_USART
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:321    .text.USER_Send_Data_USART:00000010 $d
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:326    .text.FireWater_Test:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:332    .text.FireWater_Test:00000000 FireWater_Test
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:346    .bss.huart1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccJk5OVd.s:353    .bss.rx_buffer:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:21     .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:27     .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:90     .text.MX_USART1_UART_Init:00000038 $d
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:418    .bss.huart1:00000000 huart1
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:425    .bss.rx_buffer:00000000 rx_buffer
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:97     .text.HAL_UART_MspInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:103    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:221    .text.HAL_UART_MspInit:0000007c $d
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:226    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:232    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:279    .text.HAL_UART_MspDeInit:00000028 $d
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:286    .text.USER_Send_Data_USART:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:292    .text.USER_Send_Data_USART:00000000 USER_Send_Data_USART
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:321    .text.USER_Send_Data_USART:00000010 $d
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:326    .text.FireWater_Test:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:332    .text.FireWater_Test:00000000 FireWater_Test
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:345    .text.HAL_UART_ErrorCallback:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:351    .text.HAL_UART_ErrorCallback:00000000 HAL_UART_ErrorCallback
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:407    .text.HAL_UART_ErrorCallback:0000002c $d
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:415    .bss.huart1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccRHclbE.s:422    .bss.rx_buffer:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_UART_Init

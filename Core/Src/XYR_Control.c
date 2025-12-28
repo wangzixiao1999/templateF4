@@ -2,6 +2,9 @@
 
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
+volatile float VOFA_Speed[3] = {20,20,200};
+volatile float VOFA_Pos[3] = {10,10,100};
+
 /**
  * @brief    初始化XYR三轴位移台
  */
@@ -159,6 +162,54 @@ void XYR_Stop_Move()
 }
 
 /**
+ * @brief    张大头速度设置(针对VOFA+)
+ * @param    addr  	：电机地址
+ * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
+ */
+void XYR_ZDT_Speed_Setting_VOFA(uint8_t addr, float velocity)
+{
+	VOFA_Speed[addr - 1] = velocity;
+}
+
+/**
+ * @brief    转台速度设置(针对VOFA+)
+ * @param    velocity：最大速度(mm/s)				，范围0 - mm/s
+ */
+void XYR_HT_Speed_Setting_VOFA(uint8_t addr, float velocity)
+{
+	VOFA_Speed[2] = velocity;
+}
+
+/**
+ * @brief    张大头位移距离设置(针对VOFA+)
+ * @param    addr  	：电机地址
+ * @param    position：位移距离(mm)					，范围0 - 240mm
+ */
+void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, int32_t position)
+{
+	VOFA_Pos[addr - 1] = position;
+}
+
+/**
+ * @brief    转台旋转角度设置(针对VOFA+)
+ * @param    position：旋转角度(°)						，范围0 - °
+ */
+void XYR_HT_Pos_Setting_VOFA(uint8_t addr, int32_t position)
+{
+	VOFA_Pos[2] = position;
+}
+
+/**
+ * @brief    小端排序组合返回数值(针对VOFA+)
+ * @param    position：旋转角度(°)						，范围0 - °/s
+ */
+float Parse_Float_LittleEndian(uint8_t *bytes)
+{
+    uint32_t int_val = bytes[0] | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
+    return *(float*)&int_val;
+}
+
+/**
  * @brief:指令发送端
  */
 void Controller_Update_Callback(void)
@@ -198,12 +249,17 @@ void Controller_Update_Callback(void)
 	static int send_sount = 0;
 	if (++send_sount >= 50)
 	{
-		char str_buffer[100];
+		float values[3];
+		values[0] = (float)ZDT_angle[0] / -90.0f;
+		values[1] = (float)ZDT_angle[1] / -90.0f;
+		values[2] = (float)HT_Single_circle_absolute_angle / 45.111111f;
 
-		sprintf(str_buffer, "%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld\n",
-			 ZDT_current[0], ZDT_current[1], ZDT_speed[0], ZDT_speed[1], ZDT_angle[0], ZDT_angle[1],
-			 HT_current,HT_speed,HT_Single_circle_absolute_angle,HT_Multi_circle_absolute_angle);
-		HAL_UART_Transmit(&huart1, (uint8_t *)str_buffer, strlen(str_buffer), 100);
+		// 发送原始数据（VOFA+使用JustFloat协议）
+		HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
+
+		// 可选：添加帧尾0x00 0x00 0x80 0x7F（FireWater协议）
+		uint8_t tail[4] = {0x00, 0x00, 0x80, 0x7F};
+		HAL_UART_Transmit(&huart1, tail, 4, 100);
 		// 张大头1号机相电流
 		send_sount = 0;
 	}
