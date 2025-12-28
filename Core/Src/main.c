@@ -50,6 +50,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+static volatile uint8_t xyr_request = 0; // 非阻塞请求标志，由UART中断置位，在主循环或定时器中处理
 
 /* USER CODE END PV */
 
@@ -66,9 +67,9 @@ static volatile int usartTest = 0;
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
 
@@ -175,13 +176,15 @@ int main(void)
   // can2_SendCmd(cmd1, 2);
   // HAL_Delay(1000);
 
-  // XYR_Collision_Home(0);
-  XYR_ZDT_Fixed_Length_Move(2, 0, 100, 10);
-  XYR_ZDT_Fixed_Length_Move(1, 0, 100, 10);
-  XYR_ZDT_Fixed_Length_Move(2, 1, 100, 10);
-  XYR_ZDT_Fixed_Length_Move(1, 1, 100, 10);
-  XYR_HT_Fixed_Length_Move(1, 2000, 16384);
-  XYR_HT_Fixed_Length_Move(0, 2000, 16384);
+  //XYR_Collision_Home(0);
+  // XYR_ZDT_Fixed_Length_Move(2, 0, 100, 10);
+  // XYR_ZDT_Fixed_Length_Move(1, 0, 100, 10);
+  // XYR_ZDT_Fixed_Length_Move(2, 1, 100, 10);
+  // XYR_ZDT_Fixed_Length_Move(1, 1, 100, 10);
+  // XYR_HT_Fixed_Length_Move(1, 2000, 16384);
+  // XYR_HT_Fixed_Length_Move(0, 2000, 16384);
+  // XYR_HT_Fixed_Speed_Move(0, 3000);
+
   // HT_DM_S_7010_Relative_Position_Control(1, 16384);
 
   /* USER CODE END 2 */
@@ -194,27 +197,33 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    // 在主循环中处理来自中断的非阻塞请求
+    if (xyr_request ==0xA0 )
+    {
+      xyr_request = 0;
+      XYR_Collision_Home(0);
+    }
   }
   /* USER CODE END 3 */
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-   */
+  */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-   * in the RCC_OscInitTypeDef structure.
-   */
+  * in the RCC_OscInitTypeDef structure.
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -229,8 +238,9 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -260,21 +270,24 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
   if (huart->Instance == USART1)
   {
-    usartTest++;
+    //usartTest++;
+
+      xyr_request = rx_buffer[0];
+
 
     /* 回显收到的字节，便于在串口助手观察，并重新启动中断接收
-     使用回调传入的 huart 指针以避免对全局句柄依赖 */
-    HAL_UART_Transmit(&huart1, rx_buffer, 1, 10);
-    HAL_UART_Receive_IT(huart, rx_buffer, 1);
+     使用非阻塞传输以避免在中断中阻塞 */
+    //HAL_UART_Transmit_IT(&huart1, rx_buffer, 4);
+    HAL_UART_Receive_IT(huart, rx_buffer, 4);
   }
 }
 
 /* USER CODE END 4 */
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -286,14 +299,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef USE_FULL_ASSERT
+#ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

@@ -21,7 +21,7 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-uint8_t rx_buffer[3] = {0};
+uint8_t rx_buffer[4] = {0};
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -51,7 +51,7 @@ void MX_USART1_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART1_Init 2 */
-  HAL_UART_Receive_IT(&huart1, rx_buffer, 1);
+  HAL_UART_Receive_IT(&huart1, rx_buffer, 4);
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -115,5 +115,15 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+void USER_Send_Data_USART(const uint8_t *pData,  uint16_t Size)
+{
+  HAL_UART_Transmit(&huart1, pData, Size, 10);
+}
 
+
+
+void FireWater_Test(void)
+{
+
+}
 /* USER CODE END 1 */

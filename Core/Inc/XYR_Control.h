@@ -6,7 +6,11 @@
 
 #include "ZDT_X42_V2.h"
 #include "HT_DM_S_7010.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h> 
+#include "usart.h"
+
 
 void XYR_Init();
 void XYR_Collision_Home(uint8_t addr);													   // 碰撞回零
