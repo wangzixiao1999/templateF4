@@ -2,9 +2,13 @@
 
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
+
 volatile float VOFA_Speed[3] = {20, 20, 200};
 volatile float VOFA_Pos[3] = {10, 10, 100};
-volatile uint8_t xyr_request = 0; // 非阻塞请求标志，由UART中断置位，在主循环或定时器中处理
+volatile uint8_t VOFA_Scan[2] = {10, 10};
+volatile bool AutoScanFlag = true;
+
+volatile uint8_t xyr_request = 0;
 
 XYR_MoveController XYR_MoveCtrl[3] = {
 	{XYRMOVE_IDLE, 0, 0, 0}, // X轴
@@ -93,7 +97,7 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
 			{
 				ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity * 15, position * 72, 0, 0);
 				HAL_Delay(10);
-				while (!(ZDT_state[addr - 1] == 0x03))
+				while (!(ZDT_state[addr - 1] & 0x02))
 				{
 					// HAL_Delay(1);
 				}
@@ -165,7 +169,8 @@ void XYR_Stop_Move()
 {
 	ZDT_X42_V2_Stop_Now(0, 0);
 	HT_DM_S_7010_Disable_Motor(1);
-	moveFlag[2] = true;
+	for (int i = 0; i < 2; i++)
+		moveFlag[i] = true;
 }
 
 /**
@@ -217,6 +222,47 @@ float Parse_Float_LittleEndian(uint8_t *bytes)
 }
 
 /**
+ * @brief    开始面扫(针对VOFA+)
+ * @param    x 行数
+ * @param    y 列数
+ */
+void XYR_AutoScan_Start(uint8_t x, uint8_t y)
+{
+	AutoScanFlag = true;
+
+	for (size_t i = 0; i < x; i++)
+	{
+		if (AutoScanFlag)
+		{
+			for (size_t j = 0; j < y; j++)
+			{
+				if (AutoScanFlag)
+				{
+					XYR_ZDT_Fixed_Length_Move(2, i % 2, VOFA_Speed[1], VOFA_Pos[1]);
+				}
+				else
+				{
+					break;
+				}
+			}
+			XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+/**
+ * @brief    停止面扫(针对VOFA+)
+ */
+void XYR_AutoScan_Stop(void)
+{
+	AutoScanFlag = false;
+}
+
+/**
  * @brief:指令发送端
  */
 void Controller_Update_Callback(void)
@@ -229,21 +275,27 @@ void Controller_Update_Callback(void)
 	case 0:
 		HT_DM_S_7010_Read_Current_Q_Axis(1); // 读取转台相电流
 
+		break;
 	case 1:
 		HT_DM_S_7010_Read_Speed(1); // 读取转台速度
 
+		break;
 	case 2:
 		HT_DM_S_7010_Read_Absolute_Angle(1); // 读取转台角度
+		break;
 	}
 
 	switch (ZDT_request_index)
 	{
 	case 0:
 		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机相电流
+		break;
 	case 1:
 		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机相电流
+		break;
 	case 2:
 		ZDT_cmdSend(); // 发送装载好的命令
+		break;
 	}
 
 	HT_request_index = (HT_request_index + 1) % 3;
@@ -254,7 +306,7 @@ void Controller_Update_Callback(void)
 	preTick_Tim4 = currTick_Tim4;
 	// 每50ms发送一次数据
 	static int send_sount = 0;
-	if (++send_sount >= 200)
+	if (++send_sount >= 50)
 	{
 		float values[3];
 		values[0] = (float)ZDT_angle[0] / -90.0f;
@@ -302,6 +354,69 @@ void XYR_Read_USB_Commend()
 		xyr_request = 0;
 		XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
 		break;
+	case 0xB1:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		XYR_ZDT_Speed_Setting_VOFA(2, value);
+		break;
+	case 0xB2:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		XYR_ZDT_Pos_Setting_VOFA(2, value / 1000.0f);
+		break;
+	case 0xB3:
+		xyr_request = 0;
+		XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
+		break;
+	case 0xB4:
+		xyr_request = 0;
+		XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
+		break;
+	case 0xC1:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		XYR_HT_Speed_Setting_VOFA(1, value);
+		break;
+	case 0xC2:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		XYR_HT_Pos_Setting_VOFA(1, value / 360.f * 16384.f);
+		break;
+	case 0xC3:
+		xyr_request = 0;
+		XYR_HT_Fixed_Length_Move(1, VOFA_Speed[2], VOFA_Pos[2]);
+		break;
+	case 0xC4:
+		xyr_request = 0;
+		XYR_HT_Fixed_Length_Move(0, VOFA_Speed[2], VOFA_Pos[2]);
+		break;
+	case 0xD0:
+		xyr_request = 0;
+		XYR_Stop_Move();
+		break;
+	case 0xD1:
+		xyr_request = 0;
+		XYR_Relieve_Malfunction();
+		break;
+		// 面扫管理
+	case 0xE1:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		VOFA_Scan[0] = (uint8_t)value;
+		break;
+	case 0xE2:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		VOFA_Scan[1] = (uint8_t)value;
+		break;
+	case 0xE3:
+		xyr_request = 0;
+		XYR_AutoScan_Start(VOFA_Scan[0], VOFA_Scan[1]);
+		break;
+	case 0xE4:
+		xyr_request = 0;
+		XYR_AutoScan_Stop();
+		break;
 	default:
 		break;
 	}
@@ -315,24 +430,23 @@ void XYR_Update_Axis_StateMachine(XYR_MoveController *XYR_MoveCtrl)
 	uint32_t current_time = HAL_GetTick();
 	switch (XYR_MoveCtrl->state)
 	{
-        case XYRMOVE_IDLE:
-            break;
+	case XYRMOVE_IDLE:
+		break;
 
-        case XYRMOVE_START_MOVE:
-            // 等待逻辑
+	case XYRMOVE_START_MOVE:
+		// 等待逻辑
 
-            // 检查回零完成条件...
-            break;
+		// 检查回零完成条件...
+		break;
 
-        case XYRMOVE_WAIT_STOP:
-            // 运动控制逻辑
+	case XYRMOVE_WAIT_STOP:
+		// 运动控制逻辑
 
+		break;
 
-            break;
+	case XYRMOVE_COMPLETE:
+		// 完成后的处理
 
-        case XYRMOVE_COMPLETE:
-            // 完成后的处理
-
-            break;
+		break;
 	}
 }

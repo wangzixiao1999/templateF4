@@ -42,6 +42,8 @@ void XYR_HT_Speed_Setting_VOFA(uint8_t addr, float velocity);  // 转台速度�
 void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, int32_t position); // 张大头位移距离设置(针对VOFA+)
 void XYR_HT_Pos_Setting_VOFA(uint8_t addr, int32_t position);  // 转台位旋转角度设置(针对VOFA+)
 float Parse_Float_LittleEndian(uint8_t *bytes);				   // 小端排序组合返回数值(针对VOFA+)
+void XYR_AutoScan_Start(uint8_t x, uint8_t y);				   // 开始面扫(针对VOFA+)
+void XYR_AutoScan_Stop(void);								   // 停止面扫(针对VOFA+)
 
 void Controller_Update_Callback(void); // 指令发送端
 
@@ -52,6 +54,8 @@ extern __IO CAN_t can2;
 extern volatile bool moveFlag[3];
 extern volatile float VOFA_Speed[3];
 extern volatile float VOFA_Pos[3];
+extern volatile bool AutoScanFlag;
+
 extern volatile uint8_t xyr_request;
 
 #endif // XYR_CONTROL_H

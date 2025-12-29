@@ -128,44 +128,7 @@ int main(void)
   // double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
   // double widths_us[4] = {50.0, 25.0, 20.0, 35.0};
 
-  // for (size_t i = 0; i < 9; i++)
-  // {
-  //   for (size_t j = 0; j < 9; j++)
-  //   {
-  //     ZDT_X42_V2_Traj_Position_Control(2, i%2, 2000, 2000, 2000.0f, 72.0f, 0, 0);
-  //     HAL_Delay(10);
 
-  //     while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  //     {
-  //       can.rxFrameFlag = false;
-  //     }
-  //     can.rxData[0] = 0;
-  //     can.rxData[1] = 0;
-  //     start_4_one_shot(delays_us, widths_us);
-  //     HAL_Delay(100);
-  //   }
-
-  //   ZDT_X42_V2_Traj_Position_Control(1, 0, 2000, 2000, 2000.0f, 72.0f, 0, 0);
-  //   HAL_Delay(10);
-  //   while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  //   {
-  //     can.rxFrameFlag = false;
-  //   }
-
-  //   can.rxData[0] = 0;
-  //   can.rxData[1] = 0;
-  //   start_4_one_shot(delays_us, widths_us);
-  //   HAL_Delay(100);
-  // }
-
-  // ZDT_X42_V2_Traj_Position_Control(0, 1, 1000, 1000, 1000.0f, 720.0f, 0, 0);
-  // HAL_Delay(10);
-  // while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  // {
-  //   can.rxFrameFlag = false;
-  // }
-  // can.rxData[0] = 0;
-  // can.rxData[1] = 0;
 
   //   uint8_t cmd1[32] = {0};
 

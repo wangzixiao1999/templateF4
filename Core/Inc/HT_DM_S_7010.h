@@ -18,8 +18,6 @@ typedef struct {
     uint8_t flag_angle : 1;
 } HT_DataCache;
 
-// 全局缓存变量
-static HT_DataCache HT_data_cache = {0};
 
 
 /*******************************s***************************

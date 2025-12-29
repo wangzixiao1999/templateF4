@@ -7,6 +7,8 @@ volatile int32_t HT_speed = 0;                        // 转台速度
 volatile int32_t HT_Single_circle_absolute_angle = 0; // 转台单圈绝对角度
 volatile int32_t HT_Multi_circle_absolute_angle = 0;  // 转台多圈绝对角度
 
+static HT_DataCache HT_data_cache = {0};
+
 float HTRev_freq = 0.f;
 
 /**
