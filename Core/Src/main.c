@@ -50,7 +50,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-static volatile uint8_t xyr_request = 0; // 非阻塞请求标志，由UART中断置位，在主循环或定时器中处理
 
 /* USER CODE END PV */
 
@@ -177,7 +176,7 @@ int main(void)
   // can2_SendCmd(cmd1, 2);
   // HAL_Delay(1000);
 
-   // XYR_Collision_Home(0);
+  // XYR_Collision_Home(0);
   //  XYR_ZDT_Fixed_Length_Move(2, 0, 100, 10);
   //  XYR_ZDT_Fixed_Length_Move(1, 0, 100, 10);
   //  XYR_ZDT_Fixed_Length_Move(2, 1, 100, 10);
@@ -198,33 +197,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  float value = 0.f;
-    switch (xyr_request)
-    {
-    case 0xA0:
-      xyr_request = 0;
-      XYR_Collision_Home(0);
-    case 0xA1:
-      xyr_request = 0;
-      value = Parse_Float_LittleEndian(&rx_buffer[1]);
-      XYR_ZDT_Speed_Setting_VOFA(1,value);
-      break;
-    case 0xA2:
-      xyr_request = 0;
-      value = Parse_Float_LittleEndian(&rx_buffer[1]);
-      XYR_ZDT_Pos_Setting_VOFA(1, value/1000.0f);
-      break;
-      case 0xA3:
-      xyr_request = 0;
-      XYR_ZDT_Fixed_Length_Move(1, 1, VOFA_Speed[0], VOFA_Pos[0]);
-      break;
-            case 0xA4:
-      xyr_request = 0;
-      XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
-      break;
-      default:
-      break;
-    }
+    XYR_Read_USB_Commend();
   }
   /* USER CODE END 3 */
 }
@@ -288,16 +261,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-
   if (huart->Instance == USART1)
   {
-    // usartTest++;
+    xyr_request = rx_buffer[0]; // 命令头是第一个字节
 
-    xyr_request = rx_buffer[0];
+    memcpy(process_buffer, rx_buffer, 5);
 
-    /* 回显收到的字节，便于在串口助手观察，并重新启动中断接收
-     使用非阻塞传输以避免在中断中阻塞 */
-    // HAL_UART_Transmit_IT(&huart1, rx_buffer, 5);
+    memset(rx_buffer, 0, 5);
+
     HAL_UART_Receive_IT(huart, rx_buffer, 5);
   }
 }

@@ -11,6 +11,25 @@
 #include <string.h>
 #include "usart.h"
 
+// 轴状态定义
+typedef enum
+{
+	XYRMOVE_IDLE,		// 空闲
+	XYRMOVE_START_MOVE, // 开始运动                                                                                                                                                                             , // 开始运动
+	XYRMOVE_WAIT_STOP,	// 等待完成
+	XYRMOVE_COMPLETE	// 运动完成
+} XYR_State;
+
+typedef struct
+{
+	XYR_State state;   // 当前状态
+	uint32_t dir;	   // 目标位置
+	uint32_t velocity; // 当前位置
+	uint32_t position; // 速度
+} XYR_MoveController;
+
+extern XYR_MoveController XYR_MoveCtrl[3];
+
 void XYR_Init();
 void XYR_Collision_Home(uint8_t addr);													   // 碰撞回零
 void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position); // 张大头定长移动
@@ -24,12 +43,15 @@ void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, int32_t position); // 张大头位�
 void XYR_HT_Pos_Setting_VOFA(uint8_t addr, int32_t position);  // 转台位旋转角度设置(针对VOFA+)
 float Parse_Float_LittleEndian(uint8_t *bytes);				   // 小端排序组合返回数值(针对VOFA+)
 
-// 指令发送端
-void Controller_Update_Callback(void);
+void Controller_Update_Callback(void); // 指令发送端
+
+void XYR_Read_USB_Commend(); // 串口解析命令
 
 extern __IO CAN_t can;
 extern __IO CAN_t can2;
 extern volatile bool moveFlag[3];
 extern volatile float VOFA_Speed[3];
 extern volatile float VOFA_Pos[3];
+extern volatile uint8_t xyr_request;
+
 #endif // XYR_CONTROL_H

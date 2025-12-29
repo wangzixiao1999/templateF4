@@ -2,8 +2,15 @@
 
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
-volatile float VOFA_Speed[3] = {20,20,200};
-volatile float VOFA_Pos[3] = {10,10,100};
+volatile float VOFA_Speed[3] = {20, 20, 200};
+volatile float VOFA_Pos[3] = {10, 10, 100};
+volatile uint8_t xyr_request = 0; // 非阻塞请求标志，由UART中断置位，在主循环或定时器中处理
+
+XYR_MoveController XYR_MoveCtrl[3] = {
+	{XYRMOVE_IDLE, 0, 0, 0}, // X轴
+	{XYRMOVE_IDLE, 0, 0, 0}, // Y轴
+	{XYRMOVE_IDLE, 0, 0, 0}	 // R轴
+};
 
 /**
  * @brief    初始化XYR三轴位移台
@@ -205,8 +212,8 @@ void XYR_HT_Pos_Setting_VOFA(uint8_t addr, int32_t position)
  */
 float Parse_Float_LittleEndian(uint8_t *bytes)
 {
-    uint32_t int_val = bytes[0] | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
-    return *(float*)&int_val;
+	uint32_t int_val = bytes[0] | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
+	return *(float *)&int_val;
 }
 
 /**
@@ -247,12 +254,12 @@ void Controller_Update_Callback(void)
 	preTick_Tim4 = currTick_Tim4;
 	// 每50ms发送一次数据
 	static int send_sount = 0;
-	if (++send_sount >= 50)
+	if (++send_sount >= 200)
 	{
 		float values[3];
 		values[0] = (float)ZDT_angle[0] / -90.0f;
 		values[1] = (float)ZDT_angle[1] / -90.0f;
-		values[2] = (float)HT_Single_circle_absolute_angle / 45.111111f;
+		values[2] = (float)HT_Single_circle_absolute_angle * 360.f / 16384.f;
 
 		// 发送原始数据（VOFA+使用JustFloat协议）
 		HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
@@ -262,5 +269,70 @@ void Controller_Update_Callback(void)
 		HAL_UART_Transmit(&huart1, tail, 4, 100);
 		// 张大头1号机相电流
 		send_sount = 0;
+	}
+}
+
+/**
+ * @brief:串口解析命令
+ */
+void XYR_Read_USB_Commend()
+{
+	float value = 0.f;
+	switch (xyr_request)
+	{
+	case 0xA0:
+		xyr_request = 0;
+		XYR_Collision_Home(0);
+		break;
+	case 0xA1:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		XYR_ZDT_Speed_Setting_VOFA(1, value);
+		break;
+	case 0xA2:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		XYR_ZDT_Pos_Setting_VOFA(1, value / 1000.0f);
+		break;
+	case 0xA3:
+		xyr_request = 0;
+		XYR_ZDT_Fixed_Length_Move(1, 1, VOFA_Speed[0], VOFA_Pos[0]);
+		break;
+	case 0xA4:
+		xyr_request = 0;
+		XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
+		break;
+	default:
+		break;
+	}
+}
+
+/**
+ * @brief:电机1状态机
+ */
+void XYR_Update_Axis_StateMachine(XYR_MoveController *XYR_MoveCtrl)
+{
+	uint32_t current_time = HAL_GetTick();
+	switch (XYR_MoveCtrl->state)
+	{
+        case XYRMOVE_IDLE:
+            break;
+
+        case XYRMOVE_START_MOVE:
+            // 等待逻辑
+
+            // 检查回零完成条件...
+            break;
+
+        case XYRMOVE_WAIT_STOP:
+            // 运动控制逻辑
+
+
+            break;
+
+        case XYRMOVE_COMPLETE:
+            // 完成后的处理
+
+            break;
 	}
 }
