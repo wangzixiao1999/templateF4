@@ -389,6 +389,13 @@ void XYR_Read_USB_Commend()
 	case 0xC4:
 		xyr_request = 0;
 		XYR_HT_Fixed_Length_Move(0, VOFA_Speed[2], VOFA_Pos[2]);
+	case 0xC5:
+		xyr_request = 0;
+		XYR_HT_Fixed_Speed_Move(1, VOFA_Speed[2]);
+		break;
+	case 0xC6:
+		xyr_request = 0;
+		XYR_HT_Fixed_Speed_Move(0, VOFA_Speed[2]);
 		break;
 	case 0xD0:
 		xyr_request = 0;

@@ -442,9 +442,9 @@ void HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCou
 }
 
 /**
-  * @brief    更新全局参数
-  * @retval   无
-  */
+ * @brief    更新全局参数
+ * @retval   无
+ */
 void HT_UpdateParameters(void)
 {
   static volatile uint32_t preTick_HT = 0;
@@ -454,7 +454,7 @@ void HT_UpdateParameters(void)
 
     HT_current = HT_data_cache.current;
     HT_speed = HT_data_cache.speed;
-    HT_Single_circle_absolute_angle = HT_data_cache.single_circle_angle;
+    HT_Single_circle_absolute_angle = 16384 - HT_data_cache.single_circle_angle;
     HT_Multi_circle_absolute_angle = HT_data_cache.multi_circle_angle;
 
     HT_data_cache.flag_current = 0;
