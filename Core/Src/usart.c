@@ -121,12 +121,6 @@ void USER_Send_Data_USART(const uint8_t *pData, uint16_t Size)
 {
   HAL_UART_Transmit(&huart1, pData, Size, 10);
 }
-
-void FireWater_Test(void)
-{
-}
-/* USER CODE END 1 */
-
 /**
  * @brief  UART error callback (called by HAL on reception error)
  *         Clear error flags and restart reception to recover from ORE/FE/NE.
@@ -141,3 +135,8 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
     HAL_UART_Receive_IT(&huart1, rx_buffer, 5);
   }
 }
+
+void FireWater_Test(void)
+{
+}
+/* USER CODE END 1 */

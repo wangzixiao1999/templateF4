@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
   33              		@ link register save eliminated.
   24:Core/Src/XYR_Control.c **** }
   34              		.loc 1 24 1 view .LVU1
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 2
 
 
   35 0000 7047     		bx	lr
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
   47:Core/Src/XYR_Control.c **** 		{
   48:Core/Src/XYR_Control.c **** 			// HAL_Delay(1);
   49:Core/Src/XYR_Control.c **** 		}
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 3
 
 
   50:Core/Src/XYR_Control.c **** 	}
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
   96 0024 DBB2     		uxtb	r3, r3
   39:Core/Src/XYR_Control.c **** 		{
   97              		.loc 1 39 10 discriminator 1 view .LVU17
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 4
 
 
   98 0026 032B     		cmp	r3, #3
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
   55:Core/Src/XYR_Control.c **** 		{
  140              		.loc 1 55 22 is_stmt 0 discriminator 3 view .LVU30
  141 005e 114B     		ldr	r3, .L14
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 5
 
 
  142 0060 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  184 009e F5D1     		bne	.L9
  185 00a0 B5E7     		b	.L2
  186              	.L15:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 6
 
 
  187 00a2 00BF     		.align	2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  228              		.loc 1 84 3 is_stmt 1 view .LVU51
  229              		.loc 1 84 6 is_stmt 0 view .LVU52
  230 0010 B5EEC00A 		vcmpe.f32	s0, #0
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 7
 
 
  231 0014 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  273              		.loc 1 94 17 is_stmt 0 view .LVU66
  274 0054 431E     		subs	r3, r0, #1
  275 0056 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 8
 
 
  276              		.loc 1 94 6 view .LVU67
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
   98:Core/Src/XYR_Control.c **** 				HAL_Delay(10);
  310              		.loc 1 98 5 view .LVU76
  311 0082 FFF7FEFF 		bl	ZDT_X42_V2_Bypass_Position_LV_Control
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 9
 
 
  312              	.LVL24:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  112:Core/Src/XYR_Control.c ****  * @brief    转台旋转固定角度
  113:Core/Src/XYR_Control.c ****  * @param    dir     ：方向								，0为归零方向，其余值为电机方向
  114:Core/Src/XYR_Control.c ****  * @param    velocity：最大速度(mm/s)					，范围0 - mm/s
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 10
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 10
 
 
  115:Core/Src/XYR_Control.c ****  * @param    position：位置(mm)							，范围0 - mm
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  387 000e 164B     		ldr	r3, .L38
  388 0010 0022     		movs	r2, #0
  389              	.LVL29:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 11
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 11
 
 
  121:Core/Src/XYR_Control.c **** 		HT_DM_S_7010_Set_Position_Max_Speed(1, velocity);
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  428              		.loc 1 129 49 is_stmt 0 discriminator 5 view .LVU110
  429 0036 0D4B     		ldr	r3, .L38+4
  430 0038 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 12
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 12
 
 
  431 003a 5B1B     		subs	r3, r3, r5
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  477              		.syntax unified
  478              		.thumb
  479              		.thumb_func
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 13
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 13
 
 
  481              	XYR_HT_Fixed_Speed_Move:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  519              		.loc 1 152 3 is_stmt 1 view .LVU134
  520              		.loc 1 152 15 is_stmt 0 view .LVU135
  521 0018 014B     		ldr	r3, .L44
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 14
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 14
 
 
  522 001a 0122     		movs	r2, #1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  568              		.global	XYR_Stop_Move
  569              		.syntax unified
  570              		.thumb
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 15
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 15
 
 
  571              		.thumb_func
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  614              	.LBE3:
  174:Core/Src/XYR_Control.c **** }
  615              		.loc 1 174 1 is_stmt 0 view .LVU152
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 16
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 16
 
 
  616 0020 08BD     		pop	{r3, pc}
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  663              		.thumb_func
  665              	XYR_HT_Speed_Setting_VOFA:
  666              	.LVL51:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 17
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 17
 
 
  667              	.LFB145:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  705 0004 0138     		subs	r0, r0, #1
  706              	.LVL53:
  707              		.loc 1 202 21 view .LVU167
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 18
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 18
 
 
  708 0006 F8EEE77A 		vcvt.f32.s32	s15, s15
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  755              		.syntax unified
  756              		.thumb
  757              		.thumb_func
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 19
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 19
 
 
  759              	Parse_Float_LittleEndian:
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  228:Core/Src/XYR_Control.c ****  */
  229:Core/Src/XYR_Control.c **** void XYR_AutoScan_Start(uint8_t x, uint8_t y)
  230:Core/Src/XYR_Control.c **** {
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 20
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 20
 
 
  800              		.loc 1 230 1 is_stmt 1 view -0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  836 0016 134B     		ldr	r3, .L76+8
  837 0018 D3ED000A 		vldr.32	s1, [r3]
  838              		.loc 1 248 4 view .LVU196
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 21
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 21
 
 
  839 001c 0021     		movs	r1, #0
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  879 004a 05F00101 		and	r1, r5, #1
  880 004e 0220     		movs	r0, #2
  881 0050 FFF7FEFF 		bl	XYR_ZDT_Fixed_Length_Move
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 22
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 22
 
 
  882              	.LVL63:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  921              		.loc 1 262 15 is_stmt 0 view .LVU218
  922 0000 014B     		ldr	r3, .L79
  923 0002 0022     		movs	r2, #0
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 23
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 23
 
 
  924 0004 1A70     		strb	r2, [r3]
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  966              		.loc 1 276 3 view .LVU225
  967 0012 0120     		movs	r0, #1
  968 0014 FFF7FEFF 		bl	HT_DM_S_7010_Read_Current_Q_Axis
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 24
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 24
 
 
  969              	.LVL67:
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  998 0040 0270     		strb	r2, [r0]
  302:Core/Src/XYR_Control.c **** 	ZDT_request_index = (ZDT_request_index + 1) % 3;
  999              		.loc 1 302 2 is_stmt 1 view .LVU234
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 25
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 25
 
 
  1000              		.loc 1 302 41 is_stmt 0 view .LVU235
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  315:Core/Src/XYR_Control.c **** 
  316:Core/Src/XYR_Control.c **** 		// 发送原始数据（VOFA+使用JustFloat协议）
  317:Core/Src/XYR_Control.c **** 		HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 26
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 26
 
 
  318:Core/Src/XYR_Control.c **** 
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1080              	.LVL76:
  1081              	.L90:
  1082              	.LBB6:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 27
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 27
 
 
  311:Core/Src/XYR_Control.c **** 		values[0] = (float)ZDT_angle[0] / -90.0f;
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1120 00ee 0C22     		movs	r2, #12
  1121 00f0 01A9     		add	r1, sp, #4
  1122 00f2 2046     		mov	r0, r4
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 28
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 28
 
 
  1123              	.LVL77:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1173              	.LFB152:
  326:Core/Src/XYR_Control.c **** 
  327:Core/Src/XYR_Control.c **** /**
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 29
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 29
 
 
  328:Core/Src/XYR_Control.c ****  * @brief:串口解析命令
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1222 004a 0C01     		.2byte	(.L93-.L96)/2
  1223 004c 0C01     		.2byte	(.L93-.L96)/2
  1224 004e 0C01     		.2byte	(.L93-.L96)/2
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 30
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 30
 
 
  1225 0050 0C01     		.2byte	(.L93-.L96)/2
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1274              		.loc 1 338 3 view .LVU289
  1275 00a8 C0E0     		b	.L93
  1276              	.L115:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 31
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 31
 
 
  339:Core/Src/XYR_Control.c **** 	case 0xA1:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1319              		.loc 1 350 3 view .LVU304
  1320              		.loc 1 350 15 is_stmt 0 view .LVU305
  1321 00e2 774B     		ldr	r3, .L120
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 32
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 32
 
 
  1322 00e4 0022     		movs	r2, #0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1367              	.LVL90:
  360:Core/Src/XYR_Control.c **** 		XYR_ZDT_Speed_Setting_VOFA(2, value);
  1368              		.loc 1 360 3 is_stmt 1 view .LVU322
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 33
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 33
 
 
  1369 0124 0220     		movs	r0, #2
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1414 0164 0220     		movs	r0, #2
  1415 0166 FFF7FEFF 		bl	XYR_ZDT_Fixed_Length_Move
  1416              	.LVL96:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 34
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 34
 
 
  370:Core/Src/XYR_Control.c **** 		break;
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1459 019a 494B     		ldr	r3, .L120
  1460 019c 0022     		movs	r2, #0
  1461 019e 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 35
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 35
 
 
  382:Core/Src/XYR_Control.c **** 		value = Parse_Float_LittleEndian(&process_buffer[1]);
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1507 01ec 0020     		movs	r0, #0
  1508 01ee 344B     		ldr	r3, .L120
  1509 01f0 1870     		strb	r0, [r3]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 36
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 36
 
 
  391:Core/Src/XYR_Control.c **** 		XYR_HT_Fixed_Length_Move(0, VOFA_Speed[2], VOFA_Pos[2]);
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  413:Core/Src/XYR_Control.c **** 		break;
  414:Core/Src/XYR_Control.c **** 	case 0xE2:
  415:Core/Src/XYR_Control.c **** 		xyr_request = 0;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 37
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 37
 
 
  416:Core/Src/XYR_Control.c **** 		value = Parse_Float_LittleEndian(&process_buffer[1]);
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1573 024e 0022     		movs	r2, #0
  1574 0250 1A70     		strb	r2, [r3]
  402:Core/Src/XYR_Control.c **** 		break;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 38
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 38
 
 
  1575              		.loc 1 402 3 is_stmt 1 view .LVU388
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  415:Core/Src/XYR_Control.c **** 		value = Parse_Float_LittleEndian(&process_buffer[1]);
  1615              		.loc 1 415 15 is_stmt 0 view .LVU403
  1616 0282 0F4B     		ldr	r3, .L120
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 39
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 39
 
 
  1617 0284 0022     		movs	r2, #0
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1656 02b4 0022     		movs	r2, #0
  1657 02b6 1A70     		strb	r2, [r3]
  425:Core/Src/XYR_Control.c **** 		break;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 40
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 40
 
 
  1658              		.loc 1 425 3 is_stmt 1 view .LVU419
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  442:Core/Src/XYR_Control.c **** 
  443:Core/Src/XYR_Control.c **** 	case XYRMOVE_START_MOVE:
  444:Core/Src/XYR_Control.c **** 		// 等待逻辑
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 41
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 41
 
 
  445:Core/Src/XYR_Control.c **** 
@@ -2439,7 +2439,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1731              		.section	.bss.XYR_MoveCtrl,"aw",%nobits
  1732              		.align	2
  1735              	XYR_MoveCtrl:
- 1736 0000 00000000 		.space	48
+ 1736 0000 00000000 		.space	60
  1736      00000000 
  1736      00000000 
  1736      00000000 
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1754              	VOFA_Scan:
  1755 0000 0A0A     		.ascii	"\012\012"
  1756              		.global	VOFA_Pos
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 42
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 42
 
 
  1757              		.section	.data.VOFA_Pos,"aw"
@@ -2500,86 +2500,86 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 1
  1801              		.file 11 "Core/Inc/usart.h"
  1802              		.file 12 "Core/Inc/XYR_Control.h"
  1803              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 43
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 43
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 XYR_Control.c
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:21     .text.XYR_Init:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:27     .text.XYR_Init:00000000 XYR_Init
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:40     .text.XYR_Collision_Home:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:46     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:189    .text.XYR_Collision_Home:000000a4 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:196    .text.XYR_ZDT_Fixed_Length_Move:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:202    .text.XYR_ZDT_Fixed_Length_Move:00000000 XYR_ZDT_Fixed_Length_Move
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:338    .text.XYR_ZDT_Fixed_Length_Move:000000a4 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1779   .data.moveFlag:00000000 moveFlag
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:348    .text.XYR_HT_Fixed_Length_Move:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:354    .text.XYR_HT_Fixed_Length_Move:00000000 XYR_HT_Fixed_Length_Move
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:467    .text.XYR_HT_Fixed_Length_Move:00000068 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:475    .text.XYR_HT_Fixed_Speed_Move:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:481    .text.XYR_HT_Fixed_Speed_Move:00000000 XYR_HT_Fixed_Speed_Move
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:531    .text.XYR_HT_Fixed_Speed_Move:00000020 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:536    .text.XYR_Relieve_Malfunction:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:542    .text.XYR_Relieve_Malfunction:00000000 XYR_Relieve_Malfunction
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:567    .text.XYR_Stop_Move:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:573    .text.XYR_Stop_Move:00000000 XYR_Stop_Move
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:622    .text.XYR_Stop_Move:00000024 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:627    .text.XYR_ZDT_Speed_Setting_VOFA:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:633    .text.XYR_ZDT_Speed_Setting_VOFA:00000000 XYR_ZDT_Speed_Setting_VOFA
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:654    .text.XYR_ZDT_Speed_Setting_VOFA:00000010 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1770   .data.VOFA_Speed:00000000 VOFA_Speed
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:659    .text.XYR_HT_Speed_Setting_VOFA:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:665    .text.XYR_HT_Speed_Setting_VOFA:00000000 XYR_HT_Speed_Setting_VOFA
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:682    .text.XYR_HT_Speed_Setting_VOFA:00000008 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:687    .text.XYR_ZDT_Pos_Setting_VOFA:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:693    .text.XYR_ZDT_Pos_Setting_VOFA:00000000 XYR_ZDT_Pos_Setting_VOFA
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:717    .text.XYR_ZDT_Pos_Setting_VOFA:00000018 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1761   .data.VOFA_Pos:00000000 VOFA_Pos
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:722    .text.XYR_HT_Pos_Setting_VOFA:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:728    .text.XYR_HT_Pos_Setting_VOFA:00000000 XYR_HT_Pos_Setting_VOFA
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:748    .text.XYR_HT_Pos_Setting_VOFA:00000010 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:753    .text.Parse_Float_LittleEndian:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:759    .text.Parse_Float_LittleEndian:00000000 Parse_Float_LittleEndian
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:791    .text.XYR_AutoScan_Start:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:797    .text.XYR_AutoScan_Start:00000000 XYR_AutoScan_Start
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:900    .text.XYR_AutoScan_Start:0000005c $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1747   .data.AutoScanFlag:00000000 AutoScanFlag
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:907    .text.XYR_AutoScan_Stop:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:913    .text.XYR_AutoScan_Stop:00000000 XYR_AutoScan_Stop
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:930    .text.XYR_AutoScan_Stop:00000008 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:935    .text.Controller_Update_Callback:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:941    .text.Controller_Update_Callback:00000000 Controller_Update_Callback
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1149   .text.Controller_Update_Callback:00000114 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1728   .bss.HT_request_index.3:00000000 HT_request_index.3
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1723   .bss.ZDT_request_index.2:00000000 ZDT_request_index.2
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1718   .bss.preTick_Tim4.1:00000000 preTick_Tim4.1
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1788   .bss.Tim4Rev_freq:00000000 Tim4Rev_freq
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1712   .bss.send_sount.0:00000000 send_sount.0
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1166   .text.XYR_Read_USB_Commend:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1172   .text.XYR_Read_USB_Commend:00000000 XYR_Read_USB_Commend
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1195   .text.XYR_Read_USB_Commend:00000014 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1264   .text.XYR_Read_USB_Commend:0000009e $t
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s 			page 44
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:21     .text.XYR_Init:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:27     .text.XYR_Init:00000000 XYR_Init
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:40     .text.XYR_Collision_Home:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:46     .text.XYR_Collision_Home:00000000 XYR_Collision_Home
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:189    .text.XYR_Collision_Home:000000a4 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:196    .text.XYR_ZDT_Fixed_Length_Move:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:202    .text.XYR_ZDT_Fixed_Length_Move:00000000 XYR_ZDT_Fixed_Length_Move
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:338    .text.XYR_ZDT_Fixed_Length_Move:000000a4 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1779   .data.moveFlag:00000000 moveFlag
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:348    .text.XYR_HT_Fixed_Length_Move:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:354    .text.XYR_HT_Fixed_Length_Move:00000000 XYR_HT_Fixed_Length_Move
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:467    .text.XYR_HT_Fixed_Length_Move:00000068 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:475    .text.XYR_HT_Fixed_Speed_Move:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:481    .text.XYR_HT_Fixed_Speed_Move:00000000 XYR_HT_Fixed_Speed_Move
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:531    .text.XYR_HT_Fixed_Speed_Move:00000020 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:536    .text.XYR_Relieve_Malfunction:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:542    .text.XYR_Relieve_Malfunction:00000000 XYR_Relieve_Malfunction
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:567    .text.XYR_Stop_Move:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:573    .text.XYR_Stop_Move:00000000 XYR_Stop_Move
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:622    .text.XYR_Stop_Move:00000024 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:627    .text.XYR_ZDT_Speed_Setting_VOFA:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:633    .text.XYR_ZDT_Speed_Setting_VOFA:00000000 XYR_ZDT_Speed_Setting_VOFA
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:654    .text.XYR_ZDT_Speed_Setting_VOFA:00000010 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1770   .data.VOFA_Speed:00000000 VOFA_Speed
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:659    .text.XYR_HT_Speed_Setting_VOFA:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:665    .text.XYR_HT_Speed_Setting_VOFA:00000000 XYR_HT_Speed_Setting_VOFA
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:682    .text.XYR_HT_Speed_Setting_VOFA:00000008 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:687    .text.XYR_ZDT_Pos_Setting_VOFA:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:693    .text.XYR_ZDT_Pos_Setting_VOFA:00000000 XYR_ZDT_Pos_Setting_VOFA
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:717    .text.XYR_ZDT_Pos_Setting_VOFA:00000018 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1761   .data.VOFA_Pos:00000000 VOFA_Pos
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:722    .text.XYR_HT_Pos_Setting_VOFA:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:728    .text.XYR_HT_Pos_Setting_VOFA:00000000 XYR_HT_Pos_Setting_VOFA
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:748    .text.XYR_HT_Pos_Setting_VOFA:00000010 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:753    .text.Parse_Float_LittleEndian:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:759    .text.Parse_Float_LittleEndian:00000000 Parse_Float_LittleEndian
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:791    .text.XYR_AutoScan_Start:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:797    .text.XYR_AutoScan_Start:00000000 XYR_AutoScan_Start
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:900    .text.XYR_AutoScan_Start:0000005c $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1747   .data.AutoScanFlag:00000000 AutoScanFlag
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:907    .text.XYR_AutoScan_Stop:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:913    .text.XYR_AutoScan_Stop:00000000 XYR_AutoScan_Stop
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:930    .text.XYR_AutoScan_Stop:00000008 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:935    .text.Controller_Update_Callback:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:941    .text.Controller_Update_Callback:00000000 Controller_Update_Callback
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1149   .text.Controller_Update_Callback:00000114 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1728   .bss.HT_request_index.3:00000000 HT_request_index.3
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1723   .bss.ZDT_request_index.2:00000000 ZDT_request_index.2
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1718   .bss.preTick_Tim4.1:00000000 preTick_Tim4.1
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1788   .bss.Tim4Rev_freq:00000000 Tim4Rev_freq
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1712   .bss.send_sount.0:00000000 send_sount.0
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1166   .text.XYR_Read_USB_Commend:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1172   .text.XYR_Read_USB_Commend:00000000 XYR_Read_USB_Commend
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1195   .text.XYR_Read_USB_Commend:00000014 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1264   .text.XYR_Read_USB_Commend:0000009e $t
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s 			page 44
 
 
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1667   .text.XYR_Read_USB_Commend:000002c0 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1741   .bss.xyr_request:00000000 xyr_request
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1754   .data.VOFA_Scan:00000000 VOFA_Scan
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1678   .text.XYR_Update_Axis_StateMachine:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1684   .text.XYR_Update_Axis_StateMachine:00000000 XYR_Update_Axis_StateMachine
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1709   .bss.send_sount.0:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1715   .bss.preTick_Tim4.1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1724   .bss.ZDT_request_index.2:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1729   .bss.HT_request_index.3:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1735   .bss.XYR_MoveCtrl:00000000 XYR_MoveCtrl
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1732   .bss.XYR_MoveCtrl:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1742   .bss.xyr_request:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1751   .data.VOFA_Scan:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1758   .data.VOFA_Pos:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1767   .data.VOFA_Speed:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1776   .data.moveFlag:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccXUwB6i.s:1785   .bss.Tim4Rev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1667   .text.XYR_Read_USB_Commend:000002c0 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1741   .bss.xyr_request:00000000 xyr_request
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1754   .data.VOFA_Scan:00000000 VOFA_Scan
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1678   .text.XYR_Update_Axis_StateMachine:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1684   .text.XYR_Update_Axis_StateMachine:00000000 XYR_Update_Axis_StateMachine
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1709   .bss.send_sount.0:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1715   .bss.preTick_Tim4.1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1724   .bss.ZDT_request_index.2:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1729   .bss.HT_request_index.3:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1735   .bss.XYR_MoveCtrl:00000000 XYR_MoveCtrl
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1732   .bss.XYR_MoveCtrl:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1742   .bss.xyr_request:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1751   .data.VOFA_Scan:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1758   .data.VOFA_Pos:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1767   .data.VOFA_Speed:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1776   .data.moveFlag:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccyAsTt6.s:1785   .bss.Tim4Rev_freq:00000000 $d
 
 UNDEFINED SYMBOLS
 ZDT_X42_V2_Origin_Trigger_Return

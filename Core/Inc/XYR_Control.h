@@ -23,9 +23,10 @@ typedef enum
 typedef struct
 {
 	XYR_State state;   // 当前状态
-	uint32_t dir;	   // 目标位置
-	uint32_t velocity; // 当前位置
-	uint32_t position; // 速度
+	uint32_t dir;	   // 方向
+	uint32_t velocity; // 速度
+	uint32_t position; // 位置
+	uint8_t axis;	   // 轴编号
 } XYR_MoveController;
 
 extern XYR_MoveController XYR_MoveCtrl[3];
