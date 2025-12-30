@@ -968,10 +968,10 @@ Discarded input sections
  .text          0x00000000        0x0 build/XYR_Control.o
  .data          0x00000000        0x0 build/XYR_Control.o
  .bss           0x00000000        0x0 build/XYR_Control.o
- .text.XYR_Update_Axis_StateMachine
-                0x00000000        0x8 build/XYR_Control.o
- .bss.XYR_MoveCtrl
-                0x00000000       0x3c build/XYR_Control.o
+ .text.XYR_MotorState_Transition
+                0x00000000       0x50 build/XYR_Control.o
+ .text.XYR_MotorState_Update
+                0x00000000       0xd8 build/XYR_Control.o
  .text          0x00000000        0x0 build/usart.o
  .data          0x00000000        0x0 build/usart.o
  .bss           0x00000000        0x0 build/usart.o
@@ -1943,15 +1943,14 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
                 0x0800303c       0xb8 build/HT_DM_S_7010.o
                 0x0800303c                HT_DM_S_7010_Receive_Data
  .text.XYR_Init
-                0x080030f4        0x2 build/XYR_Control.o
+                0x080030f4       0x38 build/XYR_Control.o
                 0x080030f4                XYR_Init
- *fill*         0x080030f6        0x2 
  .text.XYR_Collision_Home
-                0x080030f8       0xb0 build/XYR_Control.o
-                0x080030f8                XYR_Collision_Home
+                0x0800312c       0xb0 build/XYR_Control.o
+                0x0800312c                XYR_Collision_Home
  .text.XYR_ZDT_Fixed_Length_Move
-                0x080031a8       0xbc build/XYR_Control.o
-                0x080031a8                XYR_ZDT_Fixed_Length_Move
+                0x080031dc       0x88 build/XYR_Control.o
+                0x080031dc                XYR_ZDT_Fixed_Length_Move
  .text.XYR_HT_Fixed_Length_Move
                 0x08003264       0x78 build/XYR_Control.o
                 0x08003264                XYR_HT_Fixed_Length_Move
@@ -2245,7 +2244,7 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
                 0x10000000                        _eccmram = .
                 0x10000000                        . = ALIGN (0x4)
 
-.bss            0x20000030      0x3a4
+.bss            0x20000030      0x3f0
                 0x20000030                        _sbss = .
                 0x20000030                        __bss_start__ = _sbss
  *(.bss)
@@ -2357,39 +2356,42 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
                 0x20000374        0x1 build/XYR_Control.o
  .bss.HT_request_index.3
                 0x20000375        0x1 build/XYR_Control.o
+ *fill*         0x20000376        0x2 
+ .bss.XYR_MotorState
+                0x20000378       0x48 build/XYR_Control.o
+                0x20000378                XYR_MotorState
  .bss.xyr_request
-                0x20000376        0x1 build/XYR_Control.o
-                0x20000376                xyr_request
- *fill*         0x20000377        0x1 
+                0x200003c0        0x1 build/XYR_Control.o
+                0x200003c0                xyr_request
+ *fill*         0x200003c1        0x3 
  .bss.Tim4Rev_freq
-                0x20000378        0x4 build/XYR_Control.o
-                0x20000378                Tim4Rev_freq
- .bss.huart1    0x2000037c       0x48 build/usart.o
-                0x2000037c                huart1
+                0x200003c4        0x4 build/XYR_Control.o
+                0x200003c4                Tim4Rev_freq
+ .bss.huart1    0x200003c8       0x48 build/usart.o
+                0x200003c8                huart1
  .bss.rx_buffer
-                0x200003c4        0x5 build/usart.o
-                0x200003c4                rx_buffer
- *fill*         0x200003c9        0x3 
+                0x20000410        0x5 build/usart.o
+                0x20000410                rx_buffer
+ *fill*         0x20000415        0x3 
  .bss.process_buffer
-                0x200003cc        0x5 build/usart.o
-                0x200003cc                process_buffer
+                0x20000418        0x5 build/usart.o
+                0x20000418                process_buffer
  *(COMMON)
-                0x200003d4                        . = ALIGN (0x4)
- *fill*         0x200003d1        0x3 
-                0x200003d4                        _ebss = .
-                0x200003d4                        __bss_end__ = _ebss
+                0x20000420                        . = ALIGN (0x4)
+ *fill*         0x2000041d        0x3 
+                0x20000420                        _ebss = .
+                0x20000420                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200003d4      0x604
-                0x200003d8                        . = ALIGN (0x8)
- *fill*         0x200003d4        0x4 
+                0x20000420      0x600
+                0x20000420                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x200003d8                        PROVIDE (_end = .)
-                0x200005d8                        . = (. + _Min_Heap_Size)
- *fill*         0x200003d8      0x200 
-                0x200009d8                        . = (. + _Min_Stack_Size)
- *fill*         0x200005d8      0x400 
-                0x200009d8                        . = ALIGN (0x8)
+                0x20000420                        PROVIDE (_end = .)
+                0x20000620                        . = (. + _Min_Heap_Size)
+ *fill*         0x20000420      0x200 
+                0x20000a20                        . = (. + _Min_Stack_Size)
+ *fill*         0x20000620      0x400 
+                0x20000a20                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2463,35 +2465,35 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
 LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x19f6f
+.debug_info     0x00000000    0x1a196
  .debug_info    0x00000000     0x16f2 build/main.o
- .debug_info    0x000016f2     0x1491 build/stm32f4xx_it.o
- .debug_info    0x00002b83      0x2eb build/stm32f4xx_hal_msp.o
- .debug_info    0x00002e6e     0x13d2 build/stm32f4xx_hal_can.o
- .debug_info    0x00004240      0xc20 build/stm32f4xx_hal_rcc.o
- .debug_info    0x00004e60      0x848 build/stm32f4xx_hal_gpio.o
- .debug_info    0x000056a8      0xbce build/stm32f4xx_hal_dma.o
- .debug_info    0x00006276     0x11e0 build/stm32f4xx_hal_cortex.o
- .debug_info    0x00007456      0xafa build/stm32f4xx_hal.o
- .debug_info    0x00007f50     0x41a0 build/stm32f4xx_hal_tim.o
- .debug_info    0x0000c0f0     0x1da5 build/stm32f4xx_hal_tim_ex.o
- .debug_info    0x0000de95      0x5b3 build/system_stm32f4xx.o
- .debug_info    0x0000e448      0x325 build/gpio.o
- .debug_info    0x0000e76d     0x143d build/can.o
- .debug_info    0x0000fbaa      0xdd0 build/ZDT_X42_V2.o
- .debug_info    0x0001097a     0x17ba build/tim.o
- .debug_info    0x00012134      0xceb build/HT_DM_S_7010.o
- .debug_info    0x00012e1f     0x143c build/XYR_Control.o
- .debug_info    0x0001425b      0xf8c build/usart.o
- .debug_info    0x000151e7     0x43b5 build/stm32f4xx_hal_uart.o
- .debug_info    0x0001959c       0x30 build/startup_stm32f407xx.o
- .debug_info    0x000195cc      0x135 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_info    0x00019701      0x10b C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_info    0x0001980c       0x24 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_info    0x00019830      0x703 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_info    0x00019f33       0x3c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_info    0x000016f2     0x1498 build/stm32f4xx_it.o
+ .debug_info    0x00002b8a      0x2eb build/stm32f4xx_hal_msp.o
+ .debug_info    0x00002e75     0x13d2 build/stm32f4xx_hal_can.o
+ .debug_info    0x00004247      0xc20 build/stm32f4xx_hal_rcc.o
+ .debug_info    0x00004e67      0x848 build/stm32f4xx_hal_gpio.o
+ .debug_info    0x000056af      0xbce build/stm32f4xx_hal_dma.o
+ .debug_info    0x0000627d     0x11e0 build/stm32f4xx_hal_cortex.o
+ .debug_info    0x0000745d      0xafa build/stm32f4xx_hal.o
+ .debug_info    0x00007f57     0x41a0 build/stm32f4xx_hal_tim.o
+ .debug_info    0x0000c0f7     0x1da5 build/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x0000de9c      0x5b3 build/system_stm32f4xx.o
+ .debug_info    0x0000e44f      0x325 build/gpio.o
+ .debug_info    0x0000e774     0x143d build/can.o
+ .debug_info    0x0000fbb1      0xeca build/ZDT_X42_V2.o
+ .debug_info    0x00010a7b     0x17ba build/tim.o
+ .debug_info    0x00012235      0xceb build/HT_DM_S_7010.o
+ .debug_info    0x00012f20     0x1562 build/XYR_Control.o
+ .debug_info    0x00014482      0xf8c build/usart.o
+ .debug_info    0x0001540e     0x43b5 build/stm32f4xx_hal_uart.o
+ .debug_info    0x000197c3       0x30 build/startup_stm32f407xx.o
+ .debug_info    0x000197f3      0x135 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_info    0x00019928      0x10b C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_info    0x00019a33       0x24 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x00019a57      0x703 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_info    0x0001a15a       0x3c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_abbrev   0x00000000     0x3622
+.debug_abbrev   0x00000000     0x3667
  .debug_abbrev  0x00000000      0x2ef build/main.o
  .debug_abbrev  0x000002ef      0x2db build/stm32f4xx_it.o
  .debug_abbrev  0x000005ca       0xd3 build/stm32f4xx_hal_msp.o
@@ -2506,20 +2508,20 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
  .debug_abbrev  0x00001cc8      0x11b build/system_stm32f4xx.o
  .debug_abbrev  0x00001de3       0xd3 build/gpio.o
  .debug_abbrev  0x00001eb6      0x2d7 build/can.o
- .debug_abbrev  0x0000218d      0x2a2 build/ZDT_X42_V2.o
- .debug_abbrev  0x0000242f      0x31e build/tim.o
- .debug_abbrev  0x0000274d      0x27c build/HT_DM_S_7010.o
- .debug_abbrev  0x000029c9      0x36b build/XYR_Control.o
- .debug_abbrev  0x00002d34      0x247 build/usart.o
- .debug_abbrev  0x00002f7b      0x366 build/stm32f4xx_hal_uart.o
- .debug_abbrev  0x000032e1       0x1d build/startup_stm32f407xx.o
- .debug_abbrev  0x000032fe       0xb7 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_abbrev  0x000033b5       0xc9 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_abbrev  0x0000347e       0x14 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_abbrev  0x00003492      0x16a C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_abbrev  0x000035fc       0x26 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x0000218d      0x2d3 build/ZDT_X42_V2.o
+ .debug_abbrev  0x00002460      0x31e build/tim.o
+ .debug_abbrev  0x0000277e      0x27c build/HT_DM_S_7010.o
+ .debug_abbrev  0x000029fa      0x37f build/XYR_Control.o
+ .debug_abbrev  0x00002d79      0x247 build/usart.o
+ .debug_abbrev  0x00002fc0      0x366 build/stm32f4xx_hal_uart.o
+ .debug_abbrev  0x00003326       0x1d build/startup_stm32f407xx.o
+ .debug_abbrev  0x00003343       0xb7 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_abbrev  0x000033fa       0xc9 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_abbrev  0x000034c3       0x14 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_abbrev  0x000034d7      0x16a C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_abbrev  0x00003641       0x26 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_loc      0x00000000    0x14148
+.debug_loc      0x00000000    0x142d5
  .debug_loc     0x00000000      0x157 build/main.o
  .debug_loc     0x00000157      0x184 build/stm32f4xx_it.o
  .debug_loc     0x000002db       0x2c build/stm32f4xx_hal_msp.o
@@ -2537,11 +2539,11 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
  .debug_loc     0x0000c40e     0x106c build/ZDT_X42_V2.o
  .debug_loc     0x0000d47a      0x4f5 build/tim.o
  .debug_loc     0x0000d96f      0xe98 build/HT_DM_S_7010.o
- .debug_loc     0x0000e807      0x6ee build/XYR_Control.o
- .debug_loc     0x0000eef5      0x213 build/usart.o
- .debug_loc     0x0000f108     0x5040 build/stm32f4xx_hal_uart.o
+ .debug_loc     0x0000e807      0x87b build/XYR_Control.o
+ .debug_loc     0x0000f082      0x213 build/usart.o
+ .debug_loc     0x0000f295     0x5040 build/stm32f4xx_hal_uart.o
 
-.debug_aranges  0x00000000     0x10e8
+.debug_aranges  0x00000000     0x10f0
  .debug_aranges
                 0x00000000       0x40 build/main.o
  .debug_aranges
@@ -2577,25 +2579,25 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
  .debug_aranges
                 0x00000c48       0xe8 build/HT_DM_S_7010.o
  .debug_aranges
-                0x00000d30       0xa0 build/XYR_Control.o
+                0x00000d30       0xa8 build/XYR_Control.o
  .debug_aranges
-                0x00000dd0       0x48 build/usart.o
+                0x00000dd8       0x48 build/usart.o
  .debug_aranges
-                0x00000e18      0x208 build/stm32f4xx_hal_uart.o
+                0x00000e20      0x208 build/stm32f4xx_hal_uart.o
  .debug_aranges
-                0x00001020       0x28 build/startup_stm32f407xx.o
+                0x00001028       0x28 build/startup_stm32f407xx.o
  .debug_aranges
-                0x00001048       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+                0x00001050       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
  .debug_aranges
-                0x00001068       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x00001070       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
  .debug_aranges
-                0x00001088       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+                0x00001090       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
  .debug_aranges
-                0x000010a8       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x000010b0       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
  .debug_aranges
-                0x000010c8       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+                0x000010d0       0x20 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_ranges   0x00000000      0xf60
+.debug_ranges   0x00000000      0xf80
  .debug_ranges  0x00000000       0x30 build/main.o
  .debug_ranges  0x00000030       0x78 build/stm32f4xx_it.o
  .debug_ranges  0x000000a8       0x10 build/stm32f4xx_hal_msp.o
@@ -2613,67 +2615,67 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
  .debug_ranges  0x00000ab8       0xa8 build/ZDT_X42_V2.o
  .debug_ranges  0x00000b60       0x48 build/tim.o
  .debug_ranges  0x00000ba8       0xd8 build/HT_DM_S_7010.o
- .debug_ranges  0x00000c80       0x90 build/XYR_Control.o
- .debug_ranges  0x00000d10       0x38 build/usart.o
- .debug_ranges  0x00000d48      0x1f8 build/stm32f4xx_hal_uart.o
- .debug_ranges  0x00000f40       0x20 build/startup_stm32f407xx.o
+ .debug_ranges  0x00000c80       0xb0 build/XYR_Control.o
+ .debug_ranges  0x00000d30       0x38 build/usart.o
+ .debug_ranges  0x00000d68      0x1f8 build/stm32f4xx_hal_uart.o
+ .debug_ranges  0x00000f60       0x20 build/startup_stm32f407xx.o
 
-.debug_line     0x00000000    0x11ee2
+.debug_line     0x00000000    0x1204a
  .debug_line    0x00000000      0x4ff build/main.o
- .debug_line    0x000004ff      0x589 build/stm32f4xx_it.o
- .debug_line    0x00000a88      0x149 build/stm32f4xx_hal_msp.o
- .debug_line    0x00000bd1     0x113d build/stm32f4xx_hal_can.o
- .debug_line    0x00001d0e      0xbb0 build/stm32f4xx_hal_rcc.o
- .debug_line    0x000028be      0x6e7 build/stm32f4xx_hal_gpio.o
- .debug_line    0x00002fa5      0xe25 build/stm32f4xx_hal_dma.o
- .debug_line    0x00003dca      0x81c build/stm32f4xx_hal_cortex.o
- .debug_line    0x000045e6      0x559 build/stm32f4xx_hal.o
- .debug_line    0x00004b3f     0x4751 build/stm32f4xx_hal_tim.o
- .debug_line    0x00009290     0x1aa9 build/stm32f4xx_hal_tim_ex.o
- .debug_line    0x0000ad39      0x240 build/system_stm32f4xx.o
- .debug_line    0x0000af79      0x147 build/gpio.o
- .debug_line    0x0000b0c0      0x72f build/can.o
- .debug_line    0x0000b7ef      0xbe5 build/ZDT_X42_V2.o
- .debug_line    0x0000c3d4      0x710 build/tim.o
- .debug_line    0x0000cae4      0x9a3 build/HT_DM_S_7010.o
- .debug_line    0x0000d487      0x906 build/XYR_Control.o
- .debug_line    0x0000dd8d      0x336 build/usart.o
- .debug_line    0x0000e0c3     0x3502 build/stm32f4xx_hal_uart.o
- .debug_line    0x000115c5       0x73 build/startup_stm32f407xx.o
- .debug_line    0x00011638      0x1cc C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_line    0x00011804      0x143 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_line    0x00011947       0x4e C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_line    0x00011995      0x503 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_line    0x00011e98       0x4a C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_line    0x000004ff      0x594 build/stm32f4xx_it.o
+ .debug_line    0x00000a93      0x149 build/stm32f4xx_hal_msp.o
+ .debug_line    0x00000bdc     0x113d build/stm32f4xx_hal_can.o
+ .debug_line    0x00001d19      0xbb0 build/stm32f4xx_hal_rcc.o
+ .debug_line    0x000028c9      0x6e7 build/stm32f4xx_hal_gpio.o
+ .debug_line    0x00002fb0      0xe25 build/stm32f4xx_hal_dma.o
+ .debug_line    0x00003dd5      0x81c build/stm32f4xx_hal_cortex.o
+ .debug_line    0x000045f1      0x559 build/stm32f4xx_hal.o
+ .debug_line    0x00004b4a     0x4751 build/stm32f4xx_hal_tim.o
+ .debug_line    0x0000929b     0x1aa9 build/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x0000ad44      0x240 build/system_stm32f4xx.o
+ .debug_line    0x0000af84      0x147 build/gpio.o
+ .debug_line    0x0000b0cb      0x72f build/can.o
+ .debug_line    0x0000b7fa      0xbfe build/ZDT_X42_V2.o
+ .debug_line    0x0000c3f8      0x710 build/tim.o
+ .debug_line    0x0000cb08      0x9a3 build/HT_DM_S_7010.o
+ .debug_line    0x0000d4ab      0xa4a build/XYR_Control.o
+ .debug_line    0x0000def5      0x336 build/usart.o
+ .debug_line    0x0000e22b     0x3502 build/stm32f4xx_hal_uart.o
+ .debug_line    0x0001172d       0x73 build/startup_stm32f407xx.o
+ .debug_line    0x000117a0      0x1cc C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_line    0x0001196c      0x143 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_line    0x00011aaf       0x4e C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_line    0x00011afd      0x503 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_line    0x00012000       0x4a C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_str      0x00000000     0x5895
- .debug_str     0x00000000     0x5895 build/main.o
+.debug_str      0x00000000     0x5902
+ .debug_str     0x00000000     0x5902 build/main.o
                                 0xf9b (size before relaxing)
- .debug_str     0x00005895      0xe0c build/stm32f4xx_it.o
- .debug_str     0x00005895      0x289 build/stm32f4xx_hal_msp.o
- .debug_str     0x00005895      0xa03 build/stm32f4xx_hal_can.o
- .debug_str     0x00005895      0x6d4 build/stm32f4xx_hal_rcc.o
- .debug_str     0x00005895      0x4ae build/stm32f4xx_hal_gpio.o
- .debug_str     0x00005895      0x744 build/stm32f4xx_hal_dma.o
- .debug_str     0x00005895      0xc43 build/stm32f4xx_hal_cortex.o
- .debug_str     0x00005895      0xb32 build/stm32f4xx_hal.o
- .debug_str     0x00005895     0x16cd build/stm32f4xx_hal_tim.o
- .debug_str     0x00005895      0xed9 build/stm32f4xx_hal_tim_ex.o
- .debug_str     0x00005895      0x343 build/system_stm32f4xx.o
- .debug_str     0x00005895      0x27d build/gpio.o
- .debug_str     0x00005895      0xd78 build/can.o
- .debug_str     0x00005895      0x5ba build/ZDT_X42_V2.o
- .debug_str     0x00005895     0x11d2 build/tim.o
- .debug_str     0x00005895      0x60a build/HT_DM_S_7010.o
- .debug_str     0x00005895      0xbfe build/XYR_Control.o
- .debug_str     0x00005895      0xdc3 build/usart.o
- .debug_str     0x00005895      0xd69 build/stm32f4xx_hal_uart.o
- .debug_str     0x00005895       0x57 build/startup_stm32f407xx.o
- .debug_str     0x00005895      0x19a C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_str     0x00005895      0x1e7 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_str     0x00005895       0x7d C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_str     0x00005895      0x695 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_str     0x00005895       0x9d C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_str     0x00005902      0xe11 build/stm32f4xx_it.o
+ .debug_str     0x00005902      0x289 build/stm32f4xx_hal_msp.o
+ .debug_str     0x00005902      0xa03 build/stm32f4xx_hal_can.o
+ .debug_str     0x00005902      0x6d4 build/stm32f4xx_hal_rcc.o
+ .debug_str     0x00005902      0x4ae build/stm32f4xx_hal_gpio.o
+ .debug_str     0x00005902      0x744 build/stm32f4xx_hal_dma.o
+ .debug_str     0x00005902      0xc43 build/stm32f4xx_hal_cortex.o
+ .debug_str     0x00005902      0xb32 build/stm32f4xx_hal.o
+ .debug_str     0x00005902     0x16cd build/stm32f4xx_hal_tim.o
+ .debug_str     0x00005902      0xed9 build/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x00005902      0x343 build/system_stm32f4xx.o
+ .debug_str     0x00005902      0x27d build/gpio.o
+ .debug_str     0x00005902      0xd78 build/can.o
+ .debug_str     0x00005902      0x689 build/ZDT_X42_V2.o
+ .debug_str     0x00005902     0x11d2 build/tim.o
+ .debug_str     0x00005902      0x60a build/HT_DM_S_7010.o
+ .debug_str     0x00005902      0xc71 build/XYR_Control.o
+ .debug_str     0x00005902      0xdc3 build/usart.o
+ .debug_str     0x00005902      0xd69 build/stm32f4xx_hal_uart.o
+ .debug_str     0x00005902       0x57 build/startup_stm32f407xx.o
+ .debug_str     0x00005902      0x19a C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_str     0x00005902      0x1e7 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_str     0x00005902       0x7d C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_str     0x00005902      0x695 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_str     0x00005902       0x9d C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
 .comment        0x00000000       0x24
  .comment       0x00000000       0x24 build/main.o
@@ -2701,7 +2703,7 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
  .comment       0x00000024       0x13 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
  .comment       0x00000024       0x13 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
-.debug_frame    0x00000000     0x2bc0
+.debug_frame    0x00000000     0x2bdc
  .debug_frame   0x00000000       0x88 build/main.o
  .debug_frame   0x00000088      0x120 build/stm32f4xx_it.o
  .debug_frame   0x000001a8       0x28 build/stm32f4xx_hal_msp.o
@@ -2719,13 +2721,13 @@ LOAD C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3
  .debug_frame   0x00001cf0      0x218 build/ZDT_X42_V2.o
  .debug_frame   0x00001f08      0x100 build/tim.o
  .debug_frame   0x00002008      0x2e8 build/HT_DM_S_7010.o
- .debug_frame   0x000022f0      0x194 build/XYR_Control.o
- .debug_frame   0x00002484       0xa4 build/usart.o
- .debug_frame   0x00002528      0x5e0 build/stm32f4xx_hal_uart.o
- .debug_frame   0x00002b08       0x2c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_frame   0x00002b34       0x2c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_frame   0x00002b60       0x2c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00002b8c       0x34 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x000022f0      0x1b0 build/XYR_Control.o
+ .debug_frame   0x000024a0       0xa4 build/usart.o
+ .debug_frame   0x00002544      0x5e0 build/stm32f4xx_hal_uart.o
+ .debug_frame   0x00002b24       0x2c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x00002b50       0x2c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_frame   0x00002b7c       0x2c C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00002ba8       0x34 C:/DevToolBox_Slot/GNU_CompilerCollection/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
 .debug_loclists
                 0x00000000      0x983
@@ -3407,12 +3409,13 @@ XYR_HT_Pos_Setting_VOFA                           build/XYR_Control.o
 XYR_HT_Speed_Setting_VOFA                         build/XYR_Control.o
 XYR_Init                                          build/XYR_Control.o
                                                   build/main.o
-XYR_MoveCtrl                                      build/XYR_Control.o
+XYR_MotorState                                    build/XYR_Control.o
+XYR_MotorState_Transition                         build/XYR_Control.o
+XYR_MotorState_Update                             build/XYR_Control.o
 XYR_Read_USB_Commend                              build/XYR_Control.o
                                                   build/main.o
 XYR_Relieve_Malfunction                           build/XYR_Control.o
 XYR_Stop_Move                                     build/XYR_Control.o
-XYR_Update_Axis_StateMachine                      build/XYR_Control.o
 XYR_ZDT_Fixed_Length_Move                         build/XYR_Control.o
 XYR_ZDT_Pos_Setting_VOFA                          build/XYR_Control.o
 XYR_ZDT_Speed_Setting_VOFA                        build/XYR_Control.o

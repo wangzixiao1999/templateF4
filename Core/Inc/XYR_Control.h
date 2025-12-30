@@ -11,25 +11,42 @@
 #include <string.h>
 #include "usart.h"
 
+#define MAX_MOTORS 3
+#define COMMEND_LOADING_TIME 10
+
 // 轴状态定义
 typedef enum
 {
-	XYRMOVE_IDLE,		// 空闲
-	XYRMOVE_START_MOVE, // 开始运动                                                                                                                                                                             , // 开始运动
-	XYRMOVE_WAIT_STOP,	// 等待完成
-	XYRMOVE_COMPLETE	// 运动完成
+	XYRMOVE_IDLE,			 // 空闲
+	XYRMOVE_WAIT_COMMEND,	 // 等待命令发送
+	XYRMOVE_COMMEND_LOADING, // 等待命令装载                                                                                                                                                                   , // 开始运动
+	XYRMOVE_WAIT_STOP,		 // 等待完成
+	XYRMOVE_COMPLETE,		 // 运动完成
+	XYRMOVE_BLOCKAGE		 // 运动限位
 } XYR_State;
 
 typedef struct
 {
-	XYR_State state;   // 当前状态
-	uint32_t dir;	   // 方向
+	// 设备状态维度
+	XYR_State state; // 当前状态
+	uint8_t axis;	 // 轴编号
+
+	// 运动参数维度
+	bool dir;		   // 方向
 	uint32_t velocity; // 速度
 	uint32_t position; // 位置
-	uint8_t axis;	   // 轴编号
-} XYR_MoveController;
 
-extern XYR_MoveController XYR_MoveCtrl[3];
+	// 时间维度
+	uint32_t start_time;   // 开始时间
+	uint32_t elapsed_time; // 已用时间
+
+	// 执行状态维度
+	bool command_sent; // 空闲标志
+	bool move_flag;	   // 移动标志
+
+} XYR_MotorStateSpace;
+
+extern XYR_MotorStateSpace XYR_MotorState[3];
 
 void XYR_Init();
 void XYR_Collision_Home(uint8_t addr);													   // 碰撞回零
@@ -49,6 +66,8 @@ void XYR_AutoScan_Stop(void);								   // 停止面扫(针对VOFA+)
 void Controller_Update_Callback(void); // 指令发送端
 
 void XYR_Read_USB_Commend(); // 串口解析命令
+
+void XYR_MotorState_Transition(uint8_t addr, XYR_State new_state);
 
 extern __IO CAN_t can;
 extern __IO CAN_t can2;

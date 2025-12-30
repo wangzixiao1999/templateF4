@@ -296,7 +296,7 @@ void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velo
   // 发送装载并准备发送
   cmdLength = 12;
   // 发送命令
-  //can_SendCmd(cmd, 12);
+  // can_SendCmd(cmd, 12);
 }
 
 /**
@@ -500,7 +500,7 @@ void ZDT_X42_V2_Origin_Interrupt(uint8_t addr)
  */
 void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
 {
-  static volatile uint32_t preTick_ZDT[2] = {0 , 0};
+  static volatile uint32_t preTick_ZDT[2] = {0, 0};
 
   uint16_t ext_id_value = *(uint16_t *)ExtId; // 读取2个字节
   uint8_t id = ext_id_value >> 8;
@@ -572,8 +572,6 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
   }
 }
 
-
-
 /**
  * @brief 命令装载并准备发送
  * @retval cmdLength  用于发送命令的全局变量数组长度
@@ -583,9 +581,9 @@ void ZDT_cmdSend()
   if (cmdLength > 0)
   {
     can_SendCmd(cmd, cmdLength);
-    memset((void*)cmd, 0, sizeof(cmd));
+    XYR_MotorState[cmd[0] - 1].command_sent = true;
+    memset((void *)process_buffer, 0, sizeof(process_buffer));
+    memset((void *)cmd, 0, sizeof(cmd));
     cmdLength = 0;
   }
-
 }
-
