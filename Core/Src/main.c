@@ -30,7 +30,7 @@
 #include "HT_DM_S_7010.h"
 #include "XYR_Control.h"
 
-extern PulseChannel_t channels[4]; // 4???
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
