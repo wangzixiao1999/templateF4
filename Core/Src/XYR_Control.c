@@ -7,9 +7,10 @@ volatile float VOFA_Speed[3] = {20, 20, 200};
 volatile float VOFA_Pos[3] = {10, 10, 100};
 volatile uint8_t VOFA_Scan[2] = {10, 10};
 volatile bool AutoScanFlag = true;
+volatile bool USB_Send_Flag = false;
+
 
 volatile uint8_t xyr_request = 0;
-
 
 XYR_MotorStateSpace XYR_MotorState[3] = {0};
 /**
@@ -90,9 +91,7 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
 		return; // 错误
 	}
 
-	uint8_t index = addr - 1;
-
-	if (XYR_MotorState[index].state != XYRMOVE_IDLE)
+	if (XYR_MotorState[addr - 1].state != XYRMOVE_IDLE)
 	{
 		return;
 	}
@@ -107,6 +106,7 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
 	else if (position > 118.f)
 		position = 118.f;
 
+	XYR_MotorState_Transition(addr, XYRMOVE_WAIT_COMMEND);
 	ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity * 15, position * 72, 0, 0);
 }
 
@@ -290,10 +290,10 @@ void Controller_Update_Callback(void)
 	switch (ZDT_request_index)
 	{
 	case 0:
-		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机相电流
+		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机
 		break;
 	case 1:
-		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机相电流
+		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机
 		break;
 	case 2:
 		ZDT_cmdSend(); // 发送装载好的命令
@@ -306,24 +306,32 @@ void Controller_Update_Callback(void)
 	uint32_t currTick_Tim4 = HAL_GetTick();
 	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
 	preTick_Tim4 = currTick_Tim4;
-	// 每50ms发送一次数据
+	// 每50ms发送一次数据(改：在main里面)
 	static int send_sount = 0;
 	if (++send_sount >= 50)
 	{
-		float values[3];
-		values[0] = (float)ZDT_angle[0] / -90.0f;
-		values[1] = (float)ZDT_angle[1] / -90.0f;
-		values[2] = (float)HT_Single_circle_absolute_angle * 360.f / 16384.f;
-
-		// 发送原始数据（VOFA+使用JustFloat协议）
-		HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
-
-		// 可选：添加帧尾0x00 0x00 0x80 0x7F（FireWater协议）
-		uint8_t tail[4] = {0x00, 0x00, 0x80, 0x7F};
-		HAL_UART_Transmit(&huart1, tail, 4, 100);
-		// 张大头1号机相电流
+		USB_Send_Flag = true;
 		send_sount = 0;
 	}
+}
+
+/**
+ * @brief:串口发送状态更新
+ */
+void XYR_Send_USB_Commend()
+{
+	float values[3];
+	values[0] = (float)ZDT_angle[0] / -90.0f;
+	values[1] = (float)ZDT_angle[1] / -90.0f;
+	values[2] = (float)HT_Single_circle_absolute_angle * 360.f / 16384.f;
+
+	// 发送原始数据（VOFA+使用JustFloat协议）
+	HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
+
+	// 可选：添加帧尾0x00 0x00 0x80 0x7F（FireWater协议）
+	uint8_t tail[4] = {0x00, 0x00, 0x80, 0x7F};
+	HAL_UART_Transmit(&huart1, tail, 4, 100);
+	// 张大头1号机相电流
 }
 
 /**
@@ -492,7 +500,7 @@ void XYR_MotorState_Update(uint8_t addr)
 	{
 		if (XYR_MotorState[index].command_sent == true)
 		{
-			XYR_MotorState_Transition(index, XYRMOVE_COMMEND_LOADING);
+			XYR_MotorState_Transition(addr, XYRMOVE_COMMEND_LOADING);
 			XYR_MotorState[index].start_time = HAL_GetTick();
 			return;
 		}
@@ -503,7 +511,7 @@ void XYR_MotorState_Update(uint8_t addr)
 		XYR_MotorState[index].elapsed_time = HAL_GetTick() - XYR_MotorState[index].start_time;
 		if (XYR_MotorState[index].elapsed_time >= COMMEND_LOADING_TIME)
 		{
-			XYR_MotorState_Transition(index, XYRMOVE_WAIT_STOP);
+			XYR_MotorState_Transition(addr, XYRMOVE_WAIT_STOP);
 			return;
 		}
 		break;
@@ -512,7 +520,7 @@ void XYR_MotorState_Update(uint8_t addr)
 		if (ZDT_state[index] & 0x02)
 		{
 			ZDT_state[index] &= ~(0x02);
-			XYR_MotorState_Transition(index, XYRMOVE_COMPLETE);
+			XYR_MotorState_Transition(addr, XYRMOVE_COMPLETE);
 			XYR_MotorState[index].start_time = HAL_GetTick();
 			return;
 		}
@@ -521,7 +529,7 @@ void XYR_MotorState_Update(uint8_t addr)
 		XYR_MotorState[index].elapsed_time = HAL_GetTick() - XYR_MotorState[index].start_time;
 		if (XYR_MotorState[index].elapsed_time >= COMMEND_LOADING_TIME)
 		{
-			XYR_MotorState_Transition(index, XYRMOVE_IDLE);
+			XYR_MotorState_Transition(addr, XYRMOVE_IDLE);
 			return;
 		}
 		break;

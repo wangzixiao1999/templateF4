@@ -578,7 +578,7 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
  */
 void ZDT_cmdSend()
 {
-  if (cmdLength > 0)
+  if ((cmdLength > 0) && (XYR_MotorState[cmd[0] - 1].state == XYRMOVE_WAIT_COMMEND))
   {
     can_SendCmd(cmd, cmdLength);
     XYR_MotorState[cmd[0] - 1].command_sent = true;

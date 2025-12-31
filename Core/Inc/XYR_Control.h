@@ -65,9 +65,11 @@ void XYR_AutoScan_Stop(void);								   // 停止面扫(针对VOFA+)
 
 void Controller_Update_Callback(void); // 指令发送端
 
+void XYR_Send_USB_Commend(); // 串口发送状态更新
 void XYR_Read_USB_Commend(); // 串口解析命令
 
 void XYR_MotorState_Transition(uint8_t addr, XYR_State new_state);
+void XYR_MotorState_Update(uint8_t addr);
 
 extern __IO CAN_t can;
 extern __IO CAN_t can2;
@@ -75,6 +77,7 @@ extern volatile bool moveFlag[3];
 extern volatile float VOFA_Speed[3];
 extern volatile float VOFA_Pos[3];
 extern volatile bool AutoScanFlag;
+extern volatile bool USB_Send_Flag;
 
 extern volatile uint8_t xyr_request;
 
