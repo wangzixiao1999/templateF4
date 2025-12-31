@@ -13,8 +13,6 @@ volatile int32_t ZDT_current[2] = {0}; // 张大头电流
 volatile int32_t ZDT_speed[2] = {0};   // 张大头速度
 volatile int32_t ZDT_angle[2] = {0};   // 张大头角度
 volatile uint8_t ZDT_state[2] = {0};   // 张大头状态（由接收回调更新，声明为 volatile）
-volatile uint8_t cmd[32] = {0};        // 用于发送命令的全局变量
-volatile uint8_t cmdLength = 0;        // 用于发送命令的全局变量数组长度，同时用于发送准备标志位
 
 float ZDTRev_freq[2] = {0.f, 0.f};
 
@@ -280,23 +278,21 @@ void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velo
   pos = (uint32_t)ABS(position * 10.0f);
 
   // 装载命令
-  cmd[0] = addr;                 // 地址
-  cmd[1] = 0xFB;                 // 功能码
-  cmd[2] = dir;                  // 符号（方向）
-  cmd[3] = (uint8_t)(vel >> 8);  // 最大速度(RPM)高8位字节
-  cmd[4] = (uint8_t)(vel >> 0);  // 最大速度(RPM)低8位字节
-  cmd[5] = (uint8_t)(pos >> 24); // 位置(bit24 - bit31)
-  cmd[6] = (uint8_t)(pos >> 16); // 位置(bit16 - bit23)
-  cmd[7] = (uint8_t)(pos >> 8);  // 位置(bit8  - bit15)
-  cmd[8] = (uint8_t)(pos >> 0);  // 位置(bit0  - bit7 )
-  cmd[9] = raf;                  // 相位位置/绝对位置标志
-  cmd[10] = snF;                 // 多机同步运动标志
-  cmd[11] = 0x6B;                // 校验字节
+  XYR_MotorState[addr - 1].cmd[0] = addr;                 // 地址
+  XYR_MotorState[addr - 1].cmd[1] = 0xFB;                 // 功能码
+  XYR_MotorState[addr - 1].cmd[2] = dir;                  // 符号（方向）
+  XYR_MotorState[addr - 1].cmd[3] = (uint8_t)(vel >> 8);  // 最大速度(RPM)高8位字节
+  XYR_MotorState[addr - 1].cmd[4] = (uint8_t)(vel >> 0);  // 最大速度(RPM)低8位字节
+  XYR_MotorState[addr - 1].cmd[5] = (uint8_t)(pos >> 24); // 位置(bit24 - bit31)
+  XYR_MotorState[addr - 1].cmd[6] = (uint8_t)(pos >> 16); // 位置(bit16 - bit23)
+  XYR_MotorState[addr - 1].cmd[7] = (uint8_t)(pos >> 8);  // 位置(bit8  - bit15)
+  XYR_MotorState[addr - 1].cmd[8] = (uint8_t)(pos >> 0);  // 位置(bit0  - bit7 )
+  XYR_MotorState[addr - 1].cmd[9] = raf;                  // 相位位置/绝对位置标志
+  XYR_MotorState[addr - 1].cmd[10] = snF;                 // 多机同步运动标志
+  XYR_MotorState[addr - 1].cmd[11] = 0x6B;                // 校验字节
 
   // 发送装载并准备发送
-  cmdLength = 12;
-  // 发送命令
-  // can_SendCmd(cmd, 12);
+    XYR_MotorState[addr - 1].cmdLength = 12;
 }
 
 /**
@@ -460,16 +456,15 @@ void ZDT_X42_V2_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF)
   // uint8_t cmd[16] = {0};
 
   // 装载命令
-  cmd[0] = addr;   // 地址
-  cmd[1] = 0x9A;   // 功能码
-  cmd[2] = o_mode; // 回零模式，0为单圈就近回零，1为单圈方向回零，2为多圈无限位碰撞回零，3为多圈有限位开关回零
-  cmd[3] = snF;    // 多机同步运动标志，false为不启用，true为启用
-  cmd[4] = 0x6B;   // 校验字节
+  XYR_MotorState[addr - 1].cmd[0] = addr;   // 地址
+  XYR_MotorState[addr - 1].cmd[1] = 0x9A;   // 功能码
+  XYR_MotorState[addr - 1].cmd[2] = o_mode; // 回零模式，0为单圈就近回零，1为单圈方向回零，2为多圈无限位碰撞回零，3为多圈有限位开关回零
+  XYR_MotorState[addr - 1].cmd[3] = snF;    // 多机同步运动标志，false为不启用，true为启用
+  XYR_MotorState[addr - 1].cmd[4] = 0x6B;   // 校验字节
 
   // 发送装载并准备发送
-  cmdLength = 5;
-  // 发送命令
-  // can_SendCmd(cmd, 5);
+    XYR_MotorState[addr - 1].cmdLength = 5;
+
 }
 
 /**
@@ -547,7 +542,7 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
     int32_t speed = ((uint16_t)multi_frame_buffer[id - 1][19] << 8) | multi_frame_buffer[id - 1][20];
     if (multi_frame_buffer[id - 1][18] == 0x01)
       speed = -speed;
-    ZDT_speed[id - 1] = speed / 10.0f; // 转换为RPM
+    ZDT_speed[id - 1] = speed / 12.0f; // 转换为mm/s
 
     // 电机实时位置（第20-23字节）
     int32_t real_pos = (multi_frame_buffer[id - 1][22] << 24) |
@@ -556,7 +551,7 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
                        multi_frame_buffer[id - 1][25];
     if (multi_frame_buffer[id - 1][21] == 0x01)
       real_pos = -real_pos;
-    ZDT_angle[id - 1] = real_pos / 10.0f; // 转换为度
+    ZDT_angle[id - 1] = real_pos / 72.0f; // 转换为mm
 
     // 电机状态标志（第34字节）
     ZDT_state[id - 1] = multi_frame_buffer[id - 1][34];
@@ -576,14 +571,14 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
  * @brief 命令装载并准备发送
  * @retval cmdLength  用于发送命令的全局变量数组长度
  */
-void ZDT_cmdSend()
+void ZDT_cmdSend(uint8_t addr)
 {
-  if ((cmdLength > 0) && (XYR_MotorState[cmd[0] - 1].state == XYRMOVE_WAIT_COMMEND))
+  if ((XYR_MotorState[addr - 1].cmdLength > 0) && (XYR_MotorState[addr - 1].state == XYRMOVE_WAIT_COMMEND))
   {
-    can_SendCmd(cmd, cmdLength);
-    XYR_MotorState[cmd[0] - 1].command_sent = true;
+    can_SendCmd(XYR_MotorState[addr - 1].cmd, XYR_MotorState[addr - 1].cmdLength);
+    XYR_MotorState[addr - 1].command_sent = true;
     memset((void *)process_buffer, 0, sizeof(process_buffer));
-    memset((void *)cmd, 0, sizeof(cmd));
-    cmdLength = 0;
+    memset((void *)XYR_MotorState[addr - 1].cmd, 0, sizeof(XYR_MotorState[addr - 1].cmd));
+    XYR_MotorState[addr - 1].cmdLength = 0;
   }
 }

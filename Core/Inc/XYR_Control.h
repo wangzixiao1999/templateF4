@@ -43,6 +43,8 @@ typedef struct
 	// 执行状态维度
 	bool command_sent; // 空闲标志
 	bool move_flag;	   // 移动标志
+	uint8_t cmd[32];   // 接收命令
+	uint8_t cmdLength; // 接收命令长度
 
 } XYR_MotorStateSpace;
 

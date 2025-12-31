@@ -453,7 +453,7 @@ void HT_UpdateParameters(void)
   {
 
     HT_current = HT_data_cache.current;
-    HT_speed = HT_data_cache.speed;
+    HT_speed = HT_data_cache.speed / 100.f;
     HT_Single_circle_absolute_angle = 16384 - HT_data_cache.single_circle_angle;
     HT_Multi_circle_absolute_angle = HT_data_cache.multi_circle_angle;
 

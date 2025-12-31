@@ -59,13 +59,11 @@ void ZDT_X42_V2_Origin_Modify_Params(uint8_t addr, bool svF, uint8_t o_mode, uin
 void ZDT_X42_V2_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF);                                                                                                          // 发送命令触发回零
 void ZDT_X42_V2_Origin_Interrupt(uint8_t addr);                                                                                                                                         // 强制中断并退出回零
 void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount);                                                                                                         // 返回数据接收函数
-void ZDT_cmdSend();
+void ZDT_cmdSend(uint8_t addr);                                                                                                                                                         // 发送装载命令
 
 extern volatile int32_t ZDT_current[2]; // 张大头电流
 extern volatile int32_t ZDT_speed[2];   // 张大头速度
 extern volatile int32_t ZDT_angle[2];   // 张大头角度
 extern volatile uint8_t ZDT_state[2];   // 张大头状态（由中断/接收回调更新，声明为 volatile）
-extern volatile uint8_t cmd[32];        // 用于发送命令的全局变量
-extern volatile uint8_t cmdLength;      // 用于发送命令的全局变量数组长度，同时用于发送准备标志位
 
 #endif
