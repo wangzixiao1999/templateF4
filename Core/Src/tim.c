@@ -22,12 +22,39 @@
 
 /* USER CODE BEGIN 0 */
 
-PulseChannel_t channels[4]; // 4个通道
-uint32_t system_ticks = 0;  // 系统滴答计数
+volatile uint32_t tstart_ticks[4];
+volatile uint32_t twidth_ticks[4];
+volatile uint8_t pulse_state[4] = {0,0,0,0};
+
+static uint32_t tim1_clk_hz = 0; /* 缓存 TIM1 时钟（Hz） */
+
+static inline uint32_t us_to_ticks(double us)
+{
+    if (tim1_clk_hz == 0) {
+        /* 保险：如果未初始化，就调用 HAL 接口尝试一次（但推荐在 main 中先调用 TIM1_ClockInit_Cache） */
+        uint32_t pclk2 = HAL_RCC_GetPCLK2Freq();
+        if (pclk2 != 0) {
+            /* 如果 HAL 返回非零，决策是否乘2 取决于 ppre2 */
+            uint32_t tmp = (RCC->CFGR & RCC_CFGR_PPRE2) >> RCC_CFGR_PPRE2_Pos;
+            if (tmp >= 4) tim1_clk_hz = pclk2 * 2;
+            else tim1_clk_hz = pclk2;
+        } else {
+            /* 最后备方案：用 SystemCoreClock 假设 APB2=1（保守策略） */
+            tim1_clk_hz = SystemCoreClock;
+        }
+    }
+    /* 计算 ticks，避免浮点精度问题，使用 64-bit 中间 */
+    uint64_t ticks = (uint64_t)(us * (double)tim1_clk_hz / 1e6 + 0.5);
+    if (ticks > 0xFFFFFFFF) ticks = 0xFFFFFFFF;
+    return (uint32_t)ticks;
+}
+
+
 
 /* USER CODE END 0 */
 
 TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim4;
 
 /* TIM1 init function */
 void MX_TIM1_Init(void)
@@ -51,7 +78,7 @@ void MX_TIM1_Init(void)
   htim1.Init.Period = 65535;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
   {
     Error_Handler();
@@ -61,7 +88,7 @@ void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
+  if (HAL_TIM_OC_Init(&htim1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -71,26 +98,26 @@ void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.OCMode = TIM_OCMODE_TOGGLE;
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
-  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+  if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
+  if (HAL_TIM_OC_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
   {
     Error_Handler();
   }
@@ -111,6 +138,46 @@ void MX_TIM1_Init(void)
   HAL_TIM_MspPostInit(&htim1);
 
 }
+/* TIM4 init function */
+void MX_TIM4_Init(void)
+{
+
+  /* USER CODE BEGIN TIM4_Init 0 */
+
+  /* USER CODE END TIM4_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM4_Init 1 */
+
+  /* USER CODE END TIM4_Init 1 */
+  htim4.Instance = TIM4;
+  htim4.Init.Prescaler = 83;
+  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim4.Init.Period = 999;
+  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM4_Init 2 */
+
+  /* USER CODE END TIM4_Init 2 */
+
+}
 
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
 {
@@ -122,9 +189,28 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
   /* USER CODE END TIM1_MspInit 0 */
     /* TIM1 clock enable */
     __HAL_RCC_TIM1_CLK_ENABLE();
+
+    /* TIM1 interrupt Init */
+    HAL_NVIC_SetPriority(TIM1_CC_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(TIM1_CC_IRQn);
   /* USER CODE BEGIN TIM1_MspInit 1 */
 
   /* USER CODE END TIM1_MspInit 1 */
+  }
+  else if(tim_baseHandle->Instance==TIM4)
+  {
+  /* USER CODE BEGIN TIM4_MspInit 0 */
+
+  /* USER CODE END TIM4_MspInit 0 */
+    /* TIM4 clock enable */
+    __HAL_RCC_TIM4_CLK_ENABLE();
+
+    /* TIM4 interrupt Init */
+    HAL_NVIC_SetPriority(TIM4_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(TIM4_IRQn);
+  /* USER CODE BEGIN TIM4_MspInit 1 */
+
+  /* USER CODE END TIM4_MspInit 1 */
   }
 }
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
@@ -146,7 +232,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
     */
     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_11|GPIO_PIN_13|GPIO_PIN_14;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF1_TIM1;
     HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
@@ -168,218 +254,91 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
   /* USER CODE END TIM1_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_TIM1_CLK_DISABLE();
+
+    /* TIM1 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(TIM1_CC_IRQn);
   /* USER CODE BEGIN TIM1_MspDeInit 1 */
 
   /* USER CODE END TIM1_MspDeInit 1 */
+  }
+  else if(tim_baseHandle->Instance==TIM4)
+  {
+  /* USER CODE BEGIN TIM4_MspDeInit 0 */
+
+  /* USER CODE END TIM4_MspDeInit 0 */
+    /* Peripheral clock disable */
+    __HAL_RCC_TIM4_CLK_DISABLE();
+
+    /* TIM4 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(TIM4_IRQn);
+  /* USER CODE BEGIN TIM4_MspDeInit 1 */
+
+  /* USER CODE END TIM4_MspDeInit 1 */
   }
 }
 
 /* USER CODE BEGIN 1 */
 
-void schedule_channel(uint8_t ch, float delay_us, float freq_Hz, float width_us, uint32_t pulse_count) {
-  if(ch >= 4) return;
+void start_4_one_shot(double delays_us[4], double widths_us[4]) {
+    /* 计算 ticks 并设状态为 1（等待上升）*/
+    for (int i=0;i<4;i++){
+        tstart_ticks[i] = us_to_ticks(delays_us[i]);
+        twidth_ticks[i] = us_to_ticks(widths_us[i]);
+        pulse_state[i] = 1; /* 1 = waiting for rising */
+    }
 
-  /* 以 168 MHz 为基准：ticks_per_us = 168 */
-  const float ticks_per_us = 168.0f;
-  float period_us = (freq_Hz > 0.0f) ? (1000000.0f / freq_Hz) : 0.0f;
+    /* 停计数，清 CNT */
+    __HAL_TIM_DISABLE(&htim1);
+    __HAL_TIM_SET_COUNTER(&htim1, 0);
 
-  /* 计算 ticks，边界检查到 16-bit */
-  uint32_t delay_ticks = (uint32_t)roundf(delay_us * ticks_per_us);
-  uint32_t period_ticks = (uint32_t)roundf(period_us * ticks_per_us);
-  uint32_t width_ticks = (uint32_t)roundf(width_us * ticks_per_us);
-  if (delay_ticks == 0) delay_ticks = 1; /* 保证非零延迟可以及时触发 */
-  if (width_ticks == 0) width_ticks = 1;
-  if (period_ticks == 0 && freq_Hz > 0.0f) period_ticks = width_ticks; /* 防止周期小于宽度 */
+    /* 清除遗留中断标志，确保干净状态 */
+    TIM1->SR &= ~(TIM_SR_CC1IF | TIM_SR_CC2IF | TIM_SR_CC3IF | TIM_SR_CC4IF);
 
-  if (delay_ticks > 0xFFFFFFFFu) delay_ticks = 0xFFFFFFFFu; /* 安全 */
-  if (period_ticks > 0xFFFFu) period_ticks = 0xFFFFu; /* 将在触发前被截断 */
-  if (width_ticks > 0xFFFFu) width_ticks = 0xFFFFu;
+    /* 为保险，先用 HAL 停止各通道（如果之前有残留），保持 HAL/硬件一致性 */
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
+    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
 
-  channels[ch].delay_ticks = delay_ticks;
-  channels[ch].period_ticks = period_ticks;
-  channels[ch].width_ticks = width_ticks;
-  channels[ch].count = pulse_count;
-  channels[ch].current_count = 0;
-  /* next_pulse_time 基于系统_ticks（TIM1 自由计数），保证后面比较有效 */
-  channels[ch].next_pulse_time = system_ticks + channels[ch].delay_ticks;
-  channels[ch].active = 1;
+    /* 预写 CCR 为上升时间（确保立即有效，OC Preload disabled） */
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, tstart_ticks[0]);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, tstart_ticks[1]);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, tstart_ticks[2]);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, tstart_ticks[3]);
 
-  /* 预写入 CCR 的阴影寄存器（写 CCRx 会更新阴影或直接寄存器，Update 时装载） */
-  switch(ch) {
-    case 0: htim1.Instance->CCR1 = channels[ch].width_ticks; break;
-    case 1: htim1.Instance->CCR2 = channels[ch].width_ticks; break;
-    case 2: htim1.Instance->CCR3 = channels[ch].width_ticks; break;
-    case 3: htim1.Instance->CCR4 = channels[ch].width_ticks; break;
-  }
+    /* 启动 OC 并启用 CC 中断（使用 HAL 接口以维护状态一致） */
+    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
+    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_2);
+    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_3);
+    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_4);
+
+    /* 清标志并启动计时器（从 0 开始） */
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
+    __HAL_TIM_ENABLE(&htim1);
 }
 
-/* update_pulse_generator: 需要被周期性调用（建议放到主循环或 SysTick/HAL_TIM 中断） */
-void update_pulse_generator(void) {
-  uint32_t now = __HAL_TIM_GET_COUNTER(&htim1);
-  system_ticks = now;
+/* 调用位置：在 SystemClock_Config() 完成后调用一次 */
+void TIM1_ClockInit_Cache(void)
+{
+    /* 确保 SystemCoreClock 已被更新 */
+    SystemCoreClockUpdate();
+    uint32_t hclk = SystemCoreClock;
 
-  uint8_t need_mask = 0;
-  uint32_t max_period = 0;
-
-  /* 为了在 start_synchronized_pulse 返回后更新计数，我们先收集需要触发的通道索引 */
-  int need_indices[4];
-  int need_count = 0;
-
-  for (int i = 0; i < 4; ++i) {
-    if (channels[i].active && channels[i].current_count < channels[i].count) {
-      /* 环形比较（考虑 16-bit 溢出） */
-      uint32_t next_time = channels[i].next_pulse_time;
-      uint32_t diff;
-
-      if (now >= next_time) {
-        // 正常情况：当前时间 >= 下次触发时间
-        diff = now - next_time;
-      } else {
-        // 定时器溢出情况：当前时间 < 下次触发时间（由于计数器从0重新开始）
-        diff = (0xFFFF - next_time) + now + 1;
-      }
-
-      if (diff < 0x8000u) {
-        need_mask |= (1u << i);
-        need_indices[need_count++] = i;
-        uint32_t p = channels[i].period_ticks;
-        if (p == 0) p = channels[i].width_ticks;
-        if (p > max_period) max_period = p;
-        /* 注意：不在这里更新 current_count/next_pulse_time，等待脉冲完成后再更新 */
-      }
+    /* 读取 APB2 prescaler 字段（bits 13:11）*/
+    uint32_t tmp = (RCC->CFGR & RCC_CFGR_PPRE2) >> RCC_CFGR_PPRE2_Pos;
+    uint32_t apb2_div;
+    switch (tmp) {
+        case 0: case 1: case 2: case 3: apb2_div = 1; break; /* 0xx = /1 */
+        case 4: apb2_div = 2; break;  /* 100 -> /2 */
+        case 5: apb2_div = 4; break;  /* 101 -> /4 */
+        case 6: apb2_div = 8; break;  /* 110 -> /8 */
+        case 7: apb2_div = 16; break; /* 111 -> /16 */
+        default: apb2_div = 1; break;
     }
-  }
 
-  if (need_mask == 0) return;
-
-  if (max_period == 0) max_period = 1;
-  if (max_period > 0xFFFFu) max_period = 0xFFFFu;
-
-  /* 启动同步单次脉冲，函数会阻塞直到该脉冲完成 */
-  start_synchronized_pulse(max_period, need_mask);
-
-  /* 脉冲完成后，用定时器当前 CNT 作为新的基准来更新 next_pulse_time */
-  uint32_t end_now = __HAL_TIM_GET_COUNTER(&htim1);
-  system_ticks = end_now;
-
-  for (int k = 0; k < need_count; ++k) {
-    int i = need_indices[k];
-    channels[i].current_count++;
-    channels[i].next_pulse_time = end_now + channels[i].period_ticks;
-    if (channels[i].next_pulse_time > 0xFFFF) {
-      channels[i].next_pulse_time &= 0xFFFF;
-    }
-    if (channels[i].current_count >= channels[i].count) {
-      channels[i].active = 0;
-    }
-  }
-}
-
-/* start_synchronized_pulse：把每个需要触发的通道的 CCR 写入为 channels[i].width_ticks，
-   然后把 TIM1 以 One-Pulse 模式启动一次（从 CNT=0 开始计数），保证所有通道的上升沿硬同步。
-   触发完成后等待计数结束并停止 PWM 通道，确保输出回到空闲电平（防止一直为高）。 */
-void start_synchronized_pulse(uint32_t period_ticks, uint32_t channel_mask) {
-  /* 停止计数器（保证可以把 CNT 归零并安全写入 ARR/CCR） */
-  __HAL_TIM_DISABLE(&htim1); /* 清 CEN */
-
-  /* 清 CNT，准备从零开始计数，使 PWM 相位一致 */
-  htim1.Instance->CNT = 0;
-
-  /* 截断到 16-bit */
-  if (period_ticks == 0) period_ticks = 1;
-  if (period_ticks > 0xFFFFu) period_ticks = 0xFFFFu;
-  htim1.Instance->ARR = (uint16_t)period_ticks;
-
-  /* 为需要输出的通道写入各自的 CCR（使用 shadow，随后 UG 装载）；
-     不需要触发的通道设置为 0（确保不输出） */
-  if (channel_mask & (1u << 0)) {
-    htim1.Instance->CCR1 = (uint16_t)channels[0].width_ticks;
-  } else {
-    htim1.Instance->CCR1 = 0;
-  }
-  if (channel_mask & (1u << 1)) {
-    htim1.Instance->CCR2 = (uint16_t)channels[1].width_ticks;
-  } else {
-    htim1.Instance->CCR2 = 0;
-  }
-  if (channel_mask & (1u << 2)) {
-    htim1.Instance->CCR3 = (uint16_t)channels[2].width_ticks;
-  } else {
-    htim1.Instance->CCR3 = 0;
-  }
-  if (channel_mask & (1u << 3)) {
-    htim1.Instance->CCR4 = (uint16_t)channels[3].width_ticks;
-  } else {
-    htim1.Instance->CCR4 = 0;
-  }
-
-  /* 使能高级定时器主输出（MOE），必要时打开 BDTR 的 MOE 位 */
-#ifdef __HAL_TIM_MOE_ENABLE
-  __HAL_TIM_MOE_ENABLE(&htim1);
-#else
-  htim1.Instance->BDTR |= TIM_BDTR_MOE;
-#endif
-
-  /* 产生 Update 事件，立即把 CCR/ARR 的阴影装载到活动寄存器（硬件同步） */
-  htim1.Instance->EGR = TIM_EGR_UG;
-
-  /* 进入 One-Pulse 模式：计数完成后自动停止 */
-  htim1.Instance->CR1 |= TIM_CR1_OPM;
-
-  /* 启动需要的 PWM 通道输出（只启用需要的通道） */
-  if (channel_mask & (1u << 0)) HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-  if (channel_mask & (1u << 1)) HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-  if (channel_mask & (1u << 2)) HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-  if (channel_mask & (1u << 3)) HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
-
-  /* 启动计数器（从 CNT=0 开始），计数到 ARR 后因 OPM 自动停止（CEN 清零） */
-  htim1.Instance->CR1 |= TIM_CR1_CEN;
-
-  /* 等待 One-Pulse 完成：轮询直到定时器停止（OPM 会在溢出/ARR 后清 CEN） */
-  while (htim1.Instance->CR1 & TIM_CR1_CEN) {
-    __NOP();
-  }
-
-  /* 脉冲已完成：停止所有 PWM 通道输出，确保引脚返回到空闲电平 */
-  HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
-  HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_4);
-
-  /* 清除 One-Pulse 模式位（可选，保持计时器回到普通模式） */
-  htim1.Instance->CR1 &= ~TIM_CR1_OPM;
-
-  /* 取消主输出使能（MOE），可选：保持关闭以确保输出被硬件禁用 */
-#ifdef __HAL_TIM_MOE_DISABLE
-  __HAL_TIM_MOE_DISABLE(&htim1);
-#else
-  htim1.Instance->BDTR &= ~TIM_BDTR_MOE;
-#endif
-
-}
-
-/* 新增：阻塞运行一次，直到所有已设置的脉冲完成
-   这是最小改动实现“调用一次函数，按设定时序/频率/脉冲数精确同步触发并等待完成”的方法。
-   它只是循环调用 update_pulse_generator()，直到 channels 全部 inactive。
-*/
-void run_once_blocking(void) {
-  /* 等待所有通道完成 */
-  while (1) {
-    uint8_t any_active = 0;
-    for (int i = 0; i < 4; ++i) {
-      if (channels[i].active && channels[i].current_count < channels[i].count) {
-        any_active = 1;
-        break;
-      }
-    }
-    if (!any_active) break;
-
-    /* 触发可能到时的脉冲（内部会阻塞直到 One-Pulse 完成）*/
-    update_pulse_generator();
-
-    /* 可选：短等待以避免过度占用 CPU（update_pulse_generator 内部已经使用定时器计数判断） */
-    __NOP();
-  }
+    uint32_t pclk2 = hclk / apb2_div;
+    if (apb2_div == 1) tim1_clk_hz = pclk2;
+    else tim1_clk_hz = pclk2 * 2; /* F4 家族：APB prescaler !=1 时定时器时钟 = PCLK * 2 */
 }
 
 /* USER CODE END 1 */

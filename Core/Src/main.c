@@ -1,30 +1,34 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2025 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "can.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
 #include "ZDT_X42_V2.h"
+#include "HT_DM_S_7010.h"
+#include "XYR_Control.h"
 
 extern PulseChannel_t channels[4]; // 4???
 /* USER CODE END Includes */
@@ -58,13 +62,15 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+float Tim4Send_freq = 0.f;
+static volatile int usartTest = 0;
 
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
 
@@ -85,70 +91,68 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  TIM1_ClockInit_Cache();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_CAN1_Init();
   MX_TIM1_Init();
+  MX_CAN2_Init();
+  MX_TIM4_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-	// USER_CAN1_Filter_Init();	     // 初始化CAN滤波�?
-	// if(HAL_CAN_Start(&hcan1) != HAL_OK) { Error_Handler(); }	// 启动CAN控制�?
-	// if(HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) { Error_Handler(); }	// 使能CAN控制器接收中�?
-
-  // HAL_Delay(2000);
-  for(int i = 0; i < 4; i++)
+  USER_CAN1_Filter_Init();
+  USER_CAN2_Filter_Init(); // 初始化CAN滤波器
+  if (HAL_CAN_Start(&hcan1) != HAL_OK)
   {
-    channels[i].active = 0;
-  }
+    Error_Handler();
+  } // 启动CAN1控制器
+  if (HAL_CAN_Start(&hcan2) != HAL_OK)
+  {
+    Error_Handler();
+  } // 启动CAN2控制器
+  if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+  {
+    Error_Handler();
+  } // 使能CAN1控制器接收中断
+  if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+  {
+    Error_Handler();
+  } // 使能CAN2控制器接收中断
+  XYR_Init(); // XYR位移台初始化
 
+  HAL_TIM_Base_Start_IT(&htim4);
 
-  HAL_TIM_Base_Start(&htim1);
-  schedule_channel(0, 10.0, 10.0, 8.0, 5);
-  run_once_blocking();
+  HAL_Delay(2000);
+
+  // double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
+  // double widths_us[4] = {50.0, 25.0, 20.0, 35.0};
+
+  //   uint8_t cmd1[32] = {0};
+
+  // // 装载命令                 // 地址
+  // cmd1[0]  =  0x01;
+  // cmd1[1]  =  0xB1;                      // 功能码
+  // // 发送命令
+  // can2_SendCmd(cmd1, 2);
+  // HAL_Delay(1000);
+
+  // XYR_Collision_Home(0);
+  //  XYR_ZDT_Fixed_Length_Move(2, 0, 100, 10);
+  //  XYR_ZDT_Fixed_Length_Move(1, 0, 100, 10);
+  //  XYR_ZDT_Fixed_Length_Move(2, 1, 100, 10);
+  //  XYR_ZDT_Fixed_Length_Move(1, 1, 100, 10);
+  //  XYR_HT_Fixed_Length_Move(1, 2000, 16384);
+  //  XYR_HT_Fixed_Length_Move(0, 2000, 16384);
+  //  XYR_HT_Fixed_Speed_Move(0, 3000);
+
+  // HT_DM_S_7010_Relative_Position_Control(1, 16384);
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  //   for (size_t i = 0; i < 9; i++)
-  // {
-  //   for (size_t j = 0; j < 9; j++)
-  //   {
-  //     ZDT_X42_V2_Traj_Position_Control(2, i%2, 1000, 1000, 1000.0f, 36.0f, 0, 0);
-	//     HAL_Delay(10);
-
-  //     while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  //     {
-  //       can.rxFrameFlag = false;
-  //     }
-  //     can.rxData[0] = 0;
-  //     can.rxData[1] = 0;
-  //     HAL_Delay(200);
-  //   }
-
-  //   ZDT_X42_V2_Traj_Position_Control(1, 0, 1000, 1000, 1000.0f, 36.0f, 0, 0);
-	//   HAL_Delay(10);
-  //   while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  //   {
-  //     can.rxFrameFlag = false;
-  //   }
-
-  //   can.rxData[0] = 0;
-  //   can.rxData[1] = 0;
-  //   HAL_Delay(200);
-  // }
-
-  // ZDT_X42_V2_Traj_Position_Control(1, 1, 1000, 1000, 1000.0f, 360.0f, 0, 0);
-	// HAL_Delay(10);
-  // while(can.rxData[0] != 0xFD || can.rxData[1] != 0x9F)
-  // {
-  //   can.rxFrameFlag = false;
-  // }
-  // can.rxData[0] = 0;
-  // can.rxData[1] = 0;
 
   while (1)
   {
@@ -156,27 +160,39 @@ int main(void)
 
 
     /* USER CODE BEGIN 3 */
+    XYR_Read_USB_Commend();
+
+if(USB_Send_Flag)
+{
+  USB_Send_Flag = false;
+  XYR_Send_USB_Commend();
+}
+
+    XYR_MotorState_Update(1);
+    XYR_MotorState_Update(2);
+
+
   }
   /* USER CODE END 3 */
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-  */
+   */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -191,9 +207,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -206,13 +221,38 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if (htim->Instance == TIM4)
+  {
+    static volatile uint32_t preTick_Tim4 = 0;
+    Controller_Update_Callback();
+    uint32_t currTick_Tim4 = HAL_GetTick();
+    Tim4Send_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
+    preTick_Tim4 = currTick_Tim4;
+  }
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  if (huart->Instance == USART1)
+  {
+    xyr_request = rx_buffer[0]; // 命令头是第一个字节
+
+    memcpy(process_buffer, rx_buffer, 5);
+
+    memset(rx_buffer, 0, 5);
+
+    HAL_UART_Receive_IT(huart, rx_buffer, 5);
+  }
+}
 
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -224,14 +264,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
