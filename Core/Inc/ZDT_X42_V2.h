@@ -50,7 +50,8 @@ void ZDT_X42_V2_Modify_Ctrl_Mode(uint8_t addr, bool svF, uint8_t ctrl_mode);    
 void ZDT_X42_V2_En_Control(uint8_t addr, bool state, uint8_t snF);                                                                                                                      // 电机使能控制
 void ZDT_X42_V2_Torque_Control(uint8_t addr, uint8_t sign, uint16_t t_ramp, uint16_t torque, uint8_t snF);                                                                              // 力矩模式控制
 void ZDT_X42_V2_Velocity_Control(uint8_t addr, uint8_t dir, uint16_t v_ramp, float velocity, uint8_t snF);                                                                              // 速度模式控制
-void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF);                                                        // 直通限速位置模式控制
+void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF);
+void ZDT_X42_V2_Bypass_Position_LV_Control_Block(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF);                                                   // 直通限速位置模式控制
 void ZDT_X42_V2_Traj_Position_Control(uint8_t addr, uint8_t dir, uint16_t acc, uint16_t dec, float velocity, float position, uint8_t raf, uint8_t snF);                                 // 梯形曲线加减速位置模式控制
 void ZDT_X42_V2_Stop_Now(uint8_t addr, uint8_t snF);                                                                                                                                    // 让电机立即停止运动
 void ZDT_X42_V2_Synchronous_motion(uint8_t addr);                                                                                                                                       // 触发多机同步开始运动

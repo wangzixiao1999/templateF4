@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
   28:Core/Src/stm32f4xx_it.c **** 
   29:Core/Src/stm32f4xx_it.c **** extern volatile uint32_t tstart_ticks[4];
   30:Core/Src/stm32f4xx_it.c **** extern volatile uint32_t twidth_ticks[4];
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 2
 
 
   31:Core/Src/stm32f4xx_it.c **** extern volatile uint8_t pulse_state[4];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
   30              		.cfi_startproc
   31              		@ Volatile: function does not return.
   32              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 3
 
 
   33              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
   64              	.LFE138:
   66              		.section	.text.MemManage_Handler,"ax",%progbits
   67              		.align	1
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 4
 
 
   68              		.global	MemManage_Handler
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  102              		@ frame_needed = 0, uses_anonymous_args = 0
  103              		@ link register save eliminated.
  104              	.L8:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 5
 
 
  129:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 0 */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  137              		.global	SVC_Handler
  138              		.syntax unified
  139              		.thumb
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 6
 
 
  140              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  170              		.cfi_endproc
  171              	.LFE143:
  173              		.section	.text.PendSV_Handler,"ax",%progbits
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 7
 
 
  174              		.align	1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  200:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
  201:Core/Src/stm32f4xx_it.c ****   HAL_IncTick();
  210              		.loc 1 201 3 view .LVU27
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 8
 
 
  211 0002 FFF7FEFF 		bl	HAL_IncTick
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  245 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
  246              	.LVL2:
  247              		.loc 1 223 6 discriminator 1 view .LVU34
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 9
 
 
  248 0010 A0B1     		cbz	r0, .L21
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  282 0040 04F10C01 		add	r1, r4, #12
  283 0044 A4F10C00 		sub	r0, r4, #12
  284 0048 FFF7FEFF 		bl	ZDT_X42_V2_Receive_Data
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 10
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 10
 
 
  285              	.LVL7:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  327 0080 00000000 		.word	canRev_freq
  328 0084 10000000 		.word	can+16
  329 0088 00000000 		.word	can
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 11
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 11
 
 
  330              		.cfi_endproc
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  374 0022 2AD0     		beq	.L27
  255:Core/Src/stm32f4xx_it.c ****     {
  256:Core/Src/stm32f4xx_it.c ****     case 1:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 12
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 12
 
 
  257:Core/Src/stm32f4xx_it.c ****     {
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  405              		.loc 1 260 7 is_stmt 1 view .LVU79
  406              	.L25:
  273:Core/Src/stm32f4xx_it.c ****     }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 13
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 13
 
 
  274:Core/Src/stm32f4xx_it.c ****     }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  436              		.loc 1 298 7 view .LVU90
  437              		.loc 1 298 22 is_stmt 0 view .LVU91
  438 0072 3D4B     		ldr	r3, .L46+4
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 14
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 14
 
 
  439 0074 0022     		movs	r2, #0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  304:Core/Src/stm32f4xx_it.c ****   /* Channel 3 */
  305:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC3IF)
  476              		.loc 1 305 3 view .LVU105
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 15
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 15
 
 
  477              		.loc 1 305 11 is_stmt 0 view .LVU106
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  510              		.loc 1 326 7 is_stmt 1 view .LVU117
  511 00ce 11E0     		b	.L33
  512              	.L31:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 16
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 16
 
 
  291:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 0;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  550 00f8 13F0100F 		tst	r3, #16
  551 00fc 25D0     		beq	.L37
  332:Core/Src/stm32f4xx_it.c ****   {
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 17
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 17
 
 
  333:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC4IF;
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  585 012a FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
  586              	.LVL18:
  319:Core/Src/stm32f4xx_it.c ****       break;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 18
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 18
 
 
  587              		.loc 1 319 7 view .LVU144
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  621              		.loc 1 344 7 is_stmt 1 view .LVU157
  622 0152 0C21     		movs	r1, #12
  623 0154 0548     		ldr	r0, .L46+8
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 19
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 19
 
 
  624 0156 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  373:Core/Src/stm32f4xx_it.c **** 
  374:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM4_IRQn 1 */
  375:Core/Src/stm32f4xx_it.c **** }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 20
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 20
 
 
  666              		.loc 1 375 1 is_stmt 0 view .LVU163
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  709              		.syntax unified
  710              		.thumb
  711              		.thumb_func
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 21
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 21
 
 
  713              	CAN2_RX0_IRQHandler:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  740 0012 1748     		ldr	r0, .L62+4
  741 0014 FFF7FEFF 		bl	HAL_CAN_IRQHandler
  742              	.LVL26:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 22
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 22
 
 
  417:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  409:Core/Src/stm32f4xx_it.c **** 
  781              		.loc 1 409 22 is_stmt 0 view .LVU186
  782 003e 0E4B     		ldr	r3, .L62+12
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 23
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 23
 
 
  783              	.LVL32:
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  833 0000 00000000 		.space	4
  834              		.global	can2Rev_freq
  835              		.section	.bss.can2Rev_freq,"aw",%nobits
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 24
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 24
 
 
  836              		.align	2
@@ -1405,52 +1405,52 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 1
  861              		.file 13 "Core/Inc/HT_DM_S_7010.h"
  862              		.file 14 "Core/Inc/ZDT_X42_V2.h"
  863              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 25
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:21     .text.NMI_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:44     .text.HardFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:90     .text.BusFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:113    .text.UsageFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:136    .text.SVC_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:142    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:155    .text.DebugMon_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:174    .text.PendSV_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:193    .text.SysTick_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:219    .text.CAN1_RX0_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:225    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:323    .text.CAN1_RX0_IRQHandler:00000070 $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:832    .bss.preTick.1:00000000 preTick.1
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:846    .bss.canRev_freq:00000000 canRev_freq
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:334    .text.TIM1_CC_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:340    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:636    .text.TIM1_CC_IRQHandler:00000164 $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:645    .text.TIM4_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:651    .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:671    .text.TIM4_IRQHandler:0000000c $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:676    .text.USART1_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:682    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:702    .text.USART1_IRQHandler:0000000c $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:707    .text.CAN2_RX0_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:713    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:811    .text.CAN2_RX0_IRQHandler:0000006c $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:826    .bss.preTick2.0:00000000 preTick2.0
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:839    .bss.can2Rev_freq:00000000 can2Rev_freq
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:823    .bss.preTick2.0:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:829    .bss.preTick.1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:836    .bss.can2Rev_freq:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s:843    .bss.canRev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:21     .text.NMI_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:44     .text.HardFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:90     .text.BusFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:113    .text.UsageFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:136    .text.SVC_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:142    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:155    .text.DebugMon_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:174    .text.PendSV_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:193    .text.SysTick_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:219    .text.CAN1_RX0_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:225    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:323    .text.CAN1_RX0_IRQHandler:00000070 $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:832    .bss.preTick.1:00000000 preTick.1
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:846    .bss.canRev_freq:00000000 canRev_freq
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:334    .text.TIM1_CC_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:340    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:636    .text.TIM1_CC_IRQHandler:00000164 $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:645    .text.TIM4_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:651    .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:671    .text.TIM4_IRQHandler:0000000c $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:676    .text.USART1_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:682    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:702    .text.USART1_IRQHandler:0000000c $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:707    .text.CAN2_RX0_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:713    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:811    .text.CAN2_RX0_IRQHandler:0000006c $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:826    .bss.preTick2.0:00000000 preTick2.0
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:839    .bss.can2Rev_freq:00000000 can2Rev_freq
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:823    .bss.preTick2.0:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:829    .bss.preTick.1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:836    .bss.can2Rev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccBufNzN.s:843    .bss.canRev_freq:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
@@ -1465,7 +1465,7 @@ HAL_TIM_IRQHandler
 pulse_state
 htim1
 tstart_ticks
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccX6ILIQ.s 			page 26
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccBufNzN.s 			page 26
 
 
 twidth_ticks

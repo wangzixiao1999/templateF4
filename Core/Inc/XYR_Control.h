@@ -25,6 +25,15 @@ typedef enum
 	XYRMOVE_BLOCKAGE		 // 运动限位
 } XYR_State;
 
+// 面扫状态定义
+typedef enum
+{
+	SCAN_IDLE,
+	SCAN_RUNNING,
+	SCAN_PAUSED,
+	SCAN_COMPLETE
+} ScanState;
+
 typedef struct
 {
 	// 设备状态维度
@@ -48,7 +57,19 @@ typedef struct
 
 } XYR_MotorStateSpace;
 
+typedef struct {
+    ScanState state;
+    uint8_t current_row;
+    uint8_t current_col;
+    uint8_t total_rows;
+    uint8_t total_cols;
+    bool row_direction;  // true: 从左到右, false: 从右到左
+    uint32_t last_update_time;
+    bool waiting_for_move_complete;
+} AutoScanContext;
+
 extern XYR_MotorStateSpace XYR_MotorState[3];
+extern AutoScanContext g_auto_scan;
 
 void XYR_Init();
 void XYR_Collision_Home(uint8_t addr);													   // 碰撞回零
@@ -59,11 +80,12 @@ void XYR_Stop_Move();																	   // XYR停止移动,R去使能
 
 void XYR_ZDT_Speed_Setting_VOFA(uint8_t addr, float velocity); // 张大头速度设置(针对VOFA+)
 void XYR_HT_Speed_Setting_VOFA(uint8_t addr, float velocity);  // 转台速度设置(针对VOFA+)
-void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, int32_t position); // 张大头位移距离设置(针对VOFA+)
+void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, float position); // 张大头位移距离设置(针对VOFA+)
 void XYR_HT_Pos_Setting_VOFA(uint8_t addr, int32_t position);  // 转台位旋转角度设置(针对VOFA+)
 float Parse_Float_LittleEndian(uint8_t *bytes);				   // 小端排序组合返回数值(针对VOFA+)
 void XYR_AutoScan_Start(uint8_t x, uint8_t y);				   // 开始面扫(针对VOFA+)
 void XYR_AutoScan_Stop(void);								   // 停止面扫(针对VOFA+)
+void XYR_AutoScan_Update(void);								   // 更新面扫状态
 
 void Controller_Update_Callback(void); // 指令发送端
 

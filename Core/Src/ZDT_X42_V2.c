@@ -296,6 +296,44 @@ void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velo
 }
 
 /**
+ * @brief    直通限速位置模式
+ * @param    addr  	：电机地址
+ * @param    dir     ：方向										，0为CW，其余值为CCW
+ * @param    velocity：最大速度(RPM)					，范围0.0 - 4000.0RPM
+ * @param    position：位置(°)								，范围0.0°- (2^32 - 1)°
+ * @param    raf     ：相位位置/绝对位置标志	，0为相对位置，其余值为绝对位置
+ * @param    snF     ：多机同步标志						，0为不启用，其余值启用
+ * @retval   地址 + 功能码 + 命令状态 + 校验字节
+ */
+void ZDT_X42_V2_Bypass_Position_LV_Control_Block(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF)
+{
+  uint8_t cmd[12] = {0};
+  uint16_t vel = 0;
+  uint32_t pos = 0;
+
+  // 将速度和位置放大10倍发送过去
+  vel = (uint16_t)ABS(velocity * 10.0f);
+  pos = (uint32_t)ABS(position * 10.0f);
+
+  // 装载命令
+  XYR_MotorState[addr - 1].cmd[0] = addr;                 // 地址
+  XYR_MotorState[addr - 1].cmd[1] = 0xFB;                 // 功能码
+  XYR_MotorState[addr - 1].cmd[2] = dir;                  // 符号（方向）
+  XYR_MotorState[addr - 1].cmd[3] = (uint8_t)(vel >> 8);  // 最大速度(RPM)高8位字节
+  XYR_MotorState[addr - 1].cmd[4] = (uint8_t)(vel >> 0);  // 最大速度(RPM)低8位字节
+  XYR_MotorState[addr - 1].cmd[5] = (uint8_t)(pos >> 24); // 位置(bit24 - bit31)
+  XYR_MotorState[addr - 1].cmd[6] = (uint8_t)(pos >> 16); // 位置(bit16 - bit23)
+  XYR_MotorState[addr - 1].cmd[7] = (uint8_t)(pos >> 8);  // 位置(bit8  - bit15)
+  XYR_MotorState[addr - 1].cmd[8] = (uint8_t)(pos >> 0);  // 位置(bit0  - bit7 )
+  XYR_MotorState[addr - 1].cmd[9] = raf;                  // 相位位置/绝对位置标志
+  XYR_MotorState[addr - 1].cmd[10] = snF;                 // 多机同步运动标志
+  XYR_MotorState[addr - 1].cmd[11] = 0x6B;                // 校验字节
+
+
+    can_SendCmd(cmd, 12);
+}
+
+/**
  * @brief    梯形曲线位置模式
  * @param    addr  	：电机地址
  * @param    dir     ：方向										，0为CW，其余值为CCW

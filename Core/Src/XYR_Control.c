@@ -12,6 +12,7 @@ volatile bool USB_Send_Flag = false;
 volatile uint8_t xyr_request = 0;
 
 XYR_MotorStateSpace XYR_MotorState[3] = {0};
+AutoScanContext g_auto_scan = {0};
 /**
  * @brief    初始化XYR三轴位移台
  */
@@ -95,17 +96,17 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
  */
 void XYR_HT_Fixed_Length_Move(uint8_t dir, uint32_t velocity, int32_t position)
 {
-		HT_DM_S_7010_Set_Position_Max_Speed(3, velocity * 100);
-		HAL_Delay(10);
-		if (dir)
-			position = -position;
-		int32_t position_before = HT_Multi_circle_absolute_angle;
-		HT_DM_S_7010_Relative_Position_Control(3, position);
-		HAL_Delay(10);
-		// while (!((labs(HT_Multi_circle_absolute_angle - position_before - position) <= 10) && (!HT_speed) && (labs(HT_current) < 200)))
-		// {
-		// 	// HAL_Delay(1);
-		// }
+	HT_DM_S_7010_Set_Position_Max_Speed(3, velocity * 100);
+	HAL_Delay(10);
+	if (dir)
+		position = -position;
+	int32_t position_before = HT_Multi_circle_absolute_angle;
+	HT_DM_S_7010_Relative_Position_Control(3, position);
+	HAL_Delay(10);
+	// while (!((labs(HT_Multi_circle_absolute_angle - position_before - position) <= 10) && (!HT_speed) && (labs(HT_current) < 200)))
+	// {
+	// 	// HAL_Delay(1);
+	// }
 }
 
 /**
@@ -115,9 +116,9 @@ void XYR_HT_Fixed_Length_Move(uint8_t dir, uint32_t velocity, int32_t position)
  */
 void XYR_HT_Fixed_Speed_Move(uint8_t dir, int32_t velocity)
 {
-		if (dir)
-			velocity = -velocity;
-		HT_DM_S_7010_Velocity_Control(3, velocity * 100);
+	if (dir)
+		velocity = -velocity;
+	HT_DM_S_7010_Velocity_Control(3, velocity * 100);
 }
 
 /**
@@ -164,7 +165,7 @@ void XYR_HT_Speed_Setting_VOFA(uint8_t addr, float velocity)
  * @param    addr  	：电机地址
  * @param    position：位移距离(mm)					，范围0 - 240mm
  */
-void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, int32_t position)
+void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, float position)
 {
 	VOFA_Pos[addr - 1] = position;
 }
@@ -196,28 +197,35 @@ float Parse_Float_LittleEndian(uint8_t *bytes)
 void XYR_AutoScan_Start(uint8_t x, uint8_t y)
 {
 	AutoScanFlag = true;
-
-	for (size_t i = 0; i < x; i++)
+	if (x == 0 || y == 0)
 	{
-		if (AutoScanFlag)
+		return; // 无效参数
+	}
+
+	if ((XYR_MotorState[0].state == XYRMOVE_IDLE) && (XYR_MotorState[1].state == XYRMOVE_IDLE))
+	{
+		// 初始化面扫上下文
+		g_auto_scan.state = SCAN_RUNNING;
+		g_auto_scan.current_row = 0;
+		g_auto_scan.current_col = 0;
+		g_auto_scan.total_rows = x;
+		g_auto_scan.total_cols = y;
+		g_auto_scan.row_direction = false;
+		g_auto_scan.last_update_time = HAL_GetTick();
+		g_auto_scan.waiting_for_move_complete = false;
+
+		AutoScanFlag = true;
+
+		if (g_auto_scan.row_direction)
 		{
-			for (size_t j = 0; j < y; j++)
-			{
-				if (AutoScanFlag)
-				{
-					XYR_ZDT_Fixed_Length_Move(2, i % 2, VOFA_Speed[1], VOFA_Pos[1]);
-				}
-				else
-				{
-					break;
-				}
-			}
-			XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
+			XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
 		}
 		else
 		{
-			break;
+			XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
 		}
+
+		g_auto_scan.waiting_for_move_complete = true;
 	}
 }
 
@@ -226,7 +234,10 @@ void XYR_AutoScan_Start(uint8_t x, uint8_t y)
  */
 void XYR_AutoScan_Stop(void)
 {
+	g_auto_scan.state = SCAN_IDLE;
 	AutoScanFlag = false;
+	// 停止所有运动
+	XYR_Stop_Move();
 }
 
 /**
@@ -362,17 +373,17 @@ void XYR_Read_USB_Commend()
 		break;
 	case 0xC3:
 		xyr_request = 0;
-		if(!VOFA_Pos[2])
-		XYR_HT_Fixed_Speed_Move(1, VOFA_Speed[2]);
+		if (!VOFA_Pos[2])
+			XYR_HT_Fixed_Speed_Move(1, VOFA_Speed[2]);
 		else
-		XYR_HT_Fixed_Length_Move(1, VOFA_Speed[2], VOFA_Pos[2]);
+			XYR_HT_Fixed_Length_Move(1, VOFA_Speed[2], VOFA_Pos[2]);
 		break;
 	case 0xC4:
 		xyr_request = 0;
-		if(!VOFA_Pos[2])
-		XYR_HT_Fixed_Speed_Move(0, VOFA_Speed[2]);
+		if (!VOFA_Pos[2])
+			XYR_HT_Fixed_Speed_Move(0, VOFA_Speed[2]);
 		else
-		XYR_HT_Fixed_Length_Move(0, VOFA_Speed[2], VOFA_Pos[2]);
+			XYR_HT_Fixed_Length_Move(0, VOFA_Speed[2], VOFA_Pos[2]);
 		break;
 	case 0xD0:
 		xyr_request = 0;
@@ -502,5 +513,84 @@ void XYR_MotorState_Update(uint8_t addr)
 		break;
 	default:
 		break;
+	}
+}
+
+/**
+ * @brief    更新面扫状态
+ */
+void XYR_AutoScan_Update(void)
+{
+	static uint32_t last_update_time = 0;
+	uint32_t current_time = HAL_GetTick();
+
+	// 限制更新频率（例如每10ms更新一次）
+	if (current_time - last_update_time < 10)
+	{
+		return;
+	}
+	last_update_time = current_time;
+
+	// 如果面扫未运行，直接返回
+	if (g_auto_scan.state != SCAN_RUNNING || !AutoScanFlag)
+	{
+		return;
+	}
+
+	// 如果正在等待移动完成
+	if (g_auto_scan.waiting_for_move_complete)
+	{
+		// 检查当前Y轴是否移动完成（假设使用axis 2）
+		if (XYR_MotorState[0].state == XYRMOVE_IDLE && XYR_MotorState[1].state == XYRMOVE_IDLE)
+		{
+
+			g_auto_scan.waiting_for_move_complete = false;
+
+			// 更新列计数器
+			g_auto_scan.current_col++;
+
+			// 如果当前行已完成所有列
+			if (g_auto_scan.current_col >= g_auto_scan.total_cols)
+			{
+				// 移动到下一行
+				g_auto_scan.current_row++;
+				g_auto_scan.current_col = 0;
+
+				// 如果所有行都已完成
+				if (g_auto_scan.current_row >= g_auto_scan.total_rows)
+				{
+					g_auto_scan.state = SCAN_COMPLETE;
+					AutoScanFlag = false;
+					return;
+				}
+
+				// 换行：X轴移动一个位置
+				XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
+
+				// 切换行方向
+				g_auto_scan.row_direction = !g_auto_scan.row_direction;
+
+				// 等待X轴移动完成
+				// 这里可以设置一个标志，在下次更新时检查
+				// 或者立即开始Y轴移动（取决于你的需求）
+				g_auto_scan.waiting_for_move_complete = true;
+			}
+			else
+			{
+				// 当前行还有更多列，继续Y轴移动
+				if (g_auto_scan.row_direction)
+				{
+					// 从左到右，Y轴正向移动
+					XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
+				}
+				else
+				{
+					// 从右到左，Y轴反向移动
+					XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
+				}
+
+				g_auto_scan.waiting_for_move_complete = true;
+			}
+		}
 	}
 }

@@ -158,18 +158,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+    XYR_AutoScan_Update();
+
     XYR_Read_USB_Commend();
 
-if(USB_Send_Flag)
-{
-  USB_Send_Flag = false;
-  XYR_Send_USB_Commend();
-}
+    if (USB_Send_Flag)
+    {
+      USB_Send_Flag = false;
+      XYR_Send_USB_Commend();
+    }
 
     XYR_MotorState_Update(1);
     XYR_MotorState_Update(2);
-
-
   }
   /* USER CODE END 3 */
 }
