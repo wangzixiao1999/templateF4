@@ -9,9 +9,9 @@
 *** qq交流群：262438510
 **********************************************************/
 
-volatile int32_t ZDT_current[2] = {0}; // 张大头电流
-volatile int32_t ZDT_speed[2] = {0};   // 张大头速度
-volatile int32_t ZDT_angle[2] = {0};   // 张大头角度
+// volatile int32_t ZDT_current[2] = {0}; // 张大头电流
+// volatile int32_t ZDT_speed[2] = {0};   // 张大头速度
+// volatile int32_t ZDT_angle[2] = {0};   // 张大头角度
 volatile uint8_t ZDT_state[2] = {0};   // 张大头状态（由接收回调更新，声明为 volatile）
 
 float ZDTRev_freq[2] = {0.f, 0.f};
@@ -575,12 +575,12 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
   {
 
     // 电机相电流（第7-8字节）
-    ZDT_current[id - 1] = ((uint16_t)multi_frame_buffer[id - 1][7] << 8) | multi_frame_buffer[id - 1][8];
+    XYR_MotorState[id - 1].real_time_current = ((uint16_t)multi_frame_buffer[id - 1][7] << 8) | multi_frame_buffer[id - 1][8];
     // 电机实时转速（第17-19字节）
     int32_t speed = ((uint16_t)multi_frame_buffer[id - 1][19] << 8) | multi_frame_buffer[id - 1][20];
     if (multi_frame_buffer[id - 1][18] == 0x01)
       speed = -speed;
-    ZDT_speed[id - 1] = speed / 12.0f; // 转换为mm/s
+    XYR_MotorState[id - 1].real_time_velocity = speed / 12.0f; // 转换为mm/s
 
     // 电机实时位置（第20-23字节）
     int32_t real_pos = (multi_frame_buffer[id - 1][22] << 24) |
@@ -589,7 +589,7 @@ void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount)
                        multi_frame_buffer[id - 1][25];
     if (multi_frame_buffer[id - 1][21] == 0x01)
       real_pos = -real_pos;
-    ZDT_angle[id - 1] = real_pos / 72.0f; // 转换为mm
+    XYR_MotorState[id - 1].real_time_position = real_pos / 72.0f; // 转换为mm
 
     // 电机状态标志（第34字节）
     ZDT_state[id - 1] = multi_frame_buffer[id - 1][34];

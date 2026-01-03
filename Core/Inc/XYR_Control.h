@@ -41,9 +41,13 @@ typedef struct
 	uint8_t axis;	 // 轴编号
 
 	// 运动参数维度
-	bool dir;		   // 方向
-	uint32_t velocity; // 速度
-	uint32_t position; // 位置
+	bool dir;				  // 方向
+	float target_current;	  // 目标电流
+	float target_velocity;	  // 目标速度
+	float target_position;	  // 目标位置
+	float real_time_current;  // 当前电流
+	float real_time_velocity; // 当前速度
+	float real_time_position; // 当前位置
 
 	// 时间维度
 	uint32_t start_time;   // 开始时间
@@ -57,15 +61,16 @@ typedef struct
 
 } XYR_MotorStateSpace;
 
-typedef struct {
-    ScanState state;
-    uint8_t current_row;
-    uint8_t current_col;
-    uint8_t total_rows;
-    uint8_t total_cols;
-    bool row_direction;  // true: 从左到右, false: 从右到左
-    uint32_t last_update_time;
-    bool waiting_for_move_complete;
+typedef struct
+{
+	ScanState state;
+	uint8_t current_row;
+	uint8_t current_col;
+	uint8_t total_rows;
+	uint8_t total_cols;
+	bool row_direction; // true: 从左到右, false: 从右到左
+	uint32_t last_update_time;
+	bool waiting_for_move_complete;
 } AutoScanContext;
 
 extern XYR_MotorStateSpace XYR_MotorState[3];
@@ -74,13 +79,13 @@ extern AutoScanContext g_auto_scan;
 void XYR_Init();
 void XYR_Collision_Home(uint8_t addr);													   // 碰撞回零
 void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position); // 张大头定长移动
-void XYR_HT_Fixed_Length_Move(uint8_t dir, uint32_t velocity, int32_t position);		   // 转台旋转固定角度
+void XYR_HT_Fixed_Length_Move(uint8_t dir, int32_t position);							   // 转台旋转固定角度
 void XYR_HT_Fixed_Speed_Move(uint8_t dir, int32_t speed);								   // 转台固定速度旋转
 void XYR_Stop_Move();																	   // XYR停止移动,R去使能
 
 void XYR_ZDT_Speed_Setting_VOFA(uint8_t addr, float velocity); // 张大头速度设置(针对VOFA+)
 void XYR_HT_Speed_Setting_VOFA(uint8_t addr, float velocity);  // 转台速度设置(针对VOFA+)
-void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, float position); // 张大头位移距离设置(针对VOFA+)
+void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, float position);   // 张大头位移距离设置(针对VOFA+)
 void XYR_HT_Pos_Setting_VOFA(uint8_t addr, int32_t position);  // 转台位旋转角度设置(针对VOFA+)
 float Parse_Float_LittleEndian(uint8_t *bytes);				   // 小端排序组合返回数值(针对VOFA+)
 void XYR_AutoScan_Start(uint8_t x, uint8_t y);				   // 开始面扫(针对VOFA+)

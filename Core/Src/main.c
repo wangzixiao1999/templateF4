@@ -171,6 +171,7 @@ int main(void)
 
     XYR_MotorState_Update(1);
     XYR_MotorState_Update(2);
+    XYR_MotorState_Update(3);
   }
   /* USER CODE END 3 */
 }
