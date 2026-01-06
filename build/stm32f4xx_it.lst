@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
   28:Core/Src/stm32f4xx_it.c **** 
   29:Core/Src/stm32f4xx_it.c **** extern volatile uint32_t tstart_ticks[4];
   30:Core/Src/stm32f4xx_it.c **** extern volatile uint32_t twidth_ticks[4];
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 2
 
 
   31:Core/Src/stm32f4xx_it.c **** extern volatile uint8_t pulse_state[4];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
   30              		.cfi_startproc
   31              		@ Volatile: function does not return.
   32              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 3
 
 
   33              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
   64              	.LFE138:
   66              		.section	.text.MemManage_Handler,"ax",%progbits
   67              		.align	1
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 4
 
 
   68              		.global	MemManage_Handler
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  102              		@ frame_needed = 0, uses_anonymous_args = 0
  103              		@ link register save eliminated.
  104              	.L8:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 5
 
 
  129:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 0 */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  137              		.global	SVC_Handler
  138              		.syntax unified
  139              		.thumb
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 6
 
 
  140              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  170              		.cfi_endproc
  171              	.LFE143:
  173              		.section	.text.PendSV_Handler,"ax",%progbits
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 7
 
 
  174              		.align	1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  200:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
  201:Core/Src/stm32f4xx_it.c ****   HAL_IncTick();
  210              		.loc 1 201 3 view .LVU27
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 8
 
 
  211 0002 FFF7FEFF 		bl	HAL_IncTick
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  245 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
  246              	.LVL2:
  247              		.loc 1 223 6 discriminator 1 view .LVU34
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 9
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 9
 
 
  248 0010 A0B1     		cbz	r0, .L21
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  282 0040 04F10C01 		add	r1, r4, #12
  283 0044 A4F10C00 		sub	r0, r4, #12
  284 0048 FFF7FEFF 		bl	ZDT_X42_V2_Receive_Data
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 10
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 10
 
 
  285              	.LVL7:
@@ -598,24 +598,24 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  327 0080 00000000 		.word	canRev_freq
  328 0084 10000000 		.word	can+16
  329 0088 00000000 		.word	can
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 11
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 11
 
 
  330              		.cfi_endproc
  331              	.LFE146:
- 333              		.section	.text.TIM1_CC_IRQHandler,"ax",%progbits
+ 333              		.section	.text.EXTI9_5_IRQHandler,"ax",%progbits
  334              		.align	1
- 335              		.global	TIM1_CC_IRQHandler
+ 335              		.global	EXTI9_5_IRQHandler
  336              		.syntax unified
  337              		.thumb
  338              		.thumb_func
- 340              	TIM1_CC_IRQHandler:
+ 340              	EXTI9_5_IRQHandler:
  341              	.LFB147:
  243:Core/Src/stm32f4xx_it.c **** 
  244:Core/Src/stm32f4xx_it.c **** /**
- 245:Core/Src/stm32f4xx_it.c ****   * @brief This function handles TIM1 capture compare interrupt.
+ 245:Core/Src/stm32f4xx_it.c ****   * @brief This function handles EXTI line[9:5] interrupts.
  246:Core/Src/stm32f4xx_it.c ****   */
- 247:Core/Src/stm32f4xx_it.c **** void TIM1_CC_IRQHandler(void)
+ 247:Core/Src/stm32f4xx_it.c **** void EXTI9_5_IRQHandler(void)
  248:Core/Src/stm32f4xx_it.c **** {
  342              		.loc 1 248 1 is_stmt 1 view -0
  343              		.cfi_startproc
@@ -626,831 +626,876 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 1
  348              		.cfi_def_cfa_offset 8
  349              		.cfi_offset 3, -8
  350              		.cfi_offset 14, -4
- 249:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_CC_IRQn 0 */
- 250:Core/Src/stm32f4xx_it.c ****   /* Channel 1 */
- 251:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC1IF)
- 351              		.loc 1 251 3 view .LVU59
- 352              		.loc 1 251 11 is_stmt 0 view .LVU60
- 353 0002 584B     		ldr	r3, .L46
- 354 0004 1B69     		ldr	r3, [r3, #16]
- 355              		.loc 1 251 6 view .LVU61
- 356 0006 13F0020F 		tst	r3, #2
- 357 000a 1DD0     		beq	.L25
- 252:Core/Src/stm32f4xx_it.c ****   {
- 253:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC1IF; /* ??? */
- 358              		.loc 1 253 5 is_stmt 1 view .LVU62
- 359              		.loc 1 253 9 is_stmt 0 view .LVU63
- 360 000c 554A     		ldr	r2, .L46
- 361 000e 1369     		ldr	r3, [r2, #16]
- 362              		.loc 1 253 14 view .LVU64
- 363 0010 23F00203 		bic	r3, r3, #2
- 364 0014 1361     		str	r3, [r2, #16]
- 254:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[0])
- 365              		.loc 1 254 5 is_stmt 1 view .LVU65
- 366              		.loc 1 254 24 is_stmt 0 view .LVU66
- 367 0016 544B     		ldr	r3, .L46+4
- 368 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 369 001a DBB2     		uxtb	r3, r3
- 370              		.loc 1 254 5 view .LVU67
- 371 001c 012B     		cmp	r3, #1
- 372 001e 09D0     		beq	.L26
- 373 0020 022B     		cmp	r3, #2
- 374 0022 2AD0     		beq	.L27
- 255:Core/Src/stm32f4xx_it.c ****     {
- 256:Core/Src/stm32f4xx_it.c ****     case 1:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 12
+ 249:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
+ 250:Core/Src/stm32f4xx_it.c **** 
+ 251:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI9_5_IRQn 0 */
+ 252:Core/Src/stm32f4xx_it.c ****   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
+ 351              		.loc 1 252 3 view .LVU59
+ 352 0002 2020     		movs	r0, #32
+ 353 0004 FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 354              	.LVL12:
+ 253:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+ 254:Core/Src/stm32f4xx_it.c **** 
+ 255:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI9_5_IRQn 1 */
+ 256:Core/Src/stm32f4xx_it.c **** }
+ 355              		.loc 1 256 1 is_stmt 0 view .LVU60
+ 356 0008 08BD     		pop	{r3, pc}
+ 357              		.cfi_endproc
+ 358              	.LFE147:
+ 360              		.section	.text.TIM1_CC_IRQHandler,"ax",%progbits
+ 361              		.align	1
+ 362              		.global	TIM1_CC_IRQHandler
+ 363              		.syntax unified
+ 364              		.thumb
+ 365              		.thumb_func
+ 367              	TIM1_CC_IRQHandler:
+ 368              	.LFB148:
+ 257:Core/Src/stm32f4xx_it.c **** 
+ 258:Core/Src/stm32f4xx_it.c **** /**
+ 259:Core/Src/stm32f4xx_it.c ****   * @brief This function handles TIM1 capture compare interrupt.
+ 260:Core/Src/stm32f4xx_it.c ****   */
+ 261:Core/Src/stm32f4xx_it.c **** void TIM1_CC_IRQHandler(void)
+ 262:Core/Src/stm32f4xx_it.c **** {
+ 369              		.loc 1 262 1 is_stmt 1 view -0
+ 370              		.cfi_startproc
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 12
 
 
- 257:Core/Src/stm32f4xx_it.c ****     {
- 258:Core/Src/stm32f4xx_it.c ****       TIM1->CCR1 = tstart_ticks[0] + twidth_ticks[0];
- 259:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
- 260:Core/Src/stm32f4xx_it.c ****       break;
- 261:Core/Src/stm32f4xx_it.c ****     }
- 262:Core/Src/stm32f4xx_it.c ****     case 2:
- 263:Core/Src/stm32f4xx_it.c ****     {
- 264:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
- 265:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 0;
- 266:Core/Src/stm32f4xx_it.c ****       break;
- 267:Core/Src/stm32f4xx_it.c ****     }
- 268:Core/Src/stm32f4xx_it.c ****     default:
+ 371              		@ args = 0, pretend = 0, frame = 0
+ 372              		@ frame_needed = 0, uses_anonymous_args = 0
+ 373 0000 08B5     		push	{r3, lr}
+ 374              	.LCFI3:
+ 375              		.cfi_def_cfa_offset 8
+ 376              		.cfi_offset 3, -8
+ 377              		.cfi_offset 14, -4
+ 263:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_CC_IRQn 0 */
+ 264:Core/Src/stm32f4xx_it.c ****   /* Channel 1 */
+ 265:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC1IF)
+ 378              		.loc 1 265 3 view .LVU62
+ 379              		.loc 1 265 11 is_stmt 0 view .LVU63
+ 380 0002 584B     		ldr	r3, .L48
+ 381 0004 1B69     		ldr	r3, [r3, #16]
+ 382              		.loc 1 265 6 view .LVU64
+ 383 0006 13F0020F 		tst	r3, #2
+ 384 000a 1DD0     		beq	.L27
+ 266:Core/Src/stm32f4xx_it.c ****   {
+ 267:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC1IF; /* ??? */
+ 385              		.loc 1 267 5 is_stmt 1 view .LVU65
+ 386              		.loc 1 267 9 is_stmt 0 view .LVU66
+ 387 000c 554A     		ldr	r2, .L48
+ 388 000e 1369     		ldr	r3, [r2, #16]
+ 389              		.loc 1 267 14 view .LVU67
+ 390 0010 23F00203 		bic	r3, r3, #2
+ 391 0014 1361     		str	r3, [r2, #16]
+ 268:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[0])
+ 392              		.loc 1 268 5 is_stmt 1 view .LVU68
+ 393              		.loc 1 268 24 is_stmt 0 view .LVU69
+ 394 0016 544B     		ldr	r3, .L48+4
+ 395 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 396 001a DBB2     		uxtb	r3, r3
+ 397              		.loc 1 268 5 view .LVU70
+ 398 001c 012B     		cmp	r3, #1
+ 399 001e 09D0     		beq	.L28
+ 400 0020 022B     		cmp	r3, #2
+ 401 0022 2AD0     		beq	.L29
  269:Core/Src/stm32f4xx_it.c ****     {
- 270:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
- 375              		.loc 1 270 7 is_stmt 1 view .LVU68
- 376 0024 0021     		movs	r1, #0
- 377 0026 5148     		ldr	r0, .L46+8
- 378 0028 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 379              	.LVL12:
- 271:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 0;
- 380              		.loc 1 271 7 view .LVU69
- 381              		.loc 1 271 22 is_stmt 0 view .LVU70
- 382 002c 4E4B     		ldr	r3, .L46+4
- 383 002e 0022     		movs	r2, #0
- 384 0030 1A70     		strb	r2, [r3]
- 272:Core/Src/stm32f4xx_it.c ****       break;
- 385              		.loc 1 272 7 is_stmt 1 view .LVU71
- 386 0032 09E0     		b	.L25
- 387              	.L26:
- 258:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
- 388              		.loc 1 258 7 view .LVU72
- 258:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
- 389              		.loc 1 258 32 is_stmt 0 view .LVU73
- 390 0034 4E4B     		ldr	r3, .L46+12
- 391 0036 1B68     		ldr	r3, [r3]
- 258:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
- 392              		.loc 1 258 50 view .LVU74
- 393 0038 4E4A     		ldr	r2, .L46+16
- 394 003a 1268     		ldr	r2, [r2]
- 258:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
- 395              		.loc 1 258 36 view .LVU75
- 396 003c 1344     		add	r3, r3, r2
- 258:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
- 397              		.loc 1 258 18 view .LVU76
- 398 003e 494A     		ldr	r2, .L46
- 399 0040 5363     		str	r3, [r2, #52]
- 259:Core/Src/stm32f4xx_it.c ****       break;
- 400              		.loc 1 259 7 is_stmt 1 view .LVU77
- 259:Core/Src/stm32f4xx_it.c ****       break;
- 401              		.loc 1 259 22 is_stmt 0 view .LVU78
- 402 0042 494B     		ldr	r3, .L46+4
- 403 0044 0222     		movs	r2, #2
- 404 0046 1A70     		strb	r2, [r3]
- 260:Core/Src/stm32f4xx_it.c ****     }
- 405              		.loc 1 260 7 is_stmt 1 view .LVU79
- 406              	.L25:
- 273:Core/Src/stm32f4xx_it.c ****     }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 13
+ 270:Core/Src/stm32f4xx_it.c ****     case 1:
+ 271:Core/Src/stm32f4xx_it.c ****     {
+ 272:Core/Src/stm32f4xx_it.c ****       TIM1->CCR1 = tstart_ticks[0] + twidth_ticks[0];
+ 273:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
+ 274:Core/Src/stm32f4xx_it.c ****       break;
+ 275:Core/Src/stm32f4xx_it.c ****     }
+ 276:Core/Src/stm32f4xx_it.c ****     case 2:
+ 277:Core/Src/stm32f4xx_it.c ****     {
+ 278:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+ 279:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 0;
+ 280:Core/Src/stm32f4xx_it.c ****       break;
+ 281:Core/Src/stm32f4xx_it.c ****     }
+ 282:Core/Src/stm32f4xx_it.c ****     default:
+ 283:Core/Src/stm32f4xx_it.c ****     {
+ 284:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+ 402              		.loc 1 284 7 is_stmt 1 view .LVU71
+ 403 0024 0021     		movs	r1, #0
+ 404 0026 5148     		ldr	r0, .L48+8
+ 405 0028 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 13
 
 
+ 406              	.LVL13:
+ 285:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 0;
+ 407              		.loc 1 285 7 view .LVU72
+ 408              		.loc 1 285 22 is_stmt 0 view .LVU73
+ 409 002c 4E4B     		ldr	r3, .L48+4
+ 410 002e 0022     		movs	r2, #0
+ 411 0030 1A70     		strb	r2, [r3]
+ 286:Core/Src/stm32f4xx_it.c ****       break;
+ 412              		.loc 1 286 7 is_stmt 1 view .LVU74
+ 413 0032 09E0     		b	.L27
+ 414              	.L28:
+ 272:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
+ 415              		.loc 1 272 7 view .LVU75
+ 272:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
+ 416              		.loc 1 272 32 is_stmt 0 view .LVU76
+ 417 0034 4E4B     		ldr	r3, .L48+12
+ 418 0036 1B68     		ldr	r3, [r3]
+ 272:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
+ 419              		.loc 1 272 50 view .LVU77
+ 420 0038 4E4A     		ldr	r2, .L48+16
+ 421 003a 1268     		ldr	r2, [r2]
+ 272:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
+ 422              		.loc 1 272 36 view .LVU78
+ 423 003c 1344     		add	r3, r3, r2
+ 272:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 2;
+ 424              		.loc 1 272 18 view .LVU79
+ 425 003e 494A     		ldr	r2, .L48
+ 426 0040 5363     		str	r3, [r2, #52]
+ 273:Core/Src/stm32f4xx_it.c ****       break;
+ 427              		.loc 1 273 7 is_stmt 1 view .LVU80
+ 273:Core/Src/stm32f4xx_it.c ****       break;
+ 428              		.loc 1 273 22 is_stmt 0 view .LVU81
+ 429 0042 494B     		ldr	r3, .L48+4
+ 430 0044 0222     		movs	r2, #2
+ 431 0046 1A70     		strb	r2, [r3]
  274:Core/Src/stm32f4xx_it.c ****     }
- 275:Core/Src/stm32f4xx_it.c ****   }
- 276:Core/Src/stm32f4xx_it.c **** 
- 277:Core/Src/stm32f4xx_it.c ****   /* Channel 2 */
- 278:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC2IF)
- 407              		.loc 1 278 3 view .LVU80
- 408              		.loc 1 278 11 is_stmt 0 view .LVU81
- 409 0048 464B     		ldr	r3, .L46
- 410 004a 1B69     		ldr	r3, [r3, #16]
- 411              		.loc 1 278 6 view .LVU82
- 412 004c 13F0040F 		tst	r3, #4
- 413 0050 25D0     		beq	.L29
- 279:Core/Src/stm32f4xx_it.c ****   {
- 280:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC2IF;
- 414              		.loc 1 280 5 is_stmt 1 view .LVU83
- 415              		.loc 1 280 9 is_stmt 0 view .LVU84
- 416 0052 444A     		ldr	r2, .L46
- 417 0054 1369     		ldr	r3, [r2, #16]
- 418              		.loc 1 280 14 view .LVU85
- 419 0056 23F00403 		bic	r3, r3, #4
- 420 005a 1361     		str	r3, [r2, #16]
- 281:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[1])
- 421              		.loc 1 281 5 is_stmt 1 view .LVU86
- 422              		.loc 1 281 24 is_stmt 0 view .LVU87
- 423 005c 424B     		ldr	r3, .L46+4
- 424 005e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 425 0060 DBB2     		uxtb	r3, r3
- 426              		.loc 1 281 5 view .LVU88
- 427 0062 012B     		cmp	r3, #1
- 428 0064 11D0     		beq	.L30
- 429 0066 022B     		cmp	r3, #2
- 430 0068 32D0     		beq	.L31
- 282:Core/Src/stm32f4xx_it.c ****     {
- 283:Core/Src/stm32f4xx_it.c ****     case 1:
- 284:Core/Src/stm32f4xx_it.c ****     {
- 285:Core/Src/stm32f4xx_it.c ****       TIM1->CCR2 = tstart_ticks[1] + twidth_ticks[1];
- 286:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
- 287:Core/Src/stm32f4xx_it.c ****       break;
- 288:Core/Src/stm32f4xx_it.c ****     }
- 289:Core/Src/stm32f4xx_it.c ****     case 2:
- 290:Core/Src/stm32f4xx_it.c ****     {
- 291:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
- 292:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 0;
- 293:Core/Src/stm32f4xx_it.c ****       break;
- 294:Core/Src/stm32f4xx_it.c ****     }
- 295:Core/Src/stm32f4xx_it.c ****     default:
- 296:Core/Src/stm32f4xx_it.c ****     {
- 297:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
- 431              		.loc 1 297 7 is_stmt 1 view .LVU89
- 432 006a 0421     		movs	r1, #4
- 433 006c 3F48     		ldr	r0, .L46+8
- 434 006e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 435              	.LVL13:
- 298:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 0;
- 436              		.loc 1 298 7 view .LVU90
- 437              		.loc 1 298 22 is_stmt 0 view .LVU91
- 438 0072 3D4B     		ldr	r3, .L46+4
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 14
-
-
- 439 0074 0022     		movs	r2, #0
- 440 0076 5A70     		strb	r2, [r3, #1]
- 299:Core/Src/stm32f4xx_it.c ****       break;
- 441              		.loc 1 299 7 is_stmt 1 view .LVU92
- 442 0078 11E0     		b	.L29
- 443              	.L27:
- 264:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 0;
- 444              		.loc 1 264 7 view .LVU93
- 445 007a 0021     		movs	r1, #0
- 446 007c 3B48     		ldr	r0, .L46+8
- 447 007e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 448              	.LVL14:
- 265:Core/Src/stm32f4xx_it.c ****       break;
- 449              		.loc 1 265 7 view .LVU94
- 265:Core/Src/stm32f4xx_it.c ****       break;
- 450              		.loc 1 265 22 is_stmt 0 view .LVU95
- 451 0082 394B     		ldr	r3, .L46+4
- 452 0084 0022     		movs	r2, #0
- 453 0086 1A70     		strb	r2, [r3]
- 266:Core/Src/stm32f4xx_it.c ****     }
- 454              		.loc 1 266 7 is_stmt 1 view .LVU96
- 455 0088 DEE7     		b	.L25
- 456              	.L30:
- 285:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
- 457              		.loc 1 285 7 view .LVU97
- 285:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
- 458              		.loc 1 285 32 is_stmt 0 view .LVU98
- 459 008a 394B     		ldr	r3, .L46+12
- 460 008c 5B68     		ldr	r3, [r3, #4]
- 285:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
- 461              		.loc 1 285 50 view .LVU99
- 462 008e 394A     		ldr	r2, .L46+16
- 463 0090 5268     		ldr	r2, [r2, #4]
- 285:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
- 464              		.loc 1 285 36 view .LVU100
- 465 0092 1344     		add	r3, r3, r2
- 285:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
- 466              		.loc 1 285 18 view .LVU101
- 467 0094 334A     		ldr	r2, .L46
- 468 0096 9363     		str	r3, [r2, #56]
- 286:Core/Src/stm32f4xx_it.c ****       break;
- 469              		.loc 1 286 7 is_stmt 1 view .LVU102
- 286:Core/Src/stm32f4xx_it.c ****       break;
- 470              		.loc 1 286 22 is_stmt 0 view .LVU103
- 471 0098 334B     		ldr	r3, .L46+4
- 472 009a 0222     		movs	r2, #2
- 473 009c 5A70     		strb	r2, [r3, #1]
+ 432              		.loc 1 274 7 is_stmt 1 view .LVU82
+ 433              	.L27:
  287:Core/Src/stm32f4xx_it.c ****     }
- 474              		.loc 1 287 7 is_stmt 1 view .LVU104
- 475              	.L29:
- 300:Core/Src/stm32f4xx_it.c ****     }
+ 288:Core/Src/stm32f4xx_it.c ****     }
+ 289:Core/Src/stm32f4xx_it.c ****   }
+ 290:Core/Src/stm32f4xx_it.c **** 
+ 291:Core/Src/stm32f4xx_it.c ****   /* Channel 2 */
+ 292:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC2IF)
+ 434              		.loc 1 292 3 view .LVU83
+ 435              		.loc 1 292 11 is_stmt 0 view .LVU84
+ 436 0048 464B     		ldr	r3, .L48
+ 437 004a 1B69     		ldr	r3, [r3, #16]
+ 438              		.loc 1 292 6 view .LVU85
+ 439 004c 13F0040F 		tst	r3, #4
+ 440 0050 25D0     		beq	.L31
+ 293:Core/Src/stm32f4xx_it.c ****   {
+ 294:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC2IF;
+ 441              		.loc 1 294 5 is_stmt 1 view .LVU86
+ 442              		.loc 1 294 9 is_stmt 0 view .LVU87
+ 443 0052 444A     		ldr	r2, .L48
+ 444 0054 1369     		ldr	r3, [r2, #16]
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 14
+
+
+ 445              		.loc 1 294 14 view .LVU88
+ 446 0056 23F00403 		bic	r3, r3, #4
+ 447 005a 1361     		str	r3, [r2, #16]
+ 295:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[1])
+ 448              		.loc 1 295 5 is_stmt 1 view .LVU89
+ 449              		.loc 1 295 24 is_stmt 0 view .LVU90
+ 450 005c 424B     		ldr	r3, .L48+4
+ 451 005e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 452 0060 DBB2     		uxtb	r3, r3
+ 453              		.loc 1 295 5 view .LVU91
+ 454 0062 012B     		cmp	r3, #1
+ 455 0064 11D0     		beq	.L32
+ 456 0066 022B     		cmp	r3, #2
+ 457 0068 32D0     		beq	.L33
+ 296:Core/Src/stm32f4xx_it.c ****     {
+ 297:Core/Src/stm32f4xx_it.c ****     case 1:
+ 298:Core/Src/stm32f4xx_it.c ****     {
+ 299:Core/Src/stm32f4xx_it.c ****       TIM1->CCR2 = tstart_ticks[1] + twidth_ticks[1];
+ 300:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
+ 301:Core/Src/stm32f4xx_it.c ****       break;
+ 302:Core/Src/stm32f4xx_it.c ****     }
+ 303:Core/Src/stm32f4xx_it.c ****     case 2:
+ 304:Core/Src/stm32f4xx_it.c ****     {
+ 305:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
+ 306:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 0;
+ 307:Core/Src/stm32f4xx_it.c ****       break;
+ 308:Core/Src/stm32f4xx_it.c ****     }
+ 309:Core/Src/stm32f4xx_it.c ****     default:
+ 310:Core/Src/stm32f4xx_it.c ****     {
+ 311:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
+ 458              		.loc 1 311 7 is_stmt 1 view .LVU92
+ 459 006a 0421     		movs	r1, #4
+ 460 006c 3F48     		ldr	r0, .L48+8
+ 461 006e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 462              	.LVL14:
+ 312:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 0;
+ 463              		.loc 1 312 7 view .LVU93
+ 464              		.loc 1 312 22 is_stmt 0 view .LVU94
+ 465 0072 3D4B     		ldr	r3, .L48+4
+ 466 0074 0022     		movs	r2, #0
+ 467 0076 5A70     		strb	r2, [r3, #1]
+ 313:Core/Src/stm32f4xx_it.c ****       break;
+ 468              		.loc 1 313 7 is_stmt 1 view .LVU95
+ 469 0078 11E0     		b	.L31
+ 470              	.L29:
+ 278:Core/Src/stm32f4xx_it.c ****       pulse_state[0] = 0;
+ 471              		.loc 1 278 7 view .LVU96
+ 472 007a 0021     		movs	r1, #0
+ 473 007c 3B48     		ldr	r0, .L48+8
+ 474 007e FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 475              	.LVL15:
+ 279:Core/Src/stm32f4xx_it.c ****       break;
+ 476              		.loc 1 279 7 view .LVU97
+ 279:Core/Src/stm32f4xx_it.c ****       break;
+ 477              		.loc 1 279 22 is_stmt 0 view .LVU98
+ 478 0082 394B     		ldr	r3, .L48+4
+ 479 0084 0022     		movs	r2, #0
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 15
+
+
+ 480 0086 1A70     		strb	r2, [r3]
+ 280:Core/Src/stm32f4xx_it.c ****     }
+ 481              		.loc 1 280 7 is_stmt 1 view .LVU99
+ 482 0088 DEE7     		b	.L27
+ 483              	.L32:
+ 299:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
+ 484              		.loc 1 299 7 view .LVU100
+ 299:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
+ 485              		.loc 1 299 32 is_stmt 0 view .LVU101
+ 486 008a 394B     		ldr	r3, .L48+12
+ 487 008c 5B68     		ldr	r3, [r3, #4]
+ 299:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
+ 488              		.loc 1 299 50 view .LVU102
+ 489 008e 394A     		ldr	r2, .L48+16
+ 490 0090 5268     		ldr	r2, [r2, #4]
+ 299:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
+ 491              		.loc 1 299 36 view .LVU103
+ 492 0092 1344     		add	r3, r3, r2
+ 299:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 2;
+ 493              		.loc 1 299 18 view .LVU104
+ 494 0094 334A     		ldr	r2, .L48
+ 495 0096 9363     		str	r3, [r2, #56]
+ 300:Core/Src/stm32f4xx_it.c ****       break;
+ 496              		.loc 1 300 7 is_stmt 1 view .LVU105
+ 300:Core/Src/stm32f4xx_it.c ****       break;
+ 497              		.loc 1 300 22 is_stmt 0 view .LVU106
+ 498 0098 334B     		ldr	r3, .L48+4
+ 499 009a 0222     		movs	r2, #2
+ 500 009c 5A70     		strb	r2, [r3, #1]
  301:Core/Src/stm32f4xx_it.c ****     }
- 302:Core/Src/stm32f4xx_it.c ****   }
- 303:Core/Src/stm32f4xx_it.c **** 
- 304:Core/Src/stm32f4xx_it.c ****   /* Channel 3 */
- 305:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC3IF)
- 476              		.loc 1 305 3 view .LVU105
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 15
-
-
- 477              		.loc 1 305 11 is_stmt 0 view .LVU106
- 478 009e 314B     		ldr	r3, .L46
- 479 00a0 1B69     		ldr	r3, [r3, #16]
- 480              		.loc 1 305 6 view .LVU107
- 481 00a2 13F0080F 		tst	r3, #8
- 482 00a6 25D0     		beq	.L33
- 306:Core/Src/stm32f4xx_it.c ****   {
- 307:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC3IF;
- 483              		.loc 1 307 5 is_stmt 1 view .LVU108
- 484              		.loc 1 307 9 is_stmt 0 view .LVU109
- 485 00a8 2E4A     		ldr	r2, .L46
- 486 00aa 1369     		ldr	r3, [r2, #16]
- 487              		.loc 1 307 14 view .LVU110
- 488 00ac 23F00803 		bic	r3, r3, #8
- 489 00b0 1361     		str	r3, [r2, #16]
- 308:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[2])
- 490              		.loc 1 308 5 is_stmt 1 view .LVU111
- 491              		.loc 1 308 24 is_stmt 0 view .LVU112
- 492 00b2 2D4B     		ldr	r3, .L46+4
- 493 00b4 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 494 00b6 DBB2     		uxtb	r3, r3
- 495              		.loc 1 308 5 view .LVU113
- 496 00b8 012B     		cmp	r3, #1
- 497 00ba 11D0     		beq	.L34
- 498 00bc 022B     		cmp	r3, #2
- 499 00be 32D0     		beq	.L35
- 309:Core/Src/stm32f4xx_it.c ****     {
- 310:Core/Src/stm32f4xx_it.c ****     case 1:
- 311:Core/Src/stm32f4xx_it.c ****     {
- 312:Core/Src/stm32f4xx_it.c ****       TIM1->CCR3 = tstart_ticks[2] + twidth_ticks[2];
- 313:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
- 314:Core/Src/stm32f4xx_it.c ****       break;
- 315:Core/Src/stm32f4xx_it.c ****     }
- 316:Core/Src/stm32f4xx_it.c ****     case 2:
- 317:Core/Src/stm32f4xx_it.c ****     {
- 318:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
- 319:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 0;
- 320:Core/Src/stm32f4xx_it.c ****       break;
- 321:Core/Src/stm32f4xx_it.c ****     }
- 322:Core/Src/stm32f4xx_it.c ****     default:
- 323:Core/Src/stm32f4xx_it.c ****     {
- 324:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
- 500              		.loc 1 324 7 is_stmt 1 view .LVU114
- 501 00c0 0821     		movs	r1, #8
- 502 00c2 2A48     		ldr	r0, .L46+8
- 503 00c4 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 504              	.LVL15:
- 325:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 0;
- 505              		.loc 1 325 7 view .LVU115
- 506              		.loc 1 325 22 is_stmt 0 view .LVU116
- 507 00c8 274B     		ldr	r3, .L46+4
- 508 00ca 0022     		movs	r2, #0
- 509 00cc 9A70     		strb	r2, [r3, #2]
- 326:Core/Src/stm32f4xx_it.c ****       break;
- 510              		.loc 1 326 7 is_stmt 1 view .LVU117
- 511 00ce 11E0     		b	.L33
- 512              	.L31:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 16
-
-
- 291:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 0;
- 513              		.loc 1 291 7 view .LVU118
- 514 00d0 0421     		movs	r1, #4
- 515 00d2 2648     		ldr	r0, .L46+8
- 516 00d4 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 517              	.LVL16:
- 292:Core/Src/stm32f4xx_it.c ****       break;
- 518              		.loc 1 292 7 view .LVU119
- 292:Core/Src/stm32f4xx_it.c ****       break;
- 519              		.loc 1 292 22 is_stmt 0 view .LVU120
- 520 00d8 234B     		ldr	r3, .L46+4
- 521 00da 0022     		movs	r2, #0
- 522 00dc 5A70     		strb	r2, [r3, #1]
- 293:Core/Src/stm32f4xx_it.c ****     }
- 523              		.loc 1 293 7 is_stmt 1 view .LVU121
- 524 00de DEE7     		b	.L29
- 525              	.L34:
- 312:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
- 526              		.loc 1 312 7 view .LVU122
- 312:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
- 527              		.loc 1 312 32 is_stmt 0 view .LVU123
- 528 00e0 234B     		ldr	r3, .L46+12
- 529 00e2 9B68     		ldr	r3, [r3, #8]
- 312:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
- 530              		.loc 1 312 50 view .LVU124
- 531 00e4 234A     		ldr	r2, .L46+16
- 532 00e6 9268     		ldr	r2, [r2, #8]
- 312:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
- 533              		.loc 1 312 36 view .LVU125
- 534 00e8 1344     		add	r3, r3, r2
- 312:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
- 535              		.loc 1 312 18 view .LVU126
- 536 00ea 1E4A     		ldr	r2, .L46
- 537 00ec D363     		str	r3, [r2, #60]
- 313:Core/Src/stm32f4xx_it.c ****       break;
- 538              		.loc 1 313 7 is_stmt 1 view .LVU127
- 313:Core/Src/stm32f4xx_it.c ****       break;
- 539              		.loc 1 313 22 is_stmt 0 view .LVU128
- 540 00ee 1E4B     		ldr	r3, .L46+4
- 541 00f0 0222     		movs	r2, #2
- 542 00f2 9A70     		strb	r2, [r3, #2]
+ 501              		.loc 1 301 7 is_stmt 1 view .LVU107
+ 502              	.L31:
  314:Core/Src/stm32f4xx_it.c ****     }
- 543              		.loc 1 314 7 is_stmt 1 view .LVU129
- 544              	.L33:
- 327:Core/Src/stm32f4xx_it.c ****     }
- 328:Core/Src/stm32f4xx_it.c ****     }
- 329:Core/Src/stm32f4xx_it.c ****   }
- 330:Core/Src/stm32f4xx_it.c ****   /* Channel 4 */
- 331:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC4IF)
- 545              		.loc 1 331 3 view .LVU130
- 546              		.loc 1 331 11 is_stmt 0 view .LVU131
- 547 00f4 1B4B     		ldr	r3, .L46
- 548 00f6 1B69     		ldr	r3, [r3, #16]
- 549              		.loc 1 331 6 view .LVU132
- 550 00f8 13F0100F 		tst	r3, #16
- 551 00fc 25D0     		beq	.L37
- 332:Core/Src/stm32f4xx_it.c ****   {
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 17
+ 315:Core/Src/stm32f4xx_it.c ****     }
+ 316:Core/Src/stm32f4xx_it.c ****   }
+ 317:Core/Src/stm32f4xx_it.c **** 
+ 318:Core/Src/stm32f4xx_it.c ****   /* Channel 3 */
+ 319:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC3IF)
+ 503              		.loc 1 319 3 view .LVU108
+ 504              		.loc 1 319 11 is_stmt 0 view .LVU109
+ 505 009e 314B     		ldr	r3, .L48
+ 506 00a0 1B69     		ldr	r3, [r3, #16]
+ 507              		.loc 1 319 6 view .LVU110
+ 508 00a2 13F0080F 		tst	r3, #8
+ 509 00a6 25D0     		beq	.L35
+ 320:Core/Src/stm32f4xx_it.c ****   {
+ 321:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC3IF;
+ 510              		.loc 1 321 5 is_stmt 1 view .LVU111
+ 511              		.loc 1 321 9 is_stmt 0 view .LVU112
+ 512 00a8 2E4A     		ldr	r2, .L48
+ 513 00aa 1369     		ldr	r3, [r2, #16]
+ 514              		.loc 1 321 14 view .LVU113
+ 515 00ac 23F00803 		bic	r3, r3, #8
+ 516 00b0 1361     		str	r3, [r2, #16]
+ 322:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[2])
+ 517              		.loc 1 322 5 is_stmt 1 view .LVU114
+ 518              		.loc 1 322 24 is_stmt 0 view .LVU115
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 16
 
 
- 333:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC4IF;
- 552              		.loc 1 333 5 is_stmt 1 view .LVU133
- 553              		.loc 1 333 9 is_stmt 0 view .LVU134
- 554 00fe 194A     		ldr	r2, .L46
- 555 0100 1369     		ldr	r3, [r2, #16]
- 556              		.loc 1 333 14 view .LVU135
- 557 0102 23F01003 		bic	r3, r3, #16
- 558 0106 1361     		str	r3, [r2, #16]
- 334:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[3])
- 559              		.loc 1 334 5 is_stmt 1 view .LVU136
- 560              		.loc 1 334 24 is_stmt 0 view .LVU137
- 561 0108 174B     		ldr	r3, .L46+4
- 562 010a DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
- 563 010c DBB2     		uxtb	r3, r3
- 564              		.loc 1 334 5 view .LVU138
- 565 010e 012B     		cmp	r3, #1
- 566 0110 11D0     		beq	.L38
- 567 0112 022B     		cmp	r3, #2
- 568 0114 1DD0     		beq	.L39
- 335:Core/Src/stm32f4xx_it.c ****     {
- 336:Core/Src/stm32f4xx_it.c ****     case 1:
+ 519 00b2 2D4B     		ldr	r3, .L48+4
+ 520 00b4 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 521 00b6 DBB2     		uxtb	r3, r3
+ 522              		.loc 1 322 5 view .LVU116
+ 523 00b8 012B     		cmp	r3, #1
+ 524 00ba 11D0     		beq	.L36
+ 525 00bc 022B     		cmp	r3, #2
+ 526 00be 32D0     		beq	.L37
+ 323:Core/Src/stm32f4xx_it.c ****     {
+ 324:Core/Src/stm32f4xx_it.c ****     case 1:
+ 325:Core/Src/stm32f4xx_it.c ****     {
+ 326:Core/Src/stm32f4xx_it.c ****       TIM1->CCR3 = tstart_ticks[2] + twidth_ticks[2];
+ 327:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
+ 328:Core/Src/stm32f4xx_it.c ****       break;
+ 329:Core/Src/stm32f4xx_it.c ****     }
+ 330:Core/Src/stm32f4xx_it.c ****     case 2:
+ 331:Core/Src/stm32f4xx_it.c ****     {
+ 332:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
+ 333:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 0;
+ 334:Core/Src/stm32f4xx_it.c ****       break;
+ 335:Core/Src/stm32f4xx_it.c ****     }
+ 336:Core/Src/stm32f4xx_it.c ****     default:
  337:Core/Src/stm32f4xx_it.c ****     {
- 338:Core/Src/stm32f4xx_it.c ****       TIM1->CCR4 = tstart_ticks[3] + twidth_ticks[3];
- 339:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
+ 338:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
+ 527              		.loc 1 338 7 is_stmt 1 view .LVU117
+ 528 00c0 0821     		movs	r1, #8
+ 529 00c2 2A48     		ldr	r0, .L48+8
+ 530 00c4 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 531              	.LVL16:
+ 339:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 0;
+ 532              		.loc 1 339 7 view .LVU118
+ 533              		.loc 1 339 22 is_stmt 0 view .LVU119
+ 534 00c8 274B     		ldr	r3, .L48+4
+ 535 00ca 0022     		movs	r2, #0
+ 536 00cc 9A70     		strb	r2, [r3, #2]
  340:Core/Src/stm32f4xx_it.c ****       break;
+ 537              		.loc 1 340 7 is_stmt 1 view .LVU120
+ 538 00ce 11E0     		b	.L35
+ 539              	.L33:
+ 305:Core/Src/stm32f4xx_it.c ****       pulse_state[1] = 0;
+ 540              		.loc 1 305 7 view .LVU121
+ 541 00d0 0421     		movs	r1, #4
+ 542 00d2 2648     		ldr	r0, .L48+8
+ 543 00d4 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 544              	.LVL17:
+ 306:Core/Src/stm32f4xx_it.c ****       break;
+ 545              		.loc 1 306 7 view .LVU122
+ 306:Core/Src/stm32f4xx_it.c ****       break;
+ 546              		.loc 1 306 22 is_stmt 0 view .LVU123
+ 547 00d8 234B     		ldr	r3, .L48+4
+ 548 00da 0022     		movs	r2, #0
+ 549 00dc 5A70     		strb	r2, [r3, #1]
+ 307:Core/Src/stm32f4xx_it.c ****     }
+ 550              		.loc 1 307 7 is_stmt 1 view .LVU124
+ 551 00de DEE7     		b	.L31
+ 552              	.L36:
+ 326:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 17
+
+
+ 553              		.loc 1 326 7 view .LVU125
+ 326:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
+ 554              		.loc 1 326 32 is_stmt 0 view .LVU126
+ 555 00e0 234B     		ldr	r3, .L48+12
+ 556 00e2 9B68     		ldr	r3, [r3, #8]
+ 326:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
+ 557              		.loc 1 326 50 view .LVU127
+ 558 00e4 234A     		ldr	r2, .L48+16
+ 559 00e6 9268     		ldr	r2, [r2, #8]
+ 326:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
+ 560              		.loc 1 326 36 view .LVU128
+ 561 00e8 1344     		add	r3, r3, r2
+ 326:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
+ 562              		.loc 1 326 18 view .LVU129
+ 563 00ea 1E4A     		ldr	r2, .L48
+ 564 00ec D363     		str	r3, [r2, #60]
+ 327:Core/Src/stm32f4xx_it.c ****       break;
+ 565              		.loc 1 327 7 is_stmt 1 view .LVU130
+ 327:Core/Src/stm32f4xx_it.c ****       break;
+ 566              		.loc 1 327 22 is_stmt 0 view .LVU131
+ 567 00ee 1E4B     		ldr	r3, .L48+4
+ 568 00f0 0222     		movs	r2, #2
+ 569 00f2 9A70     		strb	r2, [r3, #2]
+ 328:Core/Src/stm32f4xx_it.c ****     }
+ 570              		.loc 1 328 7 is_stmt 1 view .LVU132
+ 571              	.L35:
  341:Core/Src/stm32f4xx_it.c ****     }
- 342:Core/Src/stm32f4xx_it.c ****     case 2:
- 343:Core/Src/stm32f4xx_it.c ****     {
- 344:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
- 345:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 0;
- 346:Core/Src/stm32f4xx_it.c ****       break;
- 347:Core/Src/stm32f4xx_it.c ****     }
- 348:Core/Src/stm32f4xx_it.c ****     default:
+ 342:Core/Src/stm32f4xx_it.c ****     }
+ 343:Core/Src/stm32f4xx_it.c ****   }
+ 344:Core/Src/stm32f4xx_it.c ****   /* Channel 4 */
+ 345:Core/Src/stm32f4xx_it.c ****   if (TIM1->SR & TIM_SR_CC4IF)
+ 572              		.loc 1 345 3 view .LVU133
+ 573              		.loc 1 345 11 is_stmt 0 view .LVU134
+ 574 00f4 1B4B     		ldr	r3, .L48
+ 575 00f6 1B69     		ldr	r3, [r3, #16]
+ 576              		.loc 1 345 6 view .LVU135
+ 577 00f8 13F0100F 		tst	r3, #16
+ 578 00fc 25D0     		beq	.L39
+ 346:Core/Src/stm32f4xx_it.c ****   {
+ 347:Core/Src/stm32f4xx_it.c ****     TIM1->SR &= ~TIM_SR_CC4IF;
+ 579              		.loc 1 347 5 is_stmt 1 view .LVU136
+ 580              		.loc 1 347 9 is_stmt 0 view .LVU137
+ 581 00fe 194A     		ldr	r2, .L48
+ 582 0100 1369     		ldr	r3, [r2, #16]
+ 583              		.loc 1 347 14 view .LVU138
+ 584 0102 23F01003 		bic	r3, r3, #16
+ 585 0106 1361     		str	r3, [r2, #16]
+ 348:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[3])
+ 586              		.loc 1 348 5 is_stmt 1 view .LVU139
+ 587              		.loc 1 348 24 is_stmt 0 view .LVU140
+ 588 0108 174B     		ldr	r3, .L48+4
+ 589 010a DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 590 010c DBB2     		uxtb	r3, r3
+ 591              		.loc 1 348 5 view .LVU141
+ 592 010e 012B     		cmp	r3, #1
+ 593 0110 11D0     		beq	.L40
+ 594 0112 022B     		cmp	r3, #2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 18
+
+
+ 595 0114 1DD0     		beq	.L41
  349:Core/Src/stm32f4xx_it.c ****     {
- 350:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
- 569              		.loc 1 350 7 is_stmt 1 view .LVU139
- 570 0116 0C21     		movs	r1, #12
- 571 0118 1448     		ldr	r0, .L46+8
- 572 011a FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 573              	.LVL17:
- 351:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 0;
- 574              		.loc 1 351 7 view .LVU140
- 575              		.loc 1 351 22 is_stmt 0 view .LVU141
- 576 011e 124B     		ldr	r3, .L46+4
- 577 0120 0022     		movs	r2, #0
- 578 0122 DA70     		strb	r2, [r3, #3]
- 352:Core/Src/stm32f4xx_it.c ****       break;
- 579              		.loc 1 352 7 is_stmt 1 view .LVU142
- 580 0124 11E0     		b	.L37
- 581              	.L35:
- 318:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 0;
- 582              		.loc 1 318 7 view .LVU143
- 583 0126 0821     		movs	r1, #8
- 584 0128 1048     		ldr	r0, .L46+8
- 585 012a FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 586              	.LVL18:
- 319:Core/Src/stm32f4xx_it.c ****       break;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 18
+ 350:Core/Src/stm32f4xx_it.c ****     case 1:
+ 351:Core/Src/stm32f4xx_it.c ****     {
+ 352:Core/Src/stm32f4xx_it.c ****       TIM1->CCR4 = tstart_ticks[3] + twidth_ticks[3];
+ 353:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
+ 354:Core/Src/stm32f4xx_it.c ****       break;
+ 355:Core/Src/stm32f4xx_it.c ****     }
+ 356:Core/Src/stm32f4xx_it.c ****     case 2:
+ 357:Core/Src/stm32f4xx_it.c ****     {
+ 358:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
+ 359:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 0;
+ 360:Core/Src/stm32f4xx_it.c ****       break;
+ 361:Core/Src/stm32f4xx_it.c ****     }
+ 362:Core/Src/stm32f4xx_it.c ****     default:
+ 363:Core/Src/stm32f4xx_it.c ****     {
+ 364:Core/Src/stm32f4xx_it.c ****       HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
+ 596              		.loc 1 364 7 is_stmt 1 view .LVU142
+ 597 0116 0C21     		movs	r1, #12
+ 598 0118 1448     		ldr	r0, .L48+8
+ 599 011a FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 600              	.LVL18:
+ 365:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 0;
+ 601              		.loc 1 365 7 view .LVU143
+ 602              		.loc 1 365 22 is_stmt 0 view .LVU144
+ 603 011e 124B     		ldr	r3, .L48+4
+ 604 0120 0022     		movs	r2, #0
+ 605 0122 DA70     		strb	r2, [r3, #3]
+ 366:Core/Src/stm32f4xx_it.c ****       break;
+ 606              		.loc 1 366 7 is_stmt 1 view .LVU145
+ 607 0124 11E0     		b	.L39
+ 608              	.L37:
+ 332:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 0;
+ 609              		.loc 1 332 7 view .LVU146
+ 610 0126 0821     		movs	r1, #8
+ 611 0128 1048     		ldr	r0, .L48+8
+ 612 012a FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 613              	.LVL19:
+ 333:Core/Src/stm32f4xx_it.c ****       break;
+ 614              		.loc 1 333 7 view .LVU147
+ 333:Core/Src/stm32f4xx_it.c ****       break;
+ 615              		.loc 1 333 22 is_stmt 0 view .LVU148
+ 616 012e 0E4B     		ldr	r3, .L48+4
+ 617 0130 0022     		movs	r2, #0
+ 618 0132 9A70     		strb	r2, [r3, #2]
+ 334:Core/Src/stm32f4xx_it.c ****     }
+ 619              		.loc 1 334 7 is_stmt 1 view .LVU149
+ 620 0134 DEE7     		b	.L35
+ 621              	.L40:
+ 352:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
+ 622              		.loc 1 352 7 view .LVU150
+ 352:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
+ 623              		.loc 1 352 32 is_stmt 0 view .LVU151
+ 624 0136 0E4B     		ldr	r3, .L48+12
+ 625 0138 DB68     		ldr	r3, [r3, #12]
+ 352:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
+ 626              		.loc 1 352 50 view .LVU152
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 19
 
 
- 587              		.loc 1 319 7 view .LVU144
- 319:Core/Src/stm32f4xx_it.c ****       break;
- 588              		.loc 1 319 22 is_stmt 0 view .LVU145
- 589 012e 0E4B     		ldr	r3, .L46+4
- 590 0130 0022     		movs	r2, #0
- 591 0132 9A70     		strb	r2, [r3, #2]
- 320:Core/Src/stm32f4xx_it.c ****     }
- 592              		.loc 1 320 7 is_stmt 1 view .LVU146
- 593 0134 DEE7     		b	.L33
- 594              	.L38:
- 338:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
- 595              		.loc 1 338 7 view .LVU147
- 338:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
- 596              		.loc 1 338 32 is_stmt 0 view .LVU148
- 597 0136 0E4B     		ldr	r3, .L46+12
- 598 0138 DB68     		ldr	r3, [r3, #12]
- 338:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
- 599              		.loc 1 338 50 view .LVU149
- 600 013a 0E4A     		ldr	r2, .L46+16
- 601 013c D268     		ldr	r2, [r2, #12]
- 338:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
- 602              		.loc 1 338 36 view .LVU150
- 603 013e 1344     		add	r3, r3, r2
- 338:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
- 604              		.loc 1 338 18 view .LVU151
- 605 0140 084A     		ldr	r2, .L46
- 606 0142 1364     		str	r3, [r2, #64]
- 339:Core/Src/stm32f4xx_it.c ****       break;
- 607              		.loc 1 339 7 is_stmt 1 view .LVU152
- 339:Core/Src/stm32f4xx_it.c ****       break;
- 608              		.loc 1 339 22 is_stmt 0 view .LVU153
- 609 0144 084B     		ldr	r3, .L46+4
- 610 0146 0222     		movs	r2, #2
- 611 0148 DA70     		strb	r2, [r3, #3]
- 340:Core/Src/stm32f4xx_it.c ****     }
- 612              		.loc 1 340 7 is_stmt 1 view .LVU154
- 613              	.L37:
- 353:Core/Src/stm32f4xx_it.c ****     }
+ 627 013a 0E4A     		ldr	r2, .L48+16
+ 628 013c D268     		ldr	r2, [r2, #12]
+ 352:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
+ 629              		.loc 1 352 36 view .LVU153
+ 630 013e 1344     		add	r3, r3, r2
+ 352:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
+ 631              		.loc 1 352 18 view .LVU154
+ 632 0140 084A     		ldr	r2, .L48
+ 633 0142 1364     		str	r3, [r2, #64]
+ 353:Core/Src/stm32f4xx_it.c ****       break;
+ 634              		.loc 1 353 7 is_stmt 1 view .LVU155
+ 353:Core/Src/stm32f4xx_it.c ****       break;
+ 635              		.loc 1 353 22 is_stmt 0 view .LVU156
+ 636 0144 084B     		ldr	r3, .L48+4
+ 637 0146 0222     		movs	r2, #2
+ 638 0148 DA70     		strb	r2, [r3, #3]
  354:Core/Src/stm32f4xx_it.c ****     }
- 355:Core/Src/stm32f4xx_it.c ****   }
- 356:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 0 */
- 357:Core/Src/stm32f4xx_it.c ****   HAL_TIM_IRQHandler(&htim1);
- 614              		.loc 1 357 3 view .LVU155
- 615 014a 0848     		ldr	r0, .L46+8
- 616 014c FFF7FEFF 		bl	HAL_TIM_IRQHandler
- 617              	.LVL19:
- 358:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_CC_IRQn 1 */
- 359:Core/Src/stm32f4xx_it.c **** 
- 360:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 1 */
- 361:Core/Src/stm32f4xx_it.c **** }
- 618              		.loc 1 361 1 is_stmt 0 view .LVU156
- 619 0150 08BD     		pop	{r3, pc}
- 620              	.L39:
- 344:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 0;
- 621              		.loc 1 344 7 is_stmt 1 view .LVU157
- 622 0152 0C21     		movs	r1, #12
- 623 0154 0548     		ldr	r0, .L46+8
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 19
-
-
- 624 0156 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
- 625              	.LVL20:
- 345:Core/Src/stm32f4xx_it.c ****       break;
- 626              		.loc 1 345 7 view .LVU158
- 345:Core/Src/stm32f4xx_it.c ****       break;
- 627              		.loc 1 345 22 is_stmt 0 view .LVU159
- 628 015a 034B     		ldr	r3, .L46+4
- 629 015c 0022     		movs	r2, #0
- 630 015e DA70     		strb	r2, [r3, #3]
- 346:Core/Src/stm32f4xx_it.c ****     }
- 631              		.loc 1 346 7 is_stmt 1 view .LVU160
- 632 0160 F3E7     		b	.L37
- 633              	.L47:
- 634 0162 00BF     		.align	2
- 635              	.L46:
- 636 0164 00000140 		.word	1073807360
- 637 0168 00000000 		.word	pulse_state
- 638 016c 00000000 		.word	htim1
- 639 0170 00000000 		.word	tstart_ticks
- 640 0174 00000000 		.word	twidth_ticks
- 641              		.cfi_endproc
- 642              	.LFE147:
- 644              		.section	.text.TIM4_IRQHandler,"ax",%progbits
- 645              		.align	1
- 646              		.global	TIM4_IRQHandler
- 647              		.syntax unified
- 648              		.thumb
- 649              		.thumb_func
- 651              	TIM4_IRQHandler:
- 652              	.LFB148:
- 362:Core/Src/stm32f4xx_it.c **** 
- 363:Core/Src/stm32f4xx_it.c **** /**
- 364:Core/Src/stm32f4xx_it.c ****   * @brief This function handles TIM4 global interrupt.
- 365:Core/Src/stm32f4xx_it.c ****   */
- 366:Core/Src/stm32f4xx_it.c **** void TIM4_IRQHandler(void)
- 367:Core/Src/stm32f4xx_it.c **** {
- 653              		.loc 1 367 1 view -0
- 654              		.cfi_startproc
- 655              		@ args = 0, pretend = 0, frame = 0
- 656              		@ frame_needed = 0, uses_anonymous_args = 0
- 657 0000 08B5     		push	{r3, lr}
- 658              	.LCFI3:
- 659              		.cfi_def_cfa_offset 8
- 660              		.cfi_offset 3, -8
- 661              		.cfi_offset 14, -4
- 368:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM4_IRQn 0 */
- 369:Core/Src/stm32f4xx_it.c **** 
- 370:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM4_IRQn 0 */
- 371:Core/Src/stm32f4xx_it.c ****   HAL_TIM_IRQHandler(&htim4);
- 662              		.loc 1 371 3 view .LVU162
- 663 0002 0248     		ldr	r0, .L50
- 664 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
- 665              	.LVL21:
- 372:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM4_IRQn 1 */
+ 639              		.loc 1 354 7 is_stmt 1 view .LVU157
+ 640              	.L39:
+ 367:Core/Src/stm32f4xx_it.c ****     }
+ 368:Core/Src/stm32f4xx_it.c ****     }
+ 369:Core/Src/stm32f4xx_it.c ****   }
+ 370:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 0 */
+ 371:Core/Src/stm32f4xx_it.c ****   HAL_TIM_IRQHandler(&htim1);
+ 641              		.loc 1 371 3 view .LVU158
+ 642 014a 0848     		ldr	r0, .L48+8
+ 643 014c FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 644              	.LVL20:
+ 372:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_CC_IRQn 1 */
  373:Core/Src/stm32f4xx_it.c **** 
- 374:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM4_IRQn 1 */
+ 374:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_CC_IRQn 1 */
  375:Core/Src/stm32f4xx_it.c **** }
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 20
+ 645              		.loc 1 375 1 is_stmt 0 view .LVU159
+ 646 0150 08BD     		pop	{r3, pc}
+ 647              	.L41:
+ 358:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 0;
+ 648              		.loc 1 358 7 is_stmt 1 view .LVU160
+ 649 0152 0C21     		movs	r1, #12
+ 650 0154 0548     		ldr	r0, .L48+8
+ 651 0156 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
+ 652              	.LVL21:
+ 359:Core/Src/stm32f4xx_it.c ****       break;
+ 653              		.loc 1 359 7 view .LVU161
+ 359:Core/Src/stm32f4xx_it.c ****       break;
+ 654              		.loc 1 359 22 is_stmt 0 view .LVU162
+ 655 015a 034B     		ldr	r3, .L48+4
+ 656 015c 0022     		movs	r2, #0
+ 657 015e DA70     		strb	r2, [r3, #3]
+ 360:Core/Src/stm32f4xx_it.c ****     }
+ 658              		.loc 1 360 7 is_stmt 1 view .LVU163
+ 659 0160 F3E7     		b	.L39
+ 660              	.L49:
+ 661 0162 00BF     		.align	2
+ 662              	.L48:
+ 663 0164 00000140 		.word	1073807360
+ 664 0168 00000000 		.word	pulse_state
+ 665 016c 00000000 		.word	htim1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 20
 
 
- 666              		.loc 1 375 1 is_stmt 0 view .LVU163
- 667 0008 08BD     		pop	{r3, pc}
- 668              	.L51:
- 669 000a 00BF     		.align	2
- 670              	.L50:
- 671 000c 00000000 		.word	htim4
- 672              		.cfi_endproc
- 673              	.LFE148:
- 675              		.section	.text.USART1_IRQHandler,"ax",%progbits
- 676              		.align	1
- 677              		.global	USART1_IRQHandler
- 678              		.syntax unified
- 679              		.thumb
- 680              		.thumb_func
- 682              	USART1_IRQHandler:
- 683              	.LFB149:
+ 666 0170 00000000 		.word	tstart_ticks
+ 667 0174 00000000 		.word	twidth_ticks
+ 668              		.cfi_endproc
+ 669              	.LFE148:
+ 671              		.section	.text.TIM4_IRQHandler,"ax",%progbits
+ 672              		.align	1
+ 673              		.global	TIM4_IRQHandler
+ 674              		.syntax unified
+ 675              		.thumb
+ 676              		.thumb_func
+ 678              	TIM4_IRQHandler:
+ 679              	.LFB149:
  376:Core/Src/stm32f4xx_it.c **** 
  377:Core/Src/stm32f4xx_it.c **** /**
- 378:Core/Src/stm32f4xx_it.c ****   * @brief This function handles USART1 global interrupt.
+ 378:Core/Src/stm32f4xx_it.c ****   * @brief This function handles TIM4 global interrupt.
  379:Core/Src/stm32f4xx_it.c ****   */
- 380:Core/Src/stm32f4xx_it.c **** void USART1_IRQHandler(void)
+ 380:Core/Src/stm32f4xx_it.c **** void TIM4_IRQHandler(void)
  381:Core/Src/stm32f4xx_it.c **** {
- 684              		.loc 1 381 1 is_stmt 1 view -0
- 685              		.cfi_startproc
- 686              		@ args = 0, pretend = 0, frame = 0
- 687              		@ frame_needed = 0, uses_anonymous_args = 0
- 688 0000 08B5     		push	{r3, lr}
- 689              	.LCFI4:
- 690              		.cfi_def_cfa_offset 8
- 691              		.cfi_offset 3, -8
- 692              		.cfi_offset 14, -4
- 382:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN USART1_IRQn 0 */
+ 680              		.loc 1 381 1 view -0
+ 681              		.cfi_startproc
+ 682              		@ args = 0, pretend = 0, frame = 0
+ 683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 684 0000 08B5     		push	{r3, lr}
+ 685              	.LCFI4:
+ 686              		.cfi_def_cfa_offset 8
+ 687              		.cfi_offset 3, -8
+ 688              		.cfi_offset 14, -4
+ 382:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM4_IRQn 0 */
  383:Core/Src/stm32f4xx_it.c **** 
- 384:Core/Src/stm32f4xx_it.c ****   /* USER CODE END USART1_IRQn 0 */
- 385:Core/Src/stm32f4xx_it.c ****   HAL_UART_IRQHandler(&huart1);
- 693              		.loc 1 385 3 view .LVU165
- 694 0002 0248     		ldr	r0, .L54
- 695 0004 FFF7FEFF 		bl	HAL_UART_IRQHandler
- 696              	.LVL22:
- 386:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN USART1_IRQn 1 */
+ 384:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM4_IRQn 0 */
+ 385:Core/Src/stm32f4xx_it.c ****   HAL_TIM_IRQHandler(&htim4);
+ 689              		.loc 1 385 3 view .LVU165
+ 690 0002 0248     		ldr	r0, .L52
+ 691 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 692              	.LVL22:
+ 386:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM4_IRQn 1 */
  387:Core/Src/stm32f4xx_it.c **** 
- 388:Core/Src/stm32f4xx_it.c ****   /* USER CODE END USART1_IRQn 1 */
+ 388:Core/Src/stm32f4xx_it.c ****   /* USER CODE END TIM4_IRQn 1 */
  389:Core/Src/stm32f4xx_it.c **** }
- 697              		.loc 1 389 1 is_stmt 0 view .LVU166
- 698 0008 08BD     		pop	{r3, pc}
- 699              	.L55:
- 700 000a 00BF     		.align	2
- 701              	.L54:
- 702 000c 00000000 		.word	huart1
- 703              		.cfi_endproc
- 704              	.LFE149:
- 706              		.section	.text.CAN2_RX0_IRQHandler,"ax",%progbits
- 707              		.align	1
- 708              		.global	CAN2_RX0_IRQHandler
- 709              		.syntax unified
- 710              		.thumb
- 711              		.thumb_func
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 21
-
-
- 713              	CAN2_RX0_IRQHandler:
- 714              	.LFB150:
+ 693              		.loc 1 389 1 is_stmt 0 view .LVU166
+ 694 0008 08BD     		pop	{r3, pc}
+ 695              	.L53:
+ 696 000a 00BF     		.align	2
+ 697              	.L52:
+ 698 000c 00000000 		.word	htim4
+ 699              		.cfi_endproc
+ 700              	.LFE149:
+ 702              		.section	.text.USART1_IRQHandler,"ax",%progbits
+ 703              		.align	1
+ 704              		.global	USART1_IRQHandler
+ 705              		.syntax unified
+ 706              		.thumb
+ 707              		.thumb_func
+ 709              	USART1_IRQHandler:
+ 710              	.LFB150:
  390:Core/Src/stm32f4xx_it.c **** 
  391:Core/Src/stm32f4xx_it.c **** /**
- 392:Core/Src/stm32f4xx_it.c ****   * @brief This function handles CAN2 RX0 interrupts.
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 21
+
+
+ 392:Core/Src/stm32f4xx_it.c ****   * @brief This function handles USART1 global interrupt.
  393:Core/Src/stm32f4xx_it.c ****   */
- 394:Core/Src/stm32f4xx_it.c **** void CAN2_RX0_IRQHandler(void)
+ 394:Core/Src/stm32f4xx_it.c **** void USART1_IRQHandler(void)
  395:Core/Src/stm32f4xx_it.c **** {
- 715              		.loc 1 395 1 is_stmt 1 view -0
- 716              		.cfi_startproc
- 717              		@ args = 0, pretend = 0, frame = 0
- 718              		@ frame_needed = 0, uses_anonymous_args = 0
- 719 0000 10B5     		push	{r4, lr}
- 720              	.LCFI5:
- 721              		.cfi_def_cfa_offset 8
- 722              		.cfi_offset 4, -8
- 723              		.cfi_offset 14, -4
- 396:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
- 397:Core/Src/stm32f4xx_it.c ****   uint8_t i = 0;
- 724              		.loc 1 397 3 view .LVU168
- 725              	.LVL23:
- 398:Core/Src/stm32f4xx_it.c ****   static volatile uint32_t preTick2 = 0;
- 726              		.loc 1 398 3 view .LVU169
- 399:Core/Src/stm32f4xx_it.c **** 
- 400:Core/Src/stm32f4xx_it.c ****   // 接收CAN2包数据
- 401:Core/Src/stm32f4xx_it.c ****   if (HAL_CAN_GetRxMessage((&hcan2), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can2.CAN_RxMsg), (uint8
- 727              		.loc 1 401 3 view .LVU170
- 728              		.loc 1 401 7 is_stmt 0 view .LVU171
- 729 0002 1A4B     		ldr	r3, .L62
- 730 0004 A3F11C02 		sub	r2, r3, #28
- 731 0008 0021     		movs	r1, #0
- 732 000a 1948     		ldr	r0, .L62+4
- 733 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
- 734              	.LVL24:
- 735              		.loc 1 401 6 discriminator 1 view .LVU172
- 736 0010 18B1     		cbz	r0, .L61
- 737              	.LVL25:
- 738              	.L57:
- 402:Core/Src/stm32f4xx_it.c ****   {
- 403:Core/Src/stm32f4xx_it.c ****     HT_DM_S_7010_Receive_Data(can2.rxData, &can2.CAN_RxMsg.DLC);
- 404:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
- 405:Core/Src/stm32f4xx_it.c ****     for (i = can2.CAN_RxMsg.DLC; i < 8; i++)
- 406:Core/Src/stm32f4xx_it.c ****     {
- 407:Core/Src/stm32f4xx_it.c ****       can2.rxData[i] = 0;
- 408:Core/Src/stm32f4xx_it.c ****     }
- 409:Core/Src/stm32f4xx_it.c ****     can2.rxFrameFlag = 1;
- 410:Core/Src/stm32f4xx_it.c **** 
- 411:Core/Src/stm32f4xx_it.c ****     uint32_t currTick2 = HAL_GetTick();
- 412:Core/Src/stm32f4xx_it.c ****     can2Rev_freq = 1000.f / (currTick2 - preTick2);
- 413:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
- 414:Core/Src/stm32f4xx_it.c ****   }
- 415:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN2_RX0_IRQn 0 */
- 416:Core/Src/stm32f4xx_it.c ****   HAL_CAN_IRQHandler(&hcan2);
- 739              		.loc 1 416 3 is_stmt 1 view .LVU173
- 740 0012 1748     		ldr	r0, .L62+4
- 741 0014 FFF7FEFF 		bl	HAL_CAN_IRQHandler
- 742              	.LVL26:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 22
+ 711              		.loc 1 395 1 is_stmt 1 view -0
+ 712              		.cfi_startproc
+ 713              		@ args = 0, pretend = 0, frame = 0
+ 714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 715 0000 08B5     		push	{r3, lr}
+ 716              	.LCFI5:
+ 717              		.cfi_def_cfa_offset 8
+ 718              		.cfi_offset 3, -8
+ 719              		.cfi_offset 14, -4
+ 396:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN USART1_IRQn 0 */
+ 397:Core/Src/stm32f4xx_it.c **** 
+ 398:Core/Src/stm32f4xx_it.c ****   /* USER CODE END USART1_IRQn 0 */
+ 399:Core/Src/stm32f4xx_it.c ****   HAL_UART_IRQHandler(&huart1);
+ 720              		.loc 1 399 3 view .LVU168
+ 721 0002 0248     		ldr	r0, .L56
+ 722 0004 FFF7FEFF 		bl	HAL_UART_IRQHandler
+ 723              	.LVL23:
+ 400:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN USART1_IRQn 1 */
+ 401:Core/Src/stm32f4xx_it.c **** 
+ 402:Core/Src/stm32f4xx_it.c ****   /* USER CODE END USART1_IRQn 1 */
+ 403:Core/Src/stm32f4xx_it.c **** }
+ 724              		.loc 1 403 1 is_stmt 0 view .LVU169
+ 725 0008 08BD     		pop	{r3, pc}
+ 726              	.L57:
+ 727 000a 00BF     		.align	2
+ 728              	.L56:
+ 729 000c 00000000 		.word	huart1
+ 730              		.cfi_endproc
+ 731              	.LFE150:
+ 733              		.section	.text.CAN2_RX0_IRQHandler,"ax",%progbits
+ 734              		.align	1
+ 735              		.global	CAN2_RX0_IRQHandler
+ 736              		.syntax unified
+ 737              		.thumb
+ 738              		.thumb_func
+ 740              	CAN2_RX0_IRQHandler:
+ 741              	.LFB151:
+ 404:Core/Src/stm32f4xx_it.c **** 
+ 405:Core/Src/stm32f4xx_it.c **** /**
+ 406:Core/Src/stm32f4xx_it.c ****   * @brief This function handles CAN2 RX0 interrupts.
+ 407:Core/Src/stm32f4xx_it.c ****   */
+ 408:Core/Src/stm32f4xx_it.c **** void CAN2_RX0_IRQHandler(void)
+ 409:Core/Src/stm32f4xx_it.c **** {
+ 742              		.loc 1 409 1 is_stmt 1 view -0
+ 743              		.cfi_startproc
+ 744              		@ args = 0, pretend = 0, frame = 0
+ 745              		@ frame_needed = 0, uses_anonymous_args = 0
+ 746 0000 10B5     		push	{r4, lr}
+ 747              	.LCFI6:
+ 748              		.cfi_def_cfa_offset 8
+ 749              		.cfi_offset 4, -8
+ 750              		.cfi_offset 14, -4
+ 410:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 22
 
 
- 417:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
- 418:Core/Src/stm32f4xx_it.c ****   // 计算CAN2接收频率
- 419:Core/Src/stm32f4xx_it.c **** 
- 420:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN2_RX0_IRQn 1 */
- 421:Core/Src/stm32f4xx_it.c **** }
- 743              		.loc 1 421 1 is_stmt 0 view .LVU174
- 744 0018 10BD     		pop	{r4, pc}
- 745              	.LVL27:
- 746              	.L61:
- 747              	.LBB2:
- 403:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
- 748              		.loc 1 403 5 is_stmt 1 view .LVU175
- 749 001a 164C     		ldr	r4, .L62+8
- 750 001c 2146     		mov	r1, r4
- 751 001e 04F10C00 		add	r0, r4, #12
- 752 0022 FFF7FEFF 		bl	HT_DM_S_7010_Receive_Data
- 753              	.LVL28:
- 405:Core/Src/stm32f4xx_it.c ****     {
- 754              		.loc 1 405 5 view .LVU176
- 405:Core/Src/stm32f4xx_it.c ****     {
- 755              		.loc 1 405 28 is_stmt 0 view .LVU177
- 756 0026 103C     		subs	r4, r4, #16
- 757 0028 2369     		ldr	r3, [r4, #16]
- 405:Core/Src/stm32f4xx_it.c ****     {
- 758              		.loc 1 405 12 view .LVU178
- 759 002a DBB2     		uxtb	r3, r3
- 760              	.LVL29:
- 405:Core/Src/stm32f4xx_it.c ****     {
- 761              		.loc 1 405 5 view .LVU179
- 762 002c 05E0     		b	.L58
- 763              	.L59:
- 407:Core/Src/stm32f4xx_it.c ****     }
- 764              		.loc 1 407 7 is_stmt 1 view .LVU180
- 407:Core/Src/stm32f4xx_it.c ****     }
- 765              		.loc 1 407 22 is_stmt 0 view .LVU181
- 766 002e 124A     		ldr	r2, .L62+12
- 767 0030 1A44     		add	r2, r2, r3
- 768 0032 0021     		movs	r1, #0
- 769 0034 1177     		strb	r1, [r2, #28]
- 405:Core/Src/stm32f4xx_it.c ****     {
- 770              		.loc 1 405 42 is_stmt 1 discriminator 3 view .LVU182
- 771 0036 0133     		adds	r3, r3, #1
- 772              	.LVL30:
- 405:Core/Src/stm32f4xx_it.c ****     {
- 773              		.loc 1 405 42 is_stmt 0 discriminator 3 view .LVU183
- 774 0038 DBB2     		uxtb	r3, r3
- 775              	.LVL31:
- 776              	.L58:
- 405:Core/Src/stm32f4xx_it.c ****     {
- 777              		.loc 1 405 36 is_stmt 1 discriminator 1 view .LVU184
- 778 003a 072B     		cmp	r3, #7
- 779 003c F7D9     		bls	.L59
- 409:Core/Src/stm32f4xx_it.c **** 
- 780              		.loc 1 409 5 view .LVU185
- 409:Core/Src/stm32f4xx_it.c **** 
- 781              		.loc 1 409 22 is_stmt 0 view .LVU186
- 782 003e 0E4B     		ldr	r3, .L62+12
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 23
+ 411:Core/Src/stm32f4xx_it.c ****   uint8_t i = 0;
+ 751              		.loc 1 411 3 view .LVU171
+ 752              	.LVL24:
+ 412:Core/Src/stm32f4xx_it.c ****   static volatile uint32_t preTick2 = 0;
+ 753              		.loc 1 412 3 view .LVU172
+ 413:Core/Src/stm32f4xx_it.c **** 
+ 414:Core/Src/stm32f4xx_it.c ****   // 接收CAN2包数据
+ 415:Core/Src/stm32f4xx_it.c ****   if (HAL_CAN_GetRxMessage((&hcan2), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can2.CAN_RxMsg), (uint8
+ 754              		.loc 1 415 3 view .LVU173
+ 755              		.loc 1 415 7 is_stmt 0 view .LVU174
+ 756 0002 1A4B     		ldr	r3, .L64
+ 757 0004 A3F11C02 		sub	r2, r3, #28
+ 758 0008 0021     		movs	r1, #0
+ 759 000a 1948     		ldr	r0, .L64+4
+ 760 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
+ 761              	.LVL25:
+ 762              		.loc 1 415 6 discriminator 1 view .LVU175
+ 763 0010 18B1     		cbz	r0, .L63
+ 764              	.LVL26:
+ 765              	.L59:
+ 416:Core/Src/stm32f4xx_it.c ****   {
+ 417:Core/Src/stm32f4xx_it.c ****     HT_DM_S_7010_Receive_Data(can2.rxData, &can2.CAN_RxMsg.DLC);
+ 418:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
+ 419:Core/Src/stm32f4xx_it.c ****     for (i = can2.CAN_RxMsg.DLC; i < 8; i++)
+ 420:Core/Src/stm32f4xx_it.c ****     {
+ 421:Core/Src/stm32f4xx_it.c ****       can2.rxData[i] = 0;
+ 422:Core/Src/stm32f4xx_it.c ****     }
+ 423:Core/Src/stm32f4xx_it.c ****     can2.rxFrameFlag = 1;
+ 424:Core/Src/stm32f4xx_it.c **** 
+ 425:Core/Src/stm32f4xx_it.c ****     uint32_t currTick2 = HAL_GetTick();
+ 426:Core/Src/stm32f4xx_it.c ****     can2Rev_freq = 1000.f / (currTick2 - preTick2);
+ 427:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
+ 428:Core/Src/stm32f4xx_it.c ****   }
+ 429:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN2_RX0_IRQn 0 */
+ 430:Core/Src/stm32f4xx_it.c ****   HAL_CAN_IRQHandler(&hcan2);
+ 766              		.loc 1 430 3 is_stmt 1 view .LVU176
+ 767 0012 1748     		ldr	r0, .L64+4
+ 768 0014 FFF7FEFF 		bl	HAL_CAN_IRQHandler
+ 769              	.LVL27:
+ 431:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */
+ 432:Core/Src/stm32f4xx_it.c ****   // 计算CAN2接收频率
+ 433:Core/Src/stm32f4xx_it.c **** 
+ 434:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN2_RX0_IRQn 1 */
+ 435:Core/Src/stm32f4xx_it.c **** }
+ 770              		.loc 1 435 1 is_stmt 0 view .LVU177
+ 771 0018 10BD     		pop	{r4, pc}
+ 772              	.LVL28:
+ 773              	.L63:
+ 774              	.LBB2:
+ 417:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
+ 775              		.loc 1 417 5 is_stmt 1 view .LVU178
+ 776 001a 164C     		ldr	r4, .L64+8
+ 777 001c 2146     		mov	r1, r4
+ 778 001e 04F10C00 		add	r0, r4, #12
+ 779 0022 FFF7FEFF 		bl	HT_DM_S_7010_Receive_Data
+ 780              	.LVL29:
+ 419:Core/Src/stm32f4xx_it.c ****     {
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 23
 
 
- 783              	.LVL32:
- 409:Core/Src/stm32f4xx_it.c **** 
- 784              		.loc 1 409 22 view .LVU187
- 785 0040 0122     		movs	r2, #1
- 786 0042 83F87420 		strb	r2, [r3, #116]
- 411:Core/Src/stm32f4xx_it.c ****     can2Rev_freq = 1000.f / (currTick2 - preTick2);
- 787              		.loc 1 411 5 is_stmt 1 view .LVU188
- 411:Core/Src/stm32f4xx_it.c ****     can2Rev_freq = 1000.f / (currTick2 - preTick2);
- 788              		.loc 1 411 26 is_stmt 0 view .LVU189
- 789 0046 FFF7FEFF 		bl	HAL_GetTick
- 790              	.LVL33:
- 412:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
- 791              		.loc 1 412 5 is_stmt 1 view .LVU190
- 412:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
- 792              		.loc 1 412 40 is_stmt 0 view .LVU191
- 793 004a 0C4A     		ldr	r2, .L62+16
- 794 004c 1368     		ldr	r3, [r2]
- 795 004e C31A     		subs	r3, r0, r3
- 412:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
- 796              		.loc 1 412 27 view .LVU192
- 797 0050 07EE903A 		vmov	s15, r3	@ int
- 798 0054 F8EE677A 		vcvt.f32.u32	s15, s15
- 799 0058 DFED096A 		vldr.32	s13, .L62+20
- 800 005c 86EEA77A 		vdiv.f32	s14, s13, s15
- 412:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
- 801              		.loc 1 412 18 view .LVU193
- 802 0060 084B     		ldr	r3, .L62+24
- 803 0062 83ED007A 		vstr.32	s14, [r3]
- 413:Core/Src/stm32f4xx_it.c ****   }
- 804              		.loc 1 413 5 is_stmt 1 view .LVU194
- 413:Core/Src/stm32f4xx_it.c ****   }
- 805              		.loc 1 413 14 is_stmt 0 view .LVU195
- 806 0066 1060     		str	r0, [r2]
- 807 0068 D3E7     		b	.L57
- 808              	.L63:
- 809 006a 00BF     		.align	2
- 810              	.L62:
- 811 006c 1C000000 		.word	can2+28
- 812 0070 00000000 		.word	hcan2
- 813 0074 10000000 		.word	can2+16
- 814 0078 00000000 		.word	can2
- 815 007c 00000000 		.word	preTick2.0
- 816 0080 00007A44 		.word	1148846080
- 817 0084 00000000 		.word	can2Rev_freq
- 818              	.LBE2:
- 819              		.cfi_endproc
- 820              	.LFE150:
- 822              		.section	.bss.preTick2.0,"aw",%nobits
- 823              		.align	2
- 826              	preTick2.0:
- 827 0000 00000000 		.space	4
- 828              		.section	.bss.preTick.1,"aw",%nobits
- 829              		.align	2
- 832              	preTick.1:
- 833 0000 00000000 		.space	4
- 834              		.global	can2Rev_freq
- 835              		.section	.bss.can2Rev_freq,"aw",%nobits
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 24
+ 781              		.loc 1 419 5 view .LVU179
+ 419:Core/Src/stm32f4xx_it.c ****     {
+ 782              		.loc 1 419 28 is_stmt 0 view .LVU180
+ 783 0026 103C     		subs	r4, r4, #16
+ 784 0028 2369     		ldr	r3, [r4, #16]
+ 419:Core/Src/stm32f4xx_it.c ****     {
+ 785              		.loc 1 419 12 view .LVU181
+ 786 002a DBB2     		uxtb	r3, r3
+ 787              	.LVL30:
+ 419:Core/Src/stm32f4xx_it.c ****     {
+ 788              		.loc 1 419 5 view .LVU182
+ 789 002c 05E0     		b	.L60
+ 790              	.L61:
+ 421:Core/Src/stm32f4xx_it.c ****     }
+ 791              		.loc 1 421 7 is_stmt 1 view .LVU183
+ 421:Core/Src/stm32f4xx_it.c ****     }
+ 792              		.loc 1 421 22 is_stmt 0 view .LVU184
+ 793 002e 124A     		ldr	r2, .L64+12
+ 794 0030 1A44     		add	r2, r2, r3
+ 795 0032 0021     		movs	r1, #0
+ 796 0034 1177     		strb	r1, [r2, #28]
+ 419:Core/Src/stm32f4xx_it.c ****     {
+ 797              		.loc 1 419 42 is_stmt 1 discriminator 3 view .LVU185
+ 798 0036 0133     		adds	r3, r3, #1
+ 799              	.LVL31:
+ 419:Core/Src/stm32f4xx_it.c ****     {
+ 800              		.loc 1 419 42 is_stmt 0 discriminator 3 view .LVU186
+ 801 0038 DBB2     		uxtb	r3, r3
+ 802              	.LVL32:
+ 803              	.L60:
+ 419:Core/Src/stm32f4xx_it.c ****     {
+ 804              		.loc 1 419 36 is_stmt 1 discriminator 1 view .LVU187
+ 805 003a 072B     		cmp	r3, #7
+ 806 003c F7D9     		bls	.L61
+ 423:Core/Src/stm32f4xx_it.c **** 
+ 807              		.loc 1 423 5 view .LVU188
+ 423:Core/Src/stm32f4xx_it.c **** 
+ 808              		.loc 1 423 22 is_stmt 0 view .LVU189
+ 809 003e 0E4B     		ldr	r3, .L64+12
+ 810              	.LVL33:
+ 423:Core/Src/stm32f4xx_it.c **** 
+ 811              		.loc 1 423 22 view .LVU190
+ 812 0040 0122     		movs	r2, #1
+ 813 0042 83F87420 		strb	r2, [r3, #116]
+ 425:Core/Src/stm32f4xx_it.c ****     can2Rev_freq = 1000.f / (currTick2 - preTick2);
+ 814              		.loc 1 425 5 is_stmt 1 view .LVU191
+ 425:Core/Src/stm32f4xx_it.c ****     can2Rev_freq = 1000.f / (currTick2 - preTick2);
+ 815              		.loc 1 425 26 is_stmt 0 view .LVU192
+ 816 0046 FFF7FEFF 		bl	HAL_GetTick
+ 817              	.LVL34:
+ 426:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
+ 818              		.loc 1 426 5 is_stmt 1 view .LVU193
+ 426:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
+ 819              		.loc 1 426 40 is_stmt 0 view .LVU194
+ 820 004a 0C4A     		ldr	r2, .L64+16
+ 821 004c 1368     		ldr	r3, [r2]
+ 822 004e C31A     		subs	r3, r0, r3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 24
 
 
- 836              		.align	2
- 839              	can2Rev_freq:
- 840 0000 00000000 		.space	4
- 841              		.global	canRev_freq
- 842              		.section	.bss.canRev_freq,"aw",%nobits
- 843              		.align	2
- 846              	canRev_freq:
- 847 0000 00000000 		.space	4
- 848              		.text
- 849              	.Letext0:
- 850              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
- 851              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
- 852              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 853              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 854              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 855              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 856              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 857              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 858              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 859              		.file 11 "Core/Inc/can.h"
- 860              		.file 12 "Core/Inc/usart.h"
- 861              		.file 13 "Core/Inc/HT_DM_S_7010.h"
- 862              		.file 14 "Core/Inc/ZDT_X42_V2.h"
- 863              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 25
+ 426:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
+ 823              		.loc 1 426 27 view .LVU195
+ 824 0050 07EE903A 		vmov	s15, r3	@ int
+ 825 0054 F8EE677A 		vcvt.f32.u32	s15, s15
+ 826 0058 DFED096A 		vldr.32	s13, .L64+20
+ 827 005c 86EEA77A 		vdiv.f32	s14, s13, s15
+ 426:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
+ 828              		.loc 1 426 18 view .LVU196
+ 829 0060 084B     		ldr	r3, .L64+24
+ 830 0062 83ED007A 		vstr.32	s14, [r3]
+ 427:Core/Src/stm32f4xx_it.c ****   }
+ 831              		.loc 1 427 5 is_stmt 1 view .LVU197
+ 427:Core/Src/stm32f4xx_it.c ****   }
+ 832              		.loc 1 427 14 is_stmt 0 view .LVU198
+ 833 0066 1060     		str	r0, [r2]
+ 834 0068 D3E7     		b	.L59
+ 835              	.L65:
+ 836 006a 00BF     		.align	2
+ 837              	.L64:
+ 838 006c 1C000000 		.word	can2+28
+ 839 0070 00000000 		.word	hcan2
+ 840 0074 10000000 		.word	can2+16
+ 841 0078 00000000 		.word	can2
+ 842 007c 00000000 		.word	preTick2.0
+ 843 0080 00007A44 		.word	1148846080
+ 844 0084 00000000 		.word	can2Rev_freq
+ 845              	.LBE2:
+ 846              		.cfi_endproc
+ 847              	.LFE151:
+ 849              		.section	.bss.preTick2.0,"aw",%nobits
+ 850              		.align	2
+ 853              	preTick2.0:
+ 854 0000 00000000 		.space	4
+ 855              		.section	.bss.preTick.1,"aw",%nobits
+ 856              		.align	2
+ 859              	preTick.1:
+ 860 0000 00000000 		.space	4
+ 861              		.global	can2Rev_freq
+ 862              		.section	.bss.can2Rev_freq,"aw",%nobits
+ 863              		.align	2
+ 866              	can2Rev_freq:
+ 867 0000 00000000 		.space	4
+ 868              		.global	canRev_freq
+ 869              		.section	.bss.canRev_freq,"aw",%nobits
+ 870              		.align	2
+ 873              	canRev_freq:
+ 874 0000 00000000 		.space	4
+ 875              		.text
+ 876              	.Letext0:
+ 877              		.file 2 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/machine/_default_types.h"
+ 878              		.file 3 "C:/DevToolBox_Slot/GNU_CompilerCollection/arm-none-eabi/include/sys/_stdint.h"
+ 879              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 880              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 881              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 882              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 883              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 884              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 25
+
+
+ 885              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 886              		.file 11 "Core/Inc/can.h"
+ 887              		.file 12 "Core/Inc/usart.h"
+ 888              		.file 13 "Core/Inc/HT_DM_S_7010.h"
+ 889              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 890              		.file 15 "Core/Inc/ZDT_X42_V2.h"
+ 891              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:21     .text.NMI_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:44     .text.HardFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:90     .text.BusFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:113    .text.UsageFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:136    .text.SVC_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:142    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:155    .text.DebugMon_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:174    .text.PendSV_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:193    .text.SysTick_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:219    .text.CAN1_RX0_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:225    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:323    .text.CAN1_RX0_IRQHandler:00000070 $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:832    .bss.preTick.1:00000000 preTick.1
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:846    .bss.canRev_freq:00000000 canRev_freq
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:334    .text.TIM1_CC_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:340    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:636    .text.TIM1_CC_IRQHandler:00000164 $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:645    .text.TIM4_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:651    .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:671    .text.TIM4_IRQHandler:0000000c $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:676    .text.USART1_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:682    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:702    .text.USART1_IRQHandler:0000000c $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:707    .text.CAN2_RX0_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:713    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:811    .text.CAN2_RX0_IRQHandler:0000006c $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:826    .bss.preTick2.0:00000000 preTick2.0
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:839    .bss.can2Rev_freq:00000000 can2Rev_freq
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:823    .bss.preTick2.0:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:829    .bss.preTick.1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:836    .bss.can2Rev_freq:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccmuzoki.s:843    .bss.canRev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:21     .text.NMI_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:44     .text.HardFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:90     .text.BusFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:113    .text.UsageFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:136    .text.SVC_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:142    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:155    .text.DebugMon_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:174    .text.PendSV_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:193    .text.SysTick_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:219    .text.CAN1_RX0_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:225    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:323    .text.CAN1_RX0_IRQHandler:00000070 $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:859    .bss.preTick.1:00000000 preTick.1
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:873    .bss.canRev_freq:00000000 canRev_freq
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:334    .text.EXTI9_5_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:340    .text.EXTI9_5_IRQHandler:00000000 EXTI9_5_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:361    .text.TIM1_CC_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:367    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:663    .text.TIM1_CC_IRQHandler:00000164 $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:672    .text.TIM4_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:678    .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:698    .text.TIM4_IRQHandler:0000000c $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:703    .text.USART1_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:709    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:729    .text.USART1_IRQHandler:0000000c $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:734    .text.CAN2_RX0_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:740    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:838    .text.CAN2_RX0_IRQHandler:0000006c $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:853    .bss.preTick2.0:00000000 preTick2.0
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:866    .bss.can2Rev_freq:00000000 can2Rev_freq
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:850    .bss.preTick2.0:00000000 $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:856    .bss.preTick.1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:863    .bss.can2Rev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\cc29QgR2.s:870    .bss.canRev_freq:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
@@ -1460,14 +1505,15 @@ HAL_GetTick
 ZDT_X42_V2_Receive_Data
 can
 hcan1
+HAL_GPIO_EXTI_IRQHandler
 HAL_TIM_OC_Stop_IT
 HAL_TIM_IRQHandler
+ARM GAS  C:\Users\81506\AppData\Local\Temp\cc29QgR2.s 			page 27
+
+
 pulse_state
 htim1
 tstart_ticks
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccmuzoki.s 			page 26
-
-
 twidth_ticks
 htim4
 HAL_UART_IRQHandler

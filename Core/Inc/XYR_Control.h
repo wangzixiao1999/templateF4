@@ -71,6 +71,7 @@ typedef struct
 	bool row_direction; // true: 从左到右, false: 从右到左
 	uint32_t last_update_time;
 	bool waiting_for_move_complete;
+	bool Pluse_Rev_flag;
 } AutoScanContext;
 
 extern XYR_MotorStateSpace XYR_MotorState[3];

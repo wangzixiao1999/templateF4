@@ -215,17 +215,17 @@ void XYR_AutoScan_Start(uint8_t x, uint8_t y)
 		g_auto_scan.row_direction = false;
 		g_auto_scan.last_update_time = HAL_GetTick();
 		g_auto_scan.waiting_for_move_complete = false;
-
+		g_auto_scan.Pluse_Rev_flag = false;
 		AutoScanFlag = true;
 
-		if (g_auto_scan.row_direction)
-		{
-			XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
-		}
-		else
-		{
-			XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
-		}
+		// if (g_auto_scan.row_direction)
+		// {
+		// 	XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
+		// }
+		// else
+		// {
+		// 	XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
+		// }
 
 		g_auto_scan.waiting_for_move_complete = true;
 	}
@@ -478,7 +478,7 @@ void XYR_MotorState_Update(uint8_t addr)
 
 	uint8_t index = addr - 1;
 
-	if((XYR_MotorState[index].real_time_current > 2000) && (XYR_MotorState[index].real_time_velocity < 1) )
+	if ((XYR_MotorState[index].real_time_current > 2000) && (XYR_MotorState[index].real_time_velocity < 1))
 	{
 		XYR_AutoScan_Stop();
 		XYR_Relieve_Malfunction();
@@ -565,10 +565,11 @@ void XYR_AutoScan_Update(void)
 	if (g_auto_scan.waiting_for_move_complete)
 	{
 		// 检查当前Y轴是否移动完成（假设使用axis 2）
-		if (XYR_MotorState[0].state == XYRMOVE_IDLE && XYR_MotorState[1].state == XYRMOVE_IDLE)
+		if (XYR_MotorState[0].state == XYRMOVE_IDLE && XYR_MotorState[1].state == XYRMOVE_IDLE && g_auto_scan.Pluse_Rev_flag)
 		{
 
 			g_auto_scan.waiting_for_move_complete = false;
+			g_auto_scan.Pluse_Rev_flag = false;
 
 			// 更新列计数器
 			g_auto_scan.current_col++;
