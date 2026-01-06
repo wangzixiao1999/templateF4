@@ -478,6 +478,12 @@ void XYR_MotorState_Update(uint8_t addr)
 
 	uint8_t index = addr - 1;
 
+	if((XYR_MotorState[index].real_time_current > 2000) && (XYR_MotorState[index].real_time_velocity < 1) )
+	{
+		XYR_AutoScan_Stop();
+		XYR_Relieve_Malfunction();
+	}
+
 	switch (XYR_MotorState[index].state)
 	{
 	case XYRMOVE_IDLE:
