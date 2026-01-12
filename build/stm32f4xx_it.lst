@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
   28:Core/Src/stm32f4xx_it.c **** 
   29:Core/Src/stm32f4xx_it.c **** extern volatile uint32_t tstart_ticks[4];
   30:Core/Src/stm32f4xx_it.c **** extern volatile uint32_t twidth_ticks[4];
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 2
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 2
 
 
   31:Core/Src/stm32f4xx_it.c **** extern volatile uint8_t pulse_state[4];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
   30              		.cfi_startproc
   31              		@ Volatile: function does not return.
   32              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 3
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 3
 
 
   33              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
   64              	.LFE138:
   66              		.section	.text.MemManage_Handler,"ax",%progbits
   67              		.align	1
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 4
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 4
 
 
   68              		.global	MemManage_Handler
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  102              		@ frame_needed = 0, uses_anonymous_args = 0
  103              		@ link register save eliminated.
  104              	.L8:
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 5
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 5
 
 
  129:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 0 */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  137              		.global	SVC_Handler
  138              		.syntax unified
  139              		.thumb
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 6
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 6
 
 
  140              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  170              		.cfi_endproc
  171              	.LFE143:
  173              		.section	.text.PendSV_Handler,"ax",%progbits
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 7
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 7
 
 
  174              		.align	1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  200:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
  201:Core/Src/stm32f4xx_it.c ****   HAL_IncTick();
  210              		.loc 1 201 3 view .LVU27
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 8
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 8
 
 
  211 0002 FFF7FEFF 		bl	HAL_IncTick
@@ -431,13 +431,13 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  214 0006 08BD     		pop	{r3, pc}
  215              		.cfi_endproc
  216              	.LFE145:
- 218              		.section	.text.CAN1_RX0_IRQHandler,"ax",%progbits
+ 218              		.section	.text.EXTI3_IRQHandler,"ax",%progbits
  219              		.align	1
- 220              		.global	CAN1_RX0_IRQHandler
+ 220              		.global	EXTI3_IRQHandler
  221              		.syntax unified
  222              		.thumb
  223              		.thumb_func
- 225              	CAN1_RX0_IRQHandler:
+ 225              	EXTI3_IRQHandler:
  226              	.LFB146:
  206:Core/Src/stm32f4xx_it.c **** 
  207:Core/Src/stm32f4xx_it.c **** /******************************************************************************/
@@ -448,198 +448,198 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  212:Core/Src/stm32f4xx_it.c **** /******************************************************************************/
  213:Core/Src/stm32f4xx_it.c **** 
  214:Core/Src/stm32f4xx_it.c **** /**
- 215:Core/Src/stm32f4xx_it.c ****   * @brief This function handles CAN1 RX0 interrupts.
+ 215:Core/Src/stm32f4xx_it.c ****   * @brief This function handles EXTI line3 interrupt.
  216:Core/Src/stm32f4xx_it.c ****   */
- 217:Core/Src/stm32f4xx_it.c **** void CAN1_RX0_IRQHandler(void)
+ 217:Core/Src/stm32f4xx_it.c **** void EXTI3_IRQHandler(void)
  218:Core/Src/stm32f4xx_it.c **** {
  227              		.loc 1 218 1 is_stmt 1 view -0
  228              		.cfi_startproc
  229              		@ args = 0, pretend = 0, frame = 0
  230              		@ frame_needed = 0, uses_anonymous_args = 0
- 231 0000 10B5     		push	{r4, lr}
+ 231 0000 08B5     		push	{r3, lr}
  232              	.LCFI1:
  233              		.cfi_def_cfa_offset 8
- 234              		.cfi_offset 4, -8
+ 234              		.cfi_offset 3, -8
  235              		.cfi_offset 14, -4
- 219:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
- 220:Core/Src/stm32f4xx_it.c ****   uint8_t i = 0;
- 236              		.loc 1 220 3 view .LVU30
- 237              	.LVL1:
- 221:Core/Src/stm32f4xx_it.c ****   static volatile uint32_t preTick = 0;
- 238              		.loc 1 221 3 view .LVU31
- 222:Core/Src/stm32f4xx_it.c ****   // 接收CAN包数据
- 223:Core/Src/stm32f4xx_it.c ****   if (HAL_CAN_GetRxMessage((&hcan1), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can.CAN_RxMsg), (uint8_
- 239              		.loc 1 223 3 view .LVU32
- 240              		.loc 1 223 7 is_stmt 0 view .LVU33
- 241 0002 1B4B     		ldr	r3, .L22
- 242 0004 A3F11C02 		sub	r2, r3, #28
- 243 0008 0021     		movs	r1, #0
- 244 000a 1A48     		ldr	r0, .L22+4
- 245 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
- 246              	.LVL2:
- 247              		.loc 1 223 6 discriminator 1 view .LVU34
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 9
+ 219:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI3_IRQn 0 */
+ 220:Core/Src/stm32f4xx_it.c **** 
+ 221:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI3_IRQn 0 */
+ 222:Core/Src/stm32f4xx_it.c ****   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
+ 236              		.loc 1 222 3 view .LVU30
+ 237 0002 0820     		movs	r0, #8
+ 238 0004 FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
+ 239              	.LVL1:
+ 223:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI3_IRQn 1 */
+ 224:Core/Src/stm32f4xx_it.c **** 
+ 225:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI3_IRQn 1 */
+ 226:Core/Src/stm32f4xx_it.c **** }
+ 240              		.loc 1 226 1 is_stmt 0 view .LVU31
+ 241 0008 08BD     		pop	{r3, pc}
+ 242              		.cfi_endproc
+ 243              	.LFE146:
+ 245              		.section	.text.CAN1_RX0_IRQHandler,"ax",%progbits
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 9
 
 
- 248 0010 A0B1     		cbz	r0, .L21
- 249              	.LVL3:
- 250              	.L17:
- 224:Core/Src/stm32f4xx_it.c ****   {
- 225:Core/Src/stm32f4xx_it.c ****     ZDT_X42_V2_Receive_Data((uint8_t *)(&can.CAN_RxMsg.ExtId), (uint8_t *)(&can.rxData), (uint8_t *
- 226:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
- 227:Core/Src/stm32f4xx_it.c ****     for (i = can.CAN_RxMsg.DLC; i < 8; i++)
- 228:Core/Src/stm32f4xx_it.c ****     {
- 229:Core/Src/stm32f4xx_it.c ****       can.rxData[i] = 0;
- 230:Core/Src/stm32f4xx_it.c ****     }
- 231:Core/Src/stm32f4xx_it.c ****     can.rxFrameFlag = true;
- 232:Core/Src/stm32f4xx_it.c ****   }
- 233:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN1_RX0_IRQn 0 */
- 234:Core/Src/stm32f4xx_it.c ****   HAL_CAN_IRQHandler(&hcan1);
- 251              		.loc 1 234 3 is_stmt 1 view .LVU35
- 252 0012 1848     		ldr	r0, .L22+4
- 253 0014 FFF7FEFF 		bl	HAL_CAN_IRQHandler
- 254              	.LVL4:
- 235:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
- 236:Core/Src/stm32f4xx_it.c ****   // 计算CAN接收频率
- 237:Core/Src/stm32f4xx_it.c ****   uint32_t currTick = HAL_GetTick();
- 255              		.loc 1 237 3 view .LVU36
- 256              		.loc 1 237 23 is_stmt 0 view .LVU37
- 257 0018 FFF7FEFF 		bl	HAL_GetTick
- 258              	.LVL5:
- 238:Core/Src/stm32f4xx_it.c ****   canRev_freq = 1000.f / (currTick - preTick);
- 259              		.loc 1 238 3 is_stmt 1 view .LVU38
- 260              		.loc 1 238 36 is_stmt 0 view .LVU39
- 261 001c 164A     		ldr	r2, .L22+8
- 262 001e 1368     		ldr	r3, [r2]
- 263 0020 C31A     		subs	r3, r0, r3
- 264              		.loc 1 238 24 view .LVU40
- 265 0022 07EE903A 		vmov	s15, r3	@ int
- 266 0026 F8EE677A 		vcvt.f32.u32	s15, s15
- 267 002a DFED146A 		vldr.32	s13, .L22+12
- 268 002e 86EEA77A 		vdiv.f32	s14, s13, s15
- 269              		.loc 1 238 15 view .LVU41
- 270 0032 134B     		ldr	r3, .L22+16
- 271 0034 83ED007A 		vstr.32	s14, [r3]
- 239:Core/Src/stm32f4xx_it.c ****   preTick = currTick;
- 272              		.loc 1 239 3 is_stmt 1 view .LVU42
- 273              		.loc 1 239 11 is_stmt 0 view .LVU43
- 274 0038 1060     		str	r0, [r2]
- 240:Core/Src/stm32f4xx_it.c **** 
- 241:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN1_RX0_IRQn 1 */
- 242:Core/Src/stm32f4xx_it.c **** }
- 275              		.loc 1 242 1 view .LVU44
- 276 003a 10BD     		pop	{r4, pc}
- 277              	.LVL6:
- 278              	.L21:
- 225:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
- 279              		.loc 1 225 5 is_stmt 1 view .LVU45
- 280 003c 114C     		ldr	r4, .L22+20
- 281 003e 2246     		mov	r2, r4
- 282 0040 04F10C01 		add	r1, r4, #12
- 283 0044 A4F10C00 		sub	r0, r4, #12
- 284 0048 FFF7FEFF 		bl	ZDT_X42_V2_Receive_Data
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 10
+ 246              		.align	1
+ 247              		.global	CAN1_RX0_IRQHandler
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	CAN1_RX0_IRQHandler:
+ 253              	.LFB147:
+ 227:Core/Src/stm32f4xx_it.c **** 
+ 228:Core/Src/stm32f4xx_it.c **** /**
+ 229:Core/Src/stm32f4xx_it.c ****   * @brief This function handles CAN1 RX0 interrupts.
+ 230:Core/Src/stm32f4xx_it.c ****   */
+ 231:Core/Src/stm32f4xx_it.c **** void CAN1_RX0_IRQHandler(void)
+ 232:Core/Src/stm32f4xx_it.c **** {
+ 254              		.loc 1 232 1 is_stmt 1 view -0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258 0000 10B5     		push	{r4, lr}
+ 259              	.LCFI2:
+ 260              		.cfi_def_cfa_offset 8
+ 261              		.cfi_offset 4, -8
+ 262              		.cfi_offset 14, -4
+ 233:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
+ 234:Core/Src/stm32f4xx_it.c ****   uint8_t i = 0;
+ 263              		.loc 1 234 3 view .LVU33
+ 264              	.LVL2:
+ 235:Core/Src/stm32f4xx_it.c ****   static volatile uint32_t preTick = 0;
+ 265              		.loc 1 235 3 view .LVU34
+ 236:Core/Src/stm32f4xx_it.c ****   // 接收CAN包数据
+ 237:Core/Src/stm32f4xx_it.c ****   if (HAL_CAN_GetRxMessage((&hcan1), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can.CAN_RxMsg), (uint8_
+ 266              		.loc 1 237 3 view .LVU35
+ 267              		.loc 1 237 7 is_stmt 0 view .LVU36
+ 268 0002 1B4B     		ldr	r3, .L24
+ 269 0004 A3F11C02 		sub	r2, r3, #28
+ 270 0008 0021     		movs	r1, #0
+ 271 000a 1A48     		ldr	r0, .L24+4
+ 272 000c FFF7FEFF 		bl	HAL_CAN_GetRxMessage
+ 273              	.LVL3:
+ 274              		.loc 1 237 6 discriminator 1 view .LVU37
+ 275 0010 A0B1     		cbz	r0, .L23
+ 276              	.LVL4:
+ 277              	.L19:
+ 238:Core/Src/stm32f4xx_it.c ****   {
+ 239:Core/Src/stm32f4xx_it.c ****     ZDT_X42_V2_Receive_Data((uint8_t *)(&can.CAN_RxMsg.ExtId), (uint8_t *)(&can.rxData), (uint8_t *
+ 240:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
+ 241:Core/Src/stm32f4xx_it.c ****     for (i = can.CAN_RxMsg.DLC; i < 8; i++)
+ 242:Core/Src/stm32f4xx_it.c ****     {
+ 243:Core/Src/stm32f4xx_it.c ****       can.rxData[i] = 0;
+ 244:Core/Src/stm32f4xx_it.c ****     }
+ 245:Core/Src/stm32f4xx_it.c ****     can.rxFrameFlag = true;
+ 246:Core/Src/stm32f4xx_it.c ****   }
+ 247:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN1_RX0_IRQn 0 */
+ 248:Core/Src/stm32f4xx_it.c ****   HAL_CAN_IRQHandler(&hcan1);
+ 278              		.loc 1 248 3 is_stmt 1 view .LVU38
+ 279 0012 1848     		ldr	r0, .L24+4
+ 280 0014 FFF7FEFF 		bl	HAL_CAN_IRQHandler
+ 281              	.LVL5:
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 10
 
 
- 285              	.LVL7:
- 227:Core/Src/stm32f4xx_it.c ****     {
- 286              		.loc 1 227 5 view .LVU46
- 227:Core/Src/stm32f4xx_it.c ****     {
- 287              		.loc 1 227 27 is_stmt 0 view .LVU47
- 288 004c 103C     		subs	r4, r4, #16
- 289 004e 2369     		ldr	r3, [r4, #16]
- 227:Core/Src/stm32f4xx_it.c ****     {
- 290              		.loc 1 227 12 view .LVU48
- 291 0050 DBB2     		uxtb	r3, r3
- 292              	.LVL8:
- 227:Core/Src/stm32f4xx_it.c ****     {
- 293              		.loc 1 227 5 view .LVU49
- 294 0052 05E0     		b	.L18
- 295              	.L19:
- 229:Core/Src/stm32f4xx_it.c ****     }
- 296              		.loc 1 229 7 is_stmt 1 view .LVU50
- 229:Core/Src/stm32f4xx_it.c ****     }
- 297              		.loc 1 229 21 is_stmt 0 view .LVU51
- 298 0054 0C4A     		ldr	r2, .L22+24
- 299 0056 1A44     		add	r2, r2, r3
- 300 0058 0021     		movs	r1, #0
- 301 005a 1177     		strb	r1, [r2, #28]
- 227:Core/Src/stm32f4xx_it.c ****     {
- 302              		.loc 1 227 41 is_stmt 1 discriminator 3 view .LVU52
- 303 005c 0133     		adds	r3, r3, #1
- 304              	.LVL9:
- 227:Core/Src/stm32f4xx_it.c ****     {
- 305              		.loc 1 227 41 is_stmt 0 discriminator 3 view .LVU53
- 306 005e DBB2     		uxtb	r3, r3
- 307              	.LVL10:
- 308              	.L18:
- 227:Core/Src/stm32f4xx_it.c ****     {
- 309              		.loc 1 227 35 is_stmt 1 discriminator 1 view .LVU54
- 310 0060 072B     		cmp	r3, #7
- 311 0062 F7D9     		bls	.L19
- 231:Core/Src/stm32f4xx_it.c ****   }
- 312              		.loc 1 231 5 view .LVU55
- 231:Core/Src/stm32f4xx_it.c ****   }
- 313              		.loc 1 231 21 is_stmt 0 view .LVU56
- 314 0064 084B     		ldr	r3, .L22+24
- 315              	.LVL11:
- 231:Core/Src/stm32f4xx_it.c ****   }
- 316              		.loc 1 231 21 view .LVU57
- 317 0066 0122     		movs	r2, #1
- 318 0068 83F87420 		strb	r2, [r3, #116]
- 319 006c D1E7     		b	.L17
- 320              	.L23:
- 321 006e 00BF     		.align	2
- 322              	.L22:
- 323 0070 1C000000 		.word	can+28
- 324 0074 00000000 		.word	hcan1
- 325 0078 00000000 		.word	preTick.1
- 326 007c 00007A44 		.word	1148846080
- 327 0080 00000000 		.word	canRev_freq
- 328 0084 10000000 		.word	can+16
- 329 0088 00000000 		.word	can
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 11
-
-
- 330              		.cfi_endproc
- 331              	.LFE146:
- 333              		.section	.text.EXTI9_5_IRQHandler,"ax",%progbits
- 334              		.align	1
- 335              		.global	EXTI9_5_IRQHandler
- 336              		.syntax unified
- 337              		.thumb
- 338              		.thumb_func
- 340              	EXTI9_5_IRQHandler:
- 341              	.LFB147:
- 243:Core/Src/stm32f4xx_it.c **** 
- 244:Core/Src/stm32f4xx_it.c **** /**
- 245:Core/Src/stm32f4xx_it.c ****   * @brief This function handles EXTI line[9:5] interrupts.
- 246:Core/Src/stm32f4xx_it.c ****   */
- 247:Core/Src/stm32f4xx_it.c **** void EXTI9_5_IRQHandler(void)
- 248:Core/Src/stm32f4xx_it.c **** {
- 342              		.loc 1 248 1 is_stmt 1 view -0
- 343              		.cfi_startproc
- 344              		@ args = 0, pretend = 0, frame = 0
- 345              		@ frame_needed = 0, uses_anonymous_args = 0
- 346 0000 08B5     		push	{r3, lr}
- 347              	.LCFI2:
- 348              		.cfi_def_cfa_offset 8
- 349              		.cfi_offset 3, -8
- 350              		.cfi_offset 14, -4
- 249:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
- 250:Core/Src/stm32f4xx_it.c **** 
- 251:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI9_5_IRQn 0 */
- 252:Core/Src/stm32f4xx_it.c ****   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
- 351              		.loc 1 252 3 view .LVU59
- 352 0002 2020     		movs	r0, #32
- 353 0004 FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
- 354              	.LVL12:
- 253:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+ 249:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
+ 250:Core/Src/stm32f4xx_it.c ****   // 计算CAN接收频率
+ 251:Core/Src/stm32f4xx_it.c ****   uint32_t currTick = HAL_GetTick();
+ 282              		.loc 1 251 3 view .LVU39
+ 283              		.loc 1 251 23 is_stmt 0 view .LVU40
+ 284 0018 FFF7FEFF 		bl	HAL_GetTick
+ 285              	.LVL6:
+ 252:Core/Src/stm32f4xx_it.c ****   canRev_freq = 1000.f / (currTick - preTick);
+ 286              		.loc 1 252 3 is_stmt 1 view .LVU41
+ 287              		.loc 1 252 36 is_stmt 0 view .LVU42
+ 288 001c 164A     		ldr	r2, .L24+8
+ 289 001e 1368     		ldr	r3, [r2]
+ 290 0020 C31A     		subs	r3, r0, r3
+ 291              		.loc 1 252 24 view .LVU43
+ 292 0022 07EE903A 		vmov	s15, r3	@ int
+ 293 0026 F8EE677A 		vcvt.f32.u32	s15, s15
+ 294 002a DFED146A 		vldr.32	s13, .L24+12
+ 295 002e 86EEA77A 		vdiv.f32	s14, s13, s15
+ 296              		.loc 1 252 15 view .LVU44
+ 297 0032 134B     		ldr	r3, .L24+16
+ 298 0034 83ED007A 		vstr.32	s14, [r3]
+ 253:Core/Src/stm32f4xx_it.c ****   preTick = currTick;
+ 299              		.loc 1 253 3 is_stmt 1 view .LVU45
+ 300              		.loc 1 253 11 is_stmt 0 view .LVU46
+ 301 0038 1060     		str	r0, [r2]
  254:Core/Src/stm32f4xx_it.c **** 
- 255:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI9_5_IRQn 1 */
+ 255:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN1_RX0_IRQn 1 */
  256:Core/Src/stm32f4xx_it.c **** }
- 355              		.loc 1 256 1 is_stmt 0 view .LVU60
- 356 0008 08BD     		pop	{r3, pc}
+ 302              		.loc 1 256 1 view .LVU47
+ 303 003a 10BD     		pop	{r4, pc}
+ 304              	.LVL7:
+ 305              	.L23:
+ 239:Core/Src/stm32f4xx_it.c ****     // 多帧数据接收完成，置位帧标志位
+ 306              		.loc 1 239 5 is_stmt 1 view .LVU48
+ 307 003c 114C     		ldr	r4, .L24+20
+ 308 003e 2246     		mov	r2, r4
+ 309 0040 04F10C01 		add	r1, r4, #12
+ 310 0044 A4F10C00 		sub	r0, r4, #12
+ 311 0048 FFF7FEFF 		bl	ZDT_X42_V2_Receive_Data
+ 312              	.LVL8:
+ 241:Core/Src/stm32f4xx_it.c ****     {
+ 313              		.loc 1 241 5 view .LVU49
+ 241:Core/Src/stm32f4xx_it.c ****     {
+ 314              		.loc 1 241 27 is_stmt 0 view .LVU50
+ 315 004c 103C     		subs	r4, r4, #16
+ 316 004e 2369     		ldr	r3, [r4, #16]
+ 241:Core/Src/stm32f4xx_it.c ****     {
+ 317              		.loc 1 241 12 view .LVU51
+ 318 0050 DBB2     		uxtb	r3, r3
+ 319              	.LVL9:
+ 241:Core/Src/stm32f4xx_it.c ****     {
+ 320              		.loc 1 241 5 view .LVU52
+ 321 0052 05E0     		b	.L20
+ 322              	.L21:
+ 243:Core/Src/stm32f4xx_it.c ****     }
+ 323              		.loc 1 243 7 is_stmt 1 view .LVU53
+ 243:Core/Src/stm32f4xx_it.c ****     }
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 11
+
+
+ 324              		.loc 1 243 21 is_stmt 0 view .LVU54
+ 325 0054 0C4A     		ldr	r2, .L24+24
+ 326 0056 1A44     		add	r2, r2, r3
+ 327 0058 0021     		movs	r1, #0
+ 328 005a 1177     		strb	r1, [r2, #28]
+ 241:Core/Src/stm32f4xx_it.c ****     {
+ 329              		.loc 1 241 41 is_stmt 1 discriminator 3 view .LVU55
+ 330 005c 0133     		adds	r3, r3, #1
+ 331              	.LVL10:
+ 241:Core/Src/stm32f4xx_it.c ****     {
+ 332              		.loc 1 241 41 is_stmt 0 discriminator 3 view .LVU56
+ 333 005e DBB2     		uxtb	r3, r3
+ 334              	.LVL11:
+ 335              	.L20:
+ 241:Core/Src/stm32f4xx_it.c ****     {
+ 336              		.loc 1 241 35 is_stmt 1 discriminator 1 view .LVU57
+ 337 0060 072B     		cmp	r3, #7
+ 338 0062 F7D9     		bls	.L21
+ 245:Core/Src/stm32f4xx_it.c ****   }
+ 339              		.loc 1 245 5 view .LVU58
+ 245:Core/Src/stm32f4xx_it.c ****   }
+ 340              		.loc 1 245 21 is_stmt 0 view .LVU59
+ 341 0064 084B     		ldr	r3, .L24+24
+ 342              	.LVL12:
+ 245:Core/Src/stm32f4xx_it.c ****   }
+ 343              		.loc 1 245 21 view .LVU60
+ 344 0066 0122     		movs	r2, #1
+ 345 0068 83F87420 		strb	r2, [r3, #116]
+ 346 006c D1E7     		b	.L19
+ 347              	.L25:
+ 348 006e 00BF     		.align	2
+ 349              	.L24:
+ 350 0070 1C000000 		.word	can+28
+ 351 0074 00000000 		.word	hcan1
+ 352 0078 00000000 		.word	preTick.1
+ 353 007c 00007A44 		.word	1148846080
+ 354 0080 00000000 		.word	canRev_freq
+ 355 0084 10000000 		.word	can+16
+ 356 0088 00000000 		.word	can
  357              		.cfi_endproc
  358              	.LFE147:
  360              		.section	.text.TIM1_CC_IRQHandler,"ax",%progbits
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  262:Core/Src/stm32f4xx_it.c **** {
  369              		.loc 1 262 1 is_stmt 1 view -0
  370              		.cfi_startproc
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 12
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 12
 
 
  371              		@ args = 0, pretend = 0, frame = 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  403 0024 0021     		movs	r1, #0
  404 0026 5148     		ldr	r0, .L48+8
  405 0028 FFF7FEFF 		bl	HAL_TIM_OC_Stop_IT
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 13
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 13
 
 
  406              	.LVL13:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  442              		.loc 1 294 9 is_stmt 0 view .LVU87
  443 0052 444A     		ldr	r2, .L48
  444 0054 1369     		ldr	r3, [r2, #16]
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 14
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 14
 
 
  445              		.loc 1 294 14 view .LVU88
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  477              		.loc 1 279 22 is_stmt 0 view .LVU98
  478 0082 394B     		ldr	r3, .L48+4
  479 0084 0022     		movs	r2, #0
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 15
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 15
 
 
  480 0086 1A70     		strb	r2, [r3]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  322:Core/Src/stm32f4xx_it.c ****     switch (pulse_state[2])
  517              		.loc 1 322 5 is_stmt 1 view .LVU114
  518              		.loc 1 322 24 is_stmt 0 view .LVU115
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 16
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 16
 
 
  519 00b2 2D4B     		ldr	r3, .L48+4
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  551 00de DEE7     		b	.L31
  552              	.L36:
  326:Core/Src/stm32f4xx_it.c ****       pulse_state[2] = 2;
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 17
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 17
 
 
  553              		.loc 1 326 7 view .LVU125
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  592 010e 012B     		cmp	r3, #1
  593 0110 11D0     		beq	.L40
  594 0112 022B     		cmp	r3, #2
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 18
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 18
 
 
  595 0114 1DD0     		beq	.L41
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  625 0138 DB68     		ldr	r3, [r3, #12]
  352:Core/Src/stm32f4xx_it.c ****       pulse_state[3] = 2;
  626              		.loc 1 352 50 view .LVU152
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 19
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 19
 
 
  627 013a 0E4A     		ldr	r2, .L48+16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  663 0164 00000140 		.word	1073807360
  664 0168 00000000 		.word	pulse_state
  665 016c 00000000 		.word	htim1
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 20
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 20
 
 
  666 0170 00000000 		.word	tstart_ticks
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  710              	.LFB150:
  390:Core/Src/stm32f4xx_it.c **** 
  391:Core/Src/stm32f4xx_it.c **** /**
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 21
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 21
 
 
  392:Core/Src/stm32f4xx_it.c ****   * @brief This function handles USART1 global interrupt.
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  749              		.cfi_offset 4, -8
  750              		.cfi_offset 14, -4
  410:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 22
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 22
 
 
  411:Core/Src/stm32f4xx_it.c ****   uint8_t i = 0;
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  779 0022 FFF7FEFF 		bl	HT_DM_S_7010_Receive_Data
  780              	.LVL29:
  419:Core/Src/stm32f4xx_it.c ****     {
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 23
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 23
 
 
  781              		.loc 1 419 5 view .LVU179
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  820 004a 0C4A     		ldr	r2, .L64+16
  821 004c 1368     		ldr	r3, [r2]
  822 004e C31A     		subs	r3, r0, r3
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 24
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 24
 
 
  426:Core/Src/stm32f4xx_it.c ****     preTick2 = currTick2;
@@ -1438,77 +1438,77 @@ ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 1
  882              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  883              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
  884              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 25
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 25
 
 
  885              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
  886              		.file 11 "Core/Inc/can.h"
  887              		.file 12 "Core/Inc/usart.h"
  888              		.file 13 "Core/Inc/HT_DM_S_7010.h"
- 889              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 890              		.file 15 "Core/Inc/ZDT_X42_V2.h"
+ 889              		.file 14 "Core/Inc/ZDT_X42_V2.h"
+ 890              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
  891              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 26
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:21     .text.NMI_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:44     .text.HardFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:90     .text.BusFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:113    .text.UsageFault_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:136    .text.SVC_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:142    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:155    .text.DebugMon_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:174    .text.PendSV_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:193    .text.SysTick_Handler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:219    .text.CAN1_RX0_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:225    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:323    .text.CAN1_RX0_IRQHandler:00000070 $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:859    .bss.preTick.1:00000000 preTick.1
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:873    .bss.canRev_freq:00000000 canRev_freq
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:334    .text.EXTI9_5_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:340    .text.EXTI9_5_IRQHandler:00000000 EXTI9_5_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:361    .text.TIM1_CC_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:367    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:663    .text.TIM1_CC_IRQHandler:00000164 $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:672    .text.TIM4_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:678    .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:698    .text.TIM4_IRQHandler:0000000c $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:703    .text.USART1_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:709    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:729    .text.USART1_IRQHandler:0000000c $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:734    .text.CAN2_RX0_IRQHandler:00000000 $t
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:740    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:838    .text.CAN2_RX0_IRQHandler:0000006c $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:853    .bss.preTick2.0:00000000 preTick2.0
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:866    .bss.can2Rev_freq:00000000 can2Rev_freq
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:850    .bss.preTick2.0:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:856    .bss.preTick.1:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:863    .bss.can2Rev_freq:00000000 $d
-C:\Users\81506\AppData\Local\Temp\ccIzsmre.s:870    .bss.canRev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:21     .text.NMI_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:44     .text.HardFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:90     .text.BusFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:113    .text.UsageFault_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:136    .text.SVC_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:142    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:155    .text.DebugMon_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:174    .text.PendSV_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:193    .text.SysTick_Handler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:219    .text.EXTI3_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:225    .text.EXTI3_IRQHandler:00000000 EXTI3_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:246    .text.CAN1_RX0_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:252    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:350    .text.CAN1_RX0_IRQHandler:00000070 $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:859    .bss.preTick.1:00000000 preTick.1
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:873    .bss.canRev_freq:00000000 canRev_freq
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:361    .text.TIM1_CC_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:367    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:663    .text.TIM1_CC_IRQHandler:00000164 $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:672    .text.TIM4_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:678    .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:698    .text.TIM4_IRQHandler:0000000c $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:703    .text.USART1_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:709    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:729    .text.USART1_IRQHandler:0000000c $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:734    .text.CAN2_RX0_IRQHandler:00000000 $t
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:740    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:838    .text.CAN2_RX0_IRQHandler:0000006c $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:853    .bss.preTick2.0:00000000 preTick2.0
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:866    .bss.can2Rev_freq:00000000 can2Rev_freq
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:850    .bss.preTick2.0:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:856    .bss.preTick.1:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:863    .bss.can2Rev_freq:00000000 $d
+C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s:870    .bss.canRev_freq:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
+HAL_GPIO_EXTI_IRQHandler
 HAL_CAN_GetRxMessage
 HAL_CAN_IRQHandler
 HAL_GetTick
 ZDT_X42_V2_Receive_Data
 can
 hcan1
-HAL_GPIO_EXTI_IRQHandler
 HAL_TIM_OC_Stop_IT
 HAL_TIM_IRQHandler
-ARM GAS  C:\Users\81506\AppData\Local\Temp\ccIzsmre.s 			page 27
+ARM GAS  C:\Users\81506\AppData\Local\Temp\ccCJVhfb.s 			page 27
 
 
 pulse_state

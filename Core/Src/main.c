@@ -238,7 +238,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  if (GPIO_Pin == GPIO_PIN_5)
+  if (GPIO_Pin == GPIO_PIN_3)
   {
     // 处理外部中断事件
     g_auto_scan.Pluse_Rev_flag = true;
