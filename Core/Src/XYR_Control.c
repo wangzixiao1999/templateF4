@@ -460,7 +460,8 @@ void XYR_MotorState_Transition(uint8_t addr, XYR_State new_state)
 		XYR_MotorState[addr - 1].move_flag = false;
 
 		break;
-
+	case XYRMOVE_BLOCKAGE:
+		XYR_MotorState[addr - 1].move_flag = true;
 	default:
 		break;
 	}
@@ -477,12 +478,6 @@ void XYR_MotorState_Update(uint8_t addr)
 	}
 
 	uint8_t index = addr - 1;
-
-	if ((XYR_MotorState[index].real_time_current > 2000) && (XYR_MotorState[index].real_time_velocity < 1))
-	{
-		XYR_AutoScan_Stop();
-		XYR_Relieve_Malfunction();
-	}
 
 	switch (XYR_MotorState[index].state)
 	{
@@ -512,6 +507,13 @@ void XYR_MotorState_Update(uint8_t addr)
 
 	case XYRMOVE_WAIT_STOP:
 
+		if ((ZDT_state[index] & 0x04) && (index != 2))
+		{
+			ZDT_state[index] &= ~(0x04);
+			XYR_MotorState_Transition(addr, XYRMOVE_BLOCKAGE);
+			XYR_MotorState[index].start_time = HAL_GetTick();
+			return;
+		}
 		if ((ZDT_state[index] & 0x02) && (index != 2))
 		{
 			ZDT_state[index] &= ~(0x02);
@@ -520,13 +522,14 @@ void XYR_MotorState_Update(uint8_t addr)
 			return;
 		}
 		// else if ((labs(XYR_MotorState[2].real_time_position - XYR_MotorState[2].target_position) <= 5) && (!XYR_MotorState[2].real_time_velocity) && (labs(XYR_MotorState[2].real_time_current) < 200))
-		else if (((!XYR_MotorState[2].real_time_velocity) && (labs(XYR_MotorState[2].real_time_current) < 200)) && (index == 2))
+		else if (((XYR_MotorState[2].real_time_velocity == 0) && (labs(XYR_MotorState[2].real_time_current) < 200)) && (index == 2))
 		{
 			XYR_MotorState_Transition(addr, XYRMOVE_COMPLETE);
 			XYR_MotorState[index].start_time = HAL_GetTick();
 			return;
 		}
 		break;
+
 	case XYRMOVE_COMPLETE:
 		XYR_MotorState[index].elapsed_time = HAL_GetTick() - XYR_MotorState[index].start_time;
 		if (XYR_MotorState[index].elapsed_time >= COMMEND_LOADING_TIME)
@@ -534,6 +537,17 @@ void XYR_MotorState_Update(uint8_t addr)
 			XYR_MotorState_Transition(addr, XYRMOVE_IDLE);
 			return;
 		}
+		break;
+
+	case XYRMOVE_BLOCKAGE:
+		XYR_MotorState[index].elapsed_time = HAL_GetTick() - XYR_MotorState[index].start_time;
+		if (XYR_MotorState[index].elapsed_time >= BLOCKING_LOADING_TIME)
+		{
+			XYR_Relieve_Malfunction();
+			XYR_MotorState_Transition(addr, XYRMOVE_IDLE);
+			return;
+		}
+
 		break;
 	default:
 		break;

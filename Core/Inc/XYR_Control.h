@@ -13,6 +13,7 @@
 
 #define MAX_MOTORS 3
 #define COMMEND_LOADING_TIME 10
+#define BLOCKING_LOADING_TIME 700
 
 // 轴状态定义
 typedef enum

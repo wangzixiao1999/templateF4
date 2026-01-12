@@ -103,22 +103,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   USER_CAN1_Filter_Init();
   USER_CAN2_Filter_Init(); // 初始化CAN滤波器
-  if (HAL_CAN_Start(&hcan1) != HAL_OK)
-  {
-    Error_Handler();
-  } // 启动CAN1控制器
-  if (HAL_CAN_Start(&hcan2) != HAL_OK)
-  {
-    Error_Handler();
-  } // 启动CAN2控制器
-  if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
-  {
-    Error_Handler();
-  } // 使能CAN1控制器接收中断
-  if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
-  {
-    Error_Handler();
-  } // 使能CAN2控制器接收中断
+  /* 不再在此处阻塞启动 CAN；改为后台重试策略，初始化重试时间戳，周期任务会尝试启动 */
+  CAN_InitRetryTimers();
   XYR_Init(); // XYR位移台初始化
 
   HAL_TIM_Base_Start_IT(&htim4);
@@ -231,6 +217,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     uint32_t currTick_Tim4 = HAL_GetTick();
     Tim4Send_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
     preTick_Tim4 = currTick_Tim4;
+    /* 周期性尝试恢复/启动 CAN（非阻塞） */
+    CAN_TryStartAll();
   }
 }
 
