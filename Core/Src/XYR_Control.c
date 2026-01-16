@@ -3,16 +3,16 @@
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
 
-volatile float VOFA_Speed[3] = {20, 20, 200};
-volatile float VOFA_Pos[3] = {10, 10, 100};
+volatile float VOFA_Speed[3] = {20, 20, 20};
+volatile float VOFA_Pos[3] = {10, 10, 0};
 volatile uint8_t VOFA_Scan[2] = {10, 10};
 volatile bool AutoScanFlag = true;
 volatile bool USB_Send_Flag = false;
 
-
 volatile uint8_t xyr_request = 0;
 
 XYR_MotorStateSpace XYR_MotorState[3] = {0};
+AutoScanContext g_auto_scan = {0};
 /**
  * @brief    初始化XYR三轴位移台
  */
@@ -23,8 +23,12 @@ void XYR_Init()
 		XYR_MotorState[i].state = XYRMOVE_IDLE;
 		XYR_MotorState[i].axis = i;
 		XYR_MotorState[i].dir = 0;
-		XYR_MotorState[i].velocity = 0;
-		XYR_MotorState[i].position = 0;
+		XYR_MotorState[i].target_current = 0;
+		XYR_MotorState[i].target_velocity = 0;
+		XYR_MotorState[i].target_position = 0;
+		XYR_MotorState[i].real_time_current = 0;
+		XYR_MotorState[i].real_time_velocity = 0;
+		XYR_MotorState[i].real_time_position = 0;
 		XYR_MotorState[i].start_time = 0;
 		XYR_MotorState[i].elapsed_time = 0;
 		XYR_MotorState[i].move_flag = false;
@@ -43,37 +47,15 @@ void XYR_Collision_Home(uint8_t addr)
 	// 	moveFlag[addr - 1] = false;
 	if (addr == 1 || addr == 2)
 	{
+		XYR_MotorState_Transition(addr, XYRMOVE_WAIT_COMMEND);
 		ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-		HAL_Delay(10);
-		while (!(ZDT_state[addr - 1] == 0x03))
-		{
-			// HAL_Delay(1);
-		}
-
-		ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
-		HAL_Delay(10);
-		while (!(ZDT_state[addr - 1] == 0x03))
-		{
-			// HAL_Delay(1);
-		}
 	}
 	else if (addr == 0)
 	{
-		ZDT_X42_V2_Origin_Trigger_Return(addr, 2, false);
-		HAL_Delay(10);
-		while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
-		{
-			// HAL_Delay(1);
-		}
-		ZDT_X42_V2_Bypass_Position_LV_Control(addr, 1, 500, 4500, 0, 0);
-		HAL_Delay(10);
-		while (!((ZDT_state[0] == 0x03) && (ZDT_state[1] == 0x03)))
-		{
-			// HAL_Delay(1);
-		}
-		// }
-
-		// moveFlag[addr - 1] = true;
+		XYR_MotorState_Transition(1, XYRMOVE_WAIT_COMMEND);
+		XYR_MotorState_Transition(2, XYRMOVE_WAIT_COMMEND);
+		ZDT_X42_V2_Origin_Trigger_Return(1, 2, false);
+		ZDT_X42_V2_Origin_Trigger_Return(2, 2, false);
 	}
 }
 
@@ -81,7 +63,7 @@ void XYR_Collision_Home(uint8_t addr)
  * @brief    张大头定长移动
  * @param    addr  	：电机地址
  * @param    dir     ：方向								，0为归零方向，其余值为电机方向
- * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
+ * @param    velocity：最大速度(mm/s)					，范围0 - 250mm/s
  * @param    position：位置(mm)							，范围0 - 118mm
  */
 void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float position)
@@ -98,8 +80,8 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
 
 	if (velocity < 0.f)
 		velocity = 0.f;
-	else if (velocity > 240.f)
-		velocity = 240.f;
+	else if (velocity > 250.f)
+		velocity = 250.f;
 
 	if (position < 0.f)
 		position = 0.f;
@@ -107,52 +89,38 @@ void XYR_ZDT_Fixed_Length_Move(uint8_t addr, uint8_t dir, float velocity, float 
 		position = 118.f;
 
 	XYR_MotorState_Transition(addr, XYRMOVE_WAIT_COMMEND);
-	ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity * 15, position * 72, 0, 0);
+	ZDT_X42_V2_Bypass_Position_LV_Control(addr, dir, velocity * 12, position * 72, 0, 0);
 }
 
 /**
  * @brief    转台旋转固定角度
  * @param    dir     ：方向								，0为归零方向，其余值为电机方向
- * @param    velocity：最大速度(mm/s)					，范围0 - mm/s
+ * @param    velocity：最大速度(mm/s)					，范围0 - 300rpm
  * @param    position：位置(mm)							，范围0 - mm
  */
-void XYR_HT_Fixed_Length_Move(uint8_t dir, uint32_t velocity, int32_t position)
+void XYR_HT_Fixed_Length_Move(uint8_t dir, int32_t position)
 {
-	if (moveFlag[2])
+	if (XYR_MotorState[2].state == XYRMOVE_IDLE)
 	{
-		moveFlag[2] = false;
-		HT_DM_S_7010_Set_Position_Max_Speed(3, velocity);
-		HAL_Delay(10);
+		HT_DM_S_7010_Set_Position_Max_Speed(3, VOFA_Speed[2] * 100);
 		if (dir)
 			position = -position;
-		int32_t position_before = HT_Multi_circle_absolute_angle;
+		XYR_MotorState[2].target_position = XYR_MotorState[2].real_time_position + position;
+		XYR_MotorState_Transition(3, XYRMOVE_WAIT_COMMEND);
 		HT_DM_S_7010_Relative_Position_Control(3, position);
-		HAL_Delay(10);
-		while (!((labs(HT_Multi_circle_absolute_angle - position_before - position) <= 10) && (!HT_speed) && (labs(HT_current) < 200)))
-		{
-			// HAL_Delay(1);
-		}
-
-		moveFlag[2] = true;
 	}
 }
 
 /**
  * @brief    转台固定速度旋转
  * @param    dir     ：方向								，0为归零方向，其余值为电机方向
- * @param    velocity：最大速度(mm/s)					，范围0 - 240mm/s
+ * @param    velocity：最大速度(mm/s)					，范围0 - 300Rpm
  */
-void XYR_HT_Fixed_Speed_Move(uint8_t dir, int32_t speed)
+void XYR_HT_Fixed_Speed_Move(uint8_t dir, int32_t velocity)
 {
-	if (moveFlag[2])
-	{
-		moveFlag[2] = false;
-		if (dir)
-			speed = -speed;
-		HT_DM_S_7010_Velocity_Control(3, speed);
-
-		moveFlag[2] = true;
-	}
+	if (dir)
+		velocity = -velocity;
+	HT_DM_S_7010_Velocity_Control(3, velocity * 100);
 }
 
 /**
@@ -199,7 +167,7 @@ void XYR_HT_Speed_Setting_VOFA(uint8_t addr, float velocity)
  * @param    addr  	：电机地址
  * @param    position：位移距离(mm)					，范围0 - 240mm
  */
-void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, int32_t position)
+void XYR_ZDT_Pos_Setting_VOFA(uint8_t addr, float position)
 {
 	VOFA_Pos[addr - 1] = position;
 }
@@ -231,28 +199,35 @@ float Parse_Float_LittleEndian(uint8_t *bytes)
 void XYR_AutoScan_Start(uint8_t x, uint8_t y)
 {
 	AutoScanFlag = true;
-
-	for (size_t i = 0; i < x; i++)
+	if (x == 0 || y == 0)
 	{
-		if (AutoScanFlag)
-		{
-			for (size_t j = 0; j < y; j++)
-			{
-				if (AutoScanFlag)
-				{
-					XYR_ZDT_Fixed_Length_Move(2, i % 2, VOFA_Speed[1], VOFA_Pos[1]);
-				}
-				else
-				{
-					break;
-				}
-			}
-			XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
-		}
-		else
-		{
-			break;
-		}
+		return; // 无效参数
+	}
+
+	if ((XYR_MotorState[0].state == XYRMOVE_IDLE) && (XYR_MotorState[1].state == XYRMOVE_IDLE))
+	{
+		// 初始化面扫上下文
+		g_auto_scan.state = SCAN_RUNNING;
+		g_auto_scan.current_row = 0;
+		g_auto_scan.current_col = 0;
+		g_auto_scan.total_rows = x;
+		g_auto_scan.total_cols = y;
+		g_auto_scan.row_direction = false;
+		g_auto_scan.last_update_time = HAL_GetTick();
+		g_auto_scan.waiting_for_move_complete = false;
+		g_auto_scan.Pluse_Rev_flag = false;
+		AutoScanFlag = true;
+
+		// if (g_auto_scan.row_direction)
+		// {
+		// 	XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
+		// }
+		// else
+		// {
+		// 	XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
+		// }
+
+		g_auto_scan.waiting_for_move_complete = true;
 	}
 }
 
@@ -261,7 +236,10 @@ void XYR_AutoScan_Start(uint8_t x, uint8_t y)
  */
 void XYR_AutoScan_Stop(void)
 {
+	g_auto_scan.state = SCAN_IDLE;
 	AutoScanFlag = false;
+	// 停止所有运动
+	XYR_Stop_Move();
 }
 
 /**
@@ -285,6 +263,9 @@ void Controller_Update_Callback(void)
 	case 2:
 		HT_DM_S_7010_Read_Absolute_Angle(3); // 读取转台角度
 		break;
+	case 3:
+		HT_cmdSend(); // 发送装载好的转台命令
+		break;
 	}
 
 	switch (ZDT_request_index)
@@ -293,15 +274,18 @@ void Controller_Update_Callback(void)
 		ZDT_X42_V2_Read_Sys_Params(1, S_State); // 读取张大头1号机
 		break;
 	case 1:
-		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机
+		ZDT_cmdSend(1); // 发送装载好的张大头1号机的命令
 		break;
 	case 2:
-		ZDT_cmdSend(); // 发送装载好的命令
+		ZDT_X42_V2_Read_Sys_Params(2, S_State); // 读取张大头2号机
+		break;
+	case 3:
+		ZDT_cmdSend(2); // 发送装载好的张大头2号机的命令
 		break;
 	}
 
-	HT_request_index = (HT_request_index + 1) % 3;
-	ZDT_request_index = (ZDT_request_index + 1) % 3;
+	HT_request_index = (HT_request_index + 1) % 4;
+	ZDT_request_index = (ZDT_request_index + 1) % 4;
 
 	uint32_t currTick_Tim4 = HAL_GetTick();
 	Tim4Rev_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
@@ -321,9 +305,12 @@ void Controller_Update_Callback(void)
 void XYR_Send_USB_Commend()
 {
 	float values[3];
-	values[0] = (float)ZDT_angle[0] / -90.0f;
-	values[1] = (float)ZDT_angle[1] / -90.0f;
-	values[2] = (float)HT_Single_circle_absolute_angle * 360.f / 16384.f;
+	values[0] = (float)XYR_MotorState[0].real_time_position;
+	values[1] = (float)XYR_MotorState[1].real_time_position;
+	if (XYR_MotorState[2].real_time_position < 0)
+		values[2] = (float)((int32_t)abs(XYR_MotorState[2].real_time_position) % 16384) * 360.f / 16384.f;
+	else
+		values[2] = (float)((16384 - (int32_t)abs(XYR_MotorState[2].real_time_position) % 16384)) * 360.f / 16384.f;
 
 	// 发送原始数据（VOFA+使用JustFloat协议）
 	HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
@@ -358,11 +345,11 @@ void XYR_Read_USB_Commend()
 		break;
 	case 0xA3:
 		xyr_request = 0;
-		XYR_ZDT_Fixed_Length_Move(1, 1, VOFA_Speed[0], VOFA_Pos[0]);
+		XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
 		break;
 	case 0xA4:
 		xyr_request = 0;
-		XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
+		XYR_ZDT_Fixed_Length_Move(1, 1, VOFA_Speed[0], VOFA_Pos[0]);
 		break;
 	case 0xB1:
 		xyr_request = 0;
@@ -376,11 +363,11 @@ void XYR_Read_USB_Commend()
 		break;
 	case 0xB3:
 		xyr_request = 0;
-		XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
+		XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
 		break;
 	case 0xB4:
 		xyr_request = 0;
-		XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
+		XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
 		break;
 	case 0xC1:
 		xyr_request = 0;
@@ -394,18 +381,17 @@ void XYR_Read_USB_Commend()
 		break;
 	case 0xC3:
 		xyr_request = 0;
-		XYR_HT_Fixed_Length_Move(3, VOFA_Speed[2], VOFA_Pos[2]);
+		if (VOFA_Pos[2] < 0)
+			XYR_HT_Fixed_Speed_Move(1, VOFA_Speed[2]);
+		else
+			XYR_HT_Fixed_Length_Move(1, VOFA_Pos[2]);
 		break;
 	case 0xC4:
 		xyr_request = 0;
-		XYR_HT_Fixed_Length_Move(3, VOFA_Speed[2], VOFA_Pos[2]);
-	case 0xC5:
-		xyr_request = 0;
-		XYR_HT_Fixed_Speed_Move(3, VOFA_Speed[2]);
-		break;
-	case 0xC6:
-		xyr_request = 0;
-		XYR_HT_Fixed_Speed_Move(0, VOFA_Speed[2]);
+		if (VOFA_Pos[2] < 0)
+			XYR_HT_Fixed_Speed_Move(0, VOFA_Speed[2]);
+		else
+			XYR_HT_Fixed_Length_Move(0, VOFA_Pos[2]);
 		break;
 	case 0xD0:
 		xyr_request = 0;
@@ -415,6 +401,7 @@ void XYR_Read_USB_Commend()
 		xyr_request = 0;
 		XYR_Relieve_Malfunction();
 		break;
+
 		// 面扫管理
 	case 0xE1:
 		xyr_request = 0;
@@ -473,7 +460,8 @@ void XYR_MotorState_Transition(uint8_t addr, XYR_State new_state)
 		XYR_MotorState[addr - 1].move_flag = false;
 
 		break;
-
+	case XYRMOVE_BLOCKAGE:
+		XYR_MotorState[addr - 1].move_flag = true;
 	default:
 		break;
 	}
@@ -512,19 +500,36 @@ void XYR_MotorState_Update(uint8_t addr)
 		if (XYR_MotorState[index].elapsed_time >= COMMEND_LOADING_TIME)
 		{
 			XYR_MotorState_Transition(addr, XYRMOVE_WAIT_STOP);
+			// XYR_MotorState[index].target_position =
 			return;
 		}
 		break;
 
 	case XYRMOVE_WAIT_STOP:
-		if (ZDT_state[index] & 0x02)
+
+		if ((ZDT_state[index] & 0x04) && (index != 2))
+		{
+			ZDT_state[index] &= ~(0x04);
+			XYR_MotorState_Transition(addr, XYRMOVE_BLOCKAGE);
+			XYR_MotorState[index].start_time = HAL_GetTick();
+			return;
+		}
+		if ((ZDT_state[index] & 0x02) && (index != 2))
 		{
 			ZDT_state[index] &= ~(0x02);
 			XYR_MotorState_Transition(addr, XYRMOVE_COMPLETE);
 			XYR_MotorState[index].start_time = HAL_GetTick();
 			return;
 		}
+		// else if ((labs(XYR_MotorState[2].real_time_position - XYR_MotorState[2].target_position) <= 5) && (!XYR_MotorState[2].real_time_velocity) && (labs(XYR_MotorState[2].real_time_current) < 200))
+		else if (((XYR_MotorState[2].real_time_velocity == 0) && (labs(XYR_MotorState[2].real_time_current) < 200)) && (index == 2))
+		{
+			XYR_MotorState_Transition(addr, XYRMOVE_COMPLETE);
+			XYR_MotorState[index].start_time = HAL_GetTick();
+			return;
+		}
 		break;
+
 	case XYRMOVE_COMPLETE:
 		XYR_MotorState[index].elapsed_time = HAL_GetTick() - XYR_MotorState[index].start_time;
 		if (XYR_MotorState[index].elapsed_time >= COMMEND_LOADING_TIME)
@@ -533,7 +538,98 @@ void XYR_MotorState_Update(uint8_t addr)
 			return;
 		}
 		break;
+
+	case XYRMOVE_BLOCKAGE:
+		XYR_MotorState[index].elapsed_time = HAL_GetTick() - XYR_MotorState[index].start_time;
+		if (XYR_MotorState[index].elapsed_time >= BLOCKING_LOADING_TIME)
+		{
+			XYR_Relieve_Malfunction();
+			XYR_MotorState_Transition(addr, XYRMOVE_IDLE);
+			return;
+		}
+
+		break;
 	default:
 		break;
+	}
+}
+
+/**
+ * @brief    更新面扫状态
+ */
+void XYR_AutoScan_Update(void)
+{
+	static uint32_t last_update_time = 0;
+	uint32_t current_time = HAL_GetTick();
+
+	// 限制更新频率（例如每10ms更新一次）
+	if (current_time - last_update_time < 10)
+	{
+		return;
+	}
+	last_update_time = current_time;
+
+	// 如果面扫未运行，直接返回
+	if (g_auto_scan.state != SCAN_RUNNING || !AutoScanFlag)
+	{
+		return;
+	}
+
+	// 如果正在等待移动完成
+	if (g_auto_scan.waiting_for_move_complete)
+	{
+		// 检查当前Y轴是否移动完成（假设使用axis 2）
+		if (XYR_MotorState[0].state == XYRMOVE_IDLE && XYR_MotorState[1].state == XYRMOVE_IDLE && g_auto_scan.Pluse_Rev_flag)
+		{
+
+			g_auto_scan.waiting_for_move_complete = false;
+			g_auto_scan.Pluse_Rev_flag = false;
+
+			// 更新列计数器
+			g_auto_scan.current_col++;
+
+			// 如果当前行已完成所有列
+			if (g_auto_scan.current_col >= g_auto_scan.total_cols)
+			{
+				// 移动到下一行
+				g_auto_scan.current_row++;
+				g_auto_scan.current_col = 0;
+
+				// 如果所有行都已完成
+				if (g_auto_scan.current_row >= g_auto_scan.total_rows)
+				{
+					g_auto_scan.state = SCAN_COMPLETE;
+					AutoScanFlag = false;
+					return;
+				}
+
+				// 换行：X轴移动一个位置
+				XYR_ZDT_Fixed_Length_Move(1, 0, VOFA_Speed[0], VOFA_Pos[0]);
+
+				// 切换行方向
+				g_auto_scan.row_direction = !g_auto_scan.row_direction;
+
+				// 等待X轴移动完成
+				// 这里可以设置一个标志，在下次更新时检查
+				// 或者立即开始Y轴移动（取决于你的需求）
+				g_auto_scan.waiting_for_move_complete = true;
+			}
+			else
+			{
+				// 当前行还有更多列，继续Y轴移动
+				if (g_auto_scan.row_direction)
+				{
+					// 从左到右，Y轴正向移动
+					XYR_ZDT_Fixed_Length_Move(2, 1, VOFA_Speed[1], VOFA_Pos[1]);
+				}
+				else
+				{
+					// 从右到左，Y轴反向移动
+					XYR_ZDT_Fixed_Length_Move(2, 0, VOFA_Speed[1], VOFA_Pos[1]);
+				}
+
+				g_auto_scan.waiting_for_move_complete = true;
+			}
+		}
 	}
 }

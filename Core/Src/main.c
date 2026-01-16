@@ -68,9 +68,9 @@ static volatile int usartTest = 0;
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
 
@@ -104,22 +104,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   USER_CAN1_Filter_Init();
   USER_CAN2_Filter_Init(); // 初始化CAN滤波器
-  if (HAL_CAN_Start(&hcan1) != HAL_OK)
-  {
-    Error_Handler();
-  } // 启动CAN1控制器
-  if (HAL_CAN_Start(&hcan2) != HAL_OK)
-  {
-    Error_Handler();
-  } // 启动CAN2控制器
-  if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
-  {
-    Error_Handler();
-  } // 使能CAN1控制器接收中断
-  if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
-  {
-    Error_Handler();
-  } // 使能CAN2控制器接收中断
+  /* 不再在此处阻塞启动 CAN；改为后台重试策略，初始化重试时间戳，周期任务会尝试启动 */
+  CAN_InitRetryTimers();
   XYR_Init(); // XYR位移台初始化
 
   HAL_TIM_Base_Start_IT(&htim4);
@@ -160,39 +146,41 @@ int main(void)
 
 
     /* USER CODE BEGIN 3 */
+
+    XYR_AutoScan_Update();
+
     XYR_Read_USB_Commend();
 
-if(USB_Send_Flag)
-{
-  USB_Send_Flag = false;
-  XYR_Send_USB_Commend();
-}
+    if (USB_Send_Flag)
+    {
+      USB_Send_Flag = false;
+      XYR_Send_USB_Commend();
+    }
 
     XYR_MotorState_Update(1);
     XYR_MotorState_Update(2);
-
-
+    XYR_MotorState_Update(3);
   }
   /* USER CODE END 3 */
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-   */
+  */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-   * in the RCC_OscInitTypeDef structure.
-   */
+  * in the RCC_OscInitTypeDef structure.
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -207,8 +195,9 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -230,6 +219,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     uint32_t currTick_Tim4 = HAL_GetTick();
     Tim4Send_freq = 1000.f / (currTick_Tim4 - preTick_Tim4);
     preTick_Tim4 = currTick_Tim4;
+    /* 周期性尝试恢复/启动 CAN（非阻塞） */
+    CAN_TryStartAll();
   }
 }
 
@@ -247,12 +238,22 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   }
 }
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if (GPIO_Pin == GPIO_PIN_3)
+  {
+    // 处理外部中断事件
+    g_auto_scan.Pluse_Rev_flag = true;
+  }
+}
+
+
 /* USER CODE END 4 */
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -264,14 +265,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef USE_FULL_ASSERT
+#ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

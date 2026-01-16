@@ -2,10 +2,10 @@
 #include "HT_DM_S_7010.h"
 #include <string.h>
 
-volatile int32_t HT_current = 0;                      // 转台电流
-volatile int32_t HT_speed = 0;                        // 转台速度
-volatile int32_t HT_Single_circle_absolute_angle = 0; // 转台单圈绝对角度
-volatile int32_t HT_Multi_circle_absolute_angle = 0;  // 转台多圈绝对角度
+// volatile int32_t HT_current = 0;                      // 转台电流
+// volatile int32_t HT_speed = 0;                        // 转台速度
+// volatile int32_t HT_Single_circle_absolute_angle = 0; // 转台单圈绝对角度
+volatile int32_t HT_Multi_circle_absolute_angle = 0; // 转台多圈绝对角度
 
 static HT_DataCache HT_data_cache = {0};
 
@@ -350,14 +350,15 @@ void HT_DM_S_7010_Absolute_Position_Control(uint8_t addr, int32_t position)
  */
 void HT_DM_S_7010_Relative_Position_Control(uint8_t addr, int32_t position)
 {
-  uint8_t cmd[12] = {0};
-  cmd[0] = addr;
-  cmd[1] = 0xC3;
-  cmd[2] = (uint8_t)(position >> 0);
-  cmd[3] = (uint8_t)(position >> 8);
-  cmd[4] = (uint8_t)(position >> 16);
-  cmd[5] = (uint8_t)(position >> 24);
-  can2_SendCmd((__IO uint8_t *)cmd, 6);
+  // uint8_t cmd[12] = {0};
+  XYR_MotorState[2].cmd[0] = addr;
+  XYR_MotorState[2].cmd[1] = 0xC3;
+  XYR_MotorState[2].cmd[2] = (uint8_t)(position >> 0);
+  XYR_MotorState[2].cmd[3] = (uint8_t)(position >> 8);
+  XYR_MotorState[2].cmd[4] = (uint8_t)(position >> 16);
+  XYR_MotorState[2].cmd[5] = (uint8_t)(position >> 24);
+  // can2_SendCmd((__IO uint8_t *)cmd, 6);
+  XYR_MotorState[2].cmdLength = 6;
 }
 
 /**
@@ -452,10 +453,10 @@ void HT_UpdateParameters(void)
   if (HT_data_cache.flag_current && HT_data_cache.flag_speed && HT_data_cache.flag_angle)
   {
 
-    HT_current = HT_data_cache.current;
-    HT_speed = HT_data_cache.speed;
-    HT_Single_circle_absolute_angle = 16384 - HT_data_cache.single_circle_angle;
-    HT_Multi_circle_absolute_angle = HT_data_cache.multi_circle_angle;
+    XYR_MotorState[2].real_time_current = HT_data_cache.current;
+    XYR_MotorState[2].real_time_velocity = HT_data_cache.speed / 100.f;
+    //XYR_MotorState[2].real_time_position = 16384 - HT_data_cache.single_circle_angle;
+    XYR_MotorState[2].real_time_position = HT_data_cache.multi_circle_angle;
 
     HT_data_cache.flag_current = 0;
     HT_data_cache.flag_speed = 0;
@@ -464,5 +465,21 @@ void HT_UpdateParameters(void)
     uint32_t currTick_HT = HAL_GetTick();
     HTRev_freq = 1000.f / (currTick_HT - preTick_HT);
     preTick_HT = currTick_HT;
+  }
+}
+
+/**
+ * @brief 命令装载并准备发送
+ * @retval cmdLength  用于发送命令的全局变量数组长度
+ */
+void HT_cmdSend()
+{
+  if ((XYR_MotorState[2].cmdLength > 0) && (XYR_MotorState[2].state == XYRMOVE_WAIT_COMMEND))
+  {
+    can2_SendCmd(XYR_MotorState[2].cmd, XYR_MotorState[2].cmdLength);
+    XYR_MotorState[2].command_sent = true;
+    memset((void *)process_buffer, 0, sizeof(process_buffer));
+    memset((void *)XYR_MotorState[2].cmd, 0, sizeof(XYR_MotorState[2].cmd));
+    XYR_MotorState[2].cmdLength = 0;
   }
 }

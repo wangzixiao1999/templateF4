@@ -43,14 +43,15 @@ typedef enum
 // 等待 ZDT 状态位的便利函数：addr 为 1 或 2，mask 为判断位掩码，timeout_ms 超时毫秒数
 bool ZDT_WaitForFlag(uint8_t addr, uint8_t mask, uint32_t timeout_ms);
 
-void ZDT_X42_V2_Reset_CurPos_To_Zero(uint8_t addr);                                                                                                                                     // 将当前位置清零
-void ZDT_X42_V2_Reset_Clog_Pro(uint8_t addr);                                                                                                                                           // 解除堵转保护
-void ZDT_X42_V2_Read_Sys_Params(uint8_t addr, SysParams_t s);                                                                                                                           // 读取参数
-void ZDT_X42_V2_Modify_Ctrl_Mode(uint8_t addr, bool svF, uint8_t ctrl_mode);                                                                                                            // 发送命令切换开环/闭环控制模式
-void ZDT_X42_V2_En_Control(uint8_t addr, bool state, uint8_t snF);                                                                                                                      // 电机使能控制
-void ZDT_X42_V2_Torque_Control(uint8_t addr, uint8_t sign, uint16_t t_ramp, uint16_t torque, uint8_t snF);                                                                              // 力矩模式控制
-void ZDT_X42_V2_Velocity_Control(uint8_t addr, uint8_t dir, uint16_t v_ramp, float velocity, uint8_t snF);                                                                              // 速度模式控制
-void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF);                                                        // 直通限速位置模式控制
+void ZDT_X42_V2_Reset_CurPos_To_Zero(uint8_t addr);                                                        // 将当前位置清零
+void ZDT_X42_V2_Reset_Clog_Pro(uint8_t addr);                                                              // 解除堵转保护
+void ZDT_X42_V2_Read_Sys_Params(uint8_t addr, SysParams_t s);                                              // 读取参数
+void ZDT_X42_V2_Modify_Ctrl_Mode(uint8_t addr, bool svF, uint8_t ctrl_mode);                               // 发送命令切换开环/闭环控制模式
+void ZDT_X42_V2_En_Control(uint8_t addr, bool state, uint8_t snF);                                         // 电机使能控制
+void ZDT_X42_V2_Torque_Control(uint8_t addr, uint8_t sign, uint16_t t_ramp, uint16_t torque, uint8_t snF); // 力矩模式控制
+void ZDT_X42_V2_Velocity_Control(uint8_t addr, uint8_t dir, uint16_t v_ramp, float velocity, uint8_t snF); // 速度模式控制
+void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF);
+void ZDT_X42_V2_Bypass_Position_LV_Control_Block(uint8_t addr, uint8_t dir, float velocity, float position, uint8_t raf, uint8_t snF);                                                  // 直通限速位置模式控制
 void ZDT_X42_V2_Traj_Position_Control(uint8_t addr, uint8_t dir, uint16_t acc, uint16_t dec, float velocity, float position, uint8_t raf, uint8_t snF);                                 // 梯形曲线加减速位置模式控制
 void ZDT_X42_V2_Stop_Now(uint8_t addr, uint8_t snF);                                                                                                                                    // 让电机立即停止运动
 void ZDT_X42_V2_Synchronous_motion(uint8_t addr);                                                                                                                                       // 触发多机同步开始运动
@@ -59,13 +60,11 @@ void ZDT_X42_V2_Origin_Modify_Params(uint8_t addr, bool svF, uint8_t o_mode, uin
 void ZDT_X42_V2_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF);                                                                                                          // 发送命令触发回零
 void ZDT_X42_V2_Origin_Interrupt(uint8_t addr);                                                                                                                                         // 强制中断并退出回零
 void ZDT_X42_V2_Receive_Data(uint8_t *ExtId, uint8_t *rxCmd, uint8_t *rxCount);                                                                                                         // 返回数据接收函数
-void ZDT_cmdSend();
+void ZDT_cmdSend(uint8_t addr);                                                                                                                                                         // 发送装载命令
 
-extern volatile int32_t ZDT_current[2]; // 张大头电流
-extern volatile int32_t ZDT_speed[2];   // 张大头速度
-extern volatile int32_t ZDT_angle[2];   // 张大头角度
-extern volatile uint8_t ZDT_state[2];   // 张大头状态（由中断/接收回调更新，声明为 volatile）
-extern volatile uint8_t cmd[32];        // 用于发送命令的全局变量
-extern volatile uint8_t cmdLength;      // 用于发送命令的全局变量数组长度，同时用于发送准备标志位
+// extern volatile int32_t ZDT_current[2]; // 张大头电流
+// extern volatile int32_t ZDT_speed[2];   // 张大头速度
+// extern volatile int32_t ZDT_angle[2];   // 张大头角度
+extern volatile uint8_t ZDT_state[2]; // 张大头状态（由中断/接收回调更新，声明为 volatile）
 
 #endif

@@ -29,7 +29,8 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-#include "stdbool.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 typedef struct {
 	__IO CAN_RxHeaderTypeDef CAN_RxMsg;
@@ -52,6 +53,24 @@ extern __IO CAN_t can;
 extern __IO CAN_t can2;
 
 extern __IO HAL_StatusTypeDef SendState;
+
+/* CAN online 状态与重试控制（在 can.c 中定义） */
+extern volatile bool can1_online;
+extern volatile bool can2_online;
+extern uint32_t can1_last_try;
+extern uint32_t can2_last_try;
+
+/* 重试间隔（毫秒） */
+#define CAN_RETRY_INTERVAL_MS 5000U
+
+/* 在定时或主循环里调用：尝试启动/恢复 CAN */
+void TryStartCAN(CAN_HandleTypeDef *hcan, volatile bool *online_flag, uint32_t *last_try_ts);
+/* 简单接口：尝试恢复所有 CAN */
+void CAN_TryStartAll(void);
+/* 初始化重试时间戳，使首次尝试尽快发生 */
+void CAN_InitRetryTimers(void);
+/* 查询接口：1 表示 CAN1 在线，2 表示 CAN2 在线 */
+bool CAN_IsOnline(uint8_t idx);
 
 /* USER CODE END Private defines */
 

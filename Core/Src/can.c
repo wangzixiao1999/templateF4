@@ -27,6 +27,95 @@ __IO CAN_t can2 = {0};
 
 __IO HAL_StatusTypeDef SendState = -1;
 
+/* CAN 状态与重试时间戳（在此定义） */
+volatile bool can1_online = false;
+volatile bool can2_online = false;
+uint32_t can1_last_try = 0;
+uint32_t can2_last_try = 0;
+
+/* 尝试间隔，定义在 can.h 中为 CAN_RETRY_INTERVAL_MS */
+
+/*
+ * TryStartCAN: 非阻塞尝试启动单个 CAN 控制器。
+ * - 如果已在线直接返回
+ * - 每次尝试之间至少间隔 CAN_RETRY_INTERVAL_MS
+ * - 成功后激活接收中断，否则保持离线并等待下次重试
+ */
+void TryStartCAN(CAN_HandleTypeDef *hcan, volatile bool *online_flag, uint32_t *last_try_ts)
+{
+  uint32_t now = HAL_GetTick();
+  if (*online_flag) return;
+  if (now - *last_try_ts < CAN_RETRY_INTERVAL_MS) return;
+  *last_try_ts = now;
+
+  if (HAL_CAN_Start(hcan) == HAL_OK)
+  {
+    if (HAL_CAN_ActivateNotification(hcan, CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK)
+    {
+      *online_flag = true;
+    }
+    else
+    {
+      HAL_CAN_Stop(hcan);
+      *online_flag = false;
+    }
+  }
+  else
+  {
+    *online_flag = false;
+  }
+}
+
+/*
+ * CAN_TryStartAll: 便利函数，在周期任务中调用以尝试恢复 CAN1/CAN2
+ */
+void CAN_TryStartAll(void)
+{
+  TryStartCAN(&hcan1, &can1_online, &can1_last_try);
+  TryStartCAN(&hcan2, &can2_online, &can2_last_try);
+}
+
+/*
+ * CAN_InitRetryTimers: 设置重试时间戳使得首次尝试尽快发生
+ */
+void CAN_InitRetryTimers(void)
+{
+  uint32_t now = HAL_GetTick();
+  can1_last_try = now - CAN_RETRY_INTERVAL_MS;
+  can2_last_try = now - CAN_RETRY_INTERVAL_MS;
+}
+
+/*
+ * CAN 状态查询
+ */
+bool CAN_IsOnline(uint8_t idx)
+{
+  if (idx == 1) return can1_online;
+  if (idx == 2) return can2_online;
+  return false;
+}
+
+/**
+ * HAL CAN 错误回调：标记对应 CAN 为离线并停止它，延后重试
+ */
+void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
+{
+  uint32_t now = HAL_GetTick();
+  if (hcan == &hcan1)
+  {
+    can1_online = false;
+    HAL_CAN_Stop(&hcan1);
+    can1_last_try = now;
+  }
+  else if (hcan == &hcan2)
+  {
+    can2_online = false;
+    HAL_CAN_Stop(&hcan2);
+    can2_last_try = now;
+  }
+  /* 可选：记录错误码 HAL_CAN_GetError(hcan) */
+}
+
 /* USER CODE END 0 */
 
 CAN_HandleTypeDef hcan1;
@@ -147,10 +236,10 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle)
 
     __HAL_RCC_GPIOB_CLK_ENABLE();
     /**CAN2 GPIO Configuration
-    PB12     ------> CAN2_RX
-    PB13     ------> CAN2_TX
+    PB5     ------> CAN2_RX
+    PB6     ------> CAN2_TX
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13;
+    GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -205,10 +294,10 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
     }
 
     /**CAN2 GPIO Configuration
-    PB12     ------> CAN2_RX
-    PB13     ------> CAN2_TX
+    PB5     ------> CAN2_RX
+    PB6     ------> CAN2_TX
     */
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_12|GPIO_PIN_13);
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_5|GPIO_PIN_6);
 
     /* CAN2 interrupt Deinit */
     HAL_NVIC_DisableIRQ(CAN2_RX0_IRQn);
