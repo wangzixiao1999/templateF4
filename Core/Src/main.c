@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "can.h"
+#include "lwip.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -101,39 +102,17 @@ int main(void)
   MX_CAN2_Init();
   MX_TIM4_Init();
   MX_USART1_UART_Init();
+  MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
-  USER_CAN1_Filter_Init();
-  USER_CAN2_Filter_Init(); // 初始化CAN滤波器
-  /* 不再在此处阻塞启动 CAN；改为后台重试策略，初始化重试时间戳，周期任务会尝试启动 */
-  CAN_InitRetryTimers();
-  XYR_Init(); // XYR位移台初始化
+  // USER_CAN1_Filter_Init();
+  // USER_CAN2_Filter_Init(); // 初始化CAN滤波器
+  // /* 不再在此处阻塞启动 CAN；改为后台重试策略，初始化重试时间戳，周期任务会尝试启动 */
+  // CAN_InitRetryTimers();
+  // XYR_Init(); // XYR位移台初始化
 
-  HAL_TIM_Base_Start_IT(&htim4);
+  // HAL_TIM_Base_Start_IT(&htim4);
 
-  HAL_Delay(2000);
-
-  // double delays_us[4] = {1, 2.99, 3, 3.01}; /* 2us */
-  // double widths_us[4] = {50.0, 25.0, 20.0, 35.0};
-
-  //   uint8_t cmd1[32] = {0};
-
-  // // 装载命令                 // 地址
-  // cmd1[0]  =  0x01;
-  // cmd1[1]  =  0xB1;                      // 功能码
-  // // 发送命令
-  // can2_SendCmd(cmd1, 2);
-  // HAL_Delay(1000);
-
-  // XYR_Collision_Home(0);
-  //  XYR_ZDT_Fixed_Length_Move(2, 0, 100, 10);
-  //  XYR_ZDT_Fixed_Length_Move(1, 0, 100, 10);
-  //  XYR_ZDT_Fixed_Length_Move(2, 1, 100, 10);
-  //  XYR_ZDT_Fixed_Length_Move(1, 1, 100, 10);
-  //  XYR_HT_Fixed_Length_Move(1, 2000, 16384);
-  //  XYR_HT_Fixed_Length_Move(0, 2000, 16384);
-  //  XYR_HT_Fixed_Speed_Move(0, 3000);
-
-  // HT_DM_S_7010_Relative_Position_Control(1, 16384);
+  // HAL_Delay(2000);
 
   /* USER CODE END 2 */
 
@@ -142,8 +121,8 @@ int main(void)
 
   while (1)
   {
+    MX_LWIP_Process();
     /* USER CODE END WHILE */
-
 
     /* USER CODE BEGIN 3 */
 
