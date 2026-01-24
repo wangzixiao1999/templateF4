@@ -30,6 +30,7 @@
 #include "ZDT_X42_V2.h"
 #include "HT_DM_S_7010.h"
 #include "XYR_Control.h"
+#include "udp_app.h"
 
 
 /* USER CODE END Includes */
@@ -104,6 +105,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
+  UDP_App_Init();
   // USER_CAN1_Filter_Init();
   // USER_CAN2_Filter_Init(); // 初始化CAN滤波器
   // /* 不再在此处阻塞启动 CAN；改为后台重试策略，初始化重试时间戳，周期任务会尝试启动 */
