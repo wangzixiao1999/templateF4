@@ -50,7 +50,7 @@ void TryStartCAN(CAN_HandleTypeDef *hcan, volatile bool *online_flag, uint32_t *
 
   if (HAL_CAN_Start(hcan) == HAL_OK)
   {
-    if (HAL_CAN_ActivateNotification(hcan, CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK)
+    if (HAL_CAN_ActivateNotification(hcan, CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_ERROR_WARNING | CAN_IT_ERROR_PASSIVE | CAN_IT_BUSOFF | CAN_IT_LAST_ERROR_CODE | CAN_IT_ERROR) == HAL_OK)
     {
       *online_flag = true;
     }
@@ -334,8 +334,11 @@ void USER_CAN1_Filter_Init(void)
   sFilterConfig.FilterActivation = ENABLE;
   sFilterConfig.SlaveStartFilterBank = 14; // 关键：告诉 CAN1，bank >=14 分配给 CAN2
 
-  while (HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK)
-    ;
+  if (HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig) != HAL_OK)
+  {
+      /* Filter Config Error */
+      // Error_Handler();
+  }
 }
 
 void USER_CAN2_Filter_Init(void)
@@ -358,8 +361,11 @@ void USER_CAN2_Filter_Init(void)
   sFilterConfig.FilterActivation = ENABLE;
   sFilterConfig.SlaveStartFilterBank = 0; // 对 CAN2 无效，但填个值
 
-  while (HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig) != HAL_OK)
-    ;
+  if (HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig) != HAL_OK)
+  {
+      /* Filter Config Error */
+      // Error_Handler();
+  }
 }
 
 /**
@@ -407,17 +413,19 @@ bool can_SendCmd(__IO uint8_t *cmd, uint8_t len)
       can.CAN_TxMsg.DLC = 8;
     }
 
-    // 发送数据，带超时保护：如果在调试中断或总线不可用时不致于无限阻塞
-    uint32_t start = HAL_GetTick();
-    const uint32_t tx_timeout_ms = 200; // 每包最多等待 200ms
+    // Check if CAN is online
+    if (!can1_online) return false;
 
-    while (SendState = HAL_CAN_AddTxMessage((&hcan1), (CAN_TxHeaderTypeDef *)(&can.CAN_TxMsg), (uint8_t *)(&can.txData), (&TxMailbox)) != HAL_OK)
+    // Check if mailbox is available (Non-blocking)
+    if (HAL_CAN_GetTxMailboxesFreeLevel(&hcan1) == 0)
     {
-      if ((HAL_GetTick() - start) >= tx_timeout_ms)
-      {
-        // 超时则放弃此次发送，返回失败
         return false;
-      }
+    }
+
+    // Send data
+    if (HAL_CAN_AddTxMessage((&hcan1), (CAN_TxHeaderTypeDef *)(&can.CAN_TxMsg), (uint8_t *)(&can.txData), (&TxMailbox)) != HAL_OK)
+    {
+       return false;
     }
 
     // 记录发的第几包的数据
@@ -446,14 +454,12 @@ bool can2_SendCmd(__IO uint8_t *cmd, uint8_t len)
     can2.txData[i] = cmd[i + 1];
   }
 
-  uint32_t start = HAL_GetTick();
-  const uint32_t tx_timeout_ms = 200;
-  while (HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.txData), (&TxMailbox)) != HAL_OK)
+  if (!can2_online) return false;
+  if (HAL_CAN_GetTxMailboxesFreeLevel(&hcan2) == 0) return false;
+
+  if (HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.txData), (&TxMailbox)) != HAL_OK)
   {
-    if ((HAL_GetTick() - start) >= tx_timeout_ms)
-    {
       return false;
-    }
   }
 
   return true;

@@ -106,15 +106,15 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
   UDP_App_Init();
-  // USER_CAN1_Filter_Init();
-  // USER_CAN2_Filter_Init(); // 初始化CAN滤波器
-  // /* 不再在此处阻塞启动 CAN；改为后台重试策略，初始化重试时间戳，周期任务会尝试启动 */
-  // CAN_InitRetryTimers();
-  // XYR_Init(); // XYR位移台初始化
+  USER_CAN1_Filter_Init();
+  USER_CAN2_Filter_Init(); // 初始化CAN滤波器
+  /* 不再在此处阻塞启动 CAN；改为后台重试策略，初始化重试时间戳，周期任务会尝试启动 */
+  CAN_InitRetryTimers();
+  XYR_Init(); // XYR位移台初始化
 
-  // HAL_TIM_Base_Start_IT(&htim4);
+  HAL_TIM_Base_Start_IT(&htim4);
 
-  // HAL_Delay(2000);
+  HAL_Delay(2000);
 
   /* USER CODE END 2 */
 
