@@ -209,23 +209,25 @@ static void low_level_init(struct netif* netif)
     yt8512c_regster_bus_io(&YT8512C, &YT8512C_IOCtx);
     // 初始化PHY
 
-    /* Initialize the LAN8742 ETH PHY */
-    if (yt8512c_init(&YT8512C) != LAN8742_STATUS_OK)
-    {
-        netif_set_link_down(netif);
-        netif_set_down(netif);
-        return;
-    }
-    /* 必须开启自动协商功能 */
-    yt8512c_start_auto_nego(&YT8512C);
     if (hal_eth_init_status == HAL_OK)
     {
+        /* Initialize the LAN8742 ETH PHY */
+        if (yt8512c_init(&YT8512C) != LAN8742_STATUS_OK)
+        {
+            netif_set_link_down(netif);
+            netif_set_down(netif);
+            return;
+        }
+        /* 必须开启自动协商功能 */
+        yt8512c_start_auto_nego(&YT8512C);
+        
         /* Get link state */
         ethernet_link_check_state(netif);
     }
     else
     {
-        Error_Handler();
+        netif_set_link_down(netif);
+        netif_set_down(netif);
     }
 #endif /* LWIP_ARP || LWIP_ETHERNET */
 
