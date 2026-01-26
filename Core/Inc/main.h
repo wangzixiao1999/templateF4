@@ -57,6 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define ETH_RESET_Pin GPIO_PIN_2
+#define ETH_RESET_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
