@@ -100,20 +100,27 @@ bool CAN_IsOnline(uint8_t idx)
  */
 void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
 {
+  uint32_t error = HAL_CAN_GetError(hcan);
   uint32_t now = HAL_GetTick();
-  if (hcan == &hcan1)
+
+  /* 仅在严重错误（如 Bus Off）时才停止 CAN 并进入重试状态。
+     忽略警告 (EWG)、被动错误 (EPV) 或一般的位错误 (LEC)，
+     防止因电机噪声或瞬时干扰导致通讯中断 5 秒。 */
+  if (error & HAL_CAN_ERROR_BOF)
   {
-    can1_online = false;
-    HAL_CAN_Stop(&hcan1);
-    can1_last_try = now;
+    if (hcan == &hcan1)
+    {
+      can1_online = false;
+      HAL_CAN_Stop(&hcan1);
+      can1_last_try = now;
+    }
+    else if (hcan == &hcan2)
+    {
+      can2_online = false;
+      HAL_CAN_Stop(&hcan2);
+      can2_last_try = now;
+    }
   }
-  else if (hcan == &hcan2)
-  {
-    can2_online = false;
-    HAL_CAN_Stop(&hcan2);
-    can2_last_try = now;
-  }
-  /* 可选：记录错误码 HAL_CAN_GetError(hcan) */
 }
 
 /* USER CODE END 0 */
