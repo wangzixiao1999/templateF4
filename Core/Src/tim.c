@@ -26,6 +26,10 @@ volatile uint32_t tstart_ticks[4];
 volatile uint32_t twidth_ticks[4];
 volatile uint8_t pulse_state[4] = {0,0,0,0};
 
+/* Buffers for DMA transfer (End Times) */
+uint32_t tim1_end_val_buff[4];
+DMA_HandleTypeDef hdma_tim1[4]; /* Ch1, Ch2, Ch3, Ch4 */
+
 static uint32_t tim1_clk_hz = 0; /* 缓存 TIM1 时钟（Hz） */
 
 static inline uint32_t us_to_ticks(double us)
@@ -45,11 +49,40 @@ static inline uint32_t us_to_ticks(double us)
     }
     /* 计算 ticks，避免浮点精度问题，使用 64-bit 中间 */
     uint64_t ticks = (uint64_t)(us * (double)tim1_clk_hz / 1e6 + 0.5);
-    if (ticks > 0xFFFFFFFF) ticks = 0xFFFFFFFF;
+    if (ticks > 0xFFFF) ticks = 0xFFFF; /* TIM1 CCR is 16-bit effective usually, unless F4 has 32-bit CC? F407 TIM1 is 16-bit. */
     return (uint32_t)ticks;
 }
 
+/* Helper to init DMA for a specific channel */
+static void TIM1_DMA_Config_Channel(uint32_t Channel, DMA_Stream_TypeDef* Stream, uint32_t ChSel, int idx)
+{
+    /* Enable DMA2 Clock */
+    __HAL_RCC_DMA2_CLK_ENABLE();
 
+    hdma_tim1[idx].Instance = Stream;
+    hdma_tim1[idx].Init.Channel = ChSel;
+    hdma_tim1[idx].Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_tim1[idx].Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_tim1[idx].Init.MemInc = DMA_MINC_DISABLE;
+    hdma_tim1[idx].Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD; /* CCR 32-bit access safe */
+    hdma_tim1[idx].Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+    hdma_tim1[idx].Init.Mode = DMA_NORMAL;
+    hdma_tim1[idx].Init.Priority = DMA_PRIORITY_VERY_HIGH;
+    hdma_tim1[idx].Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+    
+    if (HAL_DMA_Init(&hdma_tim1[idx]) != HAL_OK)
+    {
+       Error_Handler();
+    }
+
+    /* Link DMA to TIM Handle */
+    switch(Channel) {
+        case TIM_CHANNEL_1: __HAL_LINKDMA(&htim1, hdma[TIM_DMA_ID_CC1], hdma_tim1[idx]); break;
+        case TIM_CHANNEL_2: __HAL_LINKDMA(&htim1, hdma[TIM_DMA_ID_CC2], hdma_tim1[idx]); break;
+        case TIM_CHANNEL_3: __HAL_LINKDMA(&htim1, hdma[TIM_DMA_ID_CC3], hdma_tim1[idx]); break;
+        case TIM_CHANNEL_4: __HAL_LINKDMA(&htim1, hdma[TIM_DMA_ID_CC4], hdma_tim1[idx]); break;
+    }
+}
 
 /* USER CODE END 0 */
 
@@ -280,40 +313,78 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 /* USER CODE BEGIN 1 */
 
 void start_4_one_shot(double delays_us[4], double widths_us[4]) {
-    /* 计算 ticks 并设状态为 1（等待上升）*/
-    for (int i=0;i<4;i++){
-        tstart_ticks[i] = us_to_ticks(delays_us[i]);
-        twidth_ticks[i] = us_to_ticks(widths_us[i]);
-        pulse_state[i] = 1; /* 1 = waiting for rising */
+    /* 1. Disable IRQ to prevent interference */
+    HAL_NVIC_DisableIRQ(TIM1_CC_IRQn);
+
+    /* 2. Configure DMA Streams if not already configured (First run only or re-config safe) */
+    /* TIM1_CH1 -> DMA2 Stream 1 Channel 6 */
+    TIM1_DMA_Config_Channel(TIM_CHANNEL_1, DMA2_Stream1, DMA_CHANNEL_6, 0);
+    /* TIM1_CH2 -> DMA2 Stream 2 Channel 6 */
+    TIM1_DMA_Config_Channel(TIM_CHANNEL_2, DMA2_Stream2, DMA_CHANNEL_6, 1);
+    /* TIM1_CH3 -> DMA2 Stream 6 Channel 6 */
+    TIM1_DMA_Config_Channel(TIM_CHANNEL_3, DMA2_Stream6, DMA_CHANNEL_6, 2);
+    /* TIM1_CH4 -> DMA2 Stream 4 Channel 6 */
+    TIM1_DMA_Config_Channel(TIM_CHANNEL_4, DMA2_Stream4, DMA_CHANNEL_6, 3);
+
+    /* 3. Calculate Ticks and Prepare DMA Buffers */
+    uint32_t max_end_tick = 0;
+    
+    for (int i=0; i<4; i++){
+        uint32_t start = us_to_ticks(delays_us[i]);
+        uint32_t width = us_to_ticks(widths_us[i]);
+        uint32_t end = start + width;
+        
+        /* Store End Time in DMA Buffer */
+        tim1_end_val_buff[i] = end;
+
+        /* Track max tick for ARR */
+        if (end > max_end_tick) max_end_tick = end;
+
+        /* Set CCR to Start Time (Rising Edge) */
+        switch(i) {
+            case 0: TIM1->CCR1 = start; break;
+            case 1: TIM1->CCR2 = start; break;
+            case 2: TIM1->CCR3 = start; break;
+            case 3: TIM1->CCR4 = start; break;
+        }
     }
 
-    /* 停计数，清 CNT */
+    /* 4. Configure Timer */
     __HAL_TIM_DISABLE(&htim1);
     __HAL_TIM_SET_COUNTER(&htim1, 0);
+    
+    /* Set ARR to Max End Time + Margin to allow last pulse to finish before update */
+    /* One Pulse Mode stops at next Update Event. Update happens at overflow (CNT=ARR) or manual GEN. */
+    /* We want CNT to go from 0 -> Max_End -> ARR -> Stop. */
+    TIM1->ARR = max_end_tick + 100; 
 
-    /* 清除遗留中断标志，确保干净状态 */
-    TIM1->SR &= ~(TIM_SR_CC1IF | TIM_SR_CC2IF | TIM_SR_CC3IF | TIM_SR_CC4IF);
+    /* Enable One Pulse Mode (OPM) */
+    TIM1->CR1 |= TIM_CR1_OPM;
 
-    /* 为保险，先用 HAL 停止各通道（如果之前有残留），保持 HAL/硬件一致性 */
-    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
-    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_2);
-    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_3);
-    HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_4);
+    /* Clear Flags */
+    TIM1->SR = 0;
 
-    /* 预写 CCR 为上升时间（确保立即有效，OC Preload disabled） */
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, tstart_ticks[0]);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, tstart_ticks[1]);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, tstart_ticks[2]);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, tstart_ticks[3]);
+    /* 5. Start DMA for each channel */
+    /* This sets up the DMA to transfer 1 word (End Time) to CCR when CC flag rises */
+    HAL_DMA_Start(&hdma_tim1[0], (uint32_t)&tim1_end_val_buff[0], (uint32_t)&TIM1->CCR1, 1);
+    HAL_DMA_Start(&hdma_tim1[1], (uint32_t)&tim1_end_val_buff[1], (uint32_t)&TIM1->CCR2, 1);
+    HAL_DMA_Start(&hdma_tim1[2], (uint32_t)&tim1_end_val_buff[2], (uint32_t)&TIM1->CCR3, 1);
+    HAL_DMA_Start(&hdma_tim1[3], (uint32_t)&tim1_end_val_buff[3], (uint32_t)&TIM1->CCR4, 1);
 
-    /* 启动 OC 并启用 CC 中断（使用 HAL 接口以维护状态一致） */
-    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
-    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_2);
-    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_3);
-    HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_4);
+    /* Enable TIM DMA Requests */
+    /* Note: TIM_DMA_CCx enables DMA request on Compare Match */
+    __HAL_TIM_ENABLE_DMA(&htim1, TIM_DMA_CC1);
+    __HAL_TIM_ENABLE_DMA(&htim1, TIM_DMA_CC2);
+    __HAL_TIM_ENABLE_DMA(&htim1, TIM_DMA_CC3);
+    __HAL_TIM_ENABLE_DMA(&htim1, TIM_DMA_CC4);
 
-    /* 清标志并启动计时器（从 0 开始） */
-    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
+    /* 6. Enable Outputs (if not already enabled by HAL_TIM_OC_Start) */
+    /* We use CCER register directly to ensure fast simultaneous start */
+    TIM1->CCER |= (TIM_CCER_CC1E | TIM_CCER_CC2E | TIM_CCER_CC3E | TIM_CCER_CC4E);
+
+    /* 7. Start Timer */
+    /* MOE bit must be set for Advanced Timers (TIM1/TIM8) to output */
+    TIM1->BDTR |= TIM_BDTR_MOE; 
     __HAL_TIM_ENABLE(&htim1);
 }
 
