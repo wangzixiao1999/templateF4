@@ -187,8 +187,10 @@ void XYR_HT_Pos_Setting_VOFA(uint8_t addr, int32_t position)
  */
 float Parse_Float_LittleEndian(uint8_t *bytes)
 {
-	uint32_t int_val = bytes[0] | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
-	return *(float *)&int_val;
+    float f_val;
+    // 使用 memcpy 是最安全、可移植的方法，编译器会将其优化为寄存器操作
+    memcpy(&f_val, bytes, sizeof(float));
+    return f_val;
 }
 
 /**

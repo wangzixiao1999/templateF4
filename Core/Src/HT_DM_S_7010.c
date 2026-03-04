@@ -476,10 +476,14 @@ void HT_cmdSend()
 {
   if ((XYR_MotorState[2].cmdLength > 0) && (XYR_MotorState[2].state == XYRMOVE_WAIT_COMMEND))
   {
-    can2_SendCmd(XYR_MotorState[2].cmd, XYR_MotorState[2].cmdLength);
-    XYR_MotorState[2].command_sent = true;
-    memset((void *)process_buffer, 0, sizeof(process_buffer));
-    memset((void *)XYR_MotorState[2].cmd, 0, sizeof(XYR_MotorState[2].cmd));
-    XYR_MotorState[2].cmdLength = 0;
+    // 优化：检查发送结果
+    if (can2_SendCmd(XYR_MotorState[2].cmd, XYR_MotorState[2].cmdLength))
+    {
+        XYR_MotorState[2].command_sent = true;
+        memset((void *)process_buffer, 0, sizeof(process_buffer));
+        memset((void *)XYR_MotorState[2].cmd, 0, sizeof(XYR_MotorState[2].cmd));
+        XYR_MotorState[2].cmdLength = 0;
+    }
+    // 如果发送失败，保留 cmdLength，等待下一次调用重试
   }
 }
