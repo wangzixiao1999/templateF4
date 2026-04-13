@@ -471,4 +471,34 @@ bool can2_SendCmd(__IO uint8_t *cmd, uint8_t len)
 
   return true;
 }
+
+bool can2_SendStdFrame(uint16_t std_id, const uint8_t *data, uint8_t len)
+{
+  uint32_t TxMailbox;
+
+  if (data == NULL || len == 0 || len > 8)
+  {
+    return false;
+  }
+
+  can2.CAN_TxMsg.StdId = std_id & 0x7FFU;
+  can2.CAN_TxMsg.IDE = CAN_ID_STD;
+  can2.CAN_TxMsg.RTR = CAN_RTR_DATA;
+  can2.CAN_TxMsg.DLC = len;
+
+  for (uint8_t i = 0; i < len; ++i)
+  {
+    can2.txData[i] = data[i];
+  }
+
+  if (!can2_online) return false;
+  if (HAL_CAN_GetTxMailboxesFreeLevel(&hcan2) == 0) return false;
+
+  if (HAL_CAN_AddTxMessage((&hcan2), (CAN_TxHeaderTypeDef *)(&can2.CAN_TxMsg), (uint8_t *)(&can2.txData), (&TxMailbox)) != HAL_OK)
+  {
+    return false;
+  }
+
+  return true;
+}
 /* USER CODE END 1 */

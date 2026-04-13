@@ -29,6 +29,7 @@
 #include <string.h>
 #include "ZDT_X42_V2.h"
 #include "HT_DM_S_7010.h"
+#include "LK_Motor.h"
 #include "XYR_Control.h"
 #include "udp_app.h"
 

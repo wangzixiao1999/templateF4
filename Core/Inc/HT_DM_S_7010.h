@@ -57,6 +57,7 @@ void HT_DM_S_7010_Disable_Motor(uint8_t addr);                               // 
 
 // 数据接收函数（用于解析从机应答）
 void HT_DM_S_7010_Receive_Data(volatile uint8_t *rxCmd, volatile uint32_t *rxCount); // 返回数据接收函数
+void HT_DM_S_7010_Push_Data_From_ISR(uint8_t *data, uint32_t len);                    // ISR安全接收入口
 void HT_UpdateParameters(void);                                                      // 更新全局参数函数
 void HT_cmdSend();                                                                   // 命令装载并准备发送
 

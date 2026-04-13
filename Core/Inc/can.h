@@ -84,6 +84,7 @@ bool can_SendCmd(__IO uint8_t *cmd, uint8_t len);
 
 void USER_CAN2_Filter_Init(void);
 bool can2_SendCmd(__IO uint8_t *cmd, uint8_t len);
+bool can2_SendStdFrame(uint16_t std_id, const uint8_t *data, uint8_t len);
 
 /* USER CODE END Prototypes */
 

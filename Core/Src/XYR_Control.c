@@ -1,5 +1,7 @@
 #include "XYR_Control.h"
 
+#include <math.h>
+
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
 
@@ -250,23 +252,33 @@ void XYR_AutoScan_Stop(void)
 void Controller_Update_Callback(void)
 {
 	static volatile uint32_t preTick_Tim4 = 0;
-	static uint8_t HT_request_index = 0;
+	static uint8_t CAN2_request_index = 0;
 	static uint8_t ZDT_request_index = 0;
-	switch (HT_request_index)
+	switch (CAN2_request_index)
 	{
 	case 0:
 		HT_DM_S_7010_Read_Current_Q_Axis(3); // 读取转台相电流
-
 		break;
 	case 1:
-		HT_DM_S_7010_Read_Speed(3); // 读取转台速度
-
+		LK_Motor_Read_State1(LK_MOTOR_ID); // 读取LK状态1
 		break;
 	case 2:
-		HT_DM_S_7010_Read_Absolute_Angle(3); // 读取转台角度
+		HT_DM_S_7010_Read_Speed(3); // 读取转台速度
 		break;
 	case 3:
+		LK_Motor_Read_State2(LK_MOTOR_ID); // 读取LK状态2
+		break;
+	case 4:
+		HT_DM_S_7010_Read_Absolute_Angle(3); // 读取转台角度
+		break;
+	case 5:
+		LK_Motor_Read_Multi_Turn_Angle(LK_MOTOR_ID); // 读取LK多圈角度
+		break;
+	case 6:
 		HT_cmdSend(); // 发送装载好的转台命令
+		break;
+	case 7:
+		LK_cmdSend(); // 发送装载好的LK命令
 		break;
 	}
 
@@ -286,7 +298,7 @@ void Controller_Update_Callback(void)
 		break;
 	}
 
-	HT_request_index = (HT_request_index + 1) % 4;
+	CAN2_request_index = (CAN2_request_index + 1) % 8;
 	ZDT_request_index = (ZDT_request_index + 1) % 4;
 
 	uint32_t currTick_Tim4 = HAL_GetTick();
@@ -523,7 +535,6 @@ void XYR_MotorState_Update(uint8_t addr)
 			XYR_MotorState[index].start_time = HAL_GetTick();
 			return;
 		}
-		// else if ((labs(XYR_MotorState[2].real_time_position - XYR_MotorState[2].target_position) <= 5) && (!XYR_MotorState[2].real_time_velocity) && (labs(XYR_MotorState[2].real_time_current) < 200))
 		else if (((XYR_MotorState[2].real_time_velocity == 0) && (labs(XYR_MotorState[2].real_time_current) < 200)) && (index == 2))
 		{
 			XYR_MotorState_Transition(addr, XYRMOVE_COMPLETE);

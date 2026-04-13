@@ -6,6 +6,7 @@
 
 #include "ZDT_X42_V2.h"
 #include "HT_DM_S_7010.h"
+#include "LK_Motor.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

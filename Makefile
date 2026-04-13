@@ -61,6 +61,7 @@ Core/Src/sysmem.c \
 Core/Src/syscalls.c \
 Core/Src/gpio.c \
 Core/Src/can.c \
+Core/Src/LK_Motor.c \
 Core/Src/ZDT_X42_V2.c \
 Core/Src/tim.c \
 Core/Src/HT_DM_S_7010.c \

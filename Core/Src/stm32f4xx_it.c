@@ -25,6 +25,7 @@
 #include "can.h"
 #include "ZDT_X42_V2.h"
 #include "HT_DM_S_7010.h"
+#include "LK_Motor.h"
 
 extern volatile uint32_t tstart_ticks[4];
 extern volatile uint32_t twidth_ticks[4];
@@ -328,10 +329,16 @@ void CAN2_RX0_IRQHandler(void)
   // 接收CAN2包数据
   if (HAL_CAN_GetRxMessage((&hcan2), CAN_RX_FIFO0, (CAN_RxHeaderTypeDef *)(&can2.CAN_RxMsg), (uint8_t *)(&can2.rxData)) == HAL_OK)
   {
-    // 优化：仅在中断中标记数据已接收，不进行解析
-    // 实际项目中建议使用环形缓冲区(RingBuffer)防止数据覆盖，这里演示最简单的标志位法
-    // 假设 HT_DM_S_7010.c 中增加了一个缓存处理函数
-    HT_DM_S_7010_Push_Data_From_ISR(can2.rxData, can2.CAN_RxMsg.DLC);
+    uint16_t std_id = can2.CAN_RxMsg.StdId & 0x7FFU;
+
+    if ((std_id >= (LK_MOTOR_STDID_BASE + 1U)) && (std_id <= (LK_MOTOR_STDID_BASE + 32U)))
+    {
+      LK_Motor_Push_Data_From_ISR(std_id, can2.rxData, can2.CAN_RxMsg.DLC);
+    }
+    else
+    {
+      HT_DM_S_7010_Push_Data_From_ISR((uint8_t *)can2.rxData, can2.CAN_RxMsg.DLC);
+    }
 
     // 多帧数据接收完成，置位帧标志位
     for (i = can2.CAN_RxMsg.DLC; i < 8; i++)
