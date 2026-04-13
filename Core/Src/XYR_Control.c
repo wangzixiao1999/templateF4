@@ -3,8 +3,8 @@
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
 
-volatile float VOFA_Speed[3] = {20, 20, 20};
-volatile float VOFA_Pos[3] = {10, 10, 0};
+volatile float VOFA_Speed[3] = {100, 100, 20};
+volatile float VOFA_Pos[3] = {0.5, 0.5, 0};
 volatile uint8_t VOFA_Scan[2] = {10, 10};
 volatile bool AutoScanFlag = true;
 volatile bool USB_Send_Flag = false;

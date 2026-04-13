@@ -487,3 +487,14 @@ void HT_cmdSend()
     // 如果发送失败，保留 cmdLength，等待下一次调用重试
   }
 }
+
+/**
+ * @brief    Push data from ISR to be processed (Wrapper for Receive_Data)
+ * @param    data  : Pointer to data buffer
+ * @param    len   : Length of data
+ */
+void HT_DM_S_7010_Push_Data_From_ISR(uint8_t *data, uint32_t len)
+{
+  volatile uint32_t rxCount = len;
+  HT_DM_S_7010_Receive_Data((volatile uint8_t *)data, &rxCount);
+}
