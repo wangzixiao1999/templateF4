@@ -2,6 +2,8 @@
 
 #include <math.h>
 
+#define LK_SINGLE_TURN_MAX_ANGLE_DEG 359.99f
+
 float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
 
@@ -407,6 +409,50 @@ void XYR_Read_USB_Commend()
 			XYR_HT_Fixed_Speed_Move(0, VOFA_Speed[2]);
 		else
 			XYR_HT_Fixed_Length_Move(0, VOFA_Pos[2]);
+		break;
+	case 0xC5:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		{
+			float angle_deg = fabsf(value);
+			uint16_t max_speed_dps = 0U;
+			uint32_t angle_0p01deg = 0U;
+
+			if (angle_deg > LK_SINGLE_TURN_MAX_ANGLE_DEG)
+				angle_deg = LK_SINGLE_TURN_MAX_ANGLE_DEG;
+
+			if (VOFA_Speed[2] < 0.f)
+				max_speed_dps = 0U;
+			else if (VOFA_Speed[2] > 65535.f)
+				max_speed_dps = 65535U;
+			else
+				max_speed_dps = (uint16_t)lroundf(VOFA_Speed[2]);
+
+			angle_0p01deg = (uint32_t)lroundf(angle_deg * 100.0f);
+			LK_Motor_Load_Single_Position_Control2(0U, max_speed_dps, angle_0p01deg);
+		}
+		break;
+	case 0xC6:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		{
+			float angle_deg = fabsf(value);
+			uint16_t max_speed_dps = 0U;
+			uint32_t angle_0p01deg = 0U;
+
+			if (angle_deg > LK_SINGLE_TURN_MAX_ANGLE_DEG)
+				angle_deg = LK_SINGLE_TURN_MAX_ANGLE_DEG;
+
+			if (VOFA_Speed[2] < 0.f)
+				max_speed_dps = 0U;
+			else if (VOFA_Speed[2] > 65535.f)
+				max_speed_dps = 65535U;
+			else
+				max_speed_dps = (uint16_t)lroundf(VOFA_Speed[2]);
+
+			angle_0p01deg = (uint32_t)lroundf(angle_deg * 100.0f);
+			LK_Motor_Load_Single_Position_Control2(1U, max_speed_dps, angle_0p01deg);
+		}
 		break;
 	case 0xD0:
 		xyr_request = 0;

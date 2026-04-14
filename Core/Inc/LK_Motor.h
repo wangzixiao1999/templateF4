@@ -45,6 +45,7 @@ void LK_Motor_Stop(uint8_t id);
 void LK_Motor_Brake_Control(uint8_t id, uint8_t brake_cmd);
 void LK_Motor_Velocity_Control(uint8_t id, int16_t iq_limit, int32_t speed_0p01_dps);
 void LK_Motor_Read_Multi_Turn_Angle(uint8_t id);
+void LK_Motor_Load_Single_Position_Control2(uint8_t spin_direction, uint16_t max_speed_dps, uint32_t angle_control_0p01deg);
 void LK_Motor_Load_Increment_Position_Control2(uint16_t max_speed_dps, int32_t angle_increment_0p01deg);
 void LK_Motor_Receive_Data(uint16_t std_id, const volatile uint8_t *rx_cmd, uint8_t rx_count);
 void LK_Motor_Push_Data_From_ISR(uint16_t std_id, const volatile uint8_t *data, uint32_t len);

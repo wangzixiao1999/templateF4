@@ -111,6 +111,20 @@ void LK_Motor_Read_Multi_Turn_Angle(uint8_t id)
     LK_Motor_SendFrame(id, frame);
 }
 
+void LK_Motor_Load_Single_Position_Control2(uint8_t spin_direction, uint16_t max_speed_dps, uint32_t angle_control_0p01deg)
+{
+    g_lk_motor_cmd.data[0] = 0xA6;
+    g_lk_motor_cmd.data[1] = spin_direction;
+    g_lk_motor_cmd.data[2] = (uint8_t)(max_speed_dps >> 0);
+    g_lk_motor_cmd.data[3] = (uint8_t)(max_speed_dps >> 8);
+    g_lk_motor_cmd.data[4] = (uint8_t)(angle_control_0p01deg >> 0);
+    g_lk_motor_cmd.data[5] = (uint8_t)(angle_control_0p01deg >> 8);
+    g_lk_motor_cmd.data[6] = (uint8_t)(angle_control_0p01deg >> 16);
+    g_lk_motor_cmd.data[7] = (uint8_t)(angle_control_0p01deg >> 24);
+    g_lk_motor_cmd.len = 8;
+    g_lk_motor_cmd.pending = true;
+}
+
 void LK_Motor_Load_Increment_Position_Control2(uint16_t max_speed_dps, int32_t angle_increment_0p01deg)
 {
     g_lk_motor_cmd.data[0] = 0xA8;
