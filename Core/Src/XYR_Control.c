@@ -318,13 +318,14 @@ void Controller_Update_Callback(void)
  */
 void XYR_Send_USB_Commend()
 {
-	float values[3];
+	float values[4];
 	values[0] = (float)XYR_MotorState[0].real_time_position;
 	values[1] = (float)XYR_MotorState[1].real_time_position;
 	if (XYR_MotorState[2].real_time_position < 0)
 		values[2] = (float)((int32_t)abs(XYR_MotorState[2].real_time_position) % 16384) * 360.f / 16384.f;
 	else
 		values[2] = (float)((16384 - (int32_t)abs(XYR_MotorState[2].real_time_position) % 16384)) * 360.f / 16384.f;
+	values[3] = (float)(g_lk_motor_feedback.encoder) * 360.f / 65536.f;
 
 	// 发送原始数据（VOFA+使用JustFloat协议）
 	HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
