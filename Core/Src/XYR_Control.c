@@ -8,6 +8,7 @@ float Tim4Rev_freq = 0.f;
 volatile bool moveFlag[3] = {true, true, true};
 
 volatile float VOFA_Speed[3] = {100, 100, 20};
+volatile float VOFA_LK_Speed = 20;
 volatile float VOFA_Pos[3] = {0.5, 0.5, 0};
 volatile uint8_t VOFA_Scan[2] = {10, 10};
 volatile bool AutoScanFlag = true;
@@ -142,8 +143,19 @@ void XYR_Relieve_Malfunction()
 void XYR_Stop_Move()
 {
 	ZDT_X42_V2_Stop_Now(0, 0);
-	HT_DM_S_7010_Disable_Motor(3);
-	for (int i = 0; i < 2; i++)
+	HT_DM_S_7010_Velocity_Control(3, 0);
+	LK_Motor_Stop(LK_MOTOR_ID);
+
+	XYR_MotorState_Transition(3, XYRMOVE_IDLE);
+	XYR_MotorState[2].target_velocity = 0;
+	XYR_MotorState[2].cmdLength = 0;
+	memset(XYR_MotorState[2].cmd, 0, sizeof(XYR_MotorState[2].cmd));
+
+	g_lk_motor_cmd.pending = false;
+	g_lk_motor_cmd.len = 0;
+	memset((void *)g_lk_motor_cmd.data, 0, sizeof(g_lk_motor_cmd.data));
+
+	for (int i = 0; i < 3; i++)
 		moveFlag[i] = true;
 }
 
@@ -164,6 +176,11 @@ void XYR_ZDT_Speed_Setting_VOFA(uint8_t addr, float velocity)
 void XYR_HT_Speed_Setting_VOFA(uint8_t addr, float velocity)
 {
 	VOFA_Speed[2] = velocity;
+}
+
+void XYR_LK_Speed_Setting_VOFA(float velocity)
+{
+	VOFA_LK_Speed = velocity;
 }
 
 /**
@@ -327,7 +344,7 @@ void XYR_Send_USB_Commend()
 		values[2] = (float)((int32_t)abs(XYR_MotorState[2].real_time_position) % 16384) * 360.f / 16384.f;
 	else
 		values[2] = (float)((16384 - (int32_t)abs(XYR_MotorState[2].real_time_position) % 16384)) * 360.f / 16384.f;
-	values[3] = (float)(g_lk_motor_feedback.encoder) * 360.f / 65536.f;
+	values[3] = (float)(65536 - g_lk_motor_feedback.encoder) * 360.f / 65536.f;
 
 	// 发送原始数据（VOFA+使用JustFloat协议）
 	HAL_UART_Transmit(&huart1, (uint8_t *)values, sizeof(values), 100);
@@ -421,12 +438,12 @@ void XYR_Read_USB_Commend()
 			if (angle_deg > LK_SINGLE_TURN_MAX_ANGLE_DEG)
 				angle_deg = LK_SINGLE_TURN_MAX_ANGLE_DEG;
 
-			if (VOFA_Speed[2] < 0.f)
+			if (VOFA_LK_Speed < 0.f)
 				max_speed_dps = 0U;
-			else if (VOFA_Speed[2] > 65535.f)
+			else if (VOFA_LK_Speed > 65535.f)
 				max_speed_dps = 65535U;
 			else
-				max_speed_dps = (uint16_t)lroundf(VOFA_Speed[2]);
+				max_speed_dps = (uint16_t)lroundf(VOFA_LK_Speed);
 
 			angle_0p01deg = (uint32_t)lroundf(angle_deg * 100.0f);
 			LK_Motor_Load_Single_Position_Control2(0U, max_speed_dps, angle_0p01deg);
@@ -443,16 +460,21 @@ void XYR_Read_USB_Commend()
 			if (angle_deg > LK_SINGLE_TURN_MAX_ANGLE_DEG)
 				angle_deg = LK_SINGLE_TURN_MAX_ANGLE_DEG;
 
-			if (VOFA_Speed[2] < 0.f)
+			if (VOFA_LK_Speed < 0.f)
 				max_speed_dps = 0U;
-			else if (VOFA_Speed[2] > 65535.f)
+			else if (VOFA_LK_Speed > 65535.f)
 				max_speed_dps = 65535U;
 			else
-				max_speed_dps = (uint16_t)lroundf(VOFA_Speed[2]);
+				max_speed_dps = (uint16_t)lroundf(VOFA_LK_Speed);
 
 			angle_0p01deg = (uint32_t)lroundf(angle_deg * 100.0f);
 			LK_Motor_Load_Single_Position_Control2(1U, max_speed_dps, angle_0p01deg);
 		}
+		break;
+	case 0xC7:
+		xyr_request = 0;
+		value = Parse_Float_LittleEndian(&process_buffer[1]);
+		XYR_LK_Speed_Setting_VOFA(value);
 		break;
 	case 0xD0:
 		xyr_request = 0;
