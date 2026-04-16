@@ -445,7 +445,7 @@ void XYR_Read_USB_Commend()
 			else
 				max_speed_dps = (uint16_t)lroundf(VOFA_LK_Speed);
 
-			angle_0p01deg = (uint32_t)lroundf(angle_deg * 100.0f);
+			angle_0p01deg = (uint32_t)lroundf((360.0f - angle_deg) * 100.0f);
 			LK_Motor_Load_Single_Position_Control2(0U, max_speed_dps, angle_0p01deg);
 		}
 		break;
