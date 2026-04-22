@@ -434,6 +434,7 @@ void XYR_Read_USB_Commend()
 			float angle_deg = fabsf(value);
 			uint16_t max_speed_dps = 0U;
 			uint32_t angle_0p01deg = 0U;
+			float target_angle_deg = 0.0f;
 
 			if (angle_deg > LK_SINGLE_TURN_MAX_ANGLE_DEG)
 				angle_deg = LK_SINGLE_TURN_MAX_ANGLE_DEG;
@@ -445,7 +446,9 @@ void XYR_Read_USB_Commend()
 			else
 				max_speed_dps = (uint16_t)lroundf(VOFA_LK_Speed);
 
-			angle_0p01deg = (uint32_t)lroundf((360.0f - angle_deg) * 100.0f);
+			if (angle_deg > 0.0f)
+				target_angle_deg = 360.0f - angle_deg;
+			angle_0p01deg = (uint32_t)lroundf(target_angle_deg * 100.0f);
 			LK_Motor_Load_Single_Position_Control2(0U, max_speed_dps, angle_0p01deg);
 		}
 		break;
@@ -456,6 +459,7 @@ void XYR_Read_USB_Commend()
 			float angle_deg = fabsf(value);
 			uint16_t max_speed_dps = 0U;
 			uint32_t angle_0p01deg = 0U;
+			float target_angle_deg = 0.0f;
 
 			if (angle_deg > LK_SINGLE_TURN_MAX_ANGLE_DEG)
 				angle_deg = LK_SINGLE_TURN_MAX_ANGLE_DEG;
@@ -467,7 +471,9 @@ void XYR_Read_USB_Commend()
 			else
 				max_speed_dps = (uint16_t)lroundf(VOFA_LK_Speed);
 
-			angle_0p01deg = (uint32_t)lroundf((360.0f - angle_deg) * 100.0f);
+			if (angle_deg > 0.0f)
+				target_angle_deg = 360.0f - angle_deg;
+			angle_0p01deg = (uint32_t)lroundf(target_angle_deg * 100.0f);
 			LK_Motor_Load_Single_Position_Control2(1U, max_speed_dps, angle_0p01deg);
 		}
 		break;
